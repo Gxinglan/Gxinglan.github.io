@@ -1,0 +1,677 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求 | 星阑的博客</title><meta name="author" content="星阑"><meta name="copyright" content="星阑"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="1. 题目概述2026年Kaggle Playground Series -Season 6 Episode 4这是一篇关于预测灌溉需求的代码讲解文章。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求">
+<meta property="og:url" content="http://example.com/2026/06/15/Kaggle-Predicting-Irrigation-Need/index.html">
+<meta property="og:site_name" content="星阑的博客">
+<meta property="og:description" content="1. 题目概述2026年Kaggle Playground Series -Season 6 Episode 4这是一篇关于预测灌溉需求的代码讲解文章。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2026-06-14T16:04:05.445Z">
+<meta property="article:modified_time" content="2026-06-14T16:37:51.310Z">
+<meta property="article:author" content="星阑">
+<meta property="article:tag" content="CatBoost">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求",
+  "url": "http://example.com/2026/06/15/Kaggle-Predicting-Irrigation-Need/",
+  "image": "http://example.com/img/avatar.jpg",
+  "datePublished": "2026-06-14T16:04:05.445Z",
+  "dateModified": "2026-06-14T16:37:51.310Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "星阑",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/06/15/Kaggle-Predicting-Irrigation-Need/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/avatar.jpg" alt="Logo"><span class="site-name">星阑的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-14T16:04:05.445Z" title="发表于 2026-06-15 00:04:05">2026-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-14T16:37:51.310Z" title="更新于 2026-06-15 00:37:51">2026-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Kaggle%E7%AB%9E%E8%B5%9B/">Kaggle竞赛</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="1-题目概述"><a href="#1-题目概述" class="headerlink" title="1. 题目概述"></a>1. 题目概述</h1><p>2026年Kaggle Playground Series -Season 6 Episode 4<br>这是一篇关于预测灌溉需求的代码讲解文章。</p>
+<span id="more"></span>
+<p>竞赛地址：<a target="_blank" rel="noopener" href="https://www.kaggle.com/competitions/playground-series-s6e4/overview">https://www.kaggle.com/competitions/playground-series-s6e4/overview</a><br>目标：预测灌溉需求<br>评价：提交内容的评估基于预测类别与观察目标之间的平衡准确性<br>本文章代码已开源<br>github：<a target="_blank" rel="noopener" href="https://github.com/Gxinglan/Kaggle-Predicting-Irrigation-Need">https://github.com/Gxinglan/Kaggle-Predicting-Irrigation-Need</a><br>kaggle：<a target="_blank" rel="noopener" href="https://www.kaggle.com/code/starxinglan/predicting-irrigation-need-2-3">https://www.kaggle.com/code/starxinglan/predicting-irrigation-need-2-3</a></p>
+<h2 id="1-1-提交要求"><a href="#1-1-提交要求" class="headerlink" title="1.1 提交要求"></a>1.1 提交要求</h2><p>对于测试集中的每个目标，你必须预测一个类别标签（低、中、高）。文件应包含一个头部，格式如下：<code>id,Irrigation_Need</code></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Irrigation_Need</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>630000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>630001</td>
+<td>High</td>
+</tr>
+<tr>
+<td>630002</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h2 id="1-2-训练集-train-csv"><a href="#1-2-训练集-train-csv" class="headerlink" title="1.2 训练集 train.csv"></a>1.2 训练集 train.csv</h2><h3 id="1-2-1-训练集数据结构"><a href="#1-2-1-训练集数据结构" class="headerlink" title="1.2.1 训练集数据结构"></a>1.2.1 训练集数据结构</h3><p>该数据集包含多维度的农业环境与作物生长特征。字段说明及部分样本示例：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段名称</th>
+<th align="left">字段说明</th>
+<th align="left">示例数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">样本唯一标识</td>
+<td align="left">0, 1, 2 …</td>
+</tr>
+<tr>
+<td align="left">Soil_Type</td>
+<td align="left">土壤类型</td>
+<td align="left">Loamy, Clay, Sandy</td>
+</tr>
+<tr>
+<td align="left">Soil_pH</td>
+<td align="left">土壤酸碱度</td>
+<td align="left">4.92, 7.08, 5.69</td>
+</tr>
+<tr>
+<td align="left">Soil_Moisture</td>
+<td align="left">土壤湿度 (%)</td>
+<td align="left">32.58, 56.61, 27.71</td>
+</tr>
+<tr>
+<td align="left">Organic_Carbon</td>
+<td align="left">有机碳含量</td>
+<td align="left">1.01, 0.44, 0.81</td>
+</tr>
+<tr>
+<td align="left">Electrical_Conductivity</td>
+<td align="left">电导率</td>
+<td align="left">3.05, 2.00, 2.83</td>
+</tr>
+<tr>
+<td align="left">Temperature_C</td>
+<td align="left">温度 (°C)</td>
+<td align="left">15.01, 22.92, 26.97</td>
+</tr>
+<tr>
+<td align="left">Humidity</td>
+<td align="left">湿度 (%)</td>
+<td align="left">50.61, 67.86, 92.22</td>
+</tr>
+<tr>
+<td align="left">Rainfall_mm</td>
+<td align="left">降雨量 (mm)</td>
+<td align="left">725.99, 985.66, 2201.70</td>
+</tr>
+<tr>
+<td align="left">Sunlight_Hours</td>
+<td align="left">日照时长 (小时)</td>
+<td align="left">5.90, 6.98, 6.05</td>
+</tr>
+<tr>
+<td align="left">Wind_Speed_kmh</td>
+<td align="left">风速 (km&#x2F;h)</td>
+<td align="left">16.79, 3.39, 3.85</td>
+</tr>
+<tr>
+<td align="left">Crop_Type</td>
+<td align="left">作物类型</td>
+<td align="left">Sugarcane, Wheat, Rice</td>
+</tr>
+<tr>
+<td align="left">Crop_Growth_Stage</td>
+<td align="left">作物生长阶段</td>
+<td align="left">Sowing, Vegetative, Reproductive</td>
+</tr>
+<tr>
+<td align="left">Season</td>
+<td align="left">季节</td>
+<td align="left">Zaid, Kharif, Rabi</td>
+</tr>
+<tr>
+<td align="left">Irrigation_Type</td>
+<td align="left">灌溉类型</td>
+<td align="left">Drip, Rainfed, Sprinkler</td>
+</tr>
+<tr>
+<td align="left">Water_Source</td>
+<td align="left">水源</td>
+<td align="left">Rainwater, River, Reservoir</td>
+</tr>
+<tr>
+<td align="left">Field_Area_hectare</td>
+<td align="left">地块面积 (公顷)</td>
+<td align="left">0.82, 5.27, 8.24</td>
+</tr>
+<tr>
+<td align="left">Mulching_Used</td>
+<td align="left">是否使用覆盖物</td>
+<td align="left">Yes, No</td>
+</tr>
+<tr>
+<td align="left">Previous_Irrigation_mm</td>
+<td align="left">上次灌溉量 (mm)</td>
+<td align="left">112.16, 47.16, 110.38</td>
+</tr>
+<tr>
+<td align="left">Region</td>
+<td align="left">区域</td>
+<td align="left">East, South, North</td>
+</tr>
+<tr>
+<td align="left"><strong>Irrigation_Need</strong></td>
+<td align="left"><strong>灌溉需求标签 (目标值)</strong></td>
+<td align="left"><strong>Low, Medium, High</strong></td>
+</tr>
+</tbody></table>
+<h3 id="1-2-2-部分样本数据实例"><a href="#1-2-2-部分样本数据实例" class="headerlink" title="1.2.2 部分样本数据实例"></a>1.2.2 部分样本数据实例</h3><table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">Soil_Type</th>
+<th align="left">Soil_pH</th>
+<th align="left">Soil_Moisture</th>
+<th align="left">Organic_Carbon</th>
+<th align="left">Electrical_Conductivity</th>
+<th align="left">Temperature_C</th>
+<th align="left">Humidity</th>
+<th align="left">Rainfall_mm</th>
+<th align="left">Sunlight_Hours</th>
+<th align="left">Wind_Speed_kmh</th>
+<th align="left">Crop_Type</th>
+<th align="left">Crop_Growth_Stage</th>
+<th align="left">Season</th>
+<th align="left">Irrigation_Type</th>
+<th align="left">Water_Source</th>
+<th align="left">Field_Area_hectare</th>
+<th align="left">Mulching_Used</th>
+<th align="left">Previous_Irrigation_mm</th>
+<th align="left">Region</th>
+<th align="left">Irrigation_Need</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">Loamy</td>
+<td align="left">4.92</td>
+<td align="left">32.58</td>
+<td align="left">1.01</td>
+<td align="left">3.05</td>
+<td align="left">15.01</td>
+<td align="left">50.61</td>
+<td align="left">725.99</td>
+<td align="left">5.90</td>
+<td align="left">16.79</td>
+<td align="left">Sugarcane</td>
+<td align="left">Sowing</td>
+<td align="left">Zaid</td>
+<td align="left">Drip</td>
+<td align="left">Rainwater</td>
+<td align="left">0.82</td>
+<td align="left">No</td>
+<td align="left">112.16</td>
+<td align="left">East</td>
+<td align="left">Low</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">Clay</td>
+<td align="left">7.08</td>
+<td align="left">56.61</td>
+<td align="left">0.44</td>
+<td align="left">2.00</td>
+<td align="left">22.92</td>
+<td align="left">67.86</td>
+<td align="left">985.66</td>
+<td align="left">6.98</td>
+<td align="left">3.39</td>
+<td align="left">Wheat</td>
+<td align="left">Vegetative</td>
+<td align="left">Kharif</td>
+<td align="left">Rainfed</td>
+<td align="left">River</td>
+<td align="left">5.27</td>
+<td align="left">Yes</td>
+<td align="left">47.16</td>
+<td align="left">South</td>
+<td align="left">Low</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Clay</td>
+<td align="left">5.69</td>
+<td align="left">27.71</td>
+<td align="left">0.81</td>
+<td align="left">2.83</td>
+<td align="left">26.97</td>
+<td align="left">92.22</td>
+<td align="left">2201.70</td>
+<td align="left">6.05</td>
+<td align="left">3.85</td>
+<td align="left">Rice</td>
+<td align="left">Vegetative</td>
+<td align="left">Kharif</td>
+<td align="left">Sprinkler</td>
+<td align="left">Reservoir</td>
+<td align="left">8.24</td>
+<td align="left">Yes</td>
+<td align="left">110.38</td>
+<td align="left">North</td>
+<td align="left">Low</td>
+</tr>
+<tr>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+</tr>
+</tbody></table>
+<h2 id="1-3-测试集-test-csv"><a href="#1-3-测试集-test-csv" class="headerlink" title="1.3 测试集 test.csv"></a>1.3 测试集 test.csv</h2><p>测试集特征结构与训练集基本一致，不含标签 <code>Irrigation_Need</code>。我们需要做的就是对<code>Irrigation_Need</code>进行预测。</p>
+<h3 id="1-3-1-部分样本数据实例"><a href="#1-3-1-部分样本数据实例" class="headerlink" title="1.3.1  部分样本数据实例"></a>1.3.1  部分样本数据实例</h3><table>
+<thead>
+<tr>
+<th>id</th>
+<th>Soil_Type</th>
+<th>Soil_pH</th>
+<th>Soil_Moisture</th>
+<th>Organic_Carbon</th>
+<th>Electrical_Conductivity</th>
+<th>Temperature_C</th>
+<th>Humidity</th>
+<th>Rainfall_mm</th>
+<th>Sunlight_Hours</th>
+<th>Wind_Speed_kmh</th>
+<th>Crop_Type</th>
+<th>Crop_Growth_Stage</th>
+<th>Season</th>
+<th>Irrigation_Type</th>
+<th>Water_Source</th>
+<th>Field_Area_hectare</th>
+<th>Mulching_Used</th>
+<th>Previous_Irrigation_mm</th>
+<th>Region</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>630000</td>
+<td>Silt</td>
+<td>6.36</td>
+<td>26.19</td>
+<td>0.59</td>
+<td>2.81</td>
+<td>17.83</td>
+<td>30.24</td>
+<td>1533.38</td>
+<td>5.4</td>
+<td>3</td>
+<td>Maize</td>
+<td>Sowing</td>
+<td>Rabi</td>
+<td>Canal</td>
+<td>River</td>
+<td>13.59</td>
+<td>Yes</td>
+<td>47.48</td>
+<td>West</td>
+</tr>
+<tr>
+<td>630001</td>
+<td>Clay</td>
+<td>5.87</td>
+<td>9.88</td>
+<td>1.18</td>
+<td>3.26</td>
+<td>21.18</td>
+<td>78.07</td>
+<td>576.05</td>
+<td>7.22</td>
+<td>15.88</td>
+<td>Cotton</td>
+<td>Sowing</td>
+<td>Rabi</td>
+<td>Drip</td>
+<td>Reservoir</td>
+<td>6.12</td>
+<td>Yes</td>
+<td>56.43</td>
+<td>South</td>
+</tr>
+<tr>
+<td>630002</td>
+<td>Sandy</td>
+<td>6.22</td>
+<td>26.55</td>
+<td>0.96</td>
+<td>0.85</td>
+<td>26.87</td>
+<td>60.35</td>
+<td>545.3</td>
+<td>9.43</td>
+<td>2.63</td>
+<td>Wheat</td>
+<td>Sowing</td>
+<td>Kharif</td>
+<td>Sprinkler</td>
+<td>Reservoir</td>
+<td>3.11</td>
+<td>Yes</td>
+<td>20</td>
+<td>East</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h1 id="2-解题代码讲解"><a href="#2-解题代码讲解" class="headerlink" title="2. 解题代码讲解"></a>2. 解题代码讲解</h1><p>本方案采用CatBoostClassifier模型，结合农业领域知识构建有效特征，使用7 折分层交叉验证保证训练稳定，通过类别权重处理样本不均衡问题，最终对多折模型的预测概率进行融合平均，得到稳健的预测结果并生成提交文件。<br>采用7折目前跑出来的结果是最好的，以下是在各折下跑的分数结果。<br>在5折时分数跑到了0.96805<br>在6折时分数跑到了0.96820<br>在7折时分数跑到了0.96907<br>在8折时分数跑到了0.96749<br>在10折时分数跑到了0.96728</p>
+<h2 id="2-1-CatBoost"><a href="#2-1-CatBoost" class="headerlink" title="2.1 CatBoost"></a>2.1 CatBoost</h2><p>CatBoost是俄罗斯的搜索巨头Yandex在2017年开源的机器学习库，是Boosting族算法的一种。CatBoost和XGBoost、LightGBM并称为GBDT的三大主流神器，都是在GBDT算法框架下的一种改进实现。其中CatBoostClassifier 是CatBoost库里专门做分类任务的模型。<br>其有三个主要特点：</p>
+<ul>
+<li>自动处理类别特征：无需繁琐的特征编码，直接原始数据</li>
+<li>有序目标统计：有效防止目标泄露（Target Leakage）</li>
+<li>对称决策树：训练更快更不容易拟合</li>
+</ul>
+<p>因此，CatBoost 尤其适用于包含大量类别特征、数值与类别特征存在复杂交互、需要快速搭建高质量基线模型的表格数据场景。</p>
+<h3 id="2-1-1-有序目标统计：比-One-Hot-更智能的类别特征处理策略"><a href="#2-1-1-有序目标统计：比-One-Hot-更智能的类别特征处理策略" class="headerlink" title="2.1.1 有序目标统计：比 One-Hot 更智能的类别特征处理策略"></a>2.1.1 有序目标统计：比 One-Hot 更智能的类别特征处理策略</h3><p>在类别型特征的处理中，传统方法存在固有局限：独热编码（One-Hot Encoding）易引发维度灾难，导致特征空间高维稀疏；标签编码（Label Encoding）则会人为引入虚假的顺序关系，破坏特征的语义独立性。CatBoost 通过有序目标统计（Ordered Target Statistics）机制，解决了这一矛盾。</p>
+<h3 id="核心原理"><a href="#核心原理" class="headerlink" title="核心原理"></a>核心原理</h3><p>有序目标统计的核心逻辑基于时序化的目标均值编码，具体流程如下：</p>
+<ol>
+<li><strong>样本随机排序</strong>：训练前对全体样本进行随机重排，构建时序化的样本序列。</li>
+<li><strong>历史信息编码</strong>：对于第 $i$ 个样本的类别特征值，仅使用前 $i-1$ 个样本中相同类别的目标值均值作为编码结果。</li>
+<li><strong>先验平滑处理</strong>：引入先验概率对编码结果进行平滑，缓解小样本类别统计不稳定的问题。</li>
+</ol>
+<h3 id="其优势在于优势"><a href="#其优势在于优势" class="headerlink" title="其优势在于优势"></a>其优势在于优势</h3><ul>
+<li>避免了未来信息的泄漏</li>
+<li>保留了类别特征的统计特性</li>
+</ul>
+<h3 id="2-2-2-对称树：-决策树中的标准化结构"><a href="#2-2-2-对称树：-决策树中的标准化结构" class="headerlink" title="2.2.2 对称树： 决策树中的标准化结构"></a>2.2.2 对称树： 决策树中的标准化结构</h3><p>与 XGBoost 等传统框架采用的非对称决策树不同，CatBoost 使用对称树（Oblivious Trees） 结构。该结构的核心特点是，树的每一层所有节点均使用相同的特征与阈值进行分裂，结构规整且统一。<br>这种结构有以下优点：</p>
+<ul>
+<li>训练速度快：可并行计算所有叶节点的分裂</li>
+<li>内存效率高：只需要存储每层的分裂特征和阈值</li>
+<li>正则化结果好：限制了模型的复杂度</li>
+</ul>
+<p>但对称树也有其局限性，当特征交互非常复杂时，可能不如传统决策树灵活。</p>
+<p><strong>CatBoost的主要算法原理可以参考以下两篇论文：</strong></p>
+<ul>
+<li>Anna Veronika Dorogush, Andrey Gulin, Gleb Gusev, Nikita Kazeev, Liudmila Ostroumova Prokhorenkova, Aleksandr Vorobev “Fighting biases with dynamic boosting”. arXiv:1706.09516, 2017</li>
+<li>Anna Veronika Dorogush, Vasily Ershov, Andrey Gulin “CatBoost: gradient boosting with categorical features support”. Workshop on ML Systems at NIPS 2017</li>
+</ul>
+<h2 id="2-2-代码"><a href="#2-2-代码" class="headerlink" title="2.2 代码"></a>2.2 代码</h2><h3 id="2-2-1-导入库"><a href="#2-2-1-导入库" class="headerlink" title="2.2.1 导入库"></a>2.2.1 导入库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score, classification_report</span><br><span class="line"><span class="keyword">from</span> sklearn.utils.class_weight <span class="keyword">import</span> compute_class_weight</span><br><span class="line"><span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>import os</code>：导入操作系统工具，用于文件路径管理与文件读写。</li>
+<li><code>import pandas as pd</code>：数据处理核心库，用于读取 CSV、表格数据操作。</li>
+<li><code>import numpy as np</code>：数值计算库，用于数组运算、概率融合等。</li>
+<li><code>StratifiedKFold</code>：分层 K 折交叉验证，保证每一折数据的类别分布与原数据一致。</li>
+<li><code>f1_score, classification_report</code>：模型评估指标，用于计算 F1 分数与输出分类报告。</li>
+<li><code>compute_class_weight</code>：计算类别平衡权重，解决样本分布不均衡问题。</li>
+<li><code>CatBoostClassifier</code>：CatBoost 分类模型。</li>
+</ul>
+<h3 id="2-2-2-设置文件路径与运行模式"><a href="#2-2-2-设置文件路径与运行模式" class="headerlink" title="2.2.2 设置文件路径与运行模式"></a>2.2.2 设置文件路径与运行模式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置路径</span></span><br><span class="line">TRAIN_PATH = <span class="string">&quot;./train.csv&quot;</span></span><br><span class="line">TEST_PATH = <span class="string">&quot;./test.csv&quot;</span></span><br><span class="line">SUBMISSION_OUTPUT_PATH = <span class="string">&quot;./submission_final.csv&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模式：GPU or CPU</span></span><br><span class="line">TRAINING_MODE = <span class="string">&quot;GPU&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>TRAIN_PATH</code>：训练集文件路径，指定代码读取训练数据的位置。</li>
+<li><code>TEST_PATH</code>：测试集文件路径。</li>
+<li><code>SUBMISSION_OUTPUT_PATH</code>：最终提交文件保存路径。</li>
+<li><code>TRAINING_MODE</code>：训练模式，GPU或者CPU。</li>
+</ul>
+<h3 id="2-2-3-读取数据集与测试集数据"><a href="#2-2-3-读取数据集与测试集数据" class="headerlink" title="2.2.3 读取数据集与测试集数据"></a>2.2.3 读取数据集与测试集数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">train = pd.read_csv(TRAIN_PATH)</span><br><span class="line">test = pd.read_csv(TEST_PATH)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存测试集 ID，用于最后提交</span></span><br><span class="line">submission = test[[<span class="string">&quot;id&quot;</span>]].copy()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>pd.read_csv(TRAIN_PATH)</code>：从指定路径读取训练集数据，生成 DataFrame 数据结构。</li>
+<li><code>pd.read_csv(TEST_PATH)</code>：读取测试集数据，用于后续预测。</li>
+<li><code>submission = test[[&quot;id&quot;]].copy()</code>：单独复制测试集的 id 列，用于最终生成提交文件。</li>
+</ul>
+<h3 id="2-2-4-标签处理"><a href="#2-2-4-标签处理" class="headerlink" title="2.2.4 标签处理"></a>2.2.4 标签处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标签映射</span></span><br><span class="line">label_map = &#123;<span class="string">&quot;Low&quot;</span>: <span class="number">0</span>, <span class="string">&quot;Medium&quot;</span>: <span class="number">1</span>, <span class="string">&quot;High&quot;</span>: <span class="number">2</span>&#125;</span><br><span class="line">train[<span class="string">&quot;Irrigation_Need&quot;</span>] = train[<span class="string">&quot;Irrigation_Need&quot;</span>].<span class="built_in">map</span>(label_map)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分特征和标签</span></span><br><span class="line">X = train.drop([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;Irrigation_Need&quot;</span>], axis=<span class="number">1</span>)</span><br><span class="line">y = train[<span class="string">&quot;Irrigation_Need&quot;</span>]</span><br><span class="line">X_test = test.drop([<span class="string">&quot;id&quot;</span>], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>label_map</code>：将标签文本（Low&#x2F;Medium&#x2F;High）映射为模型可处理的数字（0&#x2F;1&#x2F;2）。</li>
+<li><code>map()</code>：批量替换训练集标签为数值形式。</li>
+<li><code>X</code>：训练集特征，剔除 <code>id</code> 与标签列。</li>
+<li><code>y</code>：训练集标签，即需要预测的灌溉需求等级。</li>
+<li><code>X_test</code>：测试集特征，仅剔除 <code>id</code> 列。</li>
+</ul>
+<h3 id="2-2-5-特征工程"><a href="#2-2-5-特征工程" class="headerlink" title="2.2.5 特征工程"></a>2.2.5 特征工程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造关键特征</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_features</span>(<span class="params">df</span>):</span><br><span class="line">    <span class="comment"># 1. 参考作物蒸散量</span></span><br><span class="line">    df[<span class="string">&quot;ET0&quot;</span>] = df[<span class="string">&quot;Temperature_C&quot;</span>] * df[<span class="string">&quot;Wind_Speed_kmh&quot;</span>] * df[<span class="string">&quot;Sunlight_Hours&quot;</span>] / df[<span class="string">&quot;Humidity&quot;</span>]</span><br><span class="line">    <span class="comment"># 2. 水平衡：降水 + 上次灌溉 - 蒸发</span></span><br><span class="line">    df[<span class="string">&quot;Water_Balance&quot;</span>] = df[<span class="string">&quot;Rainfall_mm&quot;</span>] + df[<span class="string">&quot;Previous_Irrigation_mm&quot;</span>] - df[<span class="string">&quot;ET0&quot;</span>]</span><br><span class="line">    <span class="comment"># 3. 水分胁迫指数</span></span><br><span class="line">    df[<span class="string">&quot;Moisture_Stress&quot;</span>] = df[<span class="string">&quot;Temperature_C&quot;</span>] * (<span class="number">100</span> - df[<span class="string">&quot;Humidity&quot;</span>]) / df[<span class="string">&quot;Soil_Moisture&quot;</span>]</span><br><span class="line">    <span class="comment"># 4. 组合特征</span></span><br><span class="line">    df[<span class="string">&quot;Crop_Growth&quot;</span>] = df[<span class="string">&quot;Crop_Type&quot;</span>] + <span class="string">&quot;_&quot;</span> + df[<span class="string">&quot;Crop_Growth_Stage&quot;</span>]</span><br><span class="line">    df[<span class="string">&quot;Region_Season&quot;</span>] = df[<span class="string">&quot;Region&quot;</span>] + <span class="string">&quot;_&quot;</span> + df[<span class="string">&quot;Season&quot;</span>]</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对训练集和测试集都应用特征工程</span></span><br><span class="line">X = create_features(X)</span><br><span class="line">X_test = create_features(X_test)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>create_features(df)</code>：自定义特征工程函数，用于批量构造新特征。</li>
+<li><code>df[&quot;ET0&quot;]</code>：构造蒸散量特征，反映水分蒸发强度。<br>公式：温度 × 风速 × 日照时长 &#x2F; 湿度</li>
+<li><code>df[&quot;Water_Balance&quot;]</code>：构造水平衡特征，衡量土壤水分盈亏状态。<br>公式：降雨量 + 上次灌溉量 − 蒸散量</li>
+<li><code>df[&quot;Moisture_Stress&quot;]</code>：构造水分胁迫指数，表征作物缺水压力。<br>公式：温度 × (100−湿度) &#x2F; 土壤湿度</li>
+<li><code>df[&quot;Crop_Growth&quot;]</code>：作物类型与生长阶段交叉组合特征。</li>
+<li><code>df[&quot;Region_Season&quot;]</code>：地区与季节交叉组合特征。</li>
+<li><code>X = create_features(X)</code>：对训练集执行特征工程。</li>
+<li><code>X_test = create_features(X_test)</code>：对测试集执行相同特征工程。</li>
+</ul>
+<h3 id="2-2-5-识别并处理类别特征"><a href="#2-2-5-识别并处理类别特征" class="headerlink" title="2.2.5 识别并处理类别特征"></a>2.2.5 识别并处理类别特征</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类别型特征列名</span></span><br><span class="line">cat_features = [</span><br><span class="line">    <span class="string">&quot;Soil_Type&quot;</span>, <span class="string">&quot;Crop_Type&quot;</span>, <span class="string">&quot;Crop_Growth_Stage&quot;</span>, <span class="string">&quot;Season&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Irrigation_Type&quot;</span>, <span class="string">&quot;Water_Source&quot;</span>, <span class="string">&quot;Mulching_Used&quot;</span>, <span class="string">&quot;Region&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Crop_Growth&quot;</span>, <span class="string">&quot;Region_Season&quot;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保类别特征是字符串格式</span></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cat_features:</span><br><span class="line">    X[col] = X[col].astype(<span class="built_in">str</span>)</span><br><span class="line">    X_test[col] = X_test[col].astype(<span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>cat_features</code>：定义所有类别型特征列表，供 CatBoost 自动识别处理。</li>
+<li><code>for col in cat_features</code>：遍历所有类别特征，统一转换数据类型。</li>
+<li><code>X[col] = X[col].astype(str)</code>：将训练集类别特征转为字符串格式。</li>
+<li><code>X_test[col] = X_test[col].astype(str)</code>：将测试集类别特征转为字符串格式。</li>
+</ul>
+<h3 id="2-2-7-计算类别权重"><a href="#2-2-7-计算类别权重" class="headerlink" title="2.2.7 计算类别权重"></a>2.2.7 计算类别权重</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算类别权重</span></span><br><span class="line">weights = compute_class_weight(</span><br><span class="line">    class_weight=<span class="string">&quot;balanced&quot;</span>, classes=np.unique(y), y=y</span><br><span class="line">)</span><br><span class="line">class_weights = <span class="built_in">dict</span>(<span class="built_in">zip</span>(np.unique(y), weights))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>compute_class_weight()</code>：根据样本分布自动计算类别平衡权重。</li>
+<li><code>class_weight=&quot;balanced&quot;</code>：启用平衡模式，自动修正样本分布不均问题。</li>
+<li><code>np.unique(y)</code>：获取数据集中所有不重复的标签类别。</li>
+<li><code>class_weights</code>：存储类别与对应权重的字典，供模型训练时使用。</li>
+</ul>
+<h3 id="2-2-8-设置7折分层交叉验证"><a href="#2-2-8-设置7折分层交叉验证" class="headerlink" title="2.2.8 设置7折分层交叉验证"></a>2.2.8 设置7折分层交叉验证</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 7折交叉验证</span></span><br><span class="line">skf = StratifiedKFold(n_splits=<span class="number">7</span>, shuffle=<span class="literal">True</span>, random_state=<span class="number">42</span>)</span><br><span class="line">test_pred_probs = []</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>StratifiedKFold</code>：分层 K 折交叉验证，保持每折数据类别分布一致。</li>
+<li><code>n_splits=8</code>：将数据集划分为 7 份，7折交叉验证。</li>
+<li><code>shuffle=True</code>：训练前打乱数据顺序，提升模型泛化能力。</li>
+<li><code>random_state=42</code>：固定随机种子，保证实验可复现。</li>
+<li><code>test_pred_probs</code>：空列表，用于存储每一折模型的预测概率。</li>
+</ul>
+<h3 id="2-2-9-训练模型"><a href="#2-2-9-训练模型" class="headerlink" title="2.2.9 训练模型"></a>2.2.9 训练模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> fold, (train_idx, val_idx) <span class="keyword">in</span> <span class="built_in">enumerate</span>(skf.split(X, y)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;\n========== Fold <span class="subst">&#123;fold + <span class="number">1</span>&#125;</span> ==========&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 划分训练集与验证集</span></span><br><span class="line">    X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]</span><br><span class="line">    y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义 CatBoost 模型</span></span><br><span class="line">    model = CatBoostClassifier(</span><br><span class="line">        iterations=<span class="number">1000</span>,</span><br><span class="line">        learning_rate=<span class="number">0.1</span>,</span><br><span class="line">        depth=<span class="number">6</span>,</span><br><span class="line">        eval_metric=<span class="string">&quot;TotalF1&quot;</span>,</span><br><span class="line">        early_stopping_rounds=<span class="number">200</span>,</span><br><span class="line">        class_weights=class_weights,</span><br><span class="line">        task_type=TRAINING_MODE,</span><br><span class="line">        random_state=<span class="number">42</span>,</span><br><span class="line">        verbose=<span class="number">100</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 训练模型</span></span><br><span class="line">    model.fit(</span><br><span class="line">        X_train, y_train,</span><br><span class="line">        eval_set=(X_val, y_val),</span><br><span class="line">        cat_features=cat_features,</span><br><span class="line">        use_best_model=<span class="literal">True</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 验证集评估</span></span><br><span class="line">    val_pred = model.predict(X_val)</span><br><span class="line">    f1 = f1_score(y_val, val_pred, average=<span class="string">&quot;macro&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Fold <span class="subst">&#123;fold+<span class="number">1</span>&#125;</span> F1 Score: <span class="subst">&#123;f1:<span class="number">.4</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(classification_report(y_val, val_pred))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存测试集预测概率</span></span><br><span class="line">    test_pred_probs.append(model.predict_proba(X_test))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>for fold, (train_idx, val_idx) in enumerate(skf.split(X, y))</code>：按折循环，拆分训练集与验证集索引。</li>
+<li><code>X_train, X_val</code>：按索引划分训练集与验证集特征。</li>
+<li><code>y_train, y_val</code>：按索引划分训练集与验证集标签。</li>
+<li><code>CatBoostClassifier()</code>：初始化 CatBoost 分类模型。</li>
+<li><code>iterations=1000</code>：最大迭代次数（树的数量）。</li>
+<li><code>learning_rate=0.1</code>：模型学习率。</li>
+<li><code>depth=6</code>：决策树最大深度。</li>
+<li><code>eval_metric=&quot;TotalF1&quot;</code>：以 F1 分数作为评估指标。</li>
+<li><code>early_stopping_rounds=200</code>：早停策略，防止过拟合。</li>
+<li><code>class_weights=class_weights</code>：传入类别平衡权重。</li>
+<li><code>task_type=TRAINING_MODE</code>：指定使用 CPU &#x2F; GPU 训练。</li>
+<li><code>random_state=42</code>：固定随机种子，保证可复现。</li>
+<li><code>verbose=100</code>：每 100 轮输出一次训练日志。</li>
+<li><code>model.fit()</code>：在训练集上训练，在验证集上验证。</li>
+<li><code>cat_features=cat_features</code>：指定类别特征，让模型自动处理。</li>
+<li><code>use_best_model=True</code>：使用最优迭代轮数的模型。</li>
+<li><code>model.predict()</code>：对验证集进行预测。</li>
+<li><code>f1_score()</code>：计算验证集宏观 F1 分数。</li>
+<li><code>classification_report()</code>：输出完整分类评估报告。</li>
+<li><code>model.predict_proba()</code>：对测试集预测概率。</li>
+<li><code>test_pred_probs.append()</code>：将每折预测概率存入列表。</li>
+</ul>
+<h3 id="2-2-10-多模型预测结果融合"><a href="#2-2-10-多模型预测结果融合" class="headerlink" title="2.2.10 多模型预测结果融合"></a>2.2.10 多模型预测结果融合</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对 7 个模型的预测概率求平均</span></span><br><span class="line">avg_pred_probs = np.mean(test_pred_probs, axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 取概率最大的类别作为最终预测</span></span><br><span class="line">predictions = np.argmax(avg_pred_probs, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>np.mean(test_pred_probs, axis=0)</code>：对8折模型的预测概率按列求平均，提升结果稳定性。</li>
+<li><code>np.argmax(avg_pred_probs, axis=1)</code>：取每行概率最大的值对应的类别，生成最终预测标签。</li>
+<li><code>avg_pred_probs</code>：存储多模型融合后的平均预测概率。</li>
+<li><code>predictions</code>：存储最终的类别预测结果。</li>
+</ul>
+<h3 id="2-2-11-生成提交文件"><a href="#2-2-11-生成提交文件" class="headerlink" title="2.2.11 生成提交文件"></a>2.2.11 生成提交文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把数字转回标签</span></span><br><span class="line">label_map_inv = &#123;<span class="number">0</span>: <span class="string">&quot;Low&quot;</span>, <span class="number">1</span>: <span class="string">&quot;Medium&quot;</span>, <span class="number">2</span>: <span class="string">&quot;High&quot;</span>&#125;</span><br><span class="line">submission[<span class="string">&quot;Irrigation_Need&quot;</span>] = predictions</span><br><span class="line">submission[<span class="string">&quot;Irrigation_Need&quot;</span>] = submission[<span class="string">&quot;Irrigation_Need&quot;</span>].<span class="built_in">map</span>(label_map_inv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存文件</span></span><br><span class="line">submission.to_csv(SUBMISSION_OUTPUT_PATH, index=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;\n提交文件已保存至：<span class="subst">&#123;SUBMISSION_OUTPUT_PATH&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>label_map_inv</code>：将预测的数字标签映射回原始文本标签。</li>
+<li><code>submission[&quot;Irrigation_Need&quot;]</code>：将预测结果存入提交文件。</li>
+<li><code>map(label_map_inv)</code>：批量转换数字为文本标签。</li>
+<li><code>submission.to_csv()</code>：将结果保存为CSV格式提交文件。</li>
+<li><code>index=False</code>：不保存行索引，符合竞赛提交格式要求。</li>
+<li><code>print()</code>：输出文件保存路径，方便查看结果。</li>
+</ul>
+<p>注：水平有限，若存在错误或可优化之处，欢迎各位批评指正。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">星阑</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/06/15/Kaggle-Predicting-Irrigation-Need/">http://example.com/2026/06/15/Kaggle-Predicting-Irrigation-Need/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">星阑的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><a class="post-meta__tags" href="/tags/CatBoost/">CatBoost</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/" title="[408] [计算机网络] 传输层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">[408] [计算机网络] 传输层</div></div><div class="info-2"><div class="info-item-1">传输层提供的服务传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。传输层的主要功能如下：  应用进程之间的逻辑通信应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。 复用和分用复用是指发送方不同的应用进程都可以使用同一个传输层协议传送数据。分用是指接受方的传输层在剥去报文的首部后能够把这些数据正确交付到目的应用进程。 差错检测对于YCP，若接收方发现报文段出错，则要求发送方重发该报文段。对于UDP，若接收方发现数据报出错，则直接丢弃。 提供面向连接和无连接的传输协议  1.传输层的寻址与端口端口能让应用层的各种进程将其数据通过端口向下交付给传输层，以及让传输层知道应当将其报文段中的数据向上通过端口交付给应用层相应的进程。硬件端口是不同硬件设备进行交互的接口，软件端口是应用层的各种协议进程与传输实体进行层间交互的一种地址。传输层使用的是软件接口。 端口号只具有本地意义，根据端口号范围可将端口分为两类：  服务器使用的端口号：分为两类，最重要的一类是熟知端口号，数值为0-1023，IANA（互联网地址指派机构）把这些端口号指派给了TCP...</div></div></div></a><a class="pagination-related" href="/2026/04/13/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">星阑</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Gxinglan/" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%A2%98%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1. 题目概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%8F%90%E4%BA%A4%E8%A6%81%E6%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 提交要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E8%AE%AD%E7%BB%83%E9%9B%86-train-csv"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 训练集 train.csv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E8%AE%AD%E7%BB%83%E9%9B%86%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 训练集数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E9%83%A8%E5%88%86%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 部分样本数据实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%B5%8B%E8%AF%95%E9%9B%86-test-csv"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 测试集 test.csv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E9%83%A8%E5%88%86%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1  部分样本数据实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%A7%A3%E9%A2%98%E4%BB%A3%E7%A0%81%E8%AE%B2%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">2. 解题代码讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-CatBoost"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 CatBoost</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E6%9C%89%E5%BA%8F%E7%9B%AE%E6%A0%87%E7%BB%9F%E8%AE%A1%EF%BC%9A%E6%AF%94-One-Hot-%E6%9B%B4%E6%99%BA%E8%83%BD%E7%9A%84%E7%B1%BB%E5%88%AB%E7%89%B9%E5%BE%81%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 有序目标统计：比 One-Hot 更智能的类别特征处理策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">核心原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BC%98%E5%8A%BF%E5%9C%A8%E4%BA%8E%E4%BC%98%E5%8A%BF"><span class="toc-number">2.1.3.</span> <span class="toc-text">其优势在于优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E5%AF%B9%E7%A7%B0%E6%A0%91%EF%BC%9A-%E5%86%B3%E7%AD%96%E6%A0%91%E4%B8%AD%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.4.</span> <span class="toc-text">2.2.2 对称树： 决策树中的标准化结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 导入库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 设置文件路径与运行模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E6%B5%8B%E8%AF%95%E9%9B%86%E6%95%B0%E6%8D%AE"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3 读取数据集与测试集数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-%E6%A0%87%E7%AD%BE%E5%A4%84%E7%90%86"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.2.4 标签处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-5-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-number">2.2.5.</span> <span class="toc-text">2.2.5 特征工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-5-%E8%AF%86%E5%88%AB%E5%B9%B6%E5%A4%84%E7%90%86%E7%B1%BB%E5%88%AB%E7%89%B9%E5%BE%81"><span class="toc-number">2.2.6.</span> <span class="toc-text">2.2.5 识别并处理类别特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-7-%E8%AE%A1%E7%AE%97%E7%B1%BB%E5%88%AB%E6%9D%83%E9%87%8D"><span class="toc-number">2.2.7.</span> <span class="toc-text">2.2.7 计算类别权重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-8-%E8%AE%BE%E7%BD%AE7%E6%8A%98%E5%88%86%E5%B1%82%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="toc-number">2.2.8.</span> <span class="toc-text">2.2.8 设置7折分层交叉验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-9-%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.9.</span> <span class="toc-text">2.2.9 训练模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-10-%E5%A4%9A%E6%A8%A1%E5%9E%8B%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%9E%8D%E5%90%88"><span class="toc-number">2.2.10.</span> <span class="toc-text">2.2.10 多模型预测结果融合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-11-%E7%94%9F%E6%88%90%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.11.</span> <span class="toc-text">2.2.11 生成提交文件</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/welcome/" title="欢迎来到我的博客！">欢迎来到我的博客！</a><time datetime="2026-06-15T15:59:59.000Z" title="发表于 2026-06-15 23:59:59">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%BD%91%E7%BB%9C%E5%B1%82/" title="[408] [计算机网络] 网络层">[408] [计算机网络] 网络层</a><time datetime="2026-06-14T16:46:47.116Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="[408] [计算机网络] 数据链路层">[408] [计算机网络] 数据链路层</a><time datetime="2026-06-14T16:46:47.113Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%89%A9%E7%90%86%E5%B1%82/" title="[408] [计算机网络] 物理层">[408] [计算机网络] 物理层</a><time datetime="2026-06-14T16:46:47.113Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/" title="[408] [计算机网络] 应用层">[408] [计算机网络] 应用层</a><time datetime="2026-06-14T16:46:47.110Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 星阑</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script src="/js/starry.js"></script><script src="/js/cursor.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

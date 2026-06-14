@@ -1,0 +1,54 @@
+
+/* 高级感自定义光标 */
+body, html {
+  cursor: url('https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_Hexo@master/hexo/css/maccursor.cur'), auto !important;
+}
+a, button, .cursor-pointer, #nav * {
+  cursor: url('https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_Hexo@master/hexo/css/maccursor.cur'), pointer !important;
+}
+
+/* 星空背景容器 */
+#starry-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -999;
+  pointer-events: none;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+}
+
+/* 覆盖 Butterfly 默认背景，呈现出底部的星空 */
+#web_bg {
+  background: transparent !important;
+  display: none;
+}
+body, [data-theme="dark"] {
+  background: transparent !important;
+}
+
+/* 卡片玻璃态透明效果（消除多余的纯色留白） */
+#page, #archive, #tag, #category, #recent-posts > .recent-post-item, .card-widget, #post {
+  background: rgba(20, 25, 35, 0.45) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  color: #eee;
+}
+
+/* 导航栏玻璃态 */
+#page-header.nav-fixed #nav {
+  background: rgba(10, 15, 25, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* 隐藏顶部横幅的背景图，让星空直接透上来，更显高级 */
+#page-header {
+  background: transparent !important;
+}
+#page-header:before {
+  background-color: transparent !important;
+}

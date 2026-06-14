@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>[408] [计算机网络] 传输层 | 星阑的博客</title><meta name="author" content="星阑"><meta name="copyright" content="星阑"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="传输层提供的服务传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。传输层的主要功能如下：  应用进程之间的逻辑通信应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。 复用和分用复用是指发送方不同的应用进程都可以使用同一个传输层协议传送数据。分用是指接受方的传输层在剥去报文的首部后能够把这些数据正确交付到目的应用进程。 差错检测对于YCP，若接收方发现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[408] [计算机网络] 传输层">
+<meta property="og:url" content="http://example.com/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/index.html">
+<meta property="og:site_name" content="星阑的博客">
+<meta property="og:description" content="传输层提供的服务传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。传输层的主要功能如下：  应用进程之间的逻辑通信应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。 复用和分用复用是指发送方不同的应用进程都可以使用同一个传输层协议传送数据。分用是指接受方的传输层在剥去报文的首部后能够把这些数据正确交付到目的应用进程。 差错检测对于YCP，若接收方发现">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2026-06-14T16:46:46.991Z">
+<meta property="article:modified_time" content="2026-06-14T17:09:57.059Z">
+<meta property="article:author" content="星阑">
+<meta property="article:tag" content="408">
+<meta property="article:tag" content="传输层">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[408] [计算机网络] 传输层",
+  "url": "http://example.com/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/",
+  "image": "http://example.com/img/avatar.jpg",
+  "datePublished": "2026-06-14T16:46:46.991Z",
+  "dateModified": "2026-06-14T17:09:57.059Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "星阑",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '[408] [计算机网络] 传输层',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/avatar.jpg" alt="Logo"><span class="site-name">星阑的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">[408] [计算机网络] 传输层</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">[408] [计算机网络] 传输层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-14T16:46:46.991Z" title="发表于 2026-06-15 00:46:46">2026-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-14T17:09:57.059Z" title="更新于 2026-06-15 01:09:57">2026-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/408-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">408-计算机网络</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h1><p>传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。<br><strong>传输层的主要功能如下</strong>：</p>
+<ul>
+<li><strong>应用进程之间的逻辑通信</strong><br>应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
+<li><strong>复用和分用</strong><br>复用是指发送方不同的应用进程都可以使用同一个传输层协议传送数据。<br>分用是指接受方的传输层在剥去报文的首部后能够把这些数据正确交付到目的应用进程。</li>
+<li><strong>差错检测</strong><br>对于YCP，若接收方发现报文段出错，则要求发送方重发该报文段。对于UDP，若接收方发现数据报出错，则直接丢弃。</li>
+<li><strong>提供面向连接和无连接的传输协议</strong></li>
+</ul>
+<h1 id="1-传输层的寻址与端口"><a href="#1-传输层的寻址与端口" class="headerlink" title="1.传输层的寻址与端口"></a>1.传输层的寻址与端口</h1><p><strong>端口</strong>能让应用层的各种进程将其数据通过端口向下交付给传输层，以及让传输层知道应当将其报文段中的数据向上通过端口交付给应用层相应的进程。<br><strong>硬件端口</strong>是不同硬件设备进行交互的接口，<strong>软件端口</strong>是应用层的各种协议进程与传输实体进行层间交互的一种地址。<br>传输层使用的是软件接口。</p>
+<p><strong>端口号</strong>只具有本地意义，根据端口号范围可将端口分为两类：</p>
+<ul>
+<li><strong>服务器使用的端口号</strong>：分为两类，最重要的一类是<strong>熟知端口号</strong>，数值为0-1023，IANA（互联网地址指派机构）把这些端口号指派给了TCP&#x2F;IP最重要的一些应用程序。另一类成为<strong>登记端口号</strong>，数值为1024-49151，它是供没有熟知端口号的应用程序使用的，使用这类端口号必须在IANA登记。<br>FTP 21; TELVET 23; SMTP 25; DNS 53; TFTP 69;HTTP 80;SNMP 161。</li>
+<li><strong>客户端使用的端口号</strong>：数值为49152-65535。因为这类端口号仅在客户进程运行时才动态选择，所有也称<strong>短暂端口号</strong>。</li>
+</ul>
+<h1 id="2-无连接服务和面向连接服务"><a href="#2-无连接服务和面向连接服务" class="headerlink" title="2.无连接服务和面向连接服务"></a>2.无连接服务和面向连接服务</h1><p>TCP&#x2F;IP族在IP层之上使用了两个传输协议：一个是<strong>面向连接的传输控制协议（TCP）</strong>，；另一个是<strong>无连接的用户数据报协议（UDP）</strong>。</p>
+<p>TCP提供面向连接的可靠服务，不提供广播或多播服务。主要适用于可靠性更重要的场合，如文件传输协议（FTP）、超文本传输协议（HTTP）、远程登录（TELVET）等。</p>
+<p>UDP提供无连接的不可靠服务。UPD在IP层之上仅提供两个附加服务：多路复用和对数据的错误检查。使用UDP的应用主要包括小文件传送协议（TFTP）、DNS、SNMP和实时传输协议（RTP）。</p>
+<p>一些典型互联网应用锁用的TCP&#x2F;IP应用层协议和传输层协议如下：</p>
+<table>
+<thead>
+<tr>
+<th>互联网应用</th>
+<th>TCP&#x2F;IP 应用层协议</th>
+<th>TCP&#x2F;IP 传输层协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名解析</td>
+<td>域名系统（DNS）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>文件传送</td>
+<td>简单文件传送协议（TFTP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>路由选择</td>
+<td>路由信息协议（RIP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>IP 地址分配</td>
+<td>动态主机配置协议（DHCP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>网络管理</td>
+<td>简单网络管理协议（SNMP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td>简单邮件传送协议（SMTP）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>远程终端接入</td>
+<td>远程终端协议（TELNET）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>万维网</td>
+<td>超文本传送协议（HTTP）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>文件传送</td>
+<td>文件传送协议（FTP）</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p>UDP仅在IP层的数据报服务之上增加了复用、分用和差错检测的功能。<br><strong>UDP的特点</strong>：</p>
+<ul>
+<li>UDP无须建立连接。</li>
+<li>无连接状态。</li>
+<li>UDP的首部开销小。</li>
+<li>UDP没有拥塞控制。</li>
+<li>UDP支持一对一、一对多、多对一和多对多的交互通信。</li>
+</ul>
+<p>UDP常用于一次性传输较少数据的网络应用。<br>UDP是面向报文的，报文不可分割，是UDP数据报处理的最小单位。</p>
+<h2 id="1-UDP的首部格式"><a href="#1-UDP的首部格式" class="headerlink" title="1.UDP的首部格式"></a>1.UDP的首部格式</h2><p><img src="/img/408/c1.png" alt="图片说明"></p>
+<ul>
+<li><strong>源端口</strong>。在需要对方回信时选用，不需要时可用全0。</li>
+<li><strong>目的端口</strong>。这在终点交付报文时必须使用到。</li>
+<li><strong>长度</strong>。UDP数据报的长度，最小值是8。</li>
+<li><strong>校验和</strong>。检验UDP数据报在传输中是否有错。有错就丢弃。</li>
+</ul>
+<p>当传输层从IP层收到UDP数据报时，就根据首部中的目的端口，把UDP数据报通过相应的端口，上交最后的终点——应用进程<br>若接收方UDP发现收到的报文中的目的端口号不正确，则就丢弃该报文，并由ICMP发送“端口不可达”差错报文给发送方。</p>
+<h2 id="2-UDP检验"><a href="#2-UDP检验" class="headerlink" title="2.UDP检验"></a>2.UDP检验</h2><p>UDP计算检验和的方法和计算IP数据报首部检验和的方法基本相同。不同的是：IP数据报的校验和只检验IP数据报的首部，但UDP的校验和要将首部和数据部分一起检验。<br><strong>UDP计算校验和的方法</strong>：在发送方，先把全0放入校验和阻断，再把伪首部和UDP数据报看成是由许多16位的字串接起来的。若UDP数据报的数据部分不是偶数个字节，则要在末尾填入一个全0字节（但此字节不发送）。然后按二进制反码计算出这些16位字的和。将此和的二进制反码写入检验和字段，并发送。在接收方，把收到的UDP数据报连同伪首部（若不是偶数个数字节，则还需补上一个全0字节）后，按二进制反码求这些16位字的和。当无差错时其结果应该全1，否则就表明有差错出现，接收方就应丢弃这个UDP数据报。</p>
+<p><strong>UDP校验和的计算规则</strong><br><img src="/img/408/c2.png" alt="图片说明"><br><img src="/img/408/c3.png" alt="图片说明"></p>
+<h2 id="3-TCP"><a href="#3-TCP" class="headerlink" title="3.TCP"></a>3.TCP</h2><p>TCP是在不可靠的IP层之上实现的可靠的数据传输协议。<br><strong>主要特点有</strong>：</p>
+<ul>
+<li>TCP是面向连接的传输层协议，TCP连接是一条逻辑连接。</li>
+<li>每一条TCP连接只能有两个断点，每一条TCP连接只能是一对一的。</li>
+<li>TCP提供可靠交付的服务，保证传送的数据无差错、不丢失、不重复且有序。</li>
+<li>TCP提供全双工 通信。</li>
+<li>TCP是面向字节流的。</li>
+</ul>
+<p>TCP和UDP在发送报文时所采用的方式完全不同。UDP报文的长度由发送应用进程决定，而TCP报文的长度则根据接收方给出的窗口值和当前网络拥塞程度来决定。</p>
+<h2 id="1-TCP报文段"><a href="#1-TCP报文段" class="headerlink" title="1.TCP报文段"></a>1.TCP报文段</h2><p>TCP传送的数据单元称为报文段。TCP报文段既可用来运载数据，又可用来建立连接、释放连接和应答，一个TCP报文段分为首部和数据两部分，整个TCP报文段作为IP数据报的数据部分封装在IP数据报中。<br><img src="/img/408/c4.png" alt="图片说明"></p>
+<ul>
+<li><strong>序号</strong>：占4B。范围是0 - $2^{32}-1$。TCP连接中传送的字节流中的每个字节都要按顺序编号，序号字段值指的是本报文段所发送的数据的第一个字节的序号。</li>
+<li><strong>确定号</strong>：占4B。是期望收到对方下一个报文段的第一个数据字节的序号。</li>
+<li><strong>数据偏移（首部长度）</strong>：占4位，它指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。</li>
+<li><strong>保留</strong>：占6位，目前应置为0。</li>
+<li><strong>紧急位URG</strong>：当URG&#x3D;1时，表明紧急指针字段有效。它告诉系统此报文段中有紧急数据，应尽快传送。紧急数据被插入至报文段的最前面，而在紧急数据后面的数据仍是普通数据，因此要与首部中的紧急指针字段配合使用。</li>
+<li><strong>确定位ACK</strong>：仅当ACK&#x3D;1时确定号字段才有效。当ACK&#x3D;0时，确定号无效。</li>
+<li><strong>推送位PSH（Push）</strong>：两个应用进程进行交互式通信时，都希望在键入一个命令后立即就能收到对方的响应，此时发送方TCP将PSH置为1，接收方TCP收到PSH&#x3D;1的报文段后，就尽快交付给接收应用进程，而不在等到整个缓存都填满了后再向上交付。</li>
+<li><strong>同步位SYN</strong>：到SYN&#x3D;1时表示这是一个链接请求或连接接受报文。</li>
+<li><strong>终止位FIN</strong>：用来释放一个链接。当FIM&#x3D;1时，表明此报文段的发送方的数据已发送完毕，并要求释放传输裂解。</li>
+<li><strong>窗口</strong>：占2B，窗口值告诉对方，从本报文段首部中的确定号算起，接收方目前允许对方发送的数据量（以字节为单位）。</li>
+<li><strong>校验和</strong>：占2B，校验和字段校验的范围包括首部和数据两部分。计算校验和时，和UDP一样，要在TCP报文段的前面加上12B的维首部。</li>
+<li><strong>紧急指针</strong>：占2B，仅在URG&#x3D;1时才有意义，它指出报文段中的紧急数据的字节数。即使窗口为零，也可以发送紧急数据。</li>
+<li><strong>选项</strong>：长度可变，最长可达40B。</li>
+<li><strong>填充</strong>：这是为了使整个首部长度是4B的整数倍。</li>
+</ul>
+<h2 id="2-TCP连接管理"><a href="#2-TCP连接管理" class="headerlink" title="2.TCP连接管理"></a>2.TCP连接管理</h2><p>TCP连接的端口即为<strong>套接字</strong>，每一条TCP连接唯一地被通信的两个端口（两个套接字）所确定。同一个IP地址可以有多个不同的TCP连接，而同一个端口号也可以出现在多个不同的TCP连接中。<br>TCP连接的建立采用<strong>客户&#x2F;服务器模式</strong>。</p>
+<p><strong>TCP连接的建立</strong><br>经历以下三个步骤，通常称为<strong>三次握手</strong>：<br><img src="/img/408/c5.png" alt="图片说明"><br>建立连接前，服务器处于LISTEN（收听）状态，等待客户的连接请求。</p>
+<ul>
+<li><strong>第一步</strong>：客户向服务器发送连接请求报文段。该报文段的 <code>SYN = 1</code>，同时选择一个初始序号 <code>seq = x</code>。TCP 规定，SYN 报文段（<code>SYN=1</code> 的报文段）不能携带数据，但仍消耗一个序号，因此客户下一次发送的报文段序号 <code>seq = x + 1</code>。此时，客户进入 <code>SYN-SENT</code>（同步已发送）状态。</li>
+<li><strong>第二步</strong>：服务器收到连接请求后，若同意建立连接，则向客户返回确认报文段。该报文段的 <code>SYN = 1</code>、<code>ACK = 1</code>，确认序号 <code>ack = x + 1</code>，同时选择自己的初始序号 <code>seq = y</code>。确认报文段同样不能携带数据，但也消耗一个序号。此时，服务器进入 <code>SYN-RCVD</code>（同步已收到）状态。</li>
+<li><strong>第三步</strong>：客户收到确认后，再向服务器发送最终确认。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = y + 1</code>，序号 <code>seq = x + 1</code>。此报文段可以携带数据。若不携带数据，则不消耗序号，下一个数据报文段的序号仍为 <code>x + 1</code>。此时，客户进入 <code>ESTABLISHED</code>（已建立连接）状态。</li>
+</ul>
+<p>当服务器收到来自客户机的确定后，也进入ESTABLISHED状态。</p>
+<p><strong>TCP连接的释放</strong><br>TCP连接释放的过程通常称为<strong>四次挥手</strong>：<br><img src="/img/408/c6.png" alt="图片说明"></p>
+<ul>
+<li><strong>第一步</strong>：客户决定关闭连接时，向服务器发送连接释放报文段，并停止发送数据（主动关闭）。<br>该报文段的 <code>FIN = 1</code>，序号 <code>seq = u</code>，其值等于此前已发送数据的最后一个字节序号加 1。TCP 规定，FIN 报文段（<code>FIN = 1</code> 的报文段）即使不携带数据，也消耗一个序号。此时，客户进入 <code>FIN-WAIT-1</code>（终止等待 1）状态。由于 TCP 是全双工的，可视为连接包含两条独立的数据通路；发送 FIN 的一端关闭了其发送方向，但对方仍可继续发送数据。</li>
+<li><strong>第二步</strong>：服务器收到连接释放报文段后，立即发送确认报文段。该报文段的 <code>ACK = 1</code>，确认序号 <code>ack = u + 1</code>，序号 <code>seq = v</code>（<code>v</code> 为服务器此前已发送数据的最后一个字节序号加 1）。随后，服务器进入 <code>CLOSE-WAIT</code>（关闭等待）状态。此时，从客户到服务器方向的连接已释放，但从服务器到客户方向的连接并未释放，TCP 连接处于半关闭状态。客户收到确认后，进入 <code>FIN-WAIT-2</code>（终止等待 2）状态，等待服务器发出的连接释放报文段。</li>
+<li><strong>第三步</strong>：若服务器已经没有要向客户发送的数据，就向其发送连接释放报文段。该报文段的 <code>FIN = 1</code>、<code>ACK = 1</code>，序号 <code>seq = w</code>（<code>w</code> 可能大于 <code>v</code>，因服务器在半关闭期间可能又发送了数据），还需重复此前已发送的确认序号 <code>ack = u + 1</code>。此时，服务器进入 <code>LAST-ACK</code>（最后确认）状态。</li>
+<li><strong>第四步</strong>：客户收到连接释放报文段后，必须发送最终确认，并进入 <code>TIME-WAIT</code>（时间等待）状态。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = w + 1</code>，序号 <code>seq = u + 1</code>。服务器收到此确认后，即进入 <code>CLOSED</code>（连接关闭）状态。客户在 <code>TIME-WAIT</code> 状态下，还需等待时间等待计时器设置的时间 <code>2MSL</code>（Maximum Segment Lifetime，最长报文段寿命）后，才进入 <code>CLOSED</code> 状态。</li>
+</ul>
+<p><strong>对上述TCP连接的建立和释放的总结如下</strong>：<br>1）建立连接分为3步：</p>
+<ul>
+<li>SYN&#x3D;1，seq&#x3D;x</li>
+<li>SYN&#x3D;1，ACK&#x3D;1，seq&#x3D;y，ack&#x3D;x+1</li>
+<li>ACK&#x3D;1，seq&#x3D;x+1，ack&#x3D;y+1</li>
+</ul>
+<p>2）释放过程分为4步：</p>
+<ul>
+<li>FIN&#x3D;1，seq&#x3D;u</li>
+<li>ACK&#x3D;1，seq&#x3D;v，ack&#x3D;u+1</li>
+<li>FIN&#x3D;1，ACK&#x3D;1，seq&#x3D;w，ack&#x3D;u+1</li>
+<li>ACK&#x3D;1，seq&#x3D;u+1，ack&#x3D;w+1</li>
+</ul>
+<h2 id="3-TCP可靠传输"><a href="#3-TCP可靠传输" class="headerlink" title="3.TCP可靠传输"></a>3.TCP可靠传输</h2><p>TCP在不可靠的IP层之上建立一种可靠数据传输服务。<br><strong>序号</strong><br>TCP首部的序号字段用来保证数据能有序提交给应用层，序号建立在传输的字节流之上，而步建立在报文段之上。</p>
+<p><strong>确定</strong><br>TCP首部的确定号是期望收到对方的下一个报文段的数据的第一个字节的序号。<br>TCP默认使用<strong>累加确定</strong>，即TCP只确定数据流中第一个丢失字节为止的字节，这样可以减少传输开销。</p>
+<p><strong>重传</strong><br>有两种事件会导致TCP对报文段进行重传：<strong>超时和冗余ACK</strong><br>（1）超时<br>TCP每次发送一个报文段，就对这个报文段设置一个超时计时器。计时器设置的重传时间到期但未收到确认时，就要重传这一报文段。<br>TCP采用一种自适用算法，它记录一个报文段发出的时间，以及收到相应确定的时间，这两个时间之差称为报文段的<strong>往返时间（RTT）</strong>。TCP维护了RTT的一个<strong>加权平均往返时间RTTS</strong>，它会随新测量RTT样本值的变化而变化。超时计数器设置的**超时重传时间（RTO）**应略大于RTTS，但也不能大太多，否则当报文段丢失时，TCP不能很快重传，导致数据传输时延大。</p>
+<p>（2）冗余ACK（冗余确定）<br>发送方通常可在超时事件发生之前通过注意所谓的<strong>冗余ACK</strong>来较好地检测丢包情况。冗余ACK就是再次确定某个报文段ACK，而发送方先前已经收到该报文段的确定。这种技术通常称为<strong>快速重传</strong>。</p>
+<h2 id="4-TCP流量控制"><a href="#4-TCP流量控制" class="headerlink" title="4.TCP流量控制"></a>4.TCP流量控制</h2><p>流量控制的功能就是让发送方的发送速率不要太快，以便让接收方来得及接收。<br>TCP利用<strong>滑动窗口机制</strong>来实现流量控制。<br>发送方的发送窗口不能超过接收方给出的接收窗口值，以限制发送方向网络注入报文的速率。<br><strong>利用接收滑动窗口实现流量控制的过程</strong><br><img src="/img/408/c7.png" alt="图片说明"><br>TCP为每个连接设有一个<strong>持续计时器</strong>，只要发送方收到对方的零窗口通知，就启动持续计时器。若计时器超时，就发送一个零窗口探测报文段，而对方就在确定这个探测报文段时给出现在的窗口值。若窗口仍然为零，则发送方收到确定报文段后就重新设置接收计时器。</p>
+<p><strong>传输层和数据链路层的流量控制的区别是</strong>：传输层实现的是端到端，即两个进程之间的流量控制；数据链路层实现的是两个中间的相邻节点之间的流量控制。此外，数据链路层的滑动窗口协议的窗口大小不能动态变化，传输层的窗口大小则可以动态变化。</p>
+<h2 id="5-TCP拥塞控制"><a href="#5-TCP拥塞控制" class="headerlink" title="5.TCP拥塞控制"></a>5.TCP拥塞控制</h2><p>拥塞控制是指防止过多的数据注入网络，保证网络中的路由器或链路不致过载。<br>TCP进行拥塞控制的算法有四种：<strong>慢开始、拥塞避免、快重传和快恢复</strong>。<br><strong>发送方控制拥塞窗口的原则</strong>：只要网络未出现用三个，拥塞窗口就再增大一些，以便把更多的分组发送出去，以提高网络的利用率。但只要网络出现拥塞，拥塞窗口就减少一些，以减少注入网络的分组数，以缓解网络出现的拥塞。</p>
+<p>发送窗口的上限值应取接收窗口rwnd和拥塞窗口cwnd中较小的一个。<br>注：下面采用最大报文段长度MSS作为拥塞窗口大小的单位。<br><strong>慢开始和拥塞避免</strong><br><strong>慢开始算法</strong>：思路是当发送方刚开始发送数据时，因为并不清楚网络的负荷情况，若立即把大量数据注入网络，则有可能引发网络拥塞。具体方法是：先发送少量数据探测一下，若没有发送拥塞，则适当增大拥塞窗口，即由小到大逐渐增大拥塞窗口（发送窗口）。<br><strong>拥塞避免算法</strong>：思路是让拥塞窗口cwnd缓慢增大，具体做法是：每经过一个往返时延RTT就把发送方的拥塞窗口加1，而不是加倍，使拥塞窗口cwnd按线性规律换吗增长（<strong>加法增大</strong>）。<br>根据cwnd的大小执行不同的算法，可归纳如下：</p>
+<ul>
+<li>当cwnd &lt; ssthresh时，使用慢开始算法。</li>
+<li>当cwnd &gt; ssthresh时，停止使用慢开始算法，而改用拥塞避免算法。</li>
+<li>当cwnd &#x3D; ssthresh时，既可使用慢开始算法，也可使用拥塞避免算法（常规做法）。</li>
+</ul>
+<p><strong>网络拥塞的处理</strong>：首先把慢开始门限ssthresh设置为出现拥塞时的发送方的cwnd值的一半（但不能小于2），然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
+<p><strong>慢开始和拥塞避免算法的实现过程</strong>：<br><img src="/img/408/c8.png" alt="图片说明"></p>
+<ul>
+<li>起初时，拥塞窗口置为1，即cwnd-1，慢开始门限置为16，即ssthresh&#x3D;16。</li>
+<li>慢开始阶段，发送方每收到一个队新报文的确定ACK，就把拥塞窗口cwnd值加1，也即经过每个传输轮次（RTT），cwnd呈指数规律增长。当cwnd增长到慢开始门限ssthresh时，就改用拥塞避免算法，cwnd按线性规律增长。</li>
+<li>当cwnd&#x3D;24时，网络出现超时，调整ssthresh值为12（超时时cwnd值的一半），同时cwnd置为1，并执行慢开始算法；当cwnd&#x3D;12时，改为执行拥塞避免算法。</li>
+</ul>
+<p><strong>快重传和快恢复</strong><br><strong>快重传算法</strong>：是使发送方尽快进行重传，而不等超时计时器超时再重传。<br><strong>快恢复算法</strong>：当发送方连续收到3个冗余ACK（重复确定）时，执行乘法减小方法，把慢开始门限ssthresh调整为当前cwnd的一半。<br><img src="/img/408/c9.png" alt="图片说明"><br>在TCP连接建立和网络出现超时时，采用慢开始和拥塞控制避免算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd&#x3D;1）；当发送方收到3个冗余ACK时，采用快重传和快恢复算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd-ssthresh）。</p>
+<p>发送方发送窗口的大小由流量控制和拥塞控制共同决定。<br>发送方发生窗口的实际大小是由rwnd和cwnd中较小的一个确定的。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">星阑</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/">http://example.com/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">星阑的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/408/">408</a><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><a class="post-meta__tags" href="/tags/%E4%BC%A0%E8%BE%93%E5%B1%82/">传输层</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%90%84%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%A6%81/" title="[408] [计算机网络] 参考模型与各层基本概要"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">[408] [计算机网络] 参考模型与各层基本概要</div></div><div class="info-2"><div class="info-item-1">ISO&#x2F;OSI参考模型1.物理层物理层的传输单元是比特，功能是在物理介质上数据端设备透明地传输原始比特流。物理层的主要研究内容如下：  通信链路与通信节点的连接需要一些电路接口，物理层规定了这些接口的一些参数。 物理层规定了通信链路上所传输的信号的意义和电气特征。  2.数据链路层数据链路层的传输单位是帧。将物理层提供的可能出错的物理链接改造为逻辑上无差错的数据链路。数据链路层将网络层交来的IP分组封装成帧，并且可靠的传输到相邻节点的网络层。其主要功能包括封装成帧、差错检测与纠正、流量控制和贡献信道上的截止访问控制MAC典型协议有SDLC、HDLC、PPP等。具备物理寻址，流量控制，差错检测等功能，但是不具备拥塞控制。 3.网络层网络层的传输单位是数据报。主要任务是将网络层的协议数据单元（分组）从源主机传输到目标主机，为分组交换网上的不同主机提供通讯服务。网络层既提供有链接可靠的虚电路服务，又提供无连接不可靠的数据报服务。具有路由选择、流量控制、拥塞控制、差错控制和网际互联等功能。典型协议有IP、IPX、ICMP、IGMP、ARP、RARP、RIP和OSRF等。 4.传...</div></div></div></a><a class="pagination-related" href="/2026/06/15/Kaggle-Predicting-Irrigation-Need/" title="2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求</div></div><div class="info-2"><div class="info-item-1">1. 题目概述2026年Kaggle Playground Series -Season 6 Episode 4这是一篇关于预测灌溉需求的代码讲解文章。  竞赛地址：https://www.kaggle.com/competitions/playground-series-s6e4/overview目标：预测灌溉需求评价：提交内容的评估基于预测类别与观察目标之间的平衡准确性本文章代码已开源github：https://github.com/Gxinglan/Kaggle-Predicting-Irrigation-Needkaggle：https://www.kaggle.com/code/starxinglan/predicting-irrigation-need-2-3 1.1 提交要求对于测试集中的每个目标，你必须预测一个类别标签（低、中、高）。文件应包含一个头部，格式如下：id,Irrigation_Need    id Irrigation_Need    630000 Low   630001 High   630002 Low   … …   1.2 训练集 tra...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%89%A9%E7%90%86%E5%B1%82/" title="[408] [计算机网络] 物理层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-15</div><div class="info-item-2">[408] [计算机网络] 物理层</div></div><div class="info-2"><div class="info-item-1">通信基础数据和信号都有模拟和数字之分：  模拟数据（或模拟信号）的取值是连续的。 数字数据（或数字信号）的取值是离散的。  从通信双方信息的交互方式来看，可分为三种基本方式：  单项通信：只有一个方向的通信而没有反方向的交互。 半双工通信：通信双方都可发送或接受信息，但任何一方都不能同时发送和接受信息。 全双工通信：通信双方可同时发送和接受信息。  码元：在通信系统中，常用一个固定时长的信号波形表示一个k进制数，这个时长内的信号称为码元（也称k进制码元），而该时长称为码元宽度（也称信号周期）。码元传输速率：又称波特率或调制速率，表示数字通信系统每秒传输的码元数，单位是波特（Baud）。信号传输速率：又称比特率，表示数字通信系统每秒传输的比特数，单位是比特&#x2F;秒（b&#x2F;S）。带宽：又称频率带宽，用来表示某个信道所能传输信号的频率范围，即最高频率与最低频率之差，单位是赫兹（Hz）。 1、奈奎斯特定理（奈氏准则）有以下结论：  在任何信道中，码元传输速率是有上限的。 信道的带宽越大，则传输码元的能力越强。 奈氏准则给出了码元传播速率的限制，但并未限制信息传播速率。  2...</div></div></div></a><a class="pagination-related" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%90%84%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%A6%81/" title="[408] [计算机网络] 参考模型与各层基本概要"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-15</div><div class="info-item-2">[408] [计算机网络] 参考模型与各层基本概要</div></div><div class="info-2"><div class="info-item-1">ISO&#x2F;OSI参考模型1.物理层物理层的传输单元是比特，功能是在物理介质上数据端设备透明地传输原始比特流。物理层的主要研究内容如下：  通信链路与通信节点的连接需要一些电路接口，物理层规定了这些接口的一些参数。 物理层规定了通信链路上所传输的信号的意义和电气特征。  2.数据链路层数据链路层的传输单位是帧。将物理层提供的可能出错的物理链接改造为逻辑上无差错的数据链路。数据链路层将网络层交来的IP分组封装成帧，并且可靠的传输到相邻节点的网络层。其主要功能包括封装成帧、差错检测与纠正、流量控制和贡献信道上的截止访问控制MAC典型协议有SDLC、HDLC、PPP等。具备物理寻址，流量控制，差错检测等功能，但是不具备拥塞控制。 3.网络层网络层的传输单位是数据报。主要任务是将网络层的协议数据单元（分组）从源主机传输到目标主机，为分组交换网上的不同主机提供通讯服务。网络层既提供有链接可靠的虚电路服务，又提供无连接不可靠的数据报服务。具有路由选择、流量控制、拥塞控制、差错控制和网际互联等功能。典型协议有IP、IPX、ICMP、IGMP、ARP、RARP、RIP和OSRF等。 4.传...</div></div></div></a><a class="pagination-related" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="[408] [计算机网络] 数据链路层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-15</div><div class="info-item-2">[408] [计算机网络] 数据链路层</div></div><div class="info-2"><div class="info-item-1">数据链路层的功能封装成帧、透明传输和差错检测。数据链路层使用的信道主要有两种：  点对点信道：使用一对一的通信方式。PPP则是目前使用最广泛的点对点协议。 广播信道：使用一对多的广播信道方式。采用共享广播信道的有线局域网普遍使用CSMA&#x2F;CD协议，而无线局域网则使用CSMA&#x2F;CA协议。   组帧违规编码法：借用这些违规编码序列来定界帧的起始和终止。局域网IEEE 802标准就采用了这种方式。违规编码法不采用任何填充技术便能实现数据的透明传输，但只使用于采用冗余编码的特殊编码环境。目前最常用的组帧方法是零比特填充法和违规编码法。 差错控制 通常利用编码技术进行差错控制，主要有两种：  自动重传技术（ARQ） 前向纠错（FFC）  差错控制又可分为检错编码和纠错编码。 1.纠错编码纠错编码都采用冗余编码技术。常见的纠错编码有奇偶检验吗和循环冗余码。  奇偶校验码：见上图。 循环冗余码：1）收发双方约定一个生成多项式$G(x)$（要求最低位必须是1）。$k$位位串可视为阶数为$k-1$的多项式序列。例如，可用多项式$x^3+x^2+1$表示位串1101。2）发送方基...</div></div></div></a><a class="pagination-related" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%BD%91%E7%BB%9C%E5%B1%82/" title="[408] [计算机网络] 网络层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-15</div><div class="info-item-2">[408] [计算机网络] 网络层</div></div><div class="info-2"><div class="info-item-1">网络层的功能网络层提供主机到主机的通信服务，主要任务是将分组从源主机经过多个网络和多段链路传输到目标主机。该任务可划分为分组转发和路由选择两个重要功能。 1.异构网络互联网络互连：指将两个以上的计算机网络，通过一定的方法，用一些中继系统相互连接起来，以构建更大的网络系统。中继系统分为以下4类：  物理层中继系统：转发器，集线器。 数据链路层中继系统：网桥或交换机。 网络层中继系统：路由器。 网络层以上的中继系统：网关。  网络互连通常是指用路由器进行网络连接和路由选择。路由器是一台专用计算器，用于在互联网中进行路由选择。 TCP&#x2F;IP在网络互连方面的做法是在网络层采用标准化协议，但相互连接的网络可以是异构的。 IP网络：表示许多计算机网络通过一些路由器进行互连，因为参与互连的计算机网络都使用相同的IP，通过IP就可使这些性能各异的网络在网络层上看起来像是一个统一的网络，所以可把互连后的网络视为一个虚拟互联网络，简称IP网络。使用IP网络的好处：当IP网上的主机进行通信时，就好像在单个网络上通信一样，而看不见互联的各个网络的具体异构细节。 2.路由与转发路由器主要完成两个...</div></div></div></a><a class="pagination-related" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/" title="[408] [计算机网络] 应用层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-15</div><div class="info-item-2">[408] [计算机网络] 应用层</div></div><div class="info-2"><div class="info-item-1">网络应用模型1.客户&#x2F;服务器模型在客户服务器（C&#x2F;S）模型中，有一个总是打开的主机称为服务器，他服务于许多来自其他称为客户机的主角请求。其工作流程如下：  服务器处于接收请求的状态。 客户机发出服务请求，并等待接收结果。 服务器收到请求后，分析请求，进行必要的处理，得到结果并发送给客户机。  最重要的特征：客户是服务请求方，服务器是服务提供方。客户&#x2F;服务器模型的主要特点还有：  网络中各计算机的地位不平等，服务器可通过对用户权限的限制来达到管理客户机的目的。整个网络的管理工作由少数服务器负责，因此网络的管理非常集中和方便。 客户机相互之间不直接。 可扩展性不佳。  2.P2P模型整个网络中传输内容不再被保存在中心服务器上，每个节点都同时具有下载、上传的功能，其权利和义务都是大体对等的。与C&#x2F;S模型相比，P2P模型的优点主要体现如下：  减轻了服务器的计算压力，消除了对某个服务器的完全依赖，可以将任务分配到各个节点上，因此大大提高了系统效率和资源利用率。 多个客户机之间可以直接共享文档。 可扩展性好，传统服务器有响应和带宽的限制，因此只能接受...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">星阑</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Gxinglan/" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">传输层提供的服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%AF%BB%E5%9D%80%E4%B8%8E%E7%AB%AF%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">1.传输层的寻址与端口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%97%A0%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%92%8C%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.</span> <span class="toc-text">2.无连接服务和面向连接服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDP"><span class="toc-number">4.</span> <span class="toc-text">UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-UDP%E7%9A%84%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">1.UDP的首部格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-UDP%E6%A3%80%E9%AA%8C"><span class="toc-number">4.2.</span> <span class="toc-text">2.UDP检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-TCP"><span class="toc-number">4.3.</span> <span class="toc-text">3.TCP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-TCP%E6%8A%A5%E6%96%87%E6%AE%B5"><span class="toc-number">4.4.</span> <span class="toc-text">1.TCP报文段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="toc-number">4.5.</span> <span class="toc-text">2.TCP连接管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="toc-number">4.6.</span> <span class="toc-text">3.TCP可靠传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-TCP%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">4.7.</span> <span class="toc-text">4.TCP流量控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">4.8.</span> <span class="toc-text">5.TCP拥塞控制</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/welcome/" title="欢迎来到我的博客！">欢迎来到我的博客！</a><time datetime="2026-06-15T15:59:59.000Z" title="发表于 2026-06-15 23:59:59">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%BD%91%E7%BB%9C%E5%B1%82/" title="[408] [计算机网络] 网络层">[408] [计算机网络] 网络层</a><time datetime="2026-06-14T16:46:47.116Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="[408] [计算机网络] 数据链路层">[408] [计算机网络] 数据链路层</a><time datetime="2026-06-14T16:46:47.113Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%89%A9%E7%90%86%E5%B1%82/" title="[408] [计算机网络] 物理层">[408] [计算机网络] 物理层</a><time datetime="2026-06-14T16:46:47.113Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/" title="[408] [计算机网络] 应用层">[408] [计算机网络] 应用层</a><time datetime="2026-06-14T16:46:47.110Z" title="发表于 2026-06-15 00:46:47">2026-06-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 星阑</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script src="/js/starry.js"></script><script src="/js/cursor.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
