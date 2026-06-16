@@ -1,0 +1,1829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>[408] [计算机网络] 参考模型与各层基本概要</title>
+    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%90%84%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%A6%81/</url>
+    <content><![CDATA[<h1 id="ISO-OSI参考模型"><a href="#ISO-OSI参考模型" class="headerlink" title="ISO&#x2F;OSI参考模型"></a>ISO&#x2F;OSI参考模型</h1><h2 id="1-物理层"><a href="#1-物理层" class="headerlink" title="1.物理层"></a>1.物理层</h2><p>物理层的传输单元是比特，功能是在物理介质上数据端设备透明地传输原始比特流。<br>物理层的主要研究内容如下：</p>
+<ul>
+<li>通信链路与通信节点的连接需要一些电路接口，物理层规定了这些接口的一些参数。</li>
+<li>物理层规定了通信链路上所传输的信号的意义和电气特征。</li>
+</ul>
+<h2 id="2-数据链路层"><a href="#2-数据链路层" class="headerlink" title="2.数据链路层"></a>2.数据链路层</h2><p>数据链路层的传输单位是帧。<br>将物理层提供的可能出错的物理链接改造为逻辑上无差错的数据链路。<br>数据链路层将网络层交来的IP分组封装成帧，并且可靠的传输到相邻节点的网络层。其主要功能包括封装成帧、差错检测与纠正、流量控制和贡献信道上的截止访问控制MAC<br>典型协议有SDLC、HDLC、PPP等。<br>具备物理寻址，流量控制，差错检测等功能，但是不具备拥塞控制。</p>
+<h2 id="3-网络层"><a href="#3-网络层" class="headerlink" title="3.网络层"></a>3.网络层</h2><p>网络层的传输单位是数据报。<br>主要任务是将网络层的协议数据单元（分组）从源主机传输到目标主机，为分组交换网上的不同主机提供通讯服务。<br>网络层既提供有链接可靠的虚电路服务，又提供无连接不可靠的数据报服务。<br>具有路由选择、流量控制、拥塞控制、差错控制和网际互联等功能。<br>典型协议有IP、IPX、ICMP、IGMP、ARP、RARP、RIP和OSRF等。</p>
+<h2 id="4-传输层"><a href="#4-传输层" class="headerlink" title="4.传输层"></a>4.传输层</h2><p>传输层也称运输层，负责主机中两个进程之间的通信，提供端到端的流量控制、差错控制、连接建立与释放、可靠传输管理等服务，传输层仅提供有连接可靠的服务。<br>数据链路层提供的是点到点通信。传输层提供的是端到端通信。<br>端到端通信是指运行在不同主机内的两个进程之间的通信。<br>传输层具有复用和分用的功能：</p>
+<ul>
+<li>复用是指多个应用层进程可同时使用下面传输层的服务。</li>
+<li>分用是指传输层将收到的信息分别交付给上面应用层中相应的进程</li>
+</ul>
+<p>典型协议有TCP、UDP。</p>
+<h2 id="5-会话层"><a href="#5-会话层" class="headerlink" title="5.会话层"></a>5.会话层</h2><p>会话层允许不同主机上的各个进程之间进行会话。这种服务主要为表示层实体或用户进程建立连接，并在连接上有序地传输数据，这就是会话，也称为建立同步（SYN）。<br>会话层负责管理主机间的会话进程，包括建立、管理和终止进程间的会话。<br>会话层包含一种称为检查点的机制来维持可靠会话，使通信会话在通信失效时从检查点继续恢复通信，即断点下载的原理。</p>
+<h2 id="6-表示层"><a href="#6-表示层" class="headerlink" title="6.表示层"></a>6.表示层</h2><p>表示层主要处理不同主机中交换信息的表示方式。<br>表示层采用抽象的标准方式定义数据结构，并采用标准的编码形式。</p>
+<h2 id="7-应用层"><a href="#7-应用层" class="headerlink" title="7.应用层"></a>7.应用层</h2><p>应用层是OSI参考模型的最高层，是用户与网络的接口。<br>典型协议有FTP、SMIP、HTTP等。</p>
+<h1 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP&#x2F;IP模型"></a>TCP&#x2F;IP模型</h1><p>从低到高依次为网络接口层、网际层、传输层和应用层。</p>
+<h2 id="1-网络接口层"><a href="#1-网络接口层" class="headerlink" title="1.网络接口层"></a>1.网络接口层</h2><p>功能类似于OSI参考模型的物理层和数据链路层，其作用是从主机或节点接收IP分组，并将它们发送到指定的物理网络上。</p>
+<h2 id="2-网际层（主机-主机）"><a href="#2-网际层（主机-主机）" class="headerlink" title="2.网际层（主机-主机）"></a>2.网际层（主机-主机）</h2><p>功能上类似于OSI参考模型的网络层。<br>网际层将分组发往任何网络，并为其独立地选择合适的路由，但不保证各个分组有序地到达，各个分组的有序和可靠交付由高层负责。<br>网际层仅提供无连接不可靠的IP，数据传输的单位是IP数据报。</p>
+<h2 id="3-传输层（应用-应用或进程-进程）"><a href="#3-传输层（应用-应用或进程-进程）" class="headerlink" title="3.传输层（应用-应用或进程-进程）"></a>3.传输层（应用-应用或进程-进程）</h2><p>类似于OSI参考模型中的传输层。即使得发送端和目的端主机上的对等实体进行会话。<br>传输层主要使用以下两种协议：</p>
+<ul>
+<li><strong>传输控制协议（TCP）</strong>：它是面向连接的，能够提供可靠的交付，数据传输的单位是报文段。</li>
+<li><strong>用户数据报协议（UDP）</strong>：无连接，不可靠交付，最大努力交付，数据传输的单位是用户数据报。</li>
+</ul>
+<h2 id="4-应用层（用户-用户）"><a href="#4-应用层（用户-用户）" class="headerlink" title="4.应用层（用户-用户）"></a>4.应用层（用户-用户）</h2><p>包括所有的高层协议，如Telent、FTP、DNS、SMTP和HTTP等。</p>
+<h1 id="网络的5层协议体系结构模型"><a href="#网络的5层协议体系结构模型" class="headerlink" title="网络的5层协议体系结构模型"></a>网络的5层协议体系结构模型</h1><p>包括物理层、数据链路层、网络层、传输层、应用层。</p>
+<h2 id="1-物理层-1"><a href="#1-物理层-1" class="headerlink" title="1.物理层"></a>1.物理层</h2><p>负责在连接各台计算机的传输介质上传输数据比特流。<br>物理层的接口特性</p>
+<ul>
+<li>机械特性</li>
+<li>电气特性：指明在接口电缆的各条线上电压范围、传输速率和距离限制。</li>
+<li>功能特性：指明某条线上出现的某一电平的电压表示何种意义以及每条线的功能。</li>
+<li>过程特征：顺序</li>
+</ul>
+<h2 id="2-数据链路层-1"><a href="#2-数据链路层-1" class="headerlink" title="2.数据链路层"></a>2.数据链路层</h2><p>主要任务是让帧在一段链路上或一个网络中传输。</p>
+<ul>
+<li>链路管理：数据链路层连接的建立、维持和释放过程。主要用于面向连接的服务。</li>
+<li>封装成帧：是指一段数据的前后分别添加首部和尾部，构成帧。</li>
+<li>透明传输：是指不论什么样的比特组合的数据，都能后按照原样无差错地在这个数据链路上传输。</li>
+<li>流量控制：实际上是限制发送方的发送速率。<br>在OSI体系结构中，数据链路层具有流量控制的功能。而在TCP&#x2F;IP体系结构中，流量控制功能被移到了传输层。他们控制的对象不同。对数据链路层来说，控制的是相邻节点之间的数据链路上的流量，而对传输层来说，控制的则是从源端到目的端之间的流量。</li>
+<li>差错检测</li>
+</ul>
+<p>数据链路层使用的信道主要有两种：</p>
+<ul>
+<li>点对点信道：使用一对一通信方式。PPP是目前使用最广泛的点对点协议。</li>
+<li>广播信道：使用一对多的广播通信方式。采用共享广播信道的有线局域网普遍使用CSMA&#x2F;CD协议，而无线局域网则使用CSMA&#x2F;CA协议。</li>
+</ul>
+<h2 id="3-网络层-1"><a href="#3-网络层-1" class="headerlink" title="3.网络层"></a>3.网络层</h2><p>网络层提供主机到主机的通信服务，主要任务是将分组从源主机经过多个网络和多端链路传输到目标主机。该任务可划分为分组转发和路由选择两种重要功能。</p>
+<ul>
+<li>分组转发：指路由器根据转发表将分组从合适的端口转发出去。</li>
+<li>路由选择：根据路由协议构造路由表，同时经常或定期地与相邻路由器交换信息，获取网络最新拓扑，动态更新维护路由表，以决定分组到达目的地节点的最优路径。<br>OSI参考模型曾主张在网络层使用面向连接的虚电路服务。<br>TCP&#x2F;IP体系的网络层提供的是无连接的数据报服务，其核心思想是应由用户主机来保证通信的可靠性。网络层向上 只提供简单灵活的、无连接的、尽最大努力交付的数据报服务。通信的可靠性可以由更高层的传输层来负责。</li>
+</ul>
+<p>网络层提供的两种服务</p>
+<ul>
+<li>面向连接的虚电路服务：当两台计算机进行通信时，应当先建立网络层的连接。通信过程分为虚电路建立、数据传输和虚电路释放。</li>
+<li>无连接的数据报服务：网络在发送分组前不需要先建立连接。源主机的高层协议将报文拆成若干较小的数据段，并加上地址等控制信息后构成分组。中间节点存储分组很短一段时间，找到最佳的路由后，尽快转发每个分组。同时，当分组正在某一链路上传送时，分组并不占用网络其他部分的资源。因为采用存储转发技术，资源是共享的。</li>
+</ul>
+<p>拥塞控制，两种方法：</p>
+<ul>
+<li>开环控制：在设计网络时事先将有关发生拥塞的因素考虑周到，力求网络在工作时不产生拥塞。静态</li>
+<li>闭环控制：采用监测网络系统去监视，即使检测哪里发生了拥塞，然后将拥塞信息传到合适的地方，以便调整网络系统的运行，并解决出现的问题。动态</li>
+</ul>
+<h2 id="4-传输层-1"><a href="#4-传输层-1" class="headerlink" title="4.传输层"></a>4.传输层</h2><p>数据链路层提供链路上相邻节点之间的逻辑通信，网络层提供主机之间的逻辑通信。传输层位于网络层之上、应用层之下，它为运行在不同主机上的进程之间提供逻辑通信。<br>传输层属于面向通信部分的最高层，同时也是用户功能中的最底层。<br>传输层的功能如下：</p>
+<ul>
+<li>应用进程之间的逻辑通信：端到端的逻辑通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
+<li>复用和分用：复用是指发送方不同的应用进程都可以使用同一传输层协议传送数据。分用是指接收方的传输层在剥去报文的首部后能够把这些数据正确交付到目标的应用进程。</li>
+<li>差分检测</li>
+<li>提供面向连接和无连接的传输协议</li>
+</ul>
+<h2 id="5-应用层"><a href="#5-应用层" class="headerlink" title="5.应用层"></a>5.应用层</h2><p>网络应用模型：客户&#x2F;服务器模型，P2P模型</p>
+<ul>
+<li>客户&#x2F;服务器模型（C&#x2F;S模型）：有一个总是打开的主机称为服务器，它服务于许多来自其他称为客户机的主机请求。最主要的特征是，客户是服务请求方，服务器是服务提供方。</li>
+<li>P2P模型：整个网络中的传输内容不再被同时保存在中心服务器中，每个节点都同时具有下载、上传的功能，其权利和义务都是大体对等的。<br>各种高层协议：如域名系统DNS，文件传输协议FTP，电子邮箱E-mail等</li>
+</ul>
+]]></content>
+      <categories>
+        <category>408-计算机网络</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>计算机网络</tag>
+        <tag>参考模型与各层基本概要</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求</title>
+    <url>/2026/06/15/Kaggle-Predicting-Irrigation-Need/</url>
+    <content><![CDATA[<h1 id="1-题目概述"><a href="#1-题目概述" class="headerlink" title="1. 题目概述"></a>1. 题目概述</h1><p>2026年Kaggle Playground Series -Season 6 Episode 4<br>这是一篇关于预测灌溉需求的代码讲解文章。</p>
+<span id="more"></span>
+<p>竞赛地址：<a href="https://www.kaggle.com/competitions/playground-series-s6e4/overview">https://www.kaggle.com/competitions/playground-series-s6e4/overview</a><br>目标：预测灌溉需求<br>评价：提交内容的评估基于预测类别与观察目标之间的平衡准确性<br>本文章代码已开源<br>github：<a href="https://github.com/Gxinglan/Kaggle-Predicting-Irrigation-Need">https://github.com/Gxinglan/Kaggle-Predicting-Irrigation-Need</a><br>kaggle：<a href="https://www.kaggle.com/code/starxinglan/predicting-irrigation-need-2-3">https://www.kaggle.com/code/starxinglan/predicting-irrigation-need-2-3</a></p>
+<h2 id="1-1-提交要求"><a href="#1-1-提交要求" class="headerlink" title="1.1 提交要求"></a>1.1 提交要求</h2><p>对于测试集中的每个目标，你必须预测一个类别标签（低、中、高）。文件应包含一个头部，格式如下：<code>id,Irrigation_Need</code></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Irrigation_Need</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>630000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>630001</td>
+<td>High</td>
+</tr>
+<tr>
+<td>630002</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h2 id="1-2-训练集-train-csv"><a href="#1-2-训练集-train-csv" class="headerlink" title="1.2 训练集 train.csv"></a>1.2 训练集 train.csv</h2><h3 id="1-2-1-训练集数据结构"><a href="#1-2-1-训练集数据结构" class="headerlink" title="1.2.1 训练集数据结构"></a>1.2.1 训练集数据结构</h3><p>该数据集包含多维度的农业环境与作物生长特征。字段说明及部分样本示例：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段名称</th>
+<th align="left">字段说明</th>
+<th align="left">示例数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">样本唯一标识</td>
+<td align="left">0, 1, 2 …</td>
+</tr>
+<tr>
+<td align="left">Soil_Type</td>
+<td align="left">土壤类型</td>
+<td align="left">Loamy, Clay, Sandy</td>
+</tr>
+<tr>
+<td align="left">Soil_pH</td>
+<td align="left">土壤酸碱度</td>
+<td align="left">4.92, 7.08, 5.69</td>
+</tr>
+<tr>
+<td align="left">Soil_Moisture</td>
+<td align="left">土壤湿度 (%)</td>
+<td align="left">32.58, 56.61, 27.71</td>
+</tr>
+<tr>
+<td align="left">Organic_Carbon</td>
+<td align="left">有机碳含量</td>
+<td align="left">1.01, 0.44, 0.81</td>
+</tr>
+<tr>
+<td align="left">Electrical_Conductivity</td>
+<td align="left">电导率</td>
+<td align="left">3.05, 2.00, 2.83</td>
+</tr>
+<tr>
+<td align="left">Temperature_C</td>
+<td align="left">温度 (°C)</td>
+<td align="left">15.01, 22.92, 26.97</td>
+</tr>
+<tr>
+<td align="left">Humidity</td>
+<td align="left">湿度 (%)</td>
+<td align="left">50.61, 67.86, 92.22</td>
+</tr>
+<tr>
+<td align="left">Rainfall_mm</td>
+<td align="left">降雨量 (mm)</td>
+<td align="left">725.99, 985.66, 2201.70</td>
+</tr>
+<tr>
+<td align="left">Sunlight_Hours</td>
+<td align="left">日照时长 (小时)</td>
+<td align="left">5.90, 6.98, 6.05</td>
+</tr>
+<tr>
+<td align="left">Wind_Speed_kmh</td>
+<td align="left">风速 (km&#x2F;h)</td>
+<td align="left">16.79, 3.39, 3.85</td>
+</tr>
+<tr>
+<td align="left">Crop_Type</td>
+<td align="left">作物类型</td>
+<td align="left">Sugarcane, Wheat, Rice</td>
+</tr>
+<tr>
+<td align="left">Crop_Growth_Stage</td>
+<td align="left">作物生长阶段</td>
+<td align="left">Sowing, Vegetative, Reproductive</td>
+</tr>
+<tr>
+<td align="left">Season</td>
+<td align="left">季节</td>
+<td align="left">Zaid, Kharif, Rabi</td>
+</tr>
+<tr>
+<td align="left">Irrigation_Type</td>
+<td align="left">灌溉类型</td>
+<td align="left">Drip, Rainfed, Sprinkler</td>
+</tr>
+<tr>
+<td align="left">Water_Source</td>
+<td align="left">水源</td>
+<td align="left">Rainwater, River, Reservoir</td>
+</tr>
+<tr>
+<td align="left">Field_Area_hectare</td>
+<td align="left">地块面积 (公顷)</td>
+<td align="left">0.82, 5.27, 8.24</td>
+</tr>
+<tr>
+<td align="left">Mulching_Used</td>
+<td align="left">是否使用覆盖物</td>
+<td align="left">Yes, No</td>
+</tr>
+<tr>
+<td align="left">Previous_Irrigation_mm</td>
+<td align="left">上次灌溉量 (mm)</td>
+<td align="left">112.16, 47.16, 110.38</td>
+</tr>
+<tr>
+<td align="left">Region</td>
+<td align="left">区域</td>
+<td align="left">East, South, North</td>
+</tr>
+<tr>
+<td align="left"><strong>Irrigation_Need</strong></td>
+<td align="left"><strong>灌溉需求标签 (目标值)</strong></td>
+<td align="left"><strong>Low, Medium, High</strong></td>
+</tr>
+</tbody></table>
+<h3 id="1-2-2-部分样本数据实例"><a href="#1-2-2-部分样本数据实例" class="headerlink" title="1.2.2 部分样本数据实例"></a>1.2.2 部分样本数据实例</h3><table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">Soil_Type</th>
+<th align="left">Soil_pH</th>
+<th align="left">Soil_Moisture</th>
+<th align="left">Organic_Carbon</th>
+<th align="left">Electrical_Conductivity</th>
+<th align="left">Temperature_C</th>
+<th align="left">Humidity</th>
+<th align="left">Rainfall_mm</th>
+<th align="left">Sunlight_Hours</th>
+<th align="left">Wind_Speed_kmh</th>
+<th align="left">Crop_Type</th>
+<th align="left">Crop_Growth_Stage</th>
+<th align="left">Season</th>
+<th align="left">Irrigation_Type</th>
+<th align="left">Water_Source</th>
+<th align="left">Field_Area_hectare</th>
+<th align="left">Mulching_Used</th>
+<th align="left">Previous_Irrigation_mm</th>
+<th align="left">Region</th>
+<th align="left">Irrigation_Need</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">Loamy</td>
+<td align="left">4.92</td>
+<td align="left">32.58</td>
+<td align="left">1.01</td>
+<td align="left">3.05</td>
+<td align="left">15.01</td>
+<td align="left">50.61</td>
+<td align="left">725.99</td>
+<td align="left">5.90</td>
+<td align="left">16.79</td>
+<td align="left">Sugarcane</td>
+<td align="left">Sowing</td>
+<td align="left">Zaid</td>
+<td align="left">Drip</td>
+<td align="left">Rainwater</td>
+<td align="left">0.82</td>
+<td align="left">No</td>
+<td align="left">112.16</td>
+<td align="left">East</td>
+<td align="left">Low</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">Clay</td>
+<td align="left">7.08</td>
+<td align="left">56.61</td>
+<td align="left">0.44</td>
+<td align="left">2.00</td>
+<td align="left">22.92</td>
+<td align="left">67.86</td>
+<td align="left">985.66</td>
+<td align="left">6.98</td>
+<td align="left">3.39</td>
+<td align="left">Wheat</td>
+<td align="left">Vegetative</td>
+<td align="left">Kharif</td>
+<td align="left">Rainfed</td>
+<td align="left">River</td>
+<td align="left">5.27</td>
+<td align="left">Yes</td>
+<td align="left">47.16</td>
+<td align="left">South</td>
+<td align="left">Low</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Clay</td>
+<td align="left">5.69</td>
+<td align="left">27.71</td>
+<td align="left">0.81</td>
+<td align="left">2.83</td>
+<td align="left">26.97</td>
+<td align="left">92.22</td>
+<td align="left">2201.70</td>
+<td align="left">6.05</td>
+<td align="left">3.85</td>
+<td align="left">Rice</td>
+<td align="left">Vegetative</td>
+<td align="left">Kharif</td>
+<td align="left">Sprinkler</td>
+<td align="left">Reservoir</td>
+<td align="left">8.24</td>
+<td align="left">Yes</td>
+<td align="left">110.38</td>
+<td align="left">North</td>
+<td align="left">Low</td>
+</tr>
+<tr>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+</tr>
+</tbody></table>
+<h2 id="1-3-测试集-test-csv"><a href="#1-3-测试集-test-csv" class="headerlink" title="1.3 测试集 test.csv"></a>1.3 测试集 test.csv</h2><p>测试集特征结构与训练集基本一致，不含标签 <code>Irrigation_Need</code>。我们需要做的就是对<code>Irrigation_Need</code>进行预测。</p>
+<h3 id="1-3-1-部分样本数据实例"><a href="#1-3-1-部分样本数据实例" class="headerlink" title="1.3.1  部分样本数据实例"></a>1.3.1  部分样本数据实例</h3><table>
+<thead>
+<tr>
+<th>id</th>
+<th>Soil_Type</th>
+<th>Soil_pH</th>
+<th>Soil_Moisture</th>
+<th>Organic_Carbon</th>
+<th>Electrical_Conductivity</th>
+<th>Temperature_C</th>
+<th>Humidity</th>
+<th>Rainfall_mm</th>
+<th>Sunlight_Hours</th>
+<th>Wind_Speed_kmh</th>
+<th>Crop_Type</th>
+<th>Crop_Growth_Stage</th>
+<th>Season</th>
+<th>Irrigation_Type</th>
+<th>Water_Source</th>
+<th>Field_Area_hectare</th>
+<th>Mulching_Used</th>
+<th>Previous_Irrigation_mm</th>
+<th>Region</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>630000</td>
+<td>Silt</td>
+<td>6.36</td>
+<td>26.19</td>
+<td>0.59</td>
+<td>2.81</td>
+<td>17.83</td>
+<td>30.24</td>
+<td>1533.38</td>
+<td>5.4</td>
+<td>3</td>
+<td>Maize</td>
+<td>Sowing</td>
+<td>Rabi</td>
+<td>Canal</td>
+<td>River</td>
+<td>13.59</td>
+<td>Yes</td>
+<td>47.48</td>
+<td>West</td>
+</tr>
+<tr>
+<td>630001</td>
+<td>Clay</td>
+<td>5.87</td>
+<td>9.88</td>
+<td>1.18</td>
+<td>3.26</td>
+<td>21.18</td>
+<td>78.07</td>
+<td>576.05</td>
+<td>7.22</td>
+<td>15.88</td>
+<td>Cotton</td>
+<td>Sowing</td>
+<td>Rabi</td>
+<td>Drip</td>
+<td>Reservoir</td>
+<td>6.12</td>
+<td>Yes</td>
+<td>56.43</td>
+<td>South</td>
+</tr>
+<tr>
+<td>630002</td>
+<td>Sandy</td>
+<td>6.22</td>
+<td>26.55</td>
+<td>0.96</td>
+<td>0.85</td>
+<td>26.87</td>
+<td>60.35</td>
+<td>545.3</td>
+<td>9.43</td>
+<td>2.63</td>
+<td>Wheat</td>
+<td>Sowing</td>
+<td>Kharif</td>
+<td>Sprinkler</td>
+<td>Reservoir</td>
+<td>3.11</td>
+<td>Yes</td>
+<td>20</td>
+<td>East</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h1 id="2-解题代码讲解"><a href="#2-解题代码讲解" class="headerlink" title="2. 解题代码讲解"></a>2. 解题代码讲解</h1><p>本方案采用CatBoostClassifier模型，结合农业领域知识构建有效特征，使用7 折分层交叉验证保证训练稳定，通过类别权重处理样本不均衡问题，最终对多折模型的预测概率进行融合平均，得到稳健的预测结果并生成提交文件。<br>采用7折目前跑出来的结果是最好的，以下是在各折下跑的分数结果。<br>在5折时分数跑到了0.96805<br>在6折时分数跑到了0.96820<br>在7折时分数跑到了0.96907<br>在8折时分数跑到了0.96749<br>在10折时分数跑到了0.96728</p>
+<h2 id="2-1-CatBoost"><a href="#2-1-CatBoost" class="headerlink" title="2.1 CatBoost"></a>2.1 CatBoost</h2><p>CatBoost是俄罗斯的搜索巨头Yandex在2017年开源的机器学习库，是Boosting族算法的一种。CatBoost和XGBoost、LightGBM并称为GBDT的三大主流神器，都是在GBDT算法框架下的一种改进实现。其中CatBoostClassifier 是CatBoost库里专门做分类任务的模型。<br>其有三个主要特点：</p>
+<ul>
+<li>自动处理类别特征：无需繁琐的特征编码，直接原始数据</li>
+<li>有序目标统计：有效防止目标泄露（Target Leakage）</li>
+<li>对称决策树：训练更快更不容易拟合</li>
+</ul>
+<p>因此，CatBoost 尤其适用于包含大量类别特征、数值与类别特征存在复杂交互、需要快速搭建高质量基线模型的表格数据场景。</p>
+<h3 id="2-1-1-有序目标统计：比-One-Hot-更智能的类别特征处理策略"><a href="#2-1-1-有序目标统计：比-One-Hot-更智能的类别特征处理策略" class="headerlink" title="2.1.1 有序目标统计：比 One-Hot 更智能的类别特征处理策略"></a>2.1.1 有序目标统计：比 One-Hot 更智能的类别特征处理策略</h3><p>在类别型特征的处理中，传统方法存在固有局限：独热编码（One-Hot Encoding）易引发维度灾难，导致特征空间高维稀疏；标签编码（Label Encoding）则会人为引入虚假的顺序关系，破坏特征的语义独立性。CatBoost 通过有序目标统计（Ordered Target Statistics）机制，解决了这一矛盾。</p>
+<h3 id="核心原理"><a href="#核心原理" class="headerlink" title="核心原理"></a>核心原理</h3><p>有序目标统计的核心逻辑基于时序化的目标均值编码，具体流程如下：</p>
+<ol>
+<li><strong>样本随机排序</strong>：训练前对全体样本进行随机重排，构建时序化的样本序列。</li>
+<li><strong>历史信息编码</strong>：对于第 $i$ 个样本的类别特征值，仅使用前 $i-1$ 个样本中相同类别的目标值均值作为编码结果。</li>
+<li><strong>先验平滑处理</strong>：引入先验概率对编码结果进行平滑，缓解小样本类别统计不稳定的问题。</li>
+</ol>
+<h3 id="其优势在于优势"><a href="#其优势在于优势" class="headerlink" title="其优势在于优势"></a>其优势在于优势</h3><ul>
+<li>避免了未来信息的泄漏</li>
+<li>保留了类别特征的统计特性</li>
+</ul>
+<h3 id="2-2-2-对称树：-决策树中的标准化结构"><a href="#2-2-2-对称树：-决策树中的标准化结构" class="headerlink" title="2.2.2 对称树： 决策树中的标准化结构"></a>2.2.2 对称树： 决策树中的标准化结构</h3><p>与 XGBoost 等传统框架采用的非对称决策树不同，CatBoost 使用对称树（Oblivious Trees） 结构。该结构的核心特点是，树的每一层所有节点均使用相同的特征与阈值进行分裂，结构规整且统一。<br>这种结构有以下优点：</p>
+<ul>
+<li>训练速度快：可并行计算所有叶节点的分裂</li>
+<li>内存效率高：只需要存储每层的分裂特征和阈值</li>
+<li>正则化结果好：限制了模型的复杂度</li>
+</ul>
+<p>但对称树也有其局限性，当特征交互非常复杂时，可能不如传统决策树灵活。</p>
+<p><strong>CatBoost的主要算法原理可以参考以下两篇论文：</strong></p>
+<ul>
+<li>Anna Veronika Dorogush, Andrey Gulin, Gleb Gusev, Nikita Kazeev, Liudmila Ostroumova Prokhorenkova, Aleksandr Vorobev “Fighting biases with dynamic boosting”. arXiv:1706.09516, 2017</li>
+<li>Anna Veronika Dorogush, Vasily Ershov, Andrey Gulin “CatBoost: gradient boosting with categorical features support”. Workshop on ML Systems at NIPS 2017</li>
+</ul>
+<h2 id="2-2-代码"><a href="#2-2-代码" class="headerlink" title="2.2 代码"></a>2.2 代码</h2><h3 id="2-2-1-导入库"><a href="#2-2-1-导入库" class="headerlink" title="2.2.1 导入库"></a>2.2.1 导入库</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score, classification_report</span><br><span class="line"><span class="keyword">from</span> sklearn.utils.class_weight <span class="keyword">import</span> compute_class_weight</span><br><span class="line"><span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>import os</code>：导入操作系统工具，用于文件路径管理与文件读写。</li>
+<li><code>import pandas as pd</code>：数据处理核心库，用于读取 CSV、表格数据操作。</li>
+<li><code>import numpy as np</code>：数值计算库，用于数组运算、概率融合等。</li>
+<li><code>StratifiedKFold</code>：分层 K 折交叉验证，保证每一折数据的类别分布与原数据一致。</li>
+<li><code>f1_score, classification_report</code>：模型评估指标，用于计算 F1 分数与输出分类报告。</li>
+<li><code>compute_class_weight</code>：计算类别平衡权重，解决样本分布不均衡问题。</li>
+<li><code>CatBoostClassifier</code>：CatBoost 分类模型。</li>
+</ul>
+<h3 id="2-2-2-设置文件路径与运行模式"><a href="#2-2-2-设置文件路径与运行模式" class="headerlink" title="2.2.2 设置文件路径与运行模式"></a>2.2.2 设置文件路径与运行模式</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置路径</span></span><br><span class="line">TRAIN_PATH = <span class="string">&quot;./train.csv&quot;</span></span><br><span class="line">TEST_PATH = <span class="string">&quot;./test.csv&quot;</span></span><br><span class="line">SUBMISSION_OUTPUT_PATH = <span class="string">&quot;./submission_final.csv&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模式：GPU or CPU</span></span><br><span class="line">TRAINING_MODE = <span class="string">&quot;GPU&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>TRAIN_PATH</code>：训练集文件路径，指定代码读取训练数据的位置。</li>
+<li><code>TEST_PATH</code>：测试集文件路径。</li>
+<li><code>SUBMISSION_OUTPUT_PATH</code>：最终提交文件保存路径。</li>
+<li><code>TRAINING_MODE</code>：训练模式，GPU或者CPU。</li>
+</ul>
+<h3 id="2-2-3-读取数据集与测试集数据"><a href="#2-2-3-读取数据集与测试集数据" class="headerlink" title="2.2.3 读取数据集与测试集数据"></a>2.2.3 读取数据集与测试集数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">train = pd.read_csv(TRAIN_PATH)</span><br><span class="line">test = pd.read_csv(TEST_PATH)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存测试集 ID，用于最后提交</span></span><br><span class="line">submission = test[[<span class="string">&quot;id&quot;</span>]].copy()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>pd.read_csv(TRAIN_PATH)</code>：从指定路径读取训练集数据，生成 DataFrame 数据结构。</li>
+<li><code>pd.read_csv(TEST_PATH)</code>：读取测试集数据，用于后续预测。</li>
+<li><code>submission = test[[&quot;id&quot;]].copy()</code>：单独复制测试集的 id 列，用于最终生成提交文件。</li>
+</ul>
+<h3 id="2-2-4-标签处理"><a href="#2-2-4-标签处理" class="headerlink" title="2.2.4 标签处理"></a>2.2.4 标签处理</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 标签映射</span></span><br><span class="line">label_map = &#123;<span class="string">&quot;Low&quot;</span>: <span class="number">0</span>, <span class="string">&quot;Medium&quot;</span>: <span class="number">1</span>, <span class="string">&quot;High&quot;</span>: <span class="number">2</span>&#125;</span><br><span class="line">train[<span class="string">&quot;Irrigation_Need&quot;</span>] = train[<span class="string">&quot;Irrigation_Need&quot;</span>].<span class="built_in">map</span>(label_map)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分特征和标签</span></span><br><span class="line">X = train.drop([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;Irrigation_Need&quot;</span>], axis=<span class="number">1</span>)</span><br><span class="line">y = train[<span class="string">&quot;Irrigation_Need&quot;</span>]</span><br><span class="line">X_test = test.drop([<span class="string">&quot;id&quot;</span>], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>label_map</code>：将标签文本（Low&#x2F;Medium&#x2F;High）映射为模型可处理的数字（0&#x2F;1&#x2F;2）。</li>
+<li><code>map()</code>：批量替换训练集标签为数值形式。</li>
+<li><code>X</code>：训练集特征，剔除 <code>id</code> 与标签列。</li>
+<li><code>y</code>：训练集标签，即需要预测的灌溉需求等级。</li>
+<li><code>X_test</code>：测试集特征，仅剔除 <code>id</code> 列。</li>
+</ul>
+<h3 id="2-2-5-特征工程"><a href="#2-2-5-特征工程" class="headerlink" title="2.2.5 特征工程"></a>2.2.5 特征工程</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造关键特征</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_features</span>(<span class="params">df</span>):</span><br><span class="line">    <span class="comment"># 1. 参考作物蒸散量</span></span><br><span class="line">    df[<span class="string">&quot;ET0&quot;</span>] = df[<span class="string">&quot;Temperature_C&quot;</span>] * df[<span class="string">&quot;Wind_Speed_kmh&quot;</span>] * df[<span class="string">&quot;Sunlight_Hours&quot;</span>] / df[<span class="string">&quot;Humidity&quot;</span>]</span><br><span class="line">    <span class="comment"># 2. 水平衡：降水 + 上次灌溉 - 蒸发</span></span><br><span class="line">    df[<span class="string">&quot;Water_Balance&quot;</span>] = df[<span class="string">&quot;Rainfall_mm&quot;</span>] + df[<span class="string">&quot;Previous_Irrigation_mm&quot;</span>] - df[<span class="string">&quot;ET0&quot;</span>]</span><br><span class="line">    <span class="comment"># 3. 水分胁迫指数</span></span><br><span class="line">    df[<span class="string">&quot;Moisture_Stress&quot;</span>] = df[<span class="string">&quot;Temperature_C&quot;</span>] * (<span class="number">100</span> - df[<span class="string">&quot;Humidity&quot;</span>]) / df[<span class="string">&quot;Soil_Moisture&quot;</span>]</span><br><span class="line">    <span class="comment"># 4. 组合特征</span></span><br><span class="line">    df[<span class="string">&quot;Crop_Growth&quot;</span>] = df[<span class="string">&quot;Crop_Type&quot;</span>] + <span class="string">&quot;_&quot;</span> + df[<span class="string">&quot;Crop_Growth_Stage&quot;</span>]</span><br><span class="line">    df[<span class="string">&quot;Region_Season&quot;</span>] = df[<span class="string">&quot;Region&quot;</span>] + <span class="string">&quot;_&quot;</span> + df[<span class="string">&quot;Season&quot;</span>]</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对训练集和测试集都应用特征工程</span></span><br><span class="line">X = create_features(X)</span><br><span class="line">X_test = create_features(X_test)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>create_features(df)</code>：自定义特征工程函数，用于批量构造新特征。</li>
+<li><code>df[&quot;ET0&quot;]</code>：构造蒸散量特征，反映水分蒸发强度。<br>公式：温度 × 风速 × 日照时长 &#x2F; 湿度</li>
+<li><code>df[&quot;Water_Balance&quot;]</code>：构造水平衡特征，衡量土壤水分盈亏状态。<br>公式：降雨量 + 上次灌溉量 − 蒸散量</li>
+<li><code>df[&quot;Moisture_Stress&quot;]</code>：构造水分胁迫指数，表征作物缺水压力。<br>公式：温度 × (100−湿度) &#x2F; 土壤湿度</li>
+<li><code>df[&quot;Crop_Growth&quot;]</code>：作物类型与生长阶段交叉组合特征。</li>
+<li><code>df[&quot;Region_Season&quot;]</code>：地区与季节交叉组合特征。</li>
+<li><code>X = create_features(X)</code>：对训练集执行特征工程。</li>
+<li><code>X_test = create_features(X_test)</code>：对测试集执行相同特征工程。</li>
+</ul>
+<h3 id="2-2-5-识别并处理类别特征"><a href="#2-2-5-识别并处理类别特征" class="headerlink" title="2.2.5 识别并处理类别特征"></a>2.2.5 识别并处理类别特征</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 类别型特征列名</span></span><br><span class="line">cat_features = [</span><br><span class="line">    <span class="string">&quot;Soil_Type&quot;</span>, <span class="string">&quot;Crop_Type&quot;</span>, <span class="string">&quot;Crop_Growth_Stage&quot;</span>, <span class="string">&quot;Season&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Irrigation_Type&quot;</span>, <span class="string">&quot;Water_Source&quot;</span>, <span class="string">&quot;Mulching_Used&quot;</span>, <span class="string">&quot;Region&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Crop_Growth&quot;</span>, <span class="string">&quot;Region_Season&quot;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保类别特征是字符串格式</span></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cat_features:</span><br><span class="line">    X[col] = X[col].astype(<span class="built_in">str</span>)</span><br><span class="line">    X_test[col] = X_test[col].astype(<span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>cat_features</code>：定义所有类别型特征列表，供 CatBoost 自动识别处理。</li>
+<li><code>for col in cat_features</code>：遍历所有类别特征，统一转换数据类型。</li>
+<li><code>X[col] = X[col].astype(str)</code>：将训练集类别特征转为字符串格式。</li>
+<li><code>X_test[col] = X_test[col].astype(str)</code>：将测试集类别特征转为字符串格式。</li>
+</ul>
+<h3 id="2-2-7-计算类别权重"><a href="#2-2-7-计算类别权重" class="headerlink" title="2.2.7 计算类别权重"></a>2.2.7 计算类别权重</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算类别权重</span></span><br><span class="line">weights = compute_class_weight(</span><br><span class="line">    class_weight=<span class="string">&quot;balanced&quot;</span>, classes=np.unique(y), y=y</span><br><span class="line">)</span><br><span class="line">class_weights = <span class="built_in">dict</span>(<span class="built_in">zip</span>(np.unique(y), weights))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>compute_class_weight()</code>：根据样本分布自动计算类别平衡权重。</li>
+<li><code>class_weight=&quot;balanced&quot;</code>：启用平衡模式，自动修正样本分布不均问题。</li>
+<li><code>np.unique(y)</code>：获取数据集中所有不重复的标签类别。</li>
+<li><code>class_weights</code>：存储类别与对应权重的字典，供模型训练时使用。</li>
+</ul>
+<h3 id="2-2-8-设置7折分层交叉验证"><a href="#2-2-8-设置7折分层交叉验证" class="headerlink" title="2.2.8 设置7折分层交叉验证"></a>2.2.8 设置7折分层交叉验证</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 7折交叉验证</span></span><br><span class="line">skf = StratifiedKFold(n_splits=<span class="number">7</span>, shuffle=<span class="literal">True</span>, random_state=<span class="number">42</span>)</span><br><span class="line">test_pred_probs = []</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>StratifiedKFold</code>：分层 K 折交叉验证，保持每折数据类别分布一致。</li>
+<li><code>n_splits=8</code>：将数据集划分为 7 份，7折交叉验证。</li>
+<li><code>shuffle=True</code>：训练前打乱数据顺序，提升模型泛化能力。</li>
+<li><code>random_state=42</code>：固定随机种子，保证实验可复现。</li>
+<li><code>test_pred_probs</code>：空列表，用于存储每一折模型的预测概率。</li>
+</ul>
+<h3 id="2-2-9-训练模型"><a href="#2-2-9-训练模型" class="headerlink" title="2.2.9 训练模型"></a>2.2.9 训练模型</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> fold, (train_idx, val_idx) <span class="keyword">in</span> <span class="built_in">enumerate</span>(skf.split(X, y)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;\n========== Fold <span class="subst">&#123;fold + <span class="number">1</span>&#125;</span> ==========&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 划分训练集与验证集</span></span><br><span class="line">    X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]</span><br><span class="line">    y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义 CatBoost 模型</span></span><br><span class="line">    model = CatBoostClassifier(</span><br><span class="line">        iterations=<span class="number">1000</span>,</span><br><span class="line">        learning_rate=<span class="number">0.1</span>,</span><br><span class="line">        depth=<span class="number">6</span>,</span><br><span class="line">        eval_metric=<span class="string">&quot;TotalF1&quot;</span>,</span><br><span class="line">        early_stopping_rounds=<span class="number">200</span>,</span><br><span class="line">        class_weights=class_weights,</span><br><span class="line">        task_type=TRAINING_MODE,</span><br><span class="line">        random_state=<span class="number">42</span>,</span><br><span class="line">        verbose=<span class="number">100</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 训练模型</span></span><br><span class="line">    model.fit(</span><br><span class="line">        X_train, y_train,</span><br><span class="line">        eval_set=(X_val, y_val),</span><br><span class="line">        cat_features=cat_features,</span><br><span class="line">        use_best_model=<span class="literal">True</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 验证集评估</span></span><br><span class="line">    val_pred = model.predict(X_val)</span><br><span class="line">    f1 = f1_score(y_val, val_pred, average=<span class="string">&quot;macro&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Fold <span class="subst">&#123;fold+<span class="number">1</span>&#125;</span> F1 Score: <span class="subst">&#123;f1:<span class="number">.4</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(classification_report(y_val, val_pred))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存测试集预测概率</span></span><br><span class="line">    test_pred_probs.append(model.predict_proba(X_test))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>for fold, (train_idx, val_idx) in enumerate(skf.split(X, y))</code>：按折循环，拆分训练集与验证集索引。</li>
+<li><code>X_train, X_val</code>：按索引划分训练集与验证集特征。</li>
+<li><code>y_train, y_val</code>：按索引划分训练集与验证集标签。</li>
+<li><code>CatBoostClassifier()</code>：初始化 CatBoost 分类模型。</li>
+<li><code>iterations=1000</code>：最大迭代次数（树的数量）。</li>
+<li><code>learning_rate=0.1</code>：模型学习率。</li>
+<li><code>depth=6</code>：决策树最大深度。</li>
+<li><code>eval_metric=&quot;TotalF1&quot;</code>：以 F1 分数作为评估指标。</li>
+<li><code>early_stopping_rounds=200</code>：早停策略，防止过拟合。</li>
+<li><code>class_weights=class_weights</code>：传入类别平衡权重。</li>
+<li><code>task_type=TRAINING_MODE</code>：指定使用 CPU &#x2F; GPU 训练。</li>
+<li><code>random_state=42</code>：固定随机种子，保证可复现。</li>
+<li><code>verbose=100</code>：每 100 轮输出一次训练日志。</li>
+<li><code>model.fit()</code>：在训练集上训练，在验证集上验证。</li>
+<li><code>cat_features=cat_features</code>：指定类别特征，让模型自动处理。</li>
+<li><code>use_best_model=True</code>：使用最优迭代轮数的模型。</li>
+<li><code>model.predict()</code>：对验证集进行预测。</li>
+<li><code>f1_score()</code>：计算验证集宏观 F1 分数。</li>
+<li><code>classification_report()</code>：输出完整分类评估报告。</li>
+<li><code>model.predict_proba()</code>：对测试集预测概率。</li>
+<li><code>test_pred_probs.append()</code>：将每折预测概率存入列表。</li>
+</ul>
+<h3 id="2-2-10-多模型预测结果融合"><a href="#2-2-10-多模型预测结果融合" class="headerlink" title="2.2.10 多模型预测结果融合"></a>2.2.10 多模型预测结果融合</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 对 7 个模型的预测概率求平均</span></span><br><span class="line">avg_pred_probs = np.mean(test_pred_probs, axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 取概率最大的类别作为最终预测</span></span><br><span class="line">predictions = np.argmax(avg_pred_probs, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>np.mean(test_pred_probs, axis=0)</code>：对8折模型的预测概率按列求平均，提升结果稳定性。</li>
+<li><code>np.argmax(avg_pred_probs, axis=1)</code>：取每行概率最大的值对应的类别，生成最终预测标签。</li>
+<li><code>avg_pred_probs</code>：存储多模型融合后的平均预测概率。</li>
+<li><code>predictions</code>：存储最终的类别预测结果。</li>
+</ul>
+<h3 id="2-2-11-生成提交文件"><a href="#2-2-11-生成提交文件" class="headerlink" title="2.2.11 生成提交文件"></a>2.2.11 生成提交文件</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把数字转回标签</span></span><br><span class="line">label_map_inv = &#123;<span class="number">0</span>: <span class="string">&quot;Low&quot;</span>, <span class="number">1</span>: <span class="string">&quot;Medium&quot;</span>, <span class="number">2</span>: <span class="string">&quot;High&quot;</span>&#125;</span><br><span class="line">submission[<span class="string">&quot;Irrigation_Need&quot;</span>] = predictions</span><br><span class="line">submission[<span class="string">&quot;Irrigation_Need&quot;</span>] = submission[<span class="string">&quot;Irrigation_Need&quot;</span>].<span class="built_in">map</span>(label_map_inv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存文件</span></span><br><span class="line">submission.to_csv(SUBMISSION_OUTPUT_PATH, index=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;\n提交文件已保存至：<span class="subst">&#123;SUBMISSION_OUTPUT_PATH&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>label_map_inv</code>：将预测的数字标签映射回原始文本标签。</li>
+<li><code>submission[&quot;Irrigation_Need&quot;]</code>：将预测结果存入提交文件。</li>
+<li><code>map(label_map_inv)</code>：批量转换数字为文本标签。</li>
+<li><code>submission.to_csv()</code>：将结果保存为CSV格式提交文件。</li>
+<li><code>index=False</code>：不保存行索引，符合竞赛提交格式要求。</li>
+<li><code>print()</code>：输出文件保存路径，方便查看结果。</li>
+</ul>
+<p>注：水平有限，若存在错误或可优化之处，欢迎各位批评指正。</p>
+]]></content>
+      <categories>
+        <category>Kaggle竞赛</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>数据分析</tag>
+        <tag>CatBoost</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [计算机网络] 传输层</title>
+    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h1><p>传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。<br><strong>传输层的主要功能如下</strong>：</p>
+<ul>
+<li><strong>应用进程之间的逻辑通信</strong><br>应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
+<li><strong>复用和分用</strong><br>复用是指发送方不同的应用进程都可以使用同一个传输层协议传送数据。<br>分用是指接受方的传输层在剥去报文的首部后能够把这些数据正确交付到目的应用进程。</li>
+<li><strong>差错检测</strong><br>对于YCP，若接收方发现报文段出错，则要求发送方重发该报文段。对于UDP，若接收方发现数据报出错，则直接丢弃。</li>
+<li><strong>提供面向连接和无连接的传输协议</strong></li>
+</ul>
+<h1 id="1-传输层的寻址与端口"><a href="#1-传输层的寻址与端口" class="headerlink" title="1.传输层的寻址与端口"></a>1.传输层的寻址与端口</h1><p><strong>端口</strong>能让应用层的各种进程将其数据通过端口向下交付给传输层，以及让传输层知道应当将其报文段中的数据向上通过端口交付给应用层相应的进程。<br><strong>硬件端口</strong>是不同硬件设备进行交互的接口，<strong>软件端口</strong>是应用层的各种协议进程与传输实体进行层间交互的一种地址。<br>传输层使用的是软件接口。</p>
+<p><strong>端口号</strong>只具有本地意义，根据端口号范围可将端口分为两类：</p>
+<ul>
+<li><strong>服务器使用的端口号</strong>：分为两类，最重要的一类是<strong>熟知端口号</strong>，数值为0-1023，IANA（互联网地址指派机构）把这些端口号指派给了TCP&#x2F;IP最重要的一些应用程序。另一类成为<strong>登记端口号</strong>，数值为1024-49151，它是供没有熟知端口号的应用程序使用的，使用这类端口号必须在IANA登记。<br>FTP 21; TELVET 23; SMTP 25; DNS 53; TFTP 69;HTTP 80;SNMP 161。</li>
+<li><strong>客户端使用的端口号</strong>：数值为49152-65535。因为这类端口号仅在客户进程运行时才动态选择，所有也称<strong>短暂端口号</strong>。</li>
+</ul>
+<h1 id="2-无连接服务和面向连接服务"><a href="#2-无连接服务和面向连接服务" class="headerlink" title="2.无连接服务和面向连接服务"></a>2.无连接服务和面向连接服务</h1><p>TCP&#x2F;IP族在IP层之上使用了两个传输协议：一个是<strong>面向连接的传输控制协议（TCP）</strong>，；另一个是<strong>无连接的用户数据报协议（UDP）</strong>。</p>
+<p>TCP提供面向连接的可靠服务，不提供广播或多播服务。主要适用于可靠性更重要的场合，如文件传输协议（FTP）、超文本传输协议（HTTP）、远程登录（TELVET）等。</p>
+<p>UDP提供无连接的不可靠服务。UPD在IP层之上仅提供两个附加服务：多路复用和对数据的错误检查。使用UDP的应用主要包括小文件传送协议（TFTP）、DNS、SNMP和实时传输协议（RTP）。</p>
+<p>一些典型互联网应用锁用的TCP&#x2F;IP应用层协议和传输层协议如下：</p>
+<table>
+<thead>
+<tr>
+<th>互联网应用</th>
+<th>TCP&#x2F;IP 应用层协议</th>
+<th>TCP&#x2F;IP 传输层协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名解析</td>
+<td>域名系统（DNS）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>文件传送</td>
+<td>简单文件传送协议（TFTP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>路由选择</td>
+<td>路由信息协议（RIP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>IP 地址分配</td>
+<td>动态主机配置协议（DHCP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>网络管理</td>
+<td>简单网络管理协议（SNMP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td>简单邮件传送协议（SMTP）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>远程终端接入</td>
+<td>远程终端协议（TELNET）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>万维网</td>
+<td>超文本传送协议（HTTP）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>文件传送</td>
+<td>文件传送协议（FTP）</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p>UDP仅在IP层的数据报服务之上增加了复用、分用和差错检测的功能。<br><strong>UDP的特点</strong>：</p>
+<ul>
+<li>UDP无须建立连接。</li>
+<li>无连接状态。</li>
+<li>UDP的首部开销小。</li>
+<li>UDP没有拥塞控制。</li>
+<li>UDP支持一对一、一对多、多对一和多对多的交互通信。</li>
+</ul>
+<p>UDP常用于一次性传输较少数据的网络应用。<br>UDP是面向报文的，报文不可分割，是UDP数据报处理的最小单位。</p>
+<h2 id="1-UDP的首部格式"><a href="#1-UDP的首部格式" class="headerlink" title="1.UDP的首部格式"></a>1.UDP的首部格式</h2><p><img src="/img/408/c1.png" alt="图片说明"></p>
+<ul>
+<li><strong>源端口</strong>。在需要对方回信时选用，不需要时可用全0。</li>
+<li><strong>目的端口</strong>。这在终点交付报文时必须使用到。</li>
+<li><strong>长度</strong>。UDP数据报的长度，最小值是8。</li>
+<li><strong>校验和</strong>。检验UDP数据报在传输中是否有错。有错就丢弃。</li>
+</ul>
+<p>当传输层从IP层收到UDP数据报时，就根据首部中的目的端口，把UDP数据报通过相应的端口，上交最后的终点——应用进程<br>若接收方UDP发现收到的报文中的目的端口号不正确，则就丢弃该报文，并由ICMP发送“端口不可达”差错报文给发送方。</p>
+<h2 id="2-UDP检验"><a href="#2-UDP检验" class="headerlink" title="2.UDP检验"></a>2.UDP检验</h2><p>UDP计算检验和的方法和计算IP数据报首部检验和的方法基本相同。不同的是：IP数据报的校验和只检验IP数据报的首部，但UDP的校验和要将首部和数据部分一起检验。<br><strong>UDP计算校验和的方法</strong>：在发送方，先把全0放入校验和阻断，再把伪首部和UDP数据报看成是由许多16位的字串接起来的。若UDP数据报的数据部分不是偶数个字节，则要在末尾填入一个全0字节（但此字节不发送）。然后按二进制反码计算出这些16位字的和。将此和的二进制反码写入检验和字段，并发送。在接收方，把收到的UDP数据报连同伪首部（若不是偶数个数字节，则还需补上一个全0字节）后，按二进制反码求这些16位字的和。当无差错时其结果应该全1，否则就表明有差错出现，接收方就应丢弃这个UDP数据报。</p>
+<p><strong>UDP校验和的计算规则</strong><br><img src="/img/408/c2.png" alt="图片说明"><br><img src="/img/408/c3.png" alt="图片说明"></p>
+<h2 id="3-TCP"><a href="#3-TCP" class="headerlink" title="3.TCP"></a>3.TCP</h2><p>TCP是在不可靠的IP层之上实现的可靠的数据传输协议。<br><strong>主要特点有</strong>：</p>
+<ul>
+<li>TCP是面向连接的传输层协议，TCP连接是一条逻辑连接。</li>
+<li>每一条TCP连接只能有两个断点，每一条TCP连接只能是一对一的。</li>
+<li>TCP提供可靠交付的服务，保证传送的数据无差错、不丢失、不重复且有序。</li>
+<li>TCP提供全双工 通信。</li>
+<li>TCP是面向字节流的。</li>
+</ul>
+<p>TCP和UDP在发送报文时所采用的方式完全不同。UDP报文的长度由发送应用进程决定，而TCP报文的长度则根据接收方给出的窗口值和当前网络拥塞程度来决定。</p>
+<h2 id="1-TCP报文段"><a href="#1-TCP报文段" class="headerlink" title="1.TCP报文段"></a>1.TCP报文段</h2><p>TCP传送的数据单元称为报文段。TCP报文段既可用来运载数据，又可用来建立连接、释放连接和应答，一个TCP报文段分为首部和数据两部分，整个TCP报文段作为IP数据报的数据部分封装在IP数据报中。<br><img src="/img/408/c4.png" alt="图片说明"></p>
+<ul>
+<li><strong>序号</strong>：占4B。范围是0 - $2^{32}-1$。TCP连接中传送的字节流中的每个字节都要按顺序编号，序号字段值指的是本报文段所发送的数据的第一个字节的序号。</li>
+<li><strong>确定号</strong>：占4B。是期望收到对方下一个报文段的第一个数据字节的序号。</li>
+<li><strong>数据偏移（首部长度）</strong>：占4位，它指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。</li>
+<li><strong>保留</strong>：占6位，目前应置为0。</li>
+<li><strong>紧急位URG</strong>：当URG&#x3D;1时，表明紧急指针字段有效。它告诉系统此报文段中有紧急数据，应尽快传送。紧急数据被插入至报文段的最前面，而在紧急数据后面的数据仍是普通数据，因此要与首部中的紧急指针字段配合使用。</li>
+<li><strong>确定位ACK</strong>：仅当ACK&#x3D;1时确定号字段才有效。当ACK&#x3D;0时，确定号无效。</li>
+<li><strong>推送位PSH（Push）</strong>：两个应用进程进行交互式通信时，都希望在键入一个命令后立即就能收到对方的响应，此时发送方TCP将PSH置为1，接收方TCP收到PSH&#x3D;1的报文段后，就尽快交付给接收应用进程，而不在等到整个缓存都填满了后再向上交付。</li>
+<li><strong>同步位SYN</strong>：到SYN&#x3D;1时表示这是一个链接请求或连接接受报文。</li>
+<li><strong>终止位FIN</strong>：用来释放一个链接。当FIM&#x3D;1时，表明此报文段的发送方的数据已发送完毕，并要求释放传输裂解。</li>
+<li><strong>窗口</strong>：占2B，窗口值告诉对方，从本报文段首部中的确定号算起，接收方目前允许对方发送的数据量（以字节为单位）。</li>
+<li><strong>校验和</strong>：占2B，校验和字段校验的范围包括首部和数据两部分。计算校验和时，和UDP一样，要在TCP报文段的前面加上12B的维首部。</li>
+<li><strong>紧急指针</strong>：占2B，仅在URG&#x3D;1时才有意义，它指出报文段中的紧急数据的字节数。即使窗口为零，也可以发送紧急数据。</li>
+<li><strong>选项</strong>：长度可变，最长可达40B。</li>
+<li><strong>填充</strong>：这是为了使整个首部长度是4B的整数倍。</li>
+</ul>
+<h2 id="2-TCP连接管理"><a href="#2-TCP连接管理" class="headerlink" title="2.TCP连接管理"></a>2.TCP连接管理</h2><p>TCP连接的端口即为<strong>套接字</strong>，每一条TCP连接唯一地被通信的两个端口（两个套接字）所确定。同一个IP地址可以有多个不同的TCP连接，而同一个端口号也可以出现在多个不同的TCP连接中。<br>TCP连接的建立采用<strong>客户&#x2F;服务器模式</strong>。</p>
+<p><strong>TCP连接的建立</strong><br>经历以下三个步骤，通常称为<strong>三次握手</strong>：<br><img src="/img/408/c5.png" alt="图片说明"><br>建立连接前，服务器处于LISTEN（收听）状态，等待客户的连接请求。</p>
+<ul>
+<li><strong>第一步</strong>：客户向服务器发送连接请求报文段。该报文段的 <code>SYN = 1</code>，同时选择一个初始序号 <code>seq = x</code>。TCP 规定，SYN 报文段（<code>SYN=1</code> 的报文段）不能携带数据，但仍消耗一个序号，因此客户下一次发送的报文段序号 <code>seq = x + 1</code>。此时，客户进入 <code>SYN-SENT</code>（同步已发送）状态。</li>
+<li><strong>第二步</strong>：服务器收到连接请求后，若同意建立连接，则向客户返回确认报文段。该报文段的 <code>SYN = 1</code>、<code>ACK = 1</code>，确认序号 <code>ack = x + 1</code>，同时选择自己的初始序号 <code>seq = y</code>。确认报文段同样不能携带数据，但也消耗一个序号。此时，服务器进入 <code>SYN-RCVD</code>（同步已收到）状态。</li>
+<li><strong>第三步</strong>：客户收到确认后，再向服务器发送最终确认。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = y + 1</code>，序号 <code>seq = x + 1</code>。此报文段可以携带数据。若不携带数据，则不消耗序号，下一个数据报文段的序号仍为 <code>x + 1</code>。此时，客户进入 <code>ESTABLISHED</code>（已建立连接）状态。</li>
+</ul>
+<p>当服务器收到来自客户机的确定后，也进入ESTABLISHED状态。</p>
+<p><strong>TCP连接的释放</strong><br>TCP连接释放的过程通常称为<strong>四次挥手</strong>：<br><img src="/img/408/c6.png" alt="图片说明"></p>
+<ul>
+<li><strong>第一步</strong>：客户决定关闭连接时，向服务器发送连接释放报文段，并停止发送数据（主动关闭）。<br>该报文段的 <code>FIN = 1</code>，序号 <code>seq = u</code>，其值等于此前已发送数据的最后一个字节序号加 1。TCP 规定，FIN 报文段（<code>FIN = 1</code> 的报文段）即使不携带数据，也消耗一个序号。此时，客户进入 <code>FIN-WAIT-1</code>（终止等待 1）状态。由于 TCP 是全双工的，可视为连接包含两条独立的数据通路；发送 FIN 的一端关闭了其发送方向，但对方仍可继续发送数据。</li>
+<li><strong>第二步</strong>：服务器收到连接释放报文段后，立即发送确认报文段。该报文段的 <code>ACK = 1</code>，确认序号 <code>ack = u + 1</code>，序号 <code>seq = v</code>（<code>v</code> 为服务器此前已发送数据的最后一个字节序号加 1）。随后，服务器进入 <code>CLOSE-WAIT</code>（关闭等待）状态。此时，从客户到服务器方向的连接已释放，但从服务器到客户方向的连接并未释放，TCP 连接处于半关闭状态。客户收到确认后，进入 <code>FIN-WAIT-2</code>（终止等待 2）状态，等待服务器发出的连接释放报文段。</li>
+<li><strong>第三步</strong>：若服务器已经没有要向客户发送的数据，就向其发送连接释放报文段。该报文段的 <code>FIN = 1</code>、<code>ACK = 1</code>，序号 <code>seq = w</code>（<code>w</code> 可能大于 <code>v</code>，因服务器在半关闭期间可能又发送了数据），还需重复此前已发送的确认序号 <code>ack = u + 1</code>。此时，服务器进入 <code>LAST-ACK</code>（最后确认）状态。</li>
+<li><strong>第四步</strong>：客户收到连接释放报文段后，必须发送最终确认，并进入 <code>TIME-WAIT</code>（时间等待）状态。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = w + 1</code>，序号 <code>seq = u + 1</code>。服务器收到此确认后，即进入 <code>CLOSED</code>（连接关闭）状态。客户在 <code>TIME-WAIT</code> 状态下，还需等待时间等待计时器设置的时间 <code>2MSL</code>（Maximum Segment Lifetime，最长报文段寿命）后，才进入 <code>CLOSED</code> 状态。</li>
+</ul>
+<p><strong>对上述TCP连接的建立和释放的总结如下</strong>：<br>1）建立连接分为3步：</p>
+<ul>
+<li>SYN&#x3D;1，seq&#x3D;x</li>
+<li>SYN&#x3D;1，ACK&#x3D;1，seq&#x3D;y，ack&#x3D;x+1</li>
+<li>ACK&#x3D;1，seq&#x3D;x+1，ack&#x3D;y+1</li>
+</ul>
+<p>2）释放过程分为4步：</p>
+<ul>
+<li>FIN&#x3D;1，seq&#x3D;u</li>
+<li>ACK&#x3D;1，seq&#x3D;v，ack&#x3D;u+1</li>
+<li>FIN&#x3D;1，ACK&#x3D;1，seq&#x3D;w，ack&#x3D;u+1</li>
+<li>ACK&#x3D;1，seq&#x3D;u+1，ack&#x3D;w+1</li>
+</ul>
+<h2 id="3-TCP可靠传输"><a href="#3-TCP可靠传输" class="headerlink" title="3.TCP可靠传输"></a>3.TCP可靠传输</h2><p>TCP在不可靠的IP层之上建立一种可靠数据传输服务。<br><strong>序号</strong><br>TCP首部的序号字段用来保证数据能有序提交给应用层，序号建立在传输的字节流之上，而步建立在报文段之上。</p>
+<p><strong>确定</strong><br>TCP首部的确定号是期望收到对方的下一个报文段的数据的第一个字节的序号。<br>TCP默认使用<strong>累加确定</strong>，即TCP只确定数据流中第一个丢失字节为止的字节，这样可以减少传输开销。</p>
+<p><strong>重传</strong><br>有两种事件会导致TCP对报文段进行重传：<strong>超时和冗余ACK</strong><br>（1）超时<br>TCP每次发送一个报文段，就对这个报文段设置一个超时计时器。计时器设置的重传时间到期但未收到确认时，就要重传这一报文段。<br>TCP采用一种自适用算法，它记录一个报文段发出的时间，以及收到相应确定的时间，这两个时间之差称为报文段的<strong>往返时间（RTT）</strong>。TCP维护了RTT的一个<strong>加权平均往返时间RTTS</strong>，它会随新测量RTT样本值的变化而变化。超时计数器设置的**超时重传时间（RTO）**应略大于RTTS，但也不能大太多，否则当报文段丢失时，TCP不能很快重传，导致数据传输时延大。</p>
+<p>（2）冗余ACK（冗余确定）<br>发送方通常可在超时事件发生之前通过注意所谓的<strong>冗余ACK</strong>来较好地检测丢包情况。冗余ACK就是再次确定某个报文段ACK，而发送方先前已经收到该报文段的确定。这种技术通常称为<strong>快速重传</strong>。</p>
+<h2 id="4-TCP流量控制"><a href="#4-TCP流量控制" class="headerlink" title="4.TCP流量控制"></a>4.TCP流量控制</h2><p>流量控制的功能就是让发送方的发送速率不要太快，以便让接收方来得及接收。<br>TCP利用<strong>滑动窗口机制</strong>来实现流量控制。<br>发送方的发送窗口不能超过接收方给出的接收窗口值，以限制发送方向网络注入报文的速率。<br><strong>利用接收滑动窗口实现流量控制的过程</strong><br><img src="/img/408/c7.png" alt="图片说明"><br>TCP为每个连接设有一个<strong>持续计时器</strong>，只要发送方收到对方的零窗口通知，就启动持续计时器。若计时器超时，就发送一个零窗口探测报文段，而对方就在确定这个探测报文段时给出现在的窗口值。若窗口仍然为零，则发送方收到确定报文段后就重新设置接收计时器。</p>
+<p><strong>传输层和数据链路层的流量控制的区别是</strong>：传输层实现的是端到端，即两个进程之间的流量控制；数据链路层实现的是两个中间的相邻节点之间的流量控制。此外，数据链路层的滑动窗口协议的窗口大小不能动态变化，传输层的窗口大小则可以动态变化。</p>
+<h2 id="5-TCP拥塞控制"><a href="#5-TCP拥塞控制" class="headerlink" title="5.TCP拥塞控制"></a>5.TCP拥塞控制</h2><p>拥塞控制是指防止过多的数据注入网络，保证网络中的路由器或链路不致过载。<br>TCP进行拥塞控制的算法有四种：<strong>慢开始、拥塞避免、快重传和快恢复</strong>。<br><strong>发送方控制拥塞窗口的原则</strong>：只要网络未出现用三个，拥塞窗口就再增大一些，以便把更多的分组发送出去，以提高网络的利用率。但只要网络出现拥塞，拥塞窗口就减少一些，以减少注入网络的分组数，以缓解网络出现的拥塞。</p>
+<p>发送窗口的上限值应取接收窗口rwnd和拥塞窗口cwnd中较小的一个。<br>注：下面采用最大报文段长度MSS作为拥塞窗口大小的单位。<br><strong>慢开始和拥塞避免</strong><br><strong>慢开始算法</strong>：思路是当发送方刚开始发送数据时，因为并不清楚网络的负荷情况，若立即把大量数据注入网络，则有可能引发网络拥塞。具体方法是：先发送少量数据探测一下，若没有发送拥塞，则适当增大拥塞窗口，即由小到大逐渐增大拥塞窗口（发送窗口）。<br><strong>拥塞避免算法</strong>：思路是让拥塞窗口cwnd缓慢增大，具体做法是：每经过一个往返时延RTT就把发送方的拥塞窗口加1，而不是加倍，使拥塞窗口cwnd按线性规律换吗增长（<strong>加法增大</strong>）。<br>根据cwnd的大小执行不同的算法，可归纳如下：</p>
+<ul>
+<li>当cwnd &lt; ssthresh时，使用慢开始算法。</li>
+<li>当cwnd &gt; ssthresh时，停止使用慢开始算法，而改用拥塞避免算法。</li>
+<li>当cwnd &#x3D; ssthresh时，既可使用慢开始算法，也可使用拥塞避免算法（常规做法）。</li>
+</ul>
+<p><strong>网络拥塞的处理</strong>：首先把慢开始门限ssthresh设置为出现拥塞时的发送方的cwnd值的一半（但不能小于2），然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
+<p><strong>慢开始和拥塞避免算法的实现过程</strong>：<br><img src="/img/408/c8.png" alt="图片说明"></p>
+<ul>
+<li>起初时，拥塞窗口置为1，即cwnd-1，慢开始门限置为16，即ssthresh&#x3D;16。</li>
+<li>慢开始阶段，发送方每收到一个队新报文的确定ACK，就把拥塞窗口cwnd值加1，也即经过每个传输轮次（RTT），cwnd呈指数规律增长。当cwnd增长到慢开始门限ssthresh时，就改用拥塞避免算法，cwnd按线性规律增长。</li>
+<li>当cwnd&#x3D;24时，网络出现超时，调整ssthresh值为12（超时时cwnd值的一半），同时cwnd置为1，并执行慢开始算法；当cwnd&#x3D;12时，改为执行拥塞避免算法。</li>
+</ul>
+<p><strong>快重传和快恢复</strong><br><strong>快重传算法</strong>：是使发送方尽快进行重传，而不等超时计时器超时再重传。<br><strong>快恢复算法</strong>：当发送方连续收到3个冗余ACK（重复确定）时，执行乘法减小方法，把慢开始门限ssthresh调整为当前cwnd的一半。<br><img src="/img/408/c9.png" alt="图片说明"><br>在TCP连接建立和网络出现超时时，采用慢开始和拥塞控制避免算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd&#x3D;1）；当发送方收到3个冗余ACK时，采用快重传和快恢复算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd-ssthresh）。</p>
+<p>发送方发送窗口的大小由流量控制和拥塞控制共同决定。<br>发送方发生窗口的实际大小是由rwnd和cwnd中较小的一个确定的。</p>
+]]></content>
+      <categories>
+        <category>408-计算机网络</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>计算机网络</tag>
+        <tag>传输层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [计算机网络] 应用层</title>
+    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h1><h2 id="1-客户-服务器模型"><a href="#1-客户-服务器模型" class="headerlink" title="1.客户&#x2F;服务器模型"></a>1.客户&#x2F;服务器模型</h2><p>在<strong>客户服务器（C&#x2F;S）模型</strong>中，有一个总是打开的主机称为<strong>服务器</strong>，他服务于许多来自其他称为<strong>客户机</strong>的主角请求。其工作流程如下：</p>
+<ul>
+<li>服务器处于接收请求的状态。</li>
+<li>客户机发出服务请求，并等待接收结果。</li>
+<li>服务器收到请求后，分析请求，进行必要的处理，得到结果并发送给客户机。</li>
+</ul>
+<p><strong>最重要的特征</strong>：客户是服务请求方，服务器是服务提供方。<br>客户&#x2F;服务器模型的主要特点还有：</p>
+<ul>
+<li>网络中各计算机的地位不平等，服务器可通过对用户权限的限制来达到管理客户机的目的。整个网络的管理工作由少数服务器负责，因此网络的管理非常集中和方便。</li>
+<li>客户机相互之间不直接。</li>
+<li>可扩展性不佳。</li>
+</ul>
+<h2 id="2-P2P模型"><a href="#2-P2P模型" class="headerlink" title="2.P2P模型"></a>2.P2P模型</h2><p>整个网络中传输内容不再被保存在中心服务器上，每个节点都同时具有下载、上传的功能，其权利和义务都是大体对等的。<br>与C&#x2F;S模型相比，P2P模型的优点主要体现如下：</p>
+<ul>
+<li>减轻了服务器的计算压力，消除了对某个服务器的完全依赖，可以将任务分配到各个节点上，因此大大提高了系统效率和资源利用率。</li>
+<li>多个客户机之间可以直接共享文档。</li>
+<li>可扩展性好，传统服务器有响应和带宽的限制，因此只能接受一定数量的请求。</li>
+<li>网络健壮性强，单个节点的失效不会影响其他部分的节点。</li>
+</ul>
+<h1 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h1><p>域名系统是因特网使用的命名系统，用来把便于人们记忆的具有特定含义的主机名转换为便于机器处理的IP地址。<br>从概念上可将DNS分为三部分：局次域名空间、域名服务器和解析器。</p>
+<h2 id="1-层次域名空间"><a href="#1-层次域名空间" class="headerlink" title="1.层次域名空间"></a>1.层次域名空间</h2><p>因特网采用<strong>层次树状结构</strong>的命名方式。采用这种命名方法，任何一个连接到因特网的主机或路由器，都有一个唯一的层次结构名称，即<strong>域名</strong>。<br><strong>域</strong>的名字空间中一个可被管理的划分。<br>每个域名都由标号序列组成，而各标号之间用点隔开。<br>关于域名：</p>
+<ul>
+<li>标号中的英文不区分大小写。</li>
+<li>标号中除连字符外不能使用其他的标号符号。</li>
+<li>每个标号不超过63个字符，多标号组成的完整域名最长不超过255个字符。</li>
+<li>级别最低的域名写在最左边，级别最高的顶级域名写在最右边。</li>
+</ul>
+<p><strong>顶级域名</strong>（TLD）分为如下三大类：</p>
+<ul>
+<li><strong>国家（地区）顶级域名（nTLD）</strong>。国家和某些地区的域名。</li>
+<li><strong>通用顶级域名（gTLD）</strong>。com公司，net网络服务机构，org非盈利性机构，edu教育机构，gov国家或政府部门。</li>
+<li><strong>基础结构域名（arpa）</strong>。用于方向域名解析，即IP地址方向解析为域名。</li>
+</ul>
+<p>在域名系统中，各级域名由其上一级的域名管理机构管理，顶级域名由因特网名称与数字地址分配机构（ICANN）管理。<br>国家顶级域名下注册的二级域名均由该国家自行确定，每个组织都可以将它的域再分成一定数量的子域，并将这些子域委托给其他组织去管理。</p>
+<h2 id="2-域名服务器"><a href="#2-域名服务器" class="headerlink" title="2.域名服务器"></a>2.域名服务器</h2><p>域名到IP地址的解析是由运行在域名服务器上的程序完成的，一个服务器所负责管辖的（或有权限的）范围成为<strong>区</strong>（小于或等于域）。</p>
+<p><strong>根域名服务器</strong><br>根域名服务器是最高层次的域名服务器为，所有的根域名服务器都知道所有的顶级域名服务器的域名和IP地址。<br>因特网上有13个根域名服务器。<br>根域名服务器用来关系额顶级域，通常它并不直接将待查询的域名直接转换成IP地址，而是告诉本地域名服务器下一步应当找哪个登记域名服务器进行查询。</p>
+<p><strong>顶级域名服务器</strong><br>这域名服务器负责管理在该顶级域名服务器注册的所有二级域名。</p>
+<p><strong>权限域名服务器（授权域名服务器）</strong><br>每台主机都必须在权限域名服务器处登记。一台主机最好至少有两个权限域名服务器。<br>实际上，许多域名服务器都同时充当本地域名服务器和权限域名服务器。权限域名服务器总能将其管辖的主机名转换为该主机的IP地址。</p>
+<p><strong>本地域名服务器</strong><br>每个因特网服务提供者（ISP），或一所大学，甚至一所大学中的各个系，都可以拥有一个本地域名服务器。<br>当一台主机发出DNS查询请求时，这个查询请求报文就发送给该主机的本地域名服务器。<br>事实上，我们在Windows系统中配置“本地连接”时，就需要填写DNS地址，这个地址就是本地DNS（域名服务器）的地址。<br><strong>DNS的层次结构</strong>如下：<br><img src="/img/408/y1.png" alt="图片说明文字"></p>
+<h2 id="3-域名解析过程"><a href="#3-域名解析过程" class="headerlink" title="3.域名解析过程"></a>3.域名解析过程</h2><p>域名解析是指把域名转化为IP地址的过程。<br>域名解析方式有两种方式：递归查询和迭代查询</p>
+<ul>
+<li>主机向本地域名服务器的查询都采用<strong>递归查询</strong><br><strong>递归查询</strong>是指若主机所查询的本地域名服务器不知道被查询域名的IP地址，则本地域名服务器就以DNS客户的身份，向根域服务器继续发出查询请求报文（替代主机继续查询（，而不是让改主机自己进行下一步的查询。</li>
+<li>主机域名服务器向其他域名服务器采用<strong>递归查询</strong>或<strong>迭代查询</strong></li>
+</ul>
+<p><strong>递归查询DNS的工作原理</strong><br>如下图a所示，本地域名服务器只需向根域名服务器查询一次，后面的几次查询都是递归地在其他几个域名服务器之间进行的[步骤3-6]。在步骤7中，本地服务器从根域名服务器得到了所需的IP地址，最后在步骤8中，本地域名服务器把查询结果告诉发起查询的主机。<br>因为该方法给根域名服务器造成了负载过大，所以实际上几乎不使用。<br><strong>迭代查询DNS的工作原理</strong><br>本地域名服务器向跟域名服务器的查询通常是采用<strong>迭代查询</strong>。当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地域名服务器“下一步应当向哪个顶级域名服务器进行查询”，如下图b所示。<br><img src="/img/408/y2.png" alt="图片说明文字"><br>过程举例（假定某客户机向获知域名为y.abc.com主机的IP地址）域名解析过程（最多需要使用8个UDP报文：4个查询报文和4个回答报文）如下：</p>
+<ul>
+<li>客户机向其本地域名服务器发出DNS请求报文（递归查询）。</li>
+<li>本地域名服务器收到请求后，查询本地缓存，若没有该记录，则以DNS客户的身份向根域名服务器发出解析请求报文（迭代查询）。</li>
+<li>根域名服务器收到请求后，判断该域名属于.com域，将对应的顶级域名服务器dns.com的IP地址返回给本地域名服务器。</li>
+<li>本地域名服务器dns.com收到请求后，判断该域名属于aabc.com域，因此将对应的权限域名服务器dns.abc.com的IP地址返回给本地域名服务器。</li>
+<li>本地域名服务器向权限服务器dns.abc.com发出解析请求报文（迭代查询）。</li>
+<li>权限域名服务器dns.abc.com收到请求后，将查询结果返回给本地域名服务器。</li>
+<li>本地域名服务器将查询结果保存到本地缓存，同时返回给客户端。</li>
+</ul>
+<h1 id="文件传输协议"><a href="#文件传输协议" class="headerlink" title="文件传输协议"></a>文件传输协议</h1><h2 id="1-FIP的工作原理"><a href="#1-FIP的工作原理" class="headerlink" title="1.FIP的工作原理"></a>1.FIP的工作原理</h2><p>**文件传输协议（FTP）**是因特网上使用得最广泛的文件传输协议。<br>FTP提供交互式的访问，运行客户指明文件的类型和格式，并允许文件具有存取权限。<br>FTP提供以下功能：</p>
+<ul>
+<li>提供不同类型主机系统（硬、软件体系等都可以不同）之间的文件传输能力。</li>
+<li>以用户权限管理的方式通过用户对远程FTP服务器上的文件管理能力。</li>
+<li>以匿名FTP的方式提供公用文件共享的能力。</li>
+</ul>
+<p>FTP采用客户&#x2F;服务器的工作方式。使用TCP可靠的传输服务。<br>DTP服务器进程由两大部分组成：一个主进程，负责接收新的请求；另外由若干从属进程，负责处理单个请求。其工作步骤如下：</p>
+<ul>
+<li>打开熟知端口21（控制端口），使客户进程能够连接上。</li>
+<li>等待客户进程发连接请求。</li>
+<li>启动从属进程处理客户进程发来的请求。从属进程对客户进程的请求处理完毕后即终止。</li>
+<li>回到等待状态，继续接受其他客户进程的请求。主进程与从属进程是并发执行的。</li>
+</ul>
+<h2 id="2-控制连接与数据连接"><a href="#2-控制连接与数据连接" class="headerlink" title="2.控制连接与数据连接"></a>2.控制连接与数据连接</h2><p>FTP在工作时使用两个并行的TCP连接，一个是控制连接（服务器端口号21），一个是数据连接（服务器端口号20）。<br><strong>1).控制连接</strong><br>服务器监听21端口，等待客户链接，建立在这个端口上的连接称为<strong>控制连接</strong>，用来传输控制信息。<br><strong>2).数据连接</strong><br>数据连接用来连接客户端和服务器端的数据传送进程，数据传送进程实际完成文件的传送，在传送完毕后关闭“数据传送连接”并结束运行。<br>数据连接有两种传输模式：<strong>主动模式PSRT</strong>和<strong>被动模式PASV</strong>。</p>
+<ul>
+<li><strong>PORT模式的工作原理</strong>：客户端连接服务器的21端口，登录成功后要读取数据时，客户端随机开发一个端口，并发送命令告知服务器，服务器收到PORT命令和端口号后，通过20端口和客户端开放的端口进行连接，发送数据。</li>
+<li><strong>PASV模式</strong>：不同点在于客户端要读取数据时，发送PASV命令到服务器，服务器在本地随机开发一个端口，并告知客户端，客户端再连接到服务器开发的端口进行数据传输。</li>
+</ul>
+<p>主动模式传送数据时服务器连接到客户端的端口；被动模式传送数据时客户端连接到服务器的端口。</p>
+<h1 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h1><h2 id="1-电子邮件系统的组成节后"><a href="#1-电子邮件系统的组成节后" class="headerlink" title="1.电子邮件系统的组成节后"></a>1.电子邮件系统的组成节后</h2><p>电子邮件是一种异步通信方式。<br>一个电子邮件系统应具有三个最重要的组件：用户代理、邮件服务器和电子邮件使用的协议。</p>
+<ul>
+<li><strong>用户代理</strong>：用户和电子邮件系统的接口。</li>
+<li><strong>邮件服务器</strong>：它的功能是发送和接收邮件，同时还要向发件人报告邮件传送的情况。</li>
+<li><strong>邮件发送协议和读取协议</strong>：邮件发送协议用于用户代理向邮件服务器发送邮件或在邮件服务器之间发送邮件。<br>需要主要的是，SMTP用的是<strong>推</strong>的通信方式。POP0用的是<strong>拉</strong>的通信方式。</li>
+</ul>
+<p>电子邮件的收发过程：</p>
+<ul>
+<li>发件人调用用户代理来撰写和编辑哟啊发送的邮件。</li>
+<li>邮件撰写完后，发件人电力“发送邮件”按钮，把发送邮件的工作全都交给用户代理来完成，就什么都不用管了。用户代理用SMTP把邮件传送给发送端邮件服务器。</li>
+<li>发送端邮件服务器将邮件放入邮件缓存队列中，等待发送。</li>
+<li>发送端邮件服务器的SMTP客户与接收端邮件服务器的SMTP服务器建立TCP连接，然后就把邮件缓存矩阵中的邮件依次发送出去。注意，邮件是直接传送到接收端邮件服务器的，而不会在互联网的某个中间邮件服务器落地。</li>
+<li>运行在接收端邮件服务器中的SMTP服务器进程收到邮件后，将邮件放入收件人的用户邮箱，等待收件人在方便时进行读取。</li>
+<li>收件人打收信时，调用用户代理，使用POP3（或IMAP）协议将自己的邮件从接收端邮件服务器的用户邮箱中取回。</li>
+</ul>
+<h2 id="2、电子邮箱格式和MIME"><a href="#2、电子邮箱格式和MIME" class="headerlink" title="2、电子邮箱格式和MIME"></a>2、电子邮箱格式和MIME</h2><p>一个电子邮件分为<strong>信封</strong>和<strong>内容</strong>两大部分，邮件内容分为<strong>首部</strong>和<strong>主体</strong>两部分。<br><strong>To</strong>是必填的关键字，后面填入一个或多个收件人的电子邮件地址。<br><strong>Subject</strong>是可选关键字，是邮件的主题。<br><strong>From</strong>是一个必填的关键字，但它通常由邮件系统自动填入。</p>
+<p><strong>多用途因特网邮件扩展（MIME）</strong><br>MIME并未改动SMTP或取代他。当发送端发送的邮件中包含有非ASCII码数据时，不直接使用SMTP进程传送，而是通过MIME进行转换，并非ASCII码数据转换为ASCII码数据。之后，就可以使用SMTP进行传送。接收端也要使用MIME对接收到的ASCII码数据进行行逆转换，以便可以得到包含有非ASCII码数据的邮件。</p>
+<p>MIM主要包含以下三部分内容：</p>
+<ul>
+<li>5个新的邮件首部字段，包括MIME版本、内容描述、内容标识、传送编码和内容类型。</li>
+<li>定义了许多邮件内容的格式，对多媒体电子邮件的表示方法进行了标准化。</li>
+<li>定义了传送编码，可对任何内容格式进行转换，而不会被邮件系统改变。</li>
+</ul>
+<h2 id="3-SMTP和POP3"><a href="#3-SMTP和POP3" class="headerlink" title="3.SMTP和POP3"></a>3.SMTP和POP3</h2><p><strong>SMTP</strong><br><strong>简单邮件传输协议</strong>（SMTP）是一种提供可靠且有效的电子邮件传输的协议，它控制两个相互通信的SMTP进程叫唤信息。采用<strong>客户&#x2F;服务器模式</strong>，用的是<strong>TCP连接</strong>，端口号是<strong>25</strong>。<br>SMTP通信有以下三个阶段：</p>
+<ul>
+<li>连接建立<br>注：TCP连接总是在发送方和接收方这两个邮件服务器之间直接建立。</li>
+<li>邮件传送<br>RCPT指令的作用是，先弄清接收方系统是否已做好节后邮件的准备，然后才发送邮件。</li>
+<li>连接释放</li>
+</ul>
+<p><strong>POP3和IMAP</strong><br><strong>邮局协议</strong>（POP）是一个非常简单但功能有限的邮件读取协议，POP也采用<strong>客户&#x2F;服务器模式</strong>，在传输层使用<strong>TCP</strong>，端口号是<strong>110</strong>。<br>接收方的用户代理必须运行POP客户程序。<br>POP有<strong>两种工作模式</strong>：</p>
+<ul>
+<li><strong>下载并保留</strong>：用户从邮件服务器上读取邮件后，邮件依然会保存在邮件服务器上，用户可再次从服务器上读取该邮件。</li>
+<li><strong>下载并删除</strong>：邮件一旦被读取，就被从邮件服务器上删除。</li>
+</ul>
+<p><strong>因特网报文存取协议</strong>（IMAP），IMAP为用户通过了创建文件夹、在不同文件夹之间移动邮件及在远程文件夹中查询邮件等联机命令。<br>IMAP允许用户代理只获取报文的某些部分。</p>
+<p>此外，用户浏览器与Hotmail或Gmail的邮件服务器之间的邮件发送或接收使用规定是HTTP，而仅在不同邮件服务器之间传送邮件时才使用SMTP。</p>
+<h1 id="网维网"><a href="#网维网" class="headerlink" title="网维网"></a>网维网</h1><h2 id="1-WWW的概念与组成结构"><a href="#1-WWW的概念与组成结构" class="headerlink" title="1.WWW的概念与组成结构"></a>1.WWW的概念与组成结构</h2><p>万维网（WWW）是一个分布式、联机式的信息存储空间，这个空间中：一样有用的事物称为一样资源，并由一个全域**统一资源定位符（URL）**标识。这些资源通过超文本传输协议（HTTP）传送给使用者，而后者通过点击链接来获取资源。<br>万维网的内核部分是由三个标准构成的：</p>
+<ul>
+<li><strong>统一资源定位符（URL）</strong>。负责表示万维网上的各种文档，并使每个文档在整个万维网的范围内具有唯一的标识符URL。</li>
+<li><strong>超文本传输协议（HTTP）</strong>：一个应用层协议，它使用TCP连接进行可靠的传输，HTTP是万维网客户程序和服务器程序之间交互所必须严格遵守的协议。</li>
+<li><strong>超文本标记语言（HTML）</strong>：一种文档结构的标记语言，它使用一些约定的标记对页面上的各种信息、格式进行描述。</li>
+</ul>
+<p>URL的一般形式是：&lt;协议&gt;:&#x2F;&#x2F;&lt;主机&gt;:&lt;端口&gt;&#x2F;&lt;路径&gt;</p>
+<p>万维网以客户&#x2F;服务器模式工作，工作流程如下：</p>
+<ul>
+<li>Web用户使用浏览器（指定URL）与Web服务器建立连接，并发送浏览请求。</li>
+<li>Wen服务器把URL转换为文件路径，并返回信息给Web浏览器。</li>
+<li>通信完成，关闭连接。</li>
+</ul>
+<h2 id="2-超文本传输协议-HTTP"><a href="#2-超文本传输协议-HTTP" class="headerlink" title="2.超文本传输协议 HTTP"></a>2.超文本传输协议 HTTP</h2><p>HTTP是<strong>面向事务</strong>的应用层协议。<br>HTTP操作过程（万维网的操作过程），用户点击鼠标后发生的实践顺序如下（以访问清华大学的网站为例）：</p>
+<ul>
+<li>浏览器分析连接指向页面的URL（<a href="http://www.tsinghua.edu.cn/chn/index.htm%EF%BC%89%E3%80%82">http://www.tsinghua.edu.cn/chn/index.htm）。</a></li>
+<li>浏览器向DNS请求<a href="http://www.tsinghua.edu.cn的ip地址./">www.tsinghua.edu.cn的IP地址。</a></li>
+<li>域名系统DNS解析出清华大学服务器的IP地址。</li>
+<li>浏览器与该服务器建立TCP连接（默认端口号为80）。</li>
+<li>浏览器发出HTTP请求：GET&#x2F;chn&#x2F;index.htm。</li>
+<li>服务器通过HTTP响应把文件index.htm发送给浏览器。</li>
+<li>释放TCP连接。</li>
+<li>浏览器解析文件index.htm，并将Web页显示给用户。</li>
+</ul>
+<p><strong>HTTP的特点</strong><br>HTTP使用TCP作为传输层协议。<br>HTTP本身是无连接的。<br>HTTP是无状态的。HTTP通常使用Cookie加数据库的方式来跟踪用户的活动。</p>
+<p><strong>HTTP页面请求时间的分析</strong><br>对于<strong>非持续连接</strong>，每个页面元素对象的传输都需要单独建立一个TCP连接，如图6.12所示。请求一个万维网文档所需的时间是该文档的传输时间加上两倍往返时间RTT。<br>对于<strong>持续连接</strong>，是指万维网服务器在发送响应后仍然保持这条连接，使同一个客户和该服务器可以继续在这条TCP连接上传送后续的HTTP请求报文和响应，如图6.13所示。<br><img src="/img/408/y3.png" alt="图片说明文字"></p>
+<p><strong>HTTP&#x2F;1.1页面请求时间分析</strong><br>HTTP&#x2F;1.1默认使用持续连接，持续连接又分为非流水线和流水线两种工作方式。<br>对于<strong>非流水线方式</strong>，客户在收到前一个响应后才能发出下一个请求。<br>对于<strong>流水线方式</strong>，客户可以连续发出对各种对象的请求，服务器就可连续响应这些请求。</p>
+<p>HTTP是基于TCP的，所以每RTT内传送的数据量还要受到TCP发送窗口的限制。</p>
+<p><strong>HTTP的报文结构</strong><br>HTTP是<strong>面向文本</strong>的，有两类HTTP报文：</p>
+<ul>
+<li><strong>请求报文</strong>：从客户向服务器发送的请求报文。</li>
+<li><strong>响应报文</strong>：从服务器到客户的回答。<br><img src="/img/408/y4.png" alt="图片说明文字"><br>两类报文都由三部分组成：</li>
+<li><strong>开始行</strong>：在请求报文中的开始行称为<strong>请求行</strong>，而在响应报文中的开始行称为<strong>状态行</strong>。</li>
+<li><strong>首部行</strong>：用来说明浏览器、服务器或报文主体的一些信息。</li>
+<li><strong>实体主体</strong>：在请求报文中一班不用这个字段，而在响应报文中也可能没有这个字段。</li>
+</ul>
+<p>表 6  HTTP 请求报文中常用的几个方法</p>
+<table>
+<thead>
+<tr>
+<th>方法（操作）</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>请求读取由 URL 标识的信息</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>请求读取由 URL 标识的信息的首部</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>给服务器添加信息（如注释）</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>在指定 URL 处存储一个文档</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除由 URL 标识的资源</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>用于代理服务器</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>408-计算机网络</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>计算机网络</tag>
+        <tag>应用层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2026/04/13/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>[408] [计算机网络] 物理层</title>
+    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%89%A9%E7%90%86%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a>通信基础</h1><p>数据和信号都有模拟和数字之分：</p>
+<ul>
+<li>模拟数据（或模拟信号）的取值是连续的。</li>
+<li>数字数据（或数字信号）的取值是离散的。</li>
+</ul>
+<p>从通信双方信息的交互方式来看，可分为三种基本方式：</p>
+<ul>
+<li><strong>单项通信</strong>：只有一个方向的通信而没有反方向的交互。</li>
+<li><strong>半双工通信</strong>：通信双方都可发送或接受信息，但任何一方都不能同时发送和接受信息。</li>
+<li><strong>全双工通信</strong>：通信双方可同时发送和接受信息。</li>
+</ul>
+<p><strong>码元</strong>：在通信系统中，常用一个固定时长的信号波形表示一个k进制数，这个时长内的信号称为码元（也称k进制码元），而该时长称为码元宽度（也称信号周期）。<br><strong>码元传输速率</strong>：又称波特率或调制速率，表示数字通信系统每秒传输的码元数，单位是波特（Baud）。<br><strong>信号传输速率</strong>：又称比特率，表示数字通信系统每秒传输的比特数，单位是比特&#x2F;秒（b&#x2F;S）。<br><strong>带宽</strong>：又称频率带宽，用来表示某个信道所能传输信号的频率范围，即最高频率与最低频率之差，单位是赫兹（Hz）。<br><img src="/img/408/w1.png" alt="图片说明"></p>
+<h2 id="1、奈奎斯特定理（奈氏准则）"><a href="#1、奈奎斯特定理（奈氏准则）" class="headerlink" title="1、奈奎斯特定理（奈氏准则）"></a>1、奈奎斯特定理（奈氏准则）</h2><p><img src="/img/408/w2.png" alt="图片说明"><br>有以下结论：</p>
+<ul>
+<li>在任何信道中，码元传输速率是有上限的。</li>
+<li>信道的带宽越大，则传输码元的能力越强。</li>
+<li>奈氏准则给出了码元传播速率的限制，但并未限制信息传播速率。</li>
+</ul>
+<h2 id="2-香农定理"><a href="#2-香农定理" class="headerlink" title="2 香农定理"></a>2 香农定理</h2><p><img src="/img/408/w3.png" alt="图片说明"><br>有以下结论：</p>
+<ul>
+<li>信道的带宽或信道中的信噪比越大，信息的极限传播速率越高。</li>
+<li>对一定的传播宽带和一定的信噪比，信息传播速率的上限是确定的。</li>
+<li>只要信息传播速率低于信道的极限传播速率，就能找到某种方法实现无差错的传输。</li>
+</ul>
+<h1 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h1><p><strong>编码</strong>：将数据转换为数字信号的过程。<br><strong>调制</strong>：将数据转换为模拟信号的过程。</p>
+<h2 id="1-数字数据编码为数字信号"><a href="#1-数字数据编码为数字信号" class="headerlink" title="1.数字数据编码为数字信号"></a>1.数字数据编码为数字信号</h2><p><img src="/img/408/w4.png" alt="图片说明"></p>
+<h2 id="2-模拟数据编码为数字信号"><a href="#2-模拟数据编码为数字信号" class="headerlink" title="2.模拟数据编码为数字信号"></a>2.模拟数据编码为数字信号</h2><p>三个步骤：</p>
+<ul>
+<li><strong>采用</strong>：对模拟信号进行周期性扫描，将时间上连续的信号变为时间上离散的信号。</li>
+<li><strong>量化</strong>：将采样得到的电平幅值按照一定的分级标度转换为对应的数值并取整。</li>
+<li><strong>编码</strong>：将量化得到的离散整数转换为与之对应的二进制编码。</li>
+</ul>
+<h2 id="3-数字信号调制为模拟信号"><a href="#3-数字信号调制为模拟信号" class="headerlink" title="3. 数字信号调制为模拟信号"></a>3. 数字信号调制为模拟信号</h2><p><img src="/img/408/w5.png" alt="图片说明"><br>关于正交幅度调和（QAM）有：<br>设比特率为B，采用m个相位，每个相位有n中振幅，则该QAM的数据传播速率R为<br>$R&#x3D;B \log_2 mn$ （单位为v&#x2F;s）</p>
+<h1 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h1><h2 id="1-双绞线，同轴电缆，光缆"><a href="#1-双绞线，同轴电缆，光缆" class="headerlink" title="1.双绞线，同轴电缆，光缆"></a>1.双绞线，同轴电缆，光缆</h2><p><img src="/img/408/w7.png" alt="图片说明"></p>
+<h2 id="2-无线传输介质"><a href="#2-无线传输介质" class="headerlink" title="2.无线传输介质"></a>2.无线传输介质</h2><p><strong>（1）无线电波</strong><br>具有较强的穿透能力，可以传输很长的距离。<br><strong>（2）微波、红外线和激光</strong><br>都有很强的指向性。不同的是，红外线通信和激光通信将要传输的信号分别转化为各自的信号格式，即红外线信号和激光信号，再直接在空间中传播。<br>微波通信的信号是沿直线传播的，因此在地面上的传播距离有限，超过一定距离后需要使用中继站。<br>卫星通信利用地球同步卫星作为中继站来转发微波信号，优点是通信容量大、距离远、覆盖广，缺点是保密性差、端到端传播时时延长。</p>
+<h2 id="3-物理层的接口特性"><a href="#3-物理层的接口特性" class="headerlink" title="3.物理层的接口特性"></a>3.物理层的接口特性</h2><p><img src="/img/408/w6.png" alt="图片说明"></p>
+<h1 id="物理层设备"><a href="#物理层设备" class="headerlink" title="物理层设备"></a>物理层设备</h1><p><img src="/img/408/w8.png" alt="图片说明"></p>
+]]></content>
+      <categories>
+        <category>408-计算机网络</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>计算机网络</tag>
+        <tag>物理层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>欢迎来到我的博客！</title>
+    <url>/2026/06/15/welcome/</url>
+    <content><![CDATA[<p>Hello! 欢迎大家来到我的个人博客。我是 <strong>星阑</strong>，目前是一名<strong>网络空间安全</strong>专业的本科在读生。</p>
+<p>这里会不定期分享我的学习笔记、代码记录以及生活中的一些趣事。目前博客还在建设中，随便写点内容当作主页的问候语啦～</p>
+<p>如果你对数据分析、机器学习、信息安全或者是其他技术内容感兴趣，可以通过阅读我的文章来一起交流讨论。</p>
+<p>祝你今天过得愉快！</p>
+<h2 id="📄-学术论文"><a href="#📄-学术论文" class="headerlink" title="📄 学术论文"></a>📄 学术论文</h2><ul>
+<li>J. Gao, R. Zhao, X. Tao, X. Xiong and Y. Zhang, “Visual Semantics Oriented Video Privacy Protection Balancing Privacy and Visual Usability,” in IEEE Transactions on Circuits and Systems for Video Technology, doi: <a href="https://doi.org/10.1109/TCSVT.2026.3701276">10.1109&#x2F;TCSVT.2026.3701276</a></li>
+<li>Su, M., Gao, J., Zhao, R. et al. Visually meaningful encryption for UAV image management achieving a balance between privacy and visual usability. Peer-to-Peer Netw. Appl. 19, 15 (2026). <a href="https://doi.org/10.1007/s12083-025-02127-0">https://doi.org/10.1007/s12083-025-02127-0</a></li>
+</ul>
+<h2 id="🏆-竞赛获奖"><a href="#🏆-竞赛获奖" class="headerlink" title="🏆 竞赛获奖"></a>🏆 竞赛获奖</h2><h3 id="国家级奖项"><a href="#国家级奖项" class="headerlink" title="国家级奖项"></a>国家级奖项</h3><ul>
+<li><strong>二等奖</strong>：2025 年 ISCC 全国大学生信息安全与对抗技术大赛破阵夺旗赛</li>
+<li><strong>二等奖</strong>：2025 年全国高校密码数学挑战赛</li>
+<li><strong>二等奖</strong>：2025 年 ISCC 全国大学生信息安全与对抗技术大赛博弈对抗赛</li>
+<li><strong>二等奖</strong>：2025 年商业精英挑战赛创业计划赛道</li>
+<li><strong>二等奖</strong>：2024 年睿抗机器人开发者大赛网络安全赛项</li>
+<li><strong>三等奖</strong>：2025 年 ISCC 全国大学生信息安全与对抗技术大赛无限擂台赛</li>
+<li><strong>三等奖</strong>：2025 年第十八届全国大学生信息安全竞赛暨第二届 “长城杯” 铁人三项赛（防护赛）全国半决赛</li>
+<li><strong>国家级奖项</strong>：2026 年计算机设计大赛</li>
+<li><strong>全国百强团队</strong>：2025 年 “调研中国”</li>
+<li><strong>全国优秀团队</strong>：2025 年 “调研中国”</li>
+</ul>
+<h3 id="区域及省级奖项"><a href="#区域及省级奖项" class="headerlink" title="区域及省级奖项"></a>区域及省级奖项</h3><ul>
+<li><strong>中南赛区一等奖</strong>：2025 年高校数学密码挑战赛</li>
+<li><strong>中南赛区二等奖</strong>：2024 年高校数学密码挑战赛</li>
+<li><strong>省级一等奖</strong>：2025 年江西省信息安全技术大赛决赛</li>
+<li><strong>省级一等奖</strong>：2026 年计算机设计大赛</li>
+<li><strong>省级一等奖</strong>：2024 年江西省信息安全技术大赛决赛</li>
+<li><strong>省级二等奖</strong>：2025 年计算机设计大赛</li>
+<li><strong>省级二等奖</strong>：2024 年睿抗机器人开发者大赛网络安全赛项</li>
+<li><strong>省级二等奖</strong>：2025 年蓝桥杯全国软件和信息技术专业人才大赛网络安全赛项</li>
+<li><strong>省级三等奖</strong>：2025 年睿抗机器人开发者大赛编程技术赛项</li>
+<li><strong>省级三等奖</strong>：2024 年 “长城杯” 铁人三项赛（防护赛）</li>
+</ul>
+<h2 id="💻-项目"><a href="#💻-项目" class="headerlink" title="💻 项目"></a>💻 项目</h2><ul>
+<li><strong>国家级</strong>：2026年大学生创新创业训练项目</li>
+<li><strong>省级</strong>：2026年大学生创新创业训练项目</li>
+<li><strong>省级</strong>：2025年大学生创新创业训练项目 - 良好结项</li>
+<li><strong>省级</strong>：2025年大学生创新创业训练项目 - 合格结项</li>
+<li><strong>校级</strong>：2025年发展型资助项目</li>
+<li><strong>校级</strong>：2025年发展型资助项目</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>[408] [计算机网络] 数据链路层</title>
+    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="数据链路层的功能"><a href="#数据链路层的功能" class="headerlink" title="数据链路层的功能"></a>数据链路层的功能</h1><p>封装成帧、透明传输和差错检测。<br><strong>数据链路层使用的信道</strong>主要有两种：</p>
+<ul>
+<li><strong>点对点信道</strong>：使用一对一的通信方式。PPP则是目前使用最广泛的点对点协议。</li>
+<li><strong>广播信道</strong>：使用一对多的广播信道方式。采用共享广播信道的有线局域网普遍使用CSMA&#x2F;CD协议，而无线局域网则使用CSMA&#x2F;CA协议。</li>
+</ul>
+<p><img src="/img/408/s1.png" alt="图片说明"></p>
+<h1 id="组帧"><a href="#组帧" class="headerlink" title="组帧"></a>组帧</h1><p><img src="/img/408/s2.png" alt="图片说明"><br><strong>违规编码法</strong>：借用这些违规编码序列来定界帧的起始和终止。局域网IEEE 802标准就采用了这种方式。违规编码法不采用任何填充技术便能实现数据的透明传输，但只使用于采用冗余编码的特殊编码环境。<br>目前最常用的组帧方法是<strong>零比特填充法和违规编码法</strong>。</p>
+<h1 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h1><p><img src="/img/408/s3.png" alt="图片说明"></p>
+<p>通常利用编码技术进行差错控制，主要有两种：</p>
+<ul>
+<li><strong>自动重传技术（ARQ）</strong></li>
+<li><strong>前向纠错（FFC）</strong></li>
+</ul>
+<p>差错控制又可分为<strong>检错编码</strong>和<strong>纠错编码</strong>。</p>
+<h2 id="1-纠错编码"><a href="#1-纠错编码" class="headerlink" title="1.纠错编码"></a>1.纠错编码</h2><p>纠错编码都采用冗余编码技术。<br>常见的纠错编码有奇偶检验吗和循环冗余码。</p>
+<ul>
+<li><strong>奇偶校验码</strong>：见上图。</li>
+<li><strong>循环冗余码</strong>：<br>1）收发双方约定一个生成多项式$G(x)$（要求最低位必须是1）。$k$位位串可视为阶数为$k-1$的多项式序列。例如，可用多项式$x^3+x^2+1$表示位串1101。<br>2）发送方基于待发送的数据和$G(x)$，计算出冗余码，将冗余码附加到数据后面一起发送。<br>3）接收方收到数据和冗余码后，通过$G(x)$来计算收到的数据和冗余码是否产生差错。</li>
+</ul>
+<p>*<strong>循环冗余码的计算</strong><br>假设一段m位数据，则计算冗余码的步骤如下：</p>
+<ul>
+<li>加0。假设$G(x)$的阶为$r$，在数据后面加$r$个0，相当于乘以$2^r$。</li>
+<li>模2除。利用模2除法，用$G(x)$对应的二级制串去除1）中计算得出的数据串，得到余数即为冗余码。</li>
+</ul>
+<p>按照模2运算法则，加位不进位，减位不借位，相当于对应位进行逻辑异或运算。</p>
+<p>计算举例：<br><img src="/img/408/s4.jpg" alt="图片说明"></p>
+<h2 id="2-纠错编码"><a href="#2-纠错编码" class="headerlink" title="2.纠错编码"></a>2.纠错编码</h2><p>最常见的为<strong>海明码</strong>，其实现原理是在有效信息位中加入几个检验位形成海明码，并把海明码的每个二进制位分配到几个奇偶校验组中。<br>海明码的编码原理和过程（以1010为例）：</p>
+<ul>
+<li><strong>确定海明码的位数</strong><br>设$n$为有效信息的位数，$k$为检验位的位数，则信息位$n$和校验位$k$应满足：<br>$n+k&lt;&#x3D;2^k-1$<br>海明码位数$4+3&#x3D;7&lt;&#x3D;2^3-1$成立，则$n&#x3D;4、k&#x3D;3$满足条件，设信息位为$D_4D_3D_2D_1$（1010），共4位，校验位为$P_3P_2P_1$，共3位，对应的海明码为$H_7H_6H_5H_4H_3H_2H_1$。</li>
+<li><strong>确定校验位的分布</strong><br>规定检验位$P_i$在海明位号为$2^{i-1}$的位置上，其余各位为信息位，因此有：<br>$P_1$的海明码位号为$2^{i-1}&#x3D;2^0&#x3D;1$，即$H_1$为$P_1$。<br>$P_2$的海明码位号为$2^{i-1}&#x3D;2^1&#x3D;2$，即$H_2$为$P_2$。<br>$P_3$的海明码位号为$2^{i-1}&#x3D;2^2&#x3D;4$，即$H_4$为$P_3$。<br>将信息位按原来的顺序放到其余位置，则海明码各位的分布如下：<br><img src="/img/408/s5.png" alt="图片说明"></li>
+<li><strong>分组以形成检验关系</strong><br>每个数据位用多个检验位进行检验，但要满足条件：被检验数据位的海明位号等于检验该数据位的各校验位海明位号之和。另外，检验位不需要再被检验。分组形成的检验关系如下：<br><img src="/img/408/s6.png" alt="图片说明"></li>
+<li><strong>检验位取值</strong><br>检验位$P_i$的值为第$i$组（由该检验位检验的数据位$所有位求异或。<br>根据（3）中的分组有<br>P₁校验 D₁, D₂, D₄ → P₁ &#x3D; D₁ ⊕ D₂ ⊕ D₄ &#x3D; 0 ⊕ 1 ⊕ 1 &#x3D; 0<br>P₂校验 D₁, D₃, D₄ → P₂ &#x3D; D₁ ⊕ D₃ ⊕ D₄ &#x3D; 0 ⊕ 0 ⊕ 1 &#x3D; 1<br>P₃校验 D₂, D₃, D₄ → P₃ &#x3D; D₂ ⊕ D₃ ⊕ D₄ &#x3D; 1 ⊕ 0 ⊕ 1 &#x3D; 0<br>所以，1010对应的海明码为1010010。</li>
+<li><strong>海明码的验证原理</strong><br>S₁ &#x3D; P₁ ⊕ D₁ ⊕ D₂ ⊕ D₄<br>S₂ &#x3D; P₂ ⊕ D₁ ⊕ D₃ ⊕ D₄<br>S₃ &#x3D; P₃ ⊕ D₂ ⊕ D₃ ⊕ D₄<br>若S的所得得知均为0，则无错；否则说明出错，且这个数就是错误位的位号。</li>
+</ul>
+<h1 id="流量控制与可靠传输机制"><a href="#流量控制与可靠传输机制" class="headerlink" title="流量控制与可靠传输机制"></a>流量控制与可靠传输机制</h1><p>  <img src="/img/408/s7.png" alt="图片说明"></p>
+<h2 id="1-流量控制与滑动窗口机制"><a href="#1-流量控制与滑动窗口机制" class="headerlink" title="1.流量控制与滑动窗口机制"></a>1.流量控制与滑动窗口机制</h2><p>创建的流量控制方法有两种：停止-等待协议和欢动窗口协议。</p>
+<ul>
+<li><strong>停止-等待流量控制基本原理</strong>：发送方每次只允许发送一个帧，接收方每接收一个帧都要反馈一个确定信号，表示可以接收下一帧，发送方收到确定信号后才能发送下一帧。</li>
+<li><strong>滑动窗口流量控制基本原理</strong>：发送窗口表示在还未收到对方确定信息的情况下，发送方最多还能发送多少个帧和哪些帧，</li>
+</ul>
+<p>数据链路层和传输层均有流量控制的功能，它们都用到了滑动窗口协议，但也有所不同，主要体现如下：</p>
+<ul>
+<li>数据链路层控制的是相邻节点之间的流量，而传输层控制的是端到端的流量。</li>
+<li>数据链路层的控制手段是接收方收不到时就不返回确定。传输层的控制手段是接收方通过确定报文段中的窗口值来调整发送方的发送窗口。</li>
+</ul>
+<p>发送窗口的工作原理如下图：<br>  <img src="/img/408/s8.png" alt="图片说明"></p>
+<p>接收窗口的工作原理如下图：<br>  <img src="/img/408/s9.png" alt="图片说明"></p>
+<p>滑动窗口具有以下重要特性：</p>
+<ul>
+<li>只有接收窗口向前滑动（同时接收方发送了确定）时，发送窗口才有可能（只有发送方收到确定后才一定）向前滑动。</li>
+<li>从滑动窗口的概念看，停止-等待协议与后退$N$帧协议和选择重传协议只在发送窗口大小与接收窗口大小上有所差别：<br><strong>停止-等待协议</strong>：发送窗口$W_T&#x3D;1$，接收窗口$W_R&#x3D;1$。<br><strong>后退$N$帧协议</strong>：发送窗口$W_T&gt;1$，接收窗口$W_R&#x3D;1$。<br><strong>选择重传协议</strong>：发送窗口$W_T&gt;1$，接收窗口$W_R&gt;1$。<br>若采用$n$比特对帧编号，则后两种滑动窗口协议还需满足$W_T+W_R&lt;&#x3D;2^n$。</li>
+<li>当接收窗口大小为1时，只有收到该帧后才允许接收下一帧，因此可保证帧的有序接收。</li>
+<li>在数据链路层的滑动窗口协议中，窗口大小在传输过程中是固定的（与传输层不同）。</li>
+</ul>
+<h2 id="2-可靠传输机制"><a href="#2-可靠传输机制" class="headerlink" title="2.可靠传输机制"></a>2.可靠传输机制</h2><p><img src="/img/408/s10.png" alt="图片说明"><br>通常采用<strong>确定</strong>和<strong>超时重传</strong>两种机制来实现。<br>使用这两种机制的可靠传输协议称为<strong>自动重传请求（ARQ）</strong>，在ARQ协议中，数据帧和确定帧都必须编号。ARQ协议分为三种：停止-等待协议，后退$N$帧协议和选择重传协议。</p>
+<ul>
+<li><strong>单帧滑动窗口与停止-等待协议（S-W）</strong><br>发送方每次只发送一个帧，当发送方收到接收方的确定帧之后，才可以发送下一个帧。<br>在停止-等待协议中，可能出现两种差错：<br>1）数据帧出错或丢失。<br>2）确定帧出错或丢失。<br>对于停止-等待协议，由于每发送一个数据帧就停止等待，只需保证每次发送的新数据帧的序号与上次发送的数据帧的序号不同，因此用1比特来编号就足够。</li>
+<li><strong>多帧滑动窗口与后退$N$帧协议（GBN）</strong><br>发丝方可在未收到确定帧的情况下，将序号在发送窗口内的多个数据帧全部发送出去。<br>发送方发送$N$个数据帧后，若发现这$N$个帧的前一个数据帧在计时器超时的时候未收到其确定信息，则该帧被判为出错或丢失，此时发送方不得不重传该出错帧及随后的$N$个帧。<br>接收方只允许按顺序接收帧。<br>GDN协议的工作原理如下图：<br><img src="/img/408/s11.png" alt="图片说明"><br><strong>GBN发送窗口的意义&#x2F;最大尺寸</strong><br>若采用$n$比特对帧编号，则其发送窗口$W_T$应满足$1&lt;&#x3D;Q_T&lt;&#x3D;2^N-1$。<br>后退N帧协议的接收窗口$W_R&#x3D;1$，可保证按序接收数据帧。</li>
+<li><strong>多帧滑动窗口与选择重传协议（SR）</strong><br>为了使发送方仅重传出错的帧，接收方不能再采用累积确定，而要对每个正确接收的数据帧逐一进行确认。<br>一旦接收方检测到某个数据帧出错，就向发送方发送一个否定帧NAK，要发送方立即重传NAK指定的数据帧。<br>SR协议的工作原理如下图所示：<br><img src="/img/408/s12.png" alt="图片说明"><br>选择重传协议的接收窗口$W_R$和发送窗口$W_T$都大于1。<br>若采用$n$比特对帧编号，还需满足条件$W_R+W_T&lt;&#x3D;2^n$和$W_R&lt;&#x3D;W_T$。一般情况下，$W_R&#x3D;W_T$。</li>
+</ul>
+<h2 id="3-信道利用率分析"><a href="#3-信道利用率分析" class="headerlink" title="3.信道利用率分析"></a>3.信道利用率分析</h2><p><img src="/img/408/s13.png" alt="图片说明"><br>1）<strong>停止-等待协议的信道利用率</strong><br>信道利用率低。<br>[<br>U &#x3D; \frac{T_D}{T_D + RTT + T_A}<br>]<br>RTT为往返时延。<br>2）<strong>连续ARQ协议的信道利用率</strong><br>设连续 ARQ 协议的发送窗口大小为 $N$（最多可连续发送 $N$ 个分组），分为两种情况：</p>
+<ul>
+<li>若 $NT_D &lt; T_D + RTT + T_A$：即在一个发送周期内可发送完 $N$ 个分组，此时，信道无法被完全占满，信道利用率为<br>[<br>U &#x3D; \frac{NT_D}{T_D + RTT + T_A}<br>]</li>
+<li>若 $NT_D \ge T_D + RTT + T_A$：即在一个发送周期内发不完（或刚好发完）$N$ 个分组，只要无差错发生，发送方可持续不间断地发送，信道被完全利用，此时信道利用率 $U &#x3D; 1$</li>
+</ul>
+<h1 id="介质控制访问"><a href="#介质控制访问" class="headerlink" title="介质控制访问"></a>介质控制访问</h1><p><img src="/img/408/s14.png" alt="图片说明"><br><img src="/img/408/s15.png" alt="图片说明"></p>
+<p>常见的介质访问控制方法有信道划分介质访问控制、随机访问介质访问控制和轮询访问介质访问控制。其中前者是静态划分信道的方法，而后两者是动态分配信道的方法。</p>
+<h2 id="1-信道划分介质访问控制"><a href="#1-信道划分介质访问控制" class="headerlink" title="1.信道划分介质访问控制"></a>1.信道划分介质访问控制</h2><p>将使用同一传输介质的多个设备的通信隔离开来，把时域和频域资源合理地分配给这些设备。信道划分介质访问控制通过复用技术实现。<br>信道划分的实质是通过分时、分频、分码等方式。</p>
+<h3 id="1-1-时分复用（TDM）"><a href="#1-1-时分复用（TDM）" class="headerlink" title="1.1 时分复用（TDM）"></a>1.1 时分复用（TDM）</h3><p>时分复用（TDM）是指将信道的传输时间划分为一段段等长的时间片，称为TDM帧，每个用户在每个TDM帧中占用固定序号的时隙，每个用户所占用的时隙周期性地出现，所有用户在不同的时间占用同样的信道资源。<br>统计时分复用（STDM）也称为异步时分复用，它是对TDM的一种改进。STDM帧与TDM帧不同，它并不固定分配时隙，因此可以提高线路的利用率。</p>
+<h3 id="1-2-频分复用（FDM）"><a href="#1-2-频分复用（FDM）" class="headerlink" title="1.2 频分复用（FDM）"></a>1.2 频分复用（FDM）</h3><p>频分复用是是指将信道的总频带划分为多个子频带，每个子频带作为一个子信道，每个用户使用一个子信道进行通信，所有用户在同一时间占用不同的频带资源。<br>总和不能超过信道的总频带。</p>
+<h3 id="1-3-波分复用（WDM）"><a href="#1-3-波分复用（WDM）" class="headerlink" title="1.3 波分复用（WDM）"></a>1.3 波分复用（WDM）</h3><p>波分复用即光的频分复用，它在一根光纤中传播多种不同波长（频率）的光信号，因为波长不同，各路光信号互不干扰，最后用光分用器将各路波长分解出来。因为光波处于频谱的高频段，有很大的带宽，所以可以实现多路的波分复用。</p>
+<h3 id="1-4-码分复用（CDM）"><a href="#1-4-码分复用（CDM）" class="headerlink" title="1.4 码分复用（CDM）"></a>1.4 码分复用（CDM）</h3><p>码分复用是采用不同的编码来区分各路原始信号的一种复用方式。<br>码分多址（CDMA)，其愿意是将每个比特时间再划分成m个短的时间槽，称为码片。<br>下面举例说明CMDA的原理：<br><img src="/img/408/s16.png" alt="图片说明"><br><img src="/img/408/s17.png" alt="图片说明"><br>码分复用中数据分离的计算如下：<br><img src="/img/408/s18.png" alt="图片说明"></p>
+<h2 id="2-随机访问介质访问控制"><a href="#2-随机访问介质访问控制" class="headerlink" title="2.随机访问介质访问控制"></a>2.随机访问介质访问控制</h2><p>为了解决随机访问发生的冲突，每个用户需要按照一定的规则反复地重传它的帧，直到该帧无冲突地通过，这些规则就是随机访问介质访问控制协议。<br>其核心思想是：胜利者通过争用获得信道，进而获得信息的发送权。因此，随机访问介质访问控制协议也成为争用型协议。<br>随机介质访问控制实质上是一种将广播信道转换为点到点信道的机制。</p>
+<h3 id="2-1-ALOHA协议"><a href="#2-1-ALOHA协议" class="headerlink" title="2.1 ALOHA协议"></a>2.1 ALOHA协议</h3><p>当总线形网络中的任何站点需要发送数据时，可以不进行任何检测就发送数据。若在一段时间内未收到确定，则该站点就认为传输过程中发送了冲突。发送站点需要等待一段随机的时间后再发送数据，直到发送成功。<br>纯ALOHA协议的工作原理如下图：<br><img src="/img/408/s19.png" alt="图片说明"></p>
+<p>纯ALOHA网络的吞吐量很低，为了克服这个缺点，便产生了时隙，便产生了时隙ALOHA协议。<br>时隙ALOHA协议<br>将时间划分为一段段等长的时隙（Slot），规定站点只能在每个时隙开始时才能发送帧，发送一帧的时间必须小于或等于时隙的长度。这样就避免了用户发送数据的随意性，降低了产生冲突的可能性，提高了信道的利用率。<br>时隙ALOHA协议的工作原理<br><img src="/img/408/s20.png" alt="图片说明"></p>
+<h3 id="2-2-CSMA协议"><a href="#2-2-CSMA协议" class="headerlink" title="2.2 CSMA协议"></a>2.2 CSMA协议</h3><p>载波监听多路访问（CSMA协议）依据的主要思想：若每个站点在发送前都先监听公用信道，发现信道空闲后再发送，则会大大降低冲突的可能性。</p>
+<h3 id="2-2-1-1-坚持CSMA"><a href="#2-2-1-1-坚持CSMA" class="headerlink" title="2.2.1 1-坚持CSMA"></a>2.2.1 1-坚持CSMA</h3><p>当站点要发送数据时，首先监听信道；若信道空闲，则立即发送数据；若信道忙，则继续监听直到信道空闲。</p>
+<h3 id="2-2-2-非坚持CSMA"><a href="#2-2-2-非坚持CSMA" class="headerlink" title="2.2.2 非坚持CSMA"></a>2.2.2 非坚持CSMA</h3><p>当站点要发送数据时，首先监听信道；若信道空闲，则立即发送数据；若信道忙，则放弃监听，等待一个随机的时间后，再重新监听。</p>
+<h3 id="2-2-3-p-监听CSMA"><a href="#2-2-3-p-监听CSMA" class="headerlink" title="2.2.3 p-监听CSMA"></a>2.2.3 p-监听CSMA</h3><p>只适用于时分信道。<br>当站点要发送数据时，首先监听信道；若信道忙，则持续监听（等待下一个时隙再监听），直到信道空闲；若信道空闲，则以概率p发送数据，以概率1-p推迟到下一个时隙再继续监听；直到数据发送成功。</p>
+<h2 id="2-3-CSMA-CD-协议"><a href="#2-3-CSMA-CD-协议" class="headerlink" title="2.3 CSMA&#x2F;CD 协议"></a>2.3 CSMA&#x2F;CD 协议</h2><p>载波监听多路访问&#x2F;冲突检测（CSMA&#x2F;CD）协议。<br>适用于总线形网络或半双工网络环境。<br>载波监听是指每个站点在发送前和发送过程中都必须不停地检测信道，在发送前检测信道是为了获得发送权，在发送过程中检测信道是为了及时发现发送的数据是否发送冲突。<br>冲突检测：边发边检测，发送了冲突，适配器要立即停止发送数据，等待一段随机时间后再次发送。<br>CSMA&#x2F;CD的工作流程可概述为“<strong>先听后发，边听边发，冲突停发，随机重发</strong>”。<br><img src="/img/408/s21.png" alt="图片说明"><br>A站在开始发送数据后最多经过时间2$\tau$（端到端传播时延的2倍）就能知道有没有发送冲突。因此，把以太网的端到端往返传播时延2$\tau$成为<strong>争用期</strong>。<br><strong>最短帧长</strong>（争用期内可发送的数据长度）：<br>最短帧长&#x3D;最大单向传播时延×数据传输速率×2</p>
+<p><strong>二进制指数退避算法</strong><br>CSMA&#x2F;CD采用该算法来确定冲突后重传的时机。<br>算法要点如下：</p>
+<ul>
+<li>确定基本退避时间为一个争议期（端到端往返传播时延 $2\tau$）。</li>
+<li>从整数集合 $[0, 1, \dots, (2^k-1)]$ 中随机选取一个数 $r$，推迟时间为 $r$ 倍争用期，即 $2r\tau$。其中<br>$k &#x3D; \min[重传次数, 10]$，即重传次数 $\le 10$ 时，$k$ 等于重传次数；超过 10 次后，$k$ 不再增大，<br>恒为 10。</li>
+<li>若重传达 16 次仍失败，则判定网络过于拥塞，放弃该帧并向高层报告错误。</li>
+</ul>
+<p>以太网还规定帧间最小间隔为9.6us<br><strong>CSMA&#x2F;CD协议的归纳</strong>如下：</p>
+<ul>
+<li><strong>准备发送</strong>：适配器从网络层获得一个分组，封装成帧，放入适配器的缓存。</li>
+<li><strong>检测信道</strong>：若信道忙，则持续检测，直至信道转为空闲；若为9.6us的时间内信道保持空闲（保证帧间最小间隔），则发送这个帧。</li>
+<li>在发送过程中，适配器仍然持续检测信道，这里只有如下两种可能。<br>1）<strong>发送成功</strong>：在争用期内一直未检测到冲突，该帧肯定能发送成功。<br>2）<strong>发送失败</strong>：在争用期内检测到冲突，此时立即停止发送，适配器执行退避算法，等待一段时间后返回步骤2）。若重传16次仍不成功，则停止重传并上报错误。</li>
+</ul>
+<h2 id="2-4-CSMA-CA协议"><a href="#2-4-CSMA-CA协议" class="headerlink" title="2.4 CSMA&#x2F;CA协议"></a>2.4 CSMA&#x2F;CA协议</h2><p>802.11标准定义了广泛用于无线局域网的CSMA&#x2F;CA协议，将冲突检测改为冲突避免。<br>802.11标准使用<strong>链路层确定&#x2F;重传</strong>（ARQ）方案，即站点每通过无线局域网发送完一帧，就要在收到对方的确定帧后才能继续发送下一帧。<br>802.11标准无线局域网采用的停止-等待协议是一种可靠传输协议。<br>802.11标准规定，所有站检测到信道空闲后，还要等待一段很短的时间（继续监听）才能发送帧。这段时间成为<strong>帧间间隔（IFS）</strong>。<br>802.11标准使用了下列三种IFS:</p>
+<ul>
+<li><strong>SIFS（短IFS）</strong>：最短的IFS，用来分隔属于一次对话的各帧，使用SIFS的帧类型有ACK帧、CTS帧、分片后的数据帧，以及所有回答AP探询的帧等。</li>
+<li><strong>PIES（点协调IFS）</strong>：中等长度的IFS，在PCF方式是使用。</li>
+<li><strong>DIFS（分布式协调IFS）</strong>：最长的IFS，在DCF方式下用来发送数据帧和管理帧。</li>
+</ul>
+<p>802.11标准还规定各站采用<strong>虚拟载波监听机制</strong>，即让源站将它要占用信道的持续时间及时通知给所有其他站，以便使所有其他站在这段时间内都停止发送，以此降低冲突的概率。<br>同时，当且仅当检测到信道空闲且这个数据帧是要发送的第一个数据帧时，才不使用退避算法。</p>
+<p>使用退避算法的情况：</p>
+<ul>
+<li>在发送第一个帧之前检测到信道忙。</li>
+<li>每次重传。</li>
+<li>每次成功发送后要发送下一帧。</li>
+</ul>
+<p>CSMA&#x2F;CA的退避算法，第i次退避在$[0,……,(2^{2+k}-1]$个时隙中随机选择一个。</p>
+<p>CSMA&#x2F;CA算法的归纳如下：</p>
+<ul>
+<li>若站点首次尝试发送数据（非因重传而发送），且检测到信道空闲，则在等待时间 DIFS 后（信道持续空闲），立即发送整个数据帧。否则执行步骤 2）。</li>
+<li>站点选取一个随机数，设置退避计时器。计时器运行的规则是：若信道忙，则冻结计时器（暂停递减），并继续等待，直至信道变为空闲（称为推迟接入）；若信道空闲，且在时间 DIFS 内持续空闲，则开始争用信道，进行倒计时。当计时器减至 0 时（仅可能发生在信道持续空闲期间），站点立即发送整个数据帧并等待确认。</li>
+<li>发送站收到确认后，若仍有后续帧待发送，则转到步骤 2）。若在规定时间（由重传计时器控制）内未收到确认，则按二进制指数退避规则增大竞争窗口，再转到步骤 2）重新尝试。</li>
+</ul>
+<p>CSMA&#x2F;CA协议的<strong>信道预约方法</strong>（RTS和CTS）：</p>
+<ul>
+<li>源站发送数据之前，先监听信道，若信道空闲，则等待时间DIFS后，广播一个请求发送RTS控制帧，它包括原地址、目的地址和这次通信所需的持续时间。</li>
+<li>若AP正确收到RTS帧，且信道空闲，则等待时间SIFS后，广播一个允许发送CTS控制帧，它也包括这次通信所需的持续时间。</li>
+<li>源站收到CTS帧后，再等待时间SIFS，就可发送数据帧。</li>
+<li>若AP正确收到了源站发来的数据，则等待时间SIFS后就向源站发送确定帧ACK。</li>
+</ul>
+<p>AP覆盖范围内的其他站听到CTS帧后，将在CTS帧中指明的时间内抑制发送。CTS帧有两个目的：</p>
+<ul>
+<li>给源站明确的发送许可。</li>
+<li>指示其他站在预约期内不要发送。</li>
+</ul>
+<p><img src="/img/408/s22.png" alt="图片说明"></p>
+<p><strong>NAV值的分析</strong>：</p>
+<ul>
+<li>源站在RTS帧中填写的所需占用信道的持续时间，是从收到RTS帧后，到目的站最后发送完ACK帧为止的时间，即<strong>SIFSCTS+SIFS+数据帧+SIFS+ACK</strong>。</li>
+<li>AP在CTS帧中填写的所需占用信道的持续时间，是从收到CTS帧后，到目的站最后发送完ACK帧为止的时间，即<strong>SIFS+数据帧+SIFS+ACK</strong>。</li>
+<li>站点根据CTS帧中持续时间设置自己的<strong>网络分配向量（NAV）</strong>，NAV指出了信道忙的持续时间，意味着站A和AO以外的站点都不能再这段时间内发送数据。</li>
+</ul>
+<p><strong>CSMA&#x2F;CD与CSMA&#x2F;CA主要区别</strong>：</p>
+<ul>
+<li>CSMA&#x2F;CD可以检测冲突，但无法避免；CSMA&#x2F;CA发送数据的同时不能检测信道上有无冲突，本节点处没有冲突并不意味着在接收节点处就没有冲突，只能尽量避免。</li>
+<li>传播介质不同。CSMA&#x2F;CD用于总线形以太网，CSMA&#x2F;CA用于无线局域网802.11a&#x2F;b&#x2F;g&#x2F;n等。</li>
+<li>检测方式不同。CSMA&#x2F;CD通过电缆中的电压变化来检测；而CSMA&#x2F;CA采用能量检测、载波检测和能量载波混合检测信道空闲的方式。</li>
+</ul>
+<p><strong>总结</strong>：CSMA&#x2F;CA在发送数据帧之前先广播告知其他站点，让其他站点在某段时间内不要发送数据帧，以免发生冲突。CSMA&#x2F;CD在发送数据帧之前监听，边发送边监听，一旦发生冲突，就立即停止发送。</p>
+<h2 id="3-轮询访问：令牌传递协议"><a href="#3-轮询访问：令牌传递协议" class="headerlink" title="3. 轮询访问：令牌传递协议"></a>3. 轮询访问：令牌传递协议</h2><p>一个令牌沿着环形总线在各站之间依次传递。令牌是一个特殊的控制帧，它本身并不包含信息，仅控制信道的使用，确保同一时刻只有一个帧独占信道。<br>站点只有取得令牌后才能发送帧。<br>令牌非常适合负载很高的广播信道。<br>令牌环网络中令牌和数据的传递过程如下：</p>
+<ul>
+<li>当网络空闲时，环路中只有令牌帧在循环传递。</li>
+<li>当令牌传递到有数据要发送的站点时，该站点就修改令牌中的一个标志位，并在令牌中附加自己需要传输的数据，将令牌变成一个数据帧，然后将这个数据帧发送出去。</li>
+<li>数据帧沿着环路传输，接收到的站点一边转发数据，一边查看帧的目的地址。若目的地址和自己的地址相同，则接受站就复制该数据帧，以便进一步处理。</li>
+<li>数据帧沿着环路传输，直到到达该帧的源站点，源站点收到自己发出去的帧后便不再转发。同时，通过校验返回的帧来查看数据传输过程中是否出错，若出错，则重传。</li>
+<li>源站点传送完数据后，重新产生一个令牌，并传递给下一个站点，交出信道控制权。</li>
+</ul>
+<h1 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h1><p><strong>局域网的主要特点</strong>：</p>
+<ul>
+<li>为一个单位所拥有，且地理范围和站点数量均有限。</li>
+<li>所有站点共享较高的总带宽（较高的数据传输速率）。</li>
+<li>较低的时延和较低的误码率。</li>
+<li>各站为平等关系而非主从关系。</li>
+<li>能进行广播和多播。</li>
+</ul>
+<p>局域网的特性主要有三个要素决定：<strong>拓扑结构、传输介质、介质访问控制方式</strong>，其中最重要的是介质访问控制方式，它决定着局域网的技术特性。</p>
+<p>常见的局域网拓扑结构主要有：星形结构、环形结构、总线形结构、星形和总线形结合的符合性结构。</p>
+<p>局域网的介质访问控制方式主要有CSMA&#x2F;CD协议、令牌总线协议和令牌环协议。其中前两者协议主要用于总线形局域网，令牌环协议主要用于环形局域网。</p>
+<p>三种特殊的局域网拓扑实现如下：</p>
+<ul>
+<li><strong>以太网</strong>（目前使用范围最广）：逻辑拓扑是总线形结构，物理拓扑是星形结构。</li>
+<li><strong>令牌环（IEEE 802.5）</strong>：逻辑拓扑是环形结构，物理拓扑是星形结构。</li>
+<li><strong>FDDI（光纤分布数据接口，IEEE 802.8）</strong>：逻辑拓扑是环形结构，物理拓扑是星形结构。</li>
+</ul>
+<p>IEEE 805标准定义的局域网参考模型只对应OSI参考模型的<strong>数据链路层和物理层</strong>，并将数据链路层拆分为两个子层：<strong>逻辑链路控制（LLC）子层和介质访问控制（MAC）子层</strong>。</p>
+<ul>
+<li>MAC子层存放与接入传输介质有关的内容，向上层屏蔽对物理层访问的各种差异，主要功能包括：组帧和拆卸帧、比特传输差错检测、透明传输。</li>
+<li>LLC子层与传输介质无关，它面向网络层提供无确定无连接、面向连接、带确定无连接、告诉传送四种不同的连接服务类型。</li>
+</ul>
+<h2 id="1-以太网与IEEE-802-3"><a href="#1-以太网与IEEE-802-3" class="headerlink" title="1.以太网与IEEE 802.3"></a>1.以太网与IEEE 802.3</h2><p>以太网是目前最流行的有限局域网技术。<br>以太网采用两项措施来简化通信：</p>
+<ul>
+<li>采用无连接的工作方式，既不对发送的数据帧编号，又不要求接收方发送确认，即以太网仅最大努力交付数据，提供的是不可靠服务，对差错的纠正则由高层完成。</li>
+<li>发送的数据都使用曼切斯特编码的信号，每个码元的中间出现一次电压转换，接收方利用这种电压转换方便地将位同步信号提取出来。</li>
+</ul>
+<p>以太网常见的传播介质有四种：粗揽、细揽、双绞线和光纤。</p>
+<p>计算机与外界局域网的连接是通过主板上嵌入的一块**网络适配器（也称网络接口卡，NIC）**实现的。适配器和局域网的通信是通过电缆或双绞线以串行方式进行的。适配器的重要功能就是进行数据的串并转换。</p>
+<p><strong>以太网的MAC地址</strong><br>IEEE 802标准为局域网规定了一种<strong>48位</strong>的全球地址，是值局域网上的每台计算机中固化在网络适配器的ROM中的地址，称为物理地址或MAC地址。</p>
+<p><strong>以太网V2的MAC帧格式</strong><br><img src="/img/408/s23.png" alt="图片说明"><br><strong>以太网帧首部的内容、首部和尾部的长度</strong>：在帧面前插入的8字节前导码分为两个字段：第一个字段是7字节的前同步码，用来实现MAC帧的比特同步；第二个字段是1字节的帧开始定界符，表示后面的信息就是MAC帧。<br><strong>以太网帧中目的地址的源地址的含义</strong></p>
+<ul>
+<li><strong>目的地址</strong>：6字节，帧在局域网上的目的适配器的MAC地址。</li>
+<li><strong>源地址</strong>：6字节，传输帧到局域网上的源适配器的MAC地址。</li>
+<li><strong>类型</strong>：2字节，指出数据字段中的数据应交给哪个上层协议处理，如网络层的IP。</li>
+<li><strong>数据</strong>：46-1500字节。以太网帧必须满足最小长度是64字节，当IP数据报少于46字节时，MAC子层就在数据字段的后面加一个整数字节的填充字段，以确保帧长不小于64字节。</li>
+<li><strong>检验码（FCS）</strong>：4字节，检验范围从目的地址段到数据字段，算法采用32位CRC码，不但要检验MAC帧的数据部分，而且要检验目的地址、源地址和类型字段，但不检验前导码。</li>
+</ul>
+<p><strong>高速以太网</strong><br>速率达到或超过100Mb&#x2F;s的以太网称为高速以太网。</p>
+<ul>
+<li><strong>100DASE-T以太网</strong>：既支持全双工方式，又支持半双工方式，可在全双工方式下工作而无冲突发生，因此在全双工方式下不使用CSMA&#x2F;CD协议。</li>
+<li><strong>吉比特以太网</strong>：也称千兆以太网，允许在1Gb&#x2F;s速率下以全双工和半双工两种方式工作。在半双工方式下使用CSMA&#x2F;CD协议，而在全双工方式不使用CSMA&#x2F;CD协议。</li>
+<li><strong>10吉比特以太网</strong>：只工作在全双工方式，不存在争用问题，不使用CSMA&#x2F;CD协议。</li>
+</ul>
+<h2 id="2-IEEE-802-11无线局域网"><a href="#2-IEEE-802-11无线局域网" class="headerlink" title="2.IEEE 802.11无线局域网"></a>2.IEEE 802.11无线局域网</h2><p>无线局域网分为两类：有固定基础设施的无线局域网和无固定基础设施的移动自组织网络。<br><strong>（1）有固定基础设施无线局域网</strong><br>802.11标准使用星形拓扑，其中心称为接入点，在MAC层使用CSMA&#x2F;CA协议，使用802.11系列协议的局域网也称Wi-Fi。<br>最小构件是<strong>基本服务集（BSS）</strong>，一个BSS包括一个接入点和若干移动站。基本服务集覆盖的地理范围称为<strong>基本服务区（BSA）</strong>。<br>各站在本BSS内的通信，或与本BSS外部站的通信，都必须通过本BSS的AP，AO就是基本数据集中的<strong>基站</strong>。<br>安装AP时，必须为其分配一个不超过32字节的服务集标识符（SSID）和一个信道。</p>
+<p>基本服务集可以是孤立的，也可通过AP连接到一个分配系统，然后连接到另一个基本服务集，构成一个<strong>扩展的服务集（ESS）</strong>。分配系统的作用是使扩展的服务器对上层的表现就像一个基本服务集。<br>ESS还可通过一个称为**Portal（门户）**的设备为无线用户提供有线连接的以太网接口。门户的作用相当于网桥。<br><strong>（2）无固定基础设施移动自组织网络</strong><br>自组网络没有上述基本服务集中的AP，而有由一些平等状态的移动站相互通信组成的临时网络。各节点之间低位平等，中间节点都为转发节点，因此都具有路由器的功能。</p>
+<p><strong>（3）802.111局域网的MAC帧</strong><br>802.11帧有三种类型：数据帧、控制帧和管理帧。<br>802.11数据帧由以下三部分组成：</p>
+<ul>
+<li><strong>MAC首部</strong>，共30字节。</li>
+<li><strong>帧主体</strong>：数据部分，不超过2312字节。</li>
+<li><strong>帧检验序列FCS</strong>是MAC的尾部，4字节。</li>
+</ul>
+<p><img src="/img/408/s24.png" alt="图片说明"><br><strong>802.11数据帧前是三个地址的含义</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">去往 AP</th>
+<th align="center">来自 AP</th>
+<th align="left">地址 1</th>
+<th align="left">地址 2</th>
+<th align="left">地址 3</th>
+<th align="center">地址 4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="left">接收地址 &#x3D; 目的地址</td>
+<td align="left">发送地址 &#x3D; AP 地址</td>
+<td align="left">源地址</td>
+<td align="center">——</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="left">接收地址 &#x3D; AP 地址</td>
+<td align="left">发送地址 &#x3D; 源地址</td>
+<td align="left">目的地址</td>
+<td align="center">——</td>
+</tr>
+</tbody></table>
+<p>地址1是直接接收数据帧的节点地址，地址2是实际发送数据帧的节点地址。</p>
+<ul>
+<li>现在假定从一个BSS中的A站向B站发送数据帧。在A站发往AP的数据帧的帧控制字段中，去往AP&#x3D;1而来自AP&#x3D;0；地址1是AP的MAC地址，地址2是A站的MAC地址，地址3是B站的MAC地址。</li>
+<li>AP接收到数据帧后，转发给B站，此时在数据帧的帧控制字段中，去往AP&#x3D;0而来自AP&#x3D;1；地址1是B站的MAC地址，地址2是AP的MAC地址，地址3是A站的MAC地址。</li>
+</ul>
+<p><strong>对这三个地址的理解</strong>：地址1和地址2分别是无线通信中信道两段的接收地址和发送地址。当主机发往AP时，接收地址不是实际的目的地址，因此用地址3来存放实际的目的地址；当AP发往主机时，发送地址不是实际的源地址，因此用地址3来存放实际的原地址。</p>
+<p><img src="/img/408/s26.jpg" alt="图片说明"><br>如图，一种更为复杂的情况。两个AP有线连接到路由器，现在路由器要向A站发送数据。路由器是网络层设备，它看不见链路层的AP，只认识A站的IP地址。而AP是链路层设备，它只认识MAC地址，而不认识IP地址。</p>
+<ul>
+<li>路由器从IP数据报获知A站的IP地址，并用ARP获取A站的MAC地址。获取A站的MAC地址后，路由器接口R1将该IP数据报封装成802.3帧（只有两个地址），该帧的源地址字段是R1的MAC地址，目的地址字段是A站的MAC地址。</li>
+<li>AP收到该802.3帧后，将该802.3帧转换为802.11帧，在帧控制字段中，去往AP&#x3D;0而来自AP&#x3D;1；地址1是A站的MAC地址，地址2是AP的MAC地址，地址3是R1的MAC地址。这样，A站就可以确定（从地址3）将数据报发送到子网中的路由器接口的MAC地址。</li>
+</ul>
+<p>现在考虑从A站向路由器接口R1发送数据的情况：</p>
+<ul>
+<li>A站生成一个802.11帧，在帧控制字段中，去往AP&#x3D;1而来自AP&#x3D;0；地址1是AP的MAC地址 ，地址2是A站的MAC地址，地址3是R1的MAC地址。</li>
+<li>AP收到该802.11帧后，将其转换为802.3帧。该帧的源地址字段是A站的MAC地址，目前地址字段是R1的MAC地址。</li>
+</ul>
+<p><strong>802.11帧中的持续期字段和帧控制字段</strong></p>
+<ul>
+<li><strong>持续期字段</strong>：允许发送数据的站点对信道预约一段时间，并将这个时间写入持续期字段。</li>
+<li><strong>帧控制字段</strong>：802.11帧共有三种类型：控制帧、数据帧和管理帧，每种帧又分为若干子类型。</li>
+</ul>
+<h2 id="3-VLAN基本概念与原理"><a href="#3-VLAN基本概念与原理" class="headerlink" title="3.VLAN基本概念与原理"></a>3.VLAN基本概念与原理</h2><p>通过<strong>虚拟局域网</strong>（VLAN）可将一个较大的局域网分割成一些较小的与地理位置无关的逻辑上的VLAN，而每个VLAN是一个较小的广播域。属于同一个VLAN的计算机之间可以直接通信，而不同VLAN的计算机之间不能直接通信。<br><strong>划分VLAN的方法</strong>：</p>
+<ul>
+<li><strong>基于接口</strong>：将交换机的若干接口划分为一个逻辑组。</li>
+<li><strong>基于MAC地址</strong>：按MAC地址将一些主机划分为一个逻辑子网。</li>
+<li><strong>基于IP地址</strong>：根据网络层地址或协议划分VLAN。</li>
+</ul>
+<p>802.3a标准定义了支持VLAN的以太网帧格式的扩展。它在以太网帧中插入一个4字节的标识符，称为VLAN标签。用来指明发送该帧的计算机属于哪个虚拟局域网。</p>
+<h1 id="广域网"><a href="#广域网" class="headerlink" title="广域网"></a>广域网</h1><p>通常是指覆盖范围最广的长距离网络，任务是长距离运送主机所发送的数据。连接广域网各节点交换机的链路都是<strong>高速链路</strong>，广域网首要考虑的问题是<strong>通信容量必须足够大</strong>。<br>节点交换机的功能是存储并转发分组。</p>
+<h2 id="点对点协议PPP"><a href="#点对点协议PPP" class="headerlink" title="点对点协议PPP"></a>点对点协议PPP</h2><p>主要有两种应用：</p>
+<ul>
+<li>用户通常都要连接到某个ISP才能接入互联网，PPP就是用户计算机和ISP通信时所用的数据链路层协议。</li>
+<li>两台网络设备之间的直连专用线路。</li>
+</ul>
+<p>PPP有三个组成部分：</p>
+<ul>
+<li>一个<strong>链路控制协议 LCP</strong>：用来建立、配置、测试数据链路连接，以及协商一些选项。</li>
+<li>一套<strong>网络控制协议 NCP</strong>：PPP允许采用多种网络层协议，每个不同的网络层协议要用一个相应的NCP来配置，为网络层协议建立和配置逻辑连接。</li>
+<li>一种<strong>将IP数据报封装到串行链路的方法</strong>：IP数据报在PPP帧中帧就是其信息部分，这个信息部分的长度受最大传送单元（MTU）的限制，</li>
+</ul>
+<p>PPP帧的格式<br><img src="/img/408/s28.png" alt="图片说明"></p>
+<p>1）首部和尾部各有一个<strong>标志字段（F）</strong>，规定为0x7E（01111110），它表示一个帧的开始和结束，即PPP帧的定界符。当PPP使用异步传输时，采用字节填充法，使用的转义字符是0x7D（01111101）。当PPP采用同步传输时，采用零比特填充法来实现透明传输。<br>2）<strong>地址字段</strong>（A）占一个字符，规定为0xFF，<strong>控制字段（C）<strong>占一个字节，规定为0x03。<br>3）第四个字段是</strong>协议段</strong>，占2字节，它表示信息段运载的是什么种类的分组。<br>4）第五段<strong>信息段</strong>长度是可变的，长度为0-1500字节。<br>5）第六个字段是<strong>帧检测序列（FCS）</strong>，占2字节，是使用CRC检验的冗余码。</p>
+<p><strong>PPP的特点如下</strong>:</p>
+<ul>
+<li>PPP虽然在连接建立的过程中使用了确定机制，但在数据帧的发送过程中只保证无差错接收（通过CRC检验），不使用序号和确定机制，因而是不可靠服务。</li>
+<li>PPP只支持全双工的点对点链路，不支持多点线路。</li>
+<li>PPP的两端可以运行不同的网络层协议，但仍可使用同一个PPP进行通信。</li>
+<li>PPP是面向字节的，所有PPP帧的长度都是整数个字节。</li>
+</ul>
+<h1 id="数据链路层设备"><a href="#数据链路层设备" class="headerlink" title="数据链路层设备"></a>数据链路层设备</h1><h2 id="1-网桥"><a href="#1-网桥" class="headerlink" title="1.网桥"></a>1.网桥</h2><p>使用集线器在物理层扩展以太网会形成更大的冲突域。为了避免这个问题，可以使用网桥在数据链路层扩展以太网，而原来的每个以太网称为一个网段，<br>使用网桥进行扩展时，不会将原本独立的两个冲突域合并成一个更大的冲突域，这是因为网桥具有识别帧和转发帧的能力。</p>
+<h2 id="2-以太网交换机"><a href="#2-以太网交换机" class="headerlink" title="2.以太网交换机"></a>2.以太网交换机</h2><p>以太网交换机也称二层交换机，二层是指以太网交换机工作在数据链路层。<br><strong>以太网交换机的特点</strong>：</p>
+<ul>
+<li>当交换机的接口直接与主机或其他交换机连接时，通常都工作在全双工方式。</li>
+<li>交换机具有并行性，能同时连接多对接口，使每对相互通信的主机能像独占通信介质那样，无冲突地传输数据，这样就不需要使用CSMA&#x2F;CD协议。</li>
+<li>当交换机的接口连接集线器时，只能使用CSMA&#x2F;CD协议且只能工作在半双工方式。</li>
+<li>交换机是一种即插即用设备。</li>
+<li>交换机因为使用专用交换结构芯片，交换速率较高。</li>
+</ul>
+<p><strong>以太网交换机主要采用两种交换模式</strong>：</p>
+<ul>
+<li><strong>直通交换方法</strong>：接收到帧的同时就立即按该帧的目的MAC地址决定转发接口。</li>
+<li><strong>存储转发交换方式</strong>：首先缓存接收到的帧，然后检查帧是否正确，确定无误后，根据目的MAC地址决定转发接口；若帧出错，则将其丢弃。</li>
+</ul>
+<p><strong>交换机的自学习功能</strong><br>决定一个帧是转发到某个接口还是丢弃它称为<strong>过滤</strong>，决定一个帧应被移至哪个接口称为<strong>转发</strong>，见换机的过滤和转发借助<strong>交换表</strong>完成。交换表中的一个表项至少包含：一个MAC地址和连通该MAC地址的接口。</p>
+<p><strong>交换机通过自学习算法动态构建并维护转发表，收到数据帧后，执行以下步骤</strong>。<br>1）学习源MAC地址：交换机读取帧的源MAC地址，并将{MAC地址，入端口}写入或更新到交换表。这一过程称为自学习，可使交换机动态掌握各主机的连接位置。<br>2）查看目的MAC地址：交换机解析帧的目的MAC地址，并根据其类型（单播、广播或组播）采取相应的转发策略。<br>3）决策与转发：</p>
+<ul>
+<li>为单播帧（目的MAC地址为普通主机地址）时，交换机在交换表中查找该目的地址：若找到对应表项（已知目的地址），则仅从该表项所指端口转发，实现精准交付；若未找到对应表项（未知目的地址），则执行未知单播帧泛洪（或称洪泛），即将帧从除接收端口外的所有其他活动端口转发出去，确保目标主机能收到。</li>
+<li>为广播帧（目的MAC地址为FF:FF:FF:FF:FF:FF）时，交换机不查询转发表，直接将帧泛洪到除接收端口外的所有其他活动端口。</li>
+<li>为组播帧（目的地址为组播MAC地址）时，交换机通常也默认执行泛洪处理。</li>
+</ul>
+<p><strong>共享式以太网和交换式以太网的对比</strong>：</p>
+<ul>
+<li><strong>主机发送普通帧</strong>：对于共享式以太网，集线器将帧转发到其他所有接口，其他各主机中的网卡根据帧的目的MAC地址决定接收或丢弃该帧。对于交换式以太网，交换机收到帧后，根据帧的目的MAC地址和自身的交换表将帧明确地转发给目标主机。</li>
+<li><strong>主机发送广播帧</strong>：对于共享式以太网，集线器将帧转发到其他所有接口，其他各主机中的网卡检测到帧的目的MAC地址是广播地址时，就接收该帧。对于交换式一网通，交换机检测到帧的目的MAC地址是广播地址，于是从其他所有接口转发该帧，其他各主机收到该广播帧后，就接收该帧。两种情况的效果相同，但原理并不相同。</li>
+<li><strong>多对主机同时通信</strong>：对于共享式以太网，当多对主机同时通信时，必然产生冲突。对于交换式以太网，交换机能实现多对接口的高速并行交换，因此不会产生冲突。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>408-计算机网络</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>计算机网络</tag>
+        <tag>数据链路层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [计算机网络] 网络层</title>
+    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a>网络层的功能</h1><p>网络层提供主机到主机的通信服务，主要任务是将分组从源主机经过多个网络和多段链路传输到目标主机。该任务可划分为<strong>分组转发和路由选择</strong>两个重要功能。<br><img src="/img/408/wl1.png"></p>
+<h2 id="1-异构网络互联"><a href="#1-异构网络互联" class="headerlink" title="1.异构网络互联"></a>1.异构网络互联</h2><p><strong>网络互连</strong>：指将两个以上的计算机网络，通过一定的方法，用一些中继系统相互连接起来，以构建更大的网络系统。<br>中继系统分为以下4类：</p>
+<ul>
+<li><strong>物理层中继系统</strong>：转发器，集线器。</li>
+<li><strong>数据链路层中继系统</strong>：网桥或交换机。</li>
+<li><strong>网络层中继系统</strong>：路由器。</li>
+<li><strong>网络层以上的中继系统</strong>：网关。</li>
+</ul>
+<p>网络互连通常是指用路由器进行网络连接和路由选择。路由器是一台专用计算器，用于在互联网中进行路由选择。</p>
+<p>TCP&#x2F;IP在网络互连方面的做法是在网络层采用标准化协议，但相互连接的网络可以是异构的。</p>
+<p><strong>IP网络</strong>：表示许多计算机网络通过一些路由器进行互连，因为参与互连的计算机网络都使用相同的IP，通过IP就可使这些性能各异的网络在网络层上看起来像是一个统一的网络，所以可把互连后的网络视为一个虚拟互联网络，简称IP网络。<br>使用IP网络的好处：当IP网上的主机进行通信时，就好像在单个网络上通信一样，而看不见互联的各个网络的具体异构细节。</p>
+<h2 id="2-路由与转发"><a href="#2-路由与转发" class="headerlink" title="2.路由与转发"></a>2.路由与转发</h2><p>路由器主要完成两个功能：<strong>路由选择和分组转发</strong>，前者根据路由选择协议构建并维护路由表。后者处理通过路由器的数据流，关键操作是转发表查询、转发以及相关的队列管理和任务调度等。</p>
+<ul>
+<li><strong>路由选择</strong>：根据路由协议构造路由表，同时经常或定期地与相邻路由器交换信息，获取网络最新拓扑，动态更新维护路由器，以决定分组到达目的地节点的最优路径。</li>
+<li><strong>分组转发</strong>：指路由器根据转发表将分组从合适的端口转发出去。</li>
+</ul>
+<h2 id="3-网络层提供的两种服务"><a href="#3-网络层提供的两种服务" class="headerlink" title="3.网络层提供的两种服务"></a>3.网络层提供的两种服务</h2><p><strong>（1）面向连接的虚电路服务</strong><br>当两台计算机进行通信时，应当先建立网络层的连接，也即是建立一条<strong>逻辑</strong>上的<strong>虚电路（VC）</strong>。<br>整个通信过程分为三个阶段：虚电路建立、数据传输与虚电路释放。<br>每次建立虚电路时，将一个未用过的**虚电路号（VCID）**分配给该虚电路。分组的首部仅在连接建立时使用完整的目的地址，之后每个分组的首部只需携带这条虚电路的编号即可。</p>
+<p>虚电路方式的<strong>工作原理</strong>：</p>
+<ul>
+<li>数据传输前，主机A和主机B先建立连接，主机A发送“呼叫请求”分组，该分组通过中间节点送往主机B，若主机B同意连接，则发送：呼叫应答“分组予以确定。</li>
+<li>虚电路建立后，主机A和主机B就可相互传送数据分组。</li>
+<li>传送结束后，主机A通过发送“释放请求”分组来拆除虚电路，逐段断开整个连接。</li>
+</ul>
+<p>虚电路服务的<strong>特点</strong>：</p>
+<ul>
+<li>虚电路通信链路的建立和拆除需要时间开销。</li>
+<li>虚电路的路由选择体现在连接建立阶段，连接建立后，就确定了传输路径。</li>
+<li>虚电路提供了可靠的通信功能，能保证每个分组正确且有序到达。</li>
+<li>缺点：当网络中的某个节点或某条链路出现故障而彻底失效时，所有经过该节点或该链路的虚电路将遭到破坏。</li>
+<li>分组首部不包含目的地址，包含的是虚电路号，开销小。</li>
+</ul>
+<p><strong>（2）面向无连接的数据报服务</strong><br>中间节点存储分组很短一段时间，找到最佳的路由后，尽快转发每个分组。<br>采用存储转发技术，资源是共享的。<br><strong>数据报服务的原理</strong>：假设主机A向主机B发送分组</p>
+<ul>
+<li>主机A先将分组逐个发往与它直接相连的交换节点A，交换节点A缓存收到的分组。</li>
+<li>然后查看自己的转发表。因为不同时刻的网络状态不同，所以转发表的内容可能不完全相同，所以有的分组转发给交换节点C，有的分组转发给交换节点D。</li>
+<li>网络中的其他节点收到分组后，类似地转发分组给交换节点D。</li>
+</ul>
+<p>数据报服务的<strong>特点</strong>：</p>
+<ul>
+<li>发送分组前不需要建立连接。</li>
+<li>网络尽最大努力交付，传输不保证可靠性。网络为每个分组独立地选择路由，转发的路径可能不同，因此分组不一定按序到达目的节点，</li>
+<li>发送的分组中要包括发送方和接受方的完整地址，以便可以独立传输。</li>
+<li>当分组在交换节点存储转发时，需要排队等候处理，这会带来一定的时延。</li>
+<li>网络具有冗余路径，当某个交换节点或一条链路出现故障时，可相应地更新转发表，寻找另一条路径转发分组，对故障的适应能力强。</li>
+<li>接收双方不独占某条链路，资源利用率较高。</li>
+</ul>
+<p><strong>数据报服务和虚电路服务对比</strong></p>
+<h2 id="4-软件定义网络-SDN"><a href="#4-软件定义网络-SDN" class="headerlink" title="4.软件定义网络 SDN"></a>4.软件定义网络 SDN</h2><p>网络层的主要任务是转发和路由选择。可以将网络层抽象地划分为<strong>数据平面</strong>（也称转发层面）和<strong>控制平面</strong>，转发是数据平面实现的功能，而路由选择是控制平面实现的功能。<br><strong>软件定义网络</strong>（SDN）采用集中式的控制平面和分布式的数据平面，两个平面相互分离，控制平面利用控制-数据接口来对数据平面上的路由器进行集中式控制，方便软件来控制网络。<br>在网络控制平面有一个逻辑上的<strong>远程控制器</strong>（可由多个服务器组成）。远程控制器掌握各主机和整个网络的状态，为每个分组计算出最佳路由，通过Openflow协议（或其他路径）将转发表（在SDN中称为流表）下发给路由器。</p>
+<p><strong>SDN结构</strong></p>
+<p>SDN提供的编程接口称为<strong>北向接口</strong>。<br>SDN控制器和转发设备建立双向会话的接口称为<strong>南向接口</strong>。</p>
+<p><strong>SDN的优点</strong>：</p>
+<ul>
+<li>全局集中式控制和分布式高速转发，既利用控制平面的全局优化，又利于性能的网络转发。</li>
+<li>灵活可编程与性能的平衡，控制和转发功能分离后，使得网络可以由专有的自动化工具以编程方式配置。</li>
+<li>降低城北，控制和数据平面分离后，实现了网络设备的制造与功能软件的开发相分离，从而有效降低了成本。</li>
+</ul>
+<p><strong>SDN的问题</strong>：</p>
+<ul>
+<li>安全风险，集中管理容易受攻击，若崩溃，则整个网络会受到影响。</li>
+<li>瓶颈问题，原本分布式的控制平面集中化后，随着网络规模扩大，控制器可能成为网络性能的瓶颈。</li>
+</ul>
+<h2 id="5-拥塞控制"><a href="#5-拥塞控制" class="headerlink" title="5.拥塞控制"></a>5.拥塞控制</h2><p>因出现过量的分组而引起网络性能下降的现象称为<strong>拥塞</strong>。<br><strong>是否出现拥塞</strong>：（观察网络吞吐量与网络负载的关系）</p>
+<ul>
+<li>若随着网络负载的增加，网络的吞吐量明显小于正常的吞吐量，则网络就可能已进入轻度拥塞状态。</li>
+<li>若网络的吐吞量随着网络负载的增大而下降，则网络就可能已进入拥塞状态。</li>
+</ul>
+<p><strong>与流量控制的区别</strong>：流量控制往往是指在发送方和接收方之间的点对点通信量的控制。流量控制所要做的是抑制发送方发送数据的频率，以便使接收方来得及接收。<br><strong>拥塞控制的方法</strong>有2种：</p>
+<ul>
+<li><strong>开环控制</strong>：在设计网络时事先将有关发生堵塞的音色考虑周到，力求网络在工作时不产生拥塞。这是一种<strong>静态</strong>的预防方法。</li>
+<li><strong>闭环控制</strong>：实现不考虑有关发生拥塞的各种因素，采用检测网络系统去监视，即使检测哪里发生了拥塞，然后将拥塞控制信号传到合适的地方，以便调整网络系统的运行，并解决发现的问题。是一种<strong>动态</strong>的方法。</li>
+</ul>
+<h1 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h1><h2 id="1-IPv4分组"><a href="#1-IPv4分组" class="headerlink" title="1.IPv4分组"></a>1.IPv4分组</h2><p>网际协议<br>IP定义数据传送的基本单位——IP分组及其确切的数据格式。<br>一个IP分组（或成IP数据报）由<strong>首部</strong>和<strong>数据部分</strong>组成。结构如下图：</p>
+<p>IPv4首部的部分重要字段含义如下：</p>
+<ul>
+<li><strong>版本</strong>：占4位，指IP的版本。</li>
+<li><strong>首部长度</strong>：占4位。</li>
+<li><strong>总长度</strong>：占16位，指首部和数据之和的长度，单位为字节。</li>
+<li><strong>标识</strong>：占16位，它是一个计数器，每产生一个数据报就加1，并赋值给标识字段。当一个数据报的长度超过网络MTU时，必须分片，此时每个数据报片都复制一次标识号，以便能正确地重装成原来的数据报。</li>
+<li><strong>标志（Flag）</strong>：占3位，标志字段的最低位为MF，MF&#x3D;1表示后面还有分片，MF&#x3D;0表示最后一个分片。标志字段中间的一位是DF，只有当DF&#x3D;0时才运行分片。</li>
+<li><strong>片偏移</strong>：占13位，它指出较长的数据报在分片后，某片在原数据报中的相对位置，片偏移以8B为偏移单位，除最后一个分片外，每个分片的长度一定是8B的整数倍。</li>
+<li><strong>生存时间（TTL）</strong>：占8位。数据报在网络中可通过的路由器的最大值。路由器在转发数据报前，先将TTL减1,。若TTL被减为0，则该数据报必须丢弃。</li>
+<li><strong>协议</strong>：占8位，指出此数据报携带的数据使用何种协议。其中值为6表示TCP，值为17表示UDP。</li>
+<li><strong>首部校验和</strong>：占16位。它只检验数据报的首部，不包括数据部分。</li>
+<li><strong>源地址字段</strong>：占4B，标识发送方的IP地址。</li>
+<li><strong>目的地址字段</strong>：占4B，标识接收方的IP地址。</li>
+</ul>
+<p><strong>IP数据报分片</strong><br>一个链路层数据帧能承载的最大数据量称为<strong>最大传送单元（MTU）</strong>。<br>片在目的地的网络层被重新组装。目的主机使用IP首部中的标识、标志和片偏移字段来完成对片的重组。</p>
+<p>只有当DF&#x3D;0时，该IP数据报才可被分片。MF则用来告知目的主机该IP数据报是否为原始数据报的最后一个片。当MF&#x3D;1时，表示相应的原始数据报还有后续的片。当MF&#x3D;0时，表示该数据报是相应原始数据报的最后一个片。</p>
+<p>IP分片的原理及相关字段的分析（<strong>小计算题</strong>）<br>一个长4000B的IP数据报（首部20B，数据部分3980B）到达一个路由器，需要转发到一条MTU为1500B的链路上。这意味着原始数据报中的3980B数据必须分配到3个独立的片中（每片也是一个IP数据报），每片的数据部分依次为1480B、1480B和1020B。假定原始数据报的标识号为777，则分成的3片如下图所示：</p>
+<h2 id="2-IPv4地址和NAT"><a href="#2-IPv4地址和NAT" class="headerlink" title="2.IPv4地址和NAT"></a>2.IPv4地址和NAT</h2><p><strong>IPv4地址</strong><br>IP地址是给连接到互联网上的每台主机（或路由器）的每个接口，分配的一个在全球范围内唯一的32位标识符。<br>都由<strong>网络号</strong>和<strong>主机号</strong>两部分组成。<br>一个网络号在整个互联网范围内必须是唯一的，主机号标志该主机（或路由器）。<br><strong>分类的IP地址</strong></p>
+<p><strong>特殊IP地址</strong>：</p>
+<ul>
+<li>主机号全为0表示本网络本身，如202.98.174.0。</li>
+<li>主机号全为1表示本网络的广播地址，也称直接广播地址，如202.98.174.255。</li>
+<li>127.×.×.×保留作为本地软件环回测试本主机的进程之间的通信用，本主机不会将目的地址为环回地址的IP数据报发送给任何网络。</li>
+<li>32位全为0，即0.0.0.0，表示本网络上的本主机（见DHCP）。</li>
+<li>32位全为1，即255.255.255.255，表示受限广播地址，只在本网络上进行广播。</li>
+</ul>
+<p><strong>常见的三种类别IP地址的使用范围</strong></p>
+<p><strong>IP地址的重要特点</strong>：</p>
+<ul>
+<li>每个IP地址都由网络号和主机号两部分组成。</li>
+<li>IP地址是标志一台主机（或路由器）和一条链路的接口。</li>
+<li>用转发器或桥接器（网桥等）连接的若干LAN仍然是同一个网络（同一个广播域），因此该LAN中所有主机的IP地址的网络号必须相同，但主机号必须不同。</li>
+<li>在IP地址中，所有分配到网络号的网络（无论是LAN还是WAN）都是平等的。</li>
+<li>在同一个局域网上的主机或路由器接口的IP地址中的网络号必须是相同的。</li>
+</ul>
+<p><strong>网络地址转换 NAT</strong><br>网络地址转换是指通过将专用网络地址转换为公用地址，从而对外隐藏内部管理的IP地址。<br>为了网络安全，划出了三个<strong>私有IP地址块</strong>，私有IP地址只用于LAN，不用于WAN连接，并且允许私有IP地址被LAN重复使用。三个私有IP地址块如下：</p>
+<ul>
+<li>10.0.0.0&#x2F;8，即10.0.0.0-10.255.255.255，相当于1个A类网络。</li>
+<li>172.16.0.0&#x2F;12，即172.16.0.0-172.31.255.255，相当于16个连续的B类网络。</li>
+<li>192.168.0.0&#x2F;16，即192.168.0.0-192.168.255.255，相当于256个连续的C类网络。</li>
+</ul>
+<p>采用私有IP地址的互联网称为<strong>专用互联网</strong>或<strong>本地互联网</strong>。私有IP地址也称<strong>可重用地址</strong>。<br>NAT路由器使用<strong>NAT转换表</strong>进行本地IP地址和全球IP地址的转换。NAT转换表中存放着{本地IP地址：端口}到{全球IP地址：端口}的映射。通过这种映射方式，可让多个私有IP地址映射到一个全球IP地址。</p>
+<p><strong>NAT的原理和应用</strong><br>NAT的工作原理：（如下图）</p>
+<ul>
+<li>假设用户主机10.0.0.1（随机端口3345）向Web服务器128.116.40.186（端口80）发送请求。</li>
+<li>NAT路由器收到IP分组后，为该IP分组生成一个新端口号5001，将IP分组的源地址改为138.76.29.7（NAT路由器的全球IP地址），将源端口号改为5001。NAT路由器在NAT转换表中增加一个表项。</li>
+<li>Web服务器并不知道刚抵达的IP分组已被NAT路由器改装，更不知道用户的专用地址，它响应的IP分组的目的地址是NAT路由器的全球IP地址138.76.29.7，目的端口号是5001。</li>
+<li>响应分组到达NAT路由器后，通过NAT转换表将IP分组的目的IP地址改为10.0.0.1，将目的端口号改为3345。</li>
+</ul>
+<p>在某些场合，内网中的一些服务器需要向公网用户提供服务，比如私网中部署的一些Web服务器、FTP服务器等。此时，可在NAT表中配置“公网IP地址+端口号”与“私网IP地址+端口号”的映射关系。</p>
+<h2 id="3-划分子网与路由聚合"><a href="#3-划分子网与路由聚合" class="headerlink" title="3.划分子网与路由聚合"></a>3.划分子网与路由聚合</h2><p><strong>（1）划分子网</strong><br>两级IP地址的缺点：IP地址空间的利用率有时很低；给每个物理网络分配一个网络号回使路由表变得太大，进而使网络性能变坏；两级IP地址不够灵活。<br>划分子网的<strong>基本思路</strong>：</p>
+<ul>
+<li>划分子网纯属一个单位内部的事情。单位对外仍然表现为没有划分子网的一个网络。</li>
+<li>划分子网的办法是从网络的主机号借用若干为作为子网号，当然主机号也相应减少了相同的位数。三级IP地址的结构：IP地址::&#x3D;{&lt;网络号&gt;,&lt;子网号&gt;,&lt;主机号&gt;}。</li>
+<li>路由器转发分组根据的仍然是IP数据报的目的网络号，本单位的路由器收到IP数据报后，再按目的网络号和子网号找到目的子网。最后把IP数据报交付给目的主机。</li>
+</ul>
+<p><strong>（2）子网掩码和默认网关</strong><br><strong>子网掩码</strong>:是一个与IP地址相对应的、长32位的二进制串，它由一串1和跟随的一串0组成，其中，1对应IP地址中的网络号及子网号，而0对应于主机号。主机或路由器只需将IP地址和其对应的子网掩码逐位“与”运算，就可得出相应的子网的网络地址。<br><strong>默认网关</strong>：是子网与外部网络连接的设备，也就是链接主机或子网的路由器接口的IP地址。</p>
+<p>所有网络都必须使用子网掩码，若一个网络位划分子网，则该网络的子网掩码就使用默认子网掩码。A、B、C类地址的默认子网掩码分别是255.0.0.0、255.255.0.0、255.255.255.0。<br>在使用子网掩码的情况下：</p>
+<ul>
+<li>一台主机在设置IP地址信息的同时，必须设置子网掩码。</li>
+<li>同属于一个子网的所有主机及路由器的响应端口，必须设置相同的子网掩码。</li>
+<li>路由器的路由表中所包含的信息主要内容有目的网络地址、子网掩码、下一跳地址。</li>
+</ul>
+<p><strong>（3）无分类编址 CIDR</strong><br><strong>无分类域间路由选择</strong>（CIDR）是在变长子网掩码的基础上，提出的一种消除传统A、B、C类地址及划分子网的概念。<br>CIDR使用<strong>网络前缀</strong>的概念代替网络的概念，与号才能通分类IP地址最大的区别就是，网络前缀的位数不是固定的，可以任意选取。<br>CIDR的记法是：IP地址::&#x3D;{&lt;网络前缀&gt;,&lt;主机号&gt;}</p>
+<p>CIDR还使用<strong>斜线记法</strong>（也称CIDR记法），即记为“IP地址&#x2F;网络前缀所占的位数”。其中，网络前缀所占的位数对应网络好的部分，等效于子网掩码中连续1的部分。<br>斜线记法不仅能表示其IP地址，还能表示这个地址块的网络前缀有多少位。<br>CIDR将网络浅醉都相同的连续IP地址组成一个CIDR地址块。<br>CIDR地址块中的地址数一定是2的整数次幂，实际可指派的地址数通常为$2^N-2$，$N$表示主机号的位数，主机号全0代表网络号，主机号全1为广播地址。</p>
+<p><strong>（4）路由聚合</strong><br>一个大的CIDR地址块中包含很多小地址块，由此在路由表中就可利用较大的一个CIDR地址块来代替许多较小的地址块，这种方法称为<strong>路由聚合</strong>。<br><strong>路由聚合的分析</strong></p>
+<p>如下图网络，若不使用路由聚合，则R1的路由表中需要分别有到网络1和网络2的路由表项。不难发现，网络1和网络2的网络前缀在二进制表示的情况下，前16为都是相同的，第17位分别是0和1，并且从R1到网络1和网络2的路由的下一跳皆为R2。若使用路由集合，则在R1看来，网络1和网络2可以构成一个更大的地址块206.1.0.0&#x2F;16，到网络1和网络2的两条路就可聚合成一条到206.1.0.0&#x2F;16的路由。</p>
+<p><strong>最长前端匹配</strong>：使用CIDR时，路由器中的表项由“网络前缀”和“下一跳地址”组成。在查找路由表时可能会得到不止一个匹配结果。此时，应当从匹配结果中<strong>选择具有最长网络前缀的路由</strong>，因为网络前缀越长，其地址块就越小，因而路由就越具体。</p>
+<p><strong>CIDR查找路由表的方法</strong>：为了更有效地查找最长前缀匹配，通常将无分类编址的路由表存放在一中层次式数据结构（通常采用二叉线索）中，然后自上而下地按层次进行查找。</p>
+<h2 id="4-网络层转发分组的过程"><a href="#4-网络层转发分组的过程" class="headerlink" title="4.网络层转发分组的过程"></a>4.网络层转发分组的过程</h2><p>在转发表中，每条路由必须有下面两条信息：（目的网络地址，下一跳地址）<br>采用CIDR编址时，若一个分组在转发表中可以找到多个匹配的前缀，则应当使用最长前缀匹配。<br>在理由表还可以增加两种特殊的路由：</p>
+<ul>
+<li><strong>特定主机路由</strong>：对特定目的主机的IP地址专门指明一个路由，以方便网络管理员控制和测试网络。若待定主机的IP地址是a,b,c,d，则转发表中对应项的目的网络是a,b,c,d&#x2F;32。&#x2F;32表示的子网掩码没有意义，但是，这个特殊的前缀可以用在转发表中。</li>
+<li><strong>默认路由</strong>：用特殊前缀0.0.0.0&#x2F;0表示默认路由。默认路由通常用于路由器到互联网的路由。</li>
+</ul>
+<p>路由器执行的分组转发算法如下：</p>
+<ul>
+<li>从收到的IP分组的首部提取目的主机的IP地址D（目的地址）。</li>
+<li>若查找到特定主机路由（目的地址为D），则按照这条路由的下一跳转发分组；否则从转发表中的吓一跳（按前缀最长的顺序）开始检查，执行步骤3</li>
+<li>将这一行的子网掩码与目的地址D逐位与。若运算结果与本行的前缀匹配，则查找结束，按照“下一跳”指出的进行处理（或者直接交付本网络上的目的主机，或通过指定接口发送到下一跳路由器）。否则，若转发表还有下一行，则对下一行进行检查，重新执行步骤3，否则执行步骤4。</li>
+<li>若转发表中有一个默认路由，则把分组传送给默认路由；否则，报告转发分组错误。</li>
+</ul>
+<h2 id="5-地址解析协议-ARP"><a href="#5-地址解析协议-ARP" class="headerlink" title="5.地址解析协议 ARP"></a>5.地址解析协议 ARP</h2><p><strong>IP地址与硬件地址</strong><br><strong>IP地址</strong>是网络层及网络层之上使用的地址，它是分层式的。**硬件地址（MAC地址）**是数据链路层使用的地址，它是平面式的。<br>几个重要内容：</p>
+<ul>
+<li>在IP层抽象的互联网上只能看见IP数据报。</li>
+<li>虽然在IP数据报首部中有源IP地址，但路由器只根据目的IP地址进行转发。</li>
+<li>在局域网的链路层，只能看见MAC地址。IP数据报被封装在MAC帧中。通过路由器转发时，IP数据报在每个网络中都被路由器解封装和重新封装，其MAC帧首部中的源地址和目的地址会不断改变。这也决定了无法使用MAC地址跨网络通信。</li>
+<li>尽管互连在一起的网络的硬件地址体系各不相同，但IP层抽象的互联网屏蔽了下层这些复杂的细节。</li>
+</ul>
+<p><strong>地址解析协议（ARP)</strong><br>用于完成IP地址到MAC地址的映射。<br>每台主机都设有一个ARP高速缓存，用来存放本局域网上各主机和路由器的IP地址到MAC地址的映射表，称为<strong>ARP表</strong>。<br><strong>ARP工作在网络层，工作原理为</strong></p>
+<ul>
+<li>主机A欲向本局域网上的某台主机B发送IP数据报时，先在其ARP高速缓存中查看有无主机B的IP地址。</li>
+<li>若<strong>有</strong>，则可以查出其对应的硬件地址，再将此硬件地址写入MAC帧，然后通过局域网将该MAC帧发往此硬件地址。</li>
+<li>若<strong>没有</strong>，则通过使用目的MAC地址为FF-FF-FF-FF-FF-FF的帧来封装并广播ARP请求分组（广播发送），使同一个局域网里的所有主机都收到此ARP请求。<br>主机B收到该ARP请求后，向主机A发送ARP<strong>响应分组（单播发生）</strong>，分组中包含主机B的IP地址与MAC地址的映射关系，主机A收到ARP响应分组后就将此映射写入ARP缓存，然后按查询到的硬件地址发送MAC帧。</li>
+</ul>
+<p><strong>使用ARP的4种经典情况</strong>：</p>
+<p>1）发送方时主机（如H1），要把IP分组发送到本网络上的另一台主机（如H2）。这时H1在网1用ARP找到目的主机H2的硬件地址。<br>2）发送方时主机（如H1），要把IP分组发送到其他网络上的一台主机（如H4）。这时H1用ARP找到与网1连接的路由器R1的硬件地址（默认网关），剩下的工作由R1来完成。<br>3）发送方是路由器（如R1），要把IP分组转发到与R1连接的网络（网2）上的一台主机（如H3）。这时R1在网2用ARP找到目的主机$H_3$的硬件地址。<br>4）发送方是路由器（如R1），要把IP分组转发到网3上的一台主机（如H4）。这时R1在网2用ARP找到与网2连接的路由器R2的硬件地址，剩下的工作由R2来完成。</p>
+<h2 id="6-动态主机配置协议-DHCP"><a href="#6-动态主机配置协议-DHCP" class="headerlink" title="6.动态主机配置协议 DHCP"></a>6.动态主机配置协议 DHCP</h2><p>常用于给主机动态地分配IP地址，他提供了即插即用的联网机制。它是应用层协议，基于UDP。<br>DHCP使用<strong>客户&#x2F;服务器模型</strong>。<br>DHCP服务器的回答报文称为提供报文。<br>**DHCP服务器和DHCP客户的交换过程如下：</p>
+<ul>
+<li>DHCP客户广播“DHCP发现”信息，试图找到网络中的DHCP服务器，以便从DHCP服务器获得一个IP地址。源地址为0.0.0.0，目的地址为255.255.255.255。</li>
+<li>DHCP服务器收到“DHCP发现”消息后，广播“DHCP提供”的信息，其中包括提供给DHCP客户机的IP地址。源地址为DHCP服务器地址，目的地址为255.255.255.255。</li>
+<li>DHCP客户端收到“DHCP提供”信息，若接受该IP地址，则广播“DHCP请求”信息想DHCP服务器请求提供IP地址。源地址为0.0.0.0，目的地址为255.255.255.255。</li>
+<li>DHCP服务器广播“DHCP确定”信息，将IP地址分配给DHCP客户。源地址为DHCP服务器地址，目的地址为255.255.255.255。</li>
+</ul>
+<p>DHCP客户和服务器端需要通过广播方式来进行交互。</p>
+<h2 id="7-网际控制报文协议-ICMP"><a href="#7-网际控制报文协议-ICMP" class="headerlink" title="7.网际控制报文协议 ICMP"></a>7.网际控制报文协议 ICMP</h2><p>ICMP报文有两种，即ICMP差错报告报文和ICMP询问报文。<br><strong>ICMP差错报告报文</strong>用于目标主机或到目标主机路径上的路由器，向源主机报告差错和异常情况。共有以下5中常用的类型：</p>
+<ul>
+<li><strong>终点不可达</strong>：当路由器或主机不能交付数据报时，就向源点发送终点不可达报文。</li>
+<li><strong>源点抑制</strong>：当路由器或主机因为拥塞而丢失数据报时，就向源点发送源点抑制报文，使源点知道应当把数据报的发送速率放慢。</li>
+<li><strong>时间超过</strong>：当路由器收到一个数据报时，会将其首部中生存时间（TTL）的值减1。若为0就丢弃，发送时间超过报文。</li>
+<li><strong>参数问题</strong>：当路由器或目的主机收到的数据报的首部中有的字段的值不正确时，就丢弃该数据报，并向源点发送参数问题报文。</li>
+<li><strong>改变路由（重定向）</strong>：路由器把改变路由报文发送给主机，让主机知道下次应将数据报发送给另外的路由器。</li>
+</ul>
+<p><strong>不应发送ICMP差错报告报文的情况</strong>：</p>
+<ul>
+<li>对ICMP差错报告报文，不再发送ICMP差错报告报文。</li>
+<li>对第一个分片的数据报片的所有后续数据报片，都不发送ICMP差错报告报文。</li>
+<li>对具有多播地址的数据报，都不发送ICMP差错报告报文。</li>
+<li>对具有多播地址的数据报，都不发送ICMP差错报告报文。</li>
+<li>对具有特殊地址的数据报，不发送ICMP差错报告报文。</li>
+</ul>
+<p><strong>常用的ICMP询问报文的两种类型</strong>：</p>
+<ul>
+<li><strong>回送请求和回答报文</strong>：用来测试目的主机是否可达以及了解其有关状态。</li>
+<li><strong>时间戳请求和回答报文</strong>：利用报文中记录的时间戳，发送方可计算出当前的往返时延。</li>
+</ul>
+<p>ICMP的两个常见应用时<strong>分组网间探测PING</strong>（用来测试两台主机之间的连通性）和<strong>Traceroute</strong>（UNIX中的名字，在Windows中是Tracert，可以用来跟踪分组经过的路由）。其中PING使用的是回送请求和回答报文，Traceroute（Tracert）使用的是时间超过报文。</p>
+<h1 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h1><p><strong>IPv6的特点</strong></p>
+<ul>
+<li>更大的地址空间。</li>
+<li>扩展的地址层次结构。</li>
+<li>灵活的首部格式。</li>
+<li>改进的选项。</li>
+<li>允许协议继续扩充。</li>
+<li>支持即插即用。</li>
+<li>支持资源的预分配。</li>
+<li>IPv6只有源主机才能分片，是端到端的。</li>
+<li>IPv6首部长度是固定的40B。</li>
+<li>增大了安全性。</li>
+</ul>
+<p><strong>IPv6数据报的基本首部</strong>：<br>IPv6数据报由两部分组成：基本首部和有效载荷（也称净载荷）。有效载荷由零个或多个扩展首部及其后面的数据部分构成。<br>与IPv4相比，IPv6对首部中的某些字段进行了如下更改：</p>
+<ul>
+<li>取消了首部长度字段。</li>
+<li>取消了服务类型字段。因为优先级和 流标号字段实现了服务类型字段的功能。</li>
+<li>取消了总长度字段，改用有效载荷长度字段。</li>
+<li>取消了标识、标志和片偏移字段。</li>
+<li>把TTL字段改称为跳数限制字段。</li>
+<li>取消了协议字段，改用下一个首部字段。</li>
+<li>取消了检验的字段。</li>
+<li>取消了选项字段。</li>
+</ul>
+<p><strong>IPv6基本首部字段</strong>：</p>
+<ul>
+<li><strong>版本</strong>：占4位。</li>
+<li><strong>通信量类</strong>：占8位，用来区分不同的IPv6该字段的值是6。</li>
+<li><strong>流标号</strong>：占20位，<strong>流</strong>是指互联网上从特定源头到特定终点（单播或多播）的一系列数据报。属于同一个流的数据报都具有相同的类型。</li>
+<li><strong>有效载荷长度</strong>：占16位，指明IPv6书记包除基本首部以外的字节数。最大为65535字节。</li>
+<li><strong>下一个首部</strong>：占8位，指明IPv6数据报所运载的数据是何种协议。</li>
+<li><strong>跳数限制</strong>：占8位，类似于IPv4的TTL字段。</li>
+<li><strong>源地址和目的地址</strong>：占128位。</li>
+</ul>
+<p><strong>IPv6地址</strong><br><strong>IPv6数据报的目的地址有以下三种基本类型</strong>：</p>
+<ul>
+<li><strong>单播</strong>：就是传统的点对点通信。</li>
+<li><strong>多播</strong>：一点对多点的通信。</li>
+<li><strong>任播</strong>：任播的终点是一组计算机，但数据报只交付其中的一台计算机，通常是距离最近的一台计算机。</li>
+</ul>
+<p><strong>IPv6的五类地址分类</strong>：</p>
+<ul>
+<li><strong>未指明地址</strong>：该地址不能作为目的地址，只能用于还未配置IPv6地址的主机作为源地址。</li>
+<li><strong>环回地址</strong></li>
+<li><strong>多播地址</strong>：这类地址占IPv6地址空间的1&#x2F;256。</li>
+<li><strong>本地链路单播地址</strong>：类似于IPv4的私有地址。</li>
+<li><strong>全球单播地址</strong>：用得最多的地址。IPv6全球单播地址采用三级结构：第一级为全球路由选择前缀，占位，用于互联网中的路由选择，相当于IPv4的网络号；第二级为子网标识符，占16位，用于各机构构建自己的子网；第三级为接口标识符，用于指明主机或路由器的单个网络接口，相当于IPv4的主机号。</li>
+</ul>
+<p><strong>从IPv4过渡到IPv6</strong>：</p>
+<ul>
+<li><strong>双协议栈</strong>：一台设备上同时装有IPv4和IPv6两个协议栈。</li>
+<li><strong>隧道技术</strong>：在IPv6数据报要进入IPv4网络时，把整个IPv6数据报封装成IPv4数据报的数据部分。</li>
+</ul>
+<h1 id="路由算法与路由协议"><a href="#路由算法与路由协议" class="headerlink" title="路由算法与路由协议"></a>路由算法与路由协议</h1><h2 id="1-路由算法"><a href="#1-路由算法" class="headerlink" title="1.路由算法"></a>1.路由算法</h2><p>路由算法分类两类：</p>
+<ul>
+<li><strong>静态路由算法</strong>：由网络管理员手工配置每一条路由。</li>
+<li><strong>动态路由算法</strong>：根据网络流量负载和拓扑结构的变化来动态调整自身的路由表。</li>
+</ul>
+<p>常见的动态路由算法可分为两类：距离-向量路由算法和链路状态路由算法。<br><strong>距离-向量路由算法</strong><br>基础是Bellman-Ford算法，用于计算单源最短路径。<br>关于Bellman-Ford算法基本思想如下：<br>假设$d_x(y)$表示节点x到节点y的带权最短路径的费用，则有<br>$d_x(y)&#x3D;min{c(x,v),d_v(y)}$， v是x的所有邻居<br>式中，$c(x,v)$是从x到其邻居v的费用，已知x的所有邻居到y的最短路径费用后，从x到y的最短路径费用是对邻居v的$c(x,v),d_v(y)$的最小值。<br>（两点之间的最短路径也包含了路径后上其他顶点间的最短路径。）</p>
+<p>对于距离-向量算法，每个节点x维护下列路由信息：</p>
+<ul>
+<li>从x到每个直接相邻邻居v的链路费用$c(x,v)$。</li>
+<li>节点x的距离向量，即x到网络中其他节点的费用。</li>
+<li>他收到的每个邻居的距离向量。即x的每个邻居到网络中其他节点的费用。</li>
+</ul>
+<p><strong>距离向量路由算法的具体实现</strong><br>如下图，a表的各列依次是三个节点的初始化距离向量，此时各节点之间尚未交换过任何路由信息。因此各节点的初始化距离向量就等于它到每个直接相邻邻居v的费用。</p>
+<p>初始化后，每个节点第一次向它的所有邻居发送其距离向量，在接收到该更新报文后，每个节点重新计算自己的距离向量，如b表。<br>节点的距离向量变化后，再次向它们的邻居发送它们更新的距离向量，而没有变化的节点y不用发送更新报文。接收到邻居的更新报文后，节点又重新计算它们的距离向量，这次没有节点更新，因此也无更新报文发送，算法进入静止状态。如c表。</p>
+<p><strong>链路状态路由算法</strong><br><strong>链路状态</strong>是指本路由器都和那些路由器相邻，以及相应链路的代价。<br>主要执行的<strong>两个任务</strong>：</p>
+<ul>
+<li>主动测试所有相邻节点的状态。</li>
+<li>定期地将链路状态传播给所有其他节点。</li>
+</ul>
+<p>因此每个节点都可使用Dijkstra最短路径算法计算出到达其他节点的最短路径。<br>经典的路径状态路由算法是<strong>OSPF</strong>算法。</p>
+<h2 id="2-分层次的路由选择协议"><a href="#2-分层次的路由选择协议" class="headerlink" title="2.分层次的路由选择协议"></a>2.分层次的路由选择协议</h2><p>可以把整个互联网划分为许多较小的<strong>自治系统（AS）</strong>，自治系统是在单一技术管理下的一组路由，这些路由器使用一种AS内部的路由选择协议和共同的度量。一个AS对其他AS表现出的是一个单一的和一致的路由西安则策略。</p>
+<p>互联网把路由选择协议分为两大类：</p>
+<ul>
+<li><strong>内部网关协议 IGP</strong>：即在一个自治系统内部使用的路由选择协议，使用最多的如RIP和OSPF。</li>
+<li><strong>外部网关协议 EGP</strong>：若源主机和目的主机处在不同的AS中，则当数据包传到一个AS的边界时，需要使用一种协议将选择信息传递到另一个AS中，这个就是外部网关协议。目前使用最多的是BGP-4。</li>
+</ul>
+<p>自治系统之间的路由选择也称<strong>域间路由选择</strong>，自治系统内部的路由选择也称<strong>域内路由选择</strong>。</p>
+<h2 id="3-路由信息协议-RIP"><a href="#3-路由信息协议-RIP" class="headerlink" title="3.路由信息协议 RIP"></a>3.路由信息协议 RIP</h2><p>是内部网关协议IGP中最先得到广泛应用的协议，是一种分布式的基于距离向量的路由选择协议。<br><strong>RIP的规定</strong>：</p>
+<ul>
+<li>网络中的每个路由器都要维护从自身到其他每个目的网络的距离记录，即<strong>距离向量</strong>。</li>
+<li>RIP使用<strong>跳数</strong>来衡量达到目的网络的距离。规定从一个路由器到直接相连的网了的距离定义为1，没经过一个录取距离加1.</li>
+<li>RIP认为好的路由就是<strong>它通过的路由器数量最少，即距离短或跳数少</strong>。</li>
+<li>RIP允许一条路径<strong>最多包含15个</strong>路由器。</li>
+<li>每个路由表项都有是那个关键字段：&lt;目的网络N，距离d，下一跳路由器地址X&gt;。</li>
+</ul>
+<p><strong>RIP的特点</strong></p>
+<ul>
+<li><strong>和谁交换信息</strong>：仅和直接相邻的路由器交换信息。</li>
+<li><strong>交换什么信息</strong>：交换的信息是本路由器所知道的全部信息，即自己的路由表。</li>
+<li><strong>何时交换信息</strong>：按固定的时间间隔交换路由信息。当网络拓扑发生变化时，路由器也及时向相邻路由器通告拓扑变化后的路由信息。</li>
+</ul>
+<p>RIP是应用层协议，使用UDP传播数据，端口是520。RIP选择的路径<strong>不一定是时间最短的，但一定是具有最少的路由跳数</strong>。</p>
+<p><strong>RIP的距离向量算法</strong>：</p>
+<ul>
+<li>对地址为X的相邻路由器发来的RIP报文，先修改该报文中的所有项目：把下一跳字段中的地址都改为X，并阿布所有距离字段的值加1。</li>
+<li>对修改后的RIP报文中的每个项目，执行如下步骤：<br>IF(若原本的路由表中没有目的网络N)<br>&emsp;则把该项目添加到路由表中<br>ELSE IF(若原本的路由表中有目的网络N，且下一跳路由器的地址是X)<br>&emsp;用收到的项目替换原路由表中的项目<br>ELSE IF(若原本的路由表中有目的网络N，且下一跳路由器的地址不是X)<br>&emsp;若收到的项目中的距离d小于路由表中规定距离，则进行更细，<br>ELSE 什么也不做</li>
+<li>若180秒（RIP默认超时时间）还没有收到相邻路由器的更新路由表，则把此相邻路由表记为不可达的路由器，距离设置为16。</li>
+<li>返回</li>
+</ul>
+<p><strong>RIP的优点</strong>：</p>
+<ul>
+<li>实现简单、开销小、收敛过程较快。</li>
+<li>若一个路由器发现了更短的路由，则这种更新信息就传播得很快，在短时间内便可被传到所有路由器，即<strong>好消息传播快</strong>。</li>
+</ul>
+<p><strong>RIP的缺点</strong>：</p>
+<ul>
+<li>RIP限制了网络的规模，最大距离为15。</li>
+<li>路由器之间交换的是路由器中的完整路由表，因此网络规模越大，开销也越大。</li>
+<li>当网络出现故障时，路由器之间需反复多次交换信息才能完成收敛，要经过较长时间才能把故障信息传送到所有路由器，即<strong>坏消息传播慢</strong>。</li>
+</ul>
+<h2 id="4-开放最短路径优先协议-ISRF"><a href="#4-开放最短路径优先协议-ISRF" class="headerlink" title="4.开放最短路径优先协议 ISRF"></a>4.开放最短路径优先协议 ISRF</h2><p>使用分布式联立状态理由算法，内部网关协议的一种。<br>以RIP相比，OSRF有以下<strong>四个特点</strong>：</p>
+<ul>
+<li>ISPF使用<strong>洪泛法</strong>向本AS中所有路由器发送信息，路由器通过所有输出端口向所有相邻的路由器发送信息，而每个相邻的路由器又将此信息发往所欲的相邻路由器。这样最红整个区域中所有路由器都得到了这个信息的一个副本。</li>
+<li>发送的信息是与本路由器相邻的所有路由器的链路状态，但是，这只是录取所知道的部分信息。</li>
+<li>只有当链路状态发生变化时，路由器才用洪泛法向所有路由器发送此信息，并且更新过程收敛快，不会出现坏消息传得慢的问题。</li>
+<li>OSPF是网络层协议，直接使用IP数据报传送，其IP数据报首部的协议字段是89。而RIP是应用层协议，在传输层用UDP。</li>
+</ul>
+<p>除此之外还有以下<strong>特点</strong>：</p>
+<ul>
+<li>OSPF允许对每条路由设置成不同的代价，对于不同类型的业务科计算出不同的路由。</li>
+<li>若到同一个目的网络有多条相同代价的路径，则科将通信量分配给这几条路径。</li>
+<li>OSPF分组具有鉴别功能，从而保证仅在可信赖的路由器之间交换链路状态信息。</li>
+<li>OSPF支持可变长度的子网划分和无分类编制CIDR。</li>
+<li>每个链路状态都带上一个32位的序号，构造出新的路由表。</li>
+</ul>
+<p>为了使OSPF能用于规模很大的网络，将一个自治系统再划分为若干更小的范围，称为<strong>区域</strong>。在一个区域内，由一个或多个<strong>区域边界路由器</strong>负责为流向该区域以外的分组提供路由选择。在AS内只有一个区域配置成<strong>主干区域</strong>。主干区域还要有一个路由器专门负责和本AS外的其他AS交换路由器信息，称为自治系统边界路由器。</p>
+<p><strong>OSPF的分组类型</strong>：</p>
+<ul>
+<li><strong>问候分组</strong>：用来发现和维护邻站的可达性。</li>
+<li><strong>数据库描述分组</strong>：向邻站给出自己的链路状态数据库中的所有链路状态项目的摘要信息。</li>
+<li><strong>链路状态请求分组</strong>：向对方请求发送某些链路状态项目的详细信息。</li>
+<li><strong>链路状态更新分组</strong>：用洪泛法对全网更新链路状态，它是OSPF最核心的部分。</li>
+<li><strong>链路状态确定分组</strong>：对链路更新分组的确认。</li>
+</ul>
+<p>当互联网规模很大时，OSPF要比RIP好得多。</p>
+<h2 id="5-边界网关协议-BGP"><a href="#5-边界网关协议-BGP" class="headerlink" title="5.边界网关协议 BGP"></a>5.边界网关协议 BGP</h2><p>是一种外部网关协议。是应用层协议，基于TCP。<br>采用<strong>路径向量路由选择协议</strong>。</p>
+<p><strong>两种BGP会话</strong><br>两个相邻的AS通过各自的边界路由器直接相连，两个边界路由器通过端口号为179的<strong>半永久TCP连接</strong>来交换BGP路由信息，AS内部的路由器之间也有很多半永久TCP连接来传送BGP路由信息。每对TCP连接端口的两个路由器称为<strong>BGP对等方</strong>，用来发送BGP报文的TCP连接称为<strong>BGP会话</strong>。跨越两个AS的BGP会话称为<strong>外部BGP（eBGP）会话</strong>，同一个AS中的两个路由器之间的BGP会话称为<strong>内部BGP（iBGP）会话</strong>。</p>
+<p><strong>BGP路由</strong><br>一般格式为：BGP路由&#x3D;&lt;CIDR前缀，BGP属性&gt;<br>最重要的两个BGP属性是</p>
+<ul>
+<li><strong>AS-PATH(自治系统路径)</strong>：通告的BGP理由所经过的自治系统。</li>
+<li><strong>NEXT-HOP(下一跳)</strong>：通告的BGP起点路由。</li>
+</ul>
+<p><strong>BGP路由选择</strong><br>按下面给出的顺序，选择BGP路由<br>1）首先选择本地偏好值最高的路由<br>2）选择AS跳数最少（AS&#x3D;PATH最短）的路由<br>3）使用热土豆路由选择算法<br>&emsp;选择最高进NEXT-HOP路由器的路由，让分组经过最少的转发次数离开本AS。<br>4）选择BGP标识符的数值最小的路由</p>
+<p><strong>BGP的四种报文</strong>：</p>
+<ul>
+<li><strong>Open（打开）报文</strong>：用来与相邻的另一个BGP对等方建立关系，使通信初始化。</li>
+<li><strong>Update（更新）报文</strong>：用来通知某一路由的信息，以及列出要撤销的多条路由。</li>
+<li><strong>Keepalice（保活）报文</strong>：用来周期性地证实邻站的连通性。</li>
+<li><strong>Notification（通知）报文</strong>：用来发送检测到的差错。</li>
+</ul>
+<p><strong>三种路由协议的对比</strong></p>
+<h1 id="IP多播"><a href="#IP多播" class="headerlink" title="IP多播"></a>IP多播</h1><p><strong>多播</strong>（也称组播）是让源主机一次发送的单个分组可以抵达用一个组地址表示的若干目的主机，即一对多通信。<br>多播数据报的源地址是源主机的IP地址，目的地址是IP多播地址。IP多播地址就是IPv4中的D类地址。<br>需要注意的是：</p>
+<ul>
+<li>多播数据报也是尽最大努力交付，不提供可靠交付。</li>
+<li>多播地址只能用于目的地址，而不能用于源地址。</li>
+<li>对多播数据报不产生ICMP差错报文。</li>
+</ul>
+<p>IP多播可以分为两种：</p>
+<ul>
+<li>只在本局域网上进行硬件多播。</li>
+<li>在互联网的范围内进行多播。</li>
+</ul>
+<p>因为局域网支持硬件多播，所以只要把IP多播地址映射为多播MAC地址，即可将IP多播数据报封装在局域网的MAC帧中，而MAC帧首部的目的MAC地址字段就设置为由IP多播地址映射成的多播MAC地址。</p>
+<p>路由器要获得多播组的成员信息，需要利用<strong>网际组管理协议（IGMP）</strong><br>IGMP报文被封装在IP数据报中传送，但它也向IP提供服务，IGMP的工作科分为两个阶段：</p>
+<ul>
+<li>当某台主机加入信的多播组时，该主机应向多播组的多播地址发送一个IGMP报文，声明自己要成为该组的成员。本地的多播路由器收到IGMP报文后，还要利用多播路由选择协议，把这种组成员关系转发给互联网上的其他多播路由器。</li>
+<li>组成员关系是动态的。本地多播路由器要周期性地探询本地局域网上的主机，以便知道这些主机是否依然是组的成员。</li>
+</ul>
+<h1 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h1><p><strong>移动IP技术</strong>是指移动站以固定的IP地址实现跨越不同网络的漫游功能，并保证基于IP的网络权限在漫游过程中不发生任何变化。移动IP的目标是把分组地洞的投递给移动站。<br>移动IP定义了<strong>三种功能实体</strong>：</p>
+<ul>
+<li><strong>移动节点</strong>：具有永久IP地址的移动主机。</li>
+<li><strong>本地代理</strong>：通常使用连接在归属网络（原始来接到的网络）上的路由器。</li>
+<li><strong>外地代理</strong>：通常就是连接在被访网络（移动到另一地点所接入的网络）上的路由器。</li>
+</ul>
+<p>在移动IP中，每个移动站都有一个原始地址，即<strong>永久地址</strong>（或归属地址），移动站原始链接的网络称为<strong>归属网络</strong>。永久地址和归属网络的关联是不变的。<strong>归属代理</strong>通常是连接到归属网络上的路由器，然而它实现的代理功能是在应用层完成的。当移动站移动到另一地址，所接入的外地网络也称<strong>被访网络</strong>。被访网络中使用的代理称为<strong>外地代理</strong>，他通常是连接在被访网络上的路由器。<br>外地代理有两个重要功能：</p>
+<ul>
+<li>要为移动站创建一个临时地址，称为<strong>转交地址</strong>。</li>
+<li>及时把移动站的转交地址告诉其归属代理。</li>
+</ul>
+<p><strong>移动IP的基本通信流程如下</strong>；</p>
+<ul>
+<li>移动站A在归属网络时，按传统的TCP&#x2F;IP方式进行通信。</li>
+<li>移动站A漫游到被访网络时，向外部代理进行登记，以获得一个临时的转交地址。外地代理要向A的归属代理登记A的转交地址。</li>
+<li>归属代理知道移动站A的转交地址后，会建立一条通向转交地址的隧道，将截获的发送给A的IP分组进行再封装，并通过隧道发送给被访网络的外地代理。</li>
+<li>外地代理把收到的封装的IP分组进行拆封，恢复成原始的IP分组，然后发送给移动站A，这样A在被访网络就能收到这些发送给它的IP分组。</li>
+<li>移动站A在被访网络对外发送IP分组时，仍然使用自己的永久地址作为IP分组的源地址，此时显然无需通过A的归属代理来转发，而是直接通过被访网络的外部代理。</li>
+<li>移动站A移动到另一被访网络时，在新外地代理登记后，然后信外地代理将A的信转交地址告诉其归属代理。无论如何移动，A收到的IP分组都是由归属代理转发的。</li>
+<li>移动站A回到归属网络时，A向归属代理注销转交地址。</li>
+</ul>
+<p>为了支持移动性，在网络层中还应添加一些新功能：</p>
+<ul>
+<li>移动站到外地代理的登记协议</li>
+<li>外地代理到归属代理的登记协议</li>
+<li>归属代理数据报封装协议</li>
+<li>外部代理拆封协议</li>
+</ul>
+<h1 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h1><p><strong>冲突域</strong>：是指连接到同一物理介质上的所有节点的集合，这些节点之间存在介质争用的现象。<br><strong>广播域</strong>：指接收同样广播信息的节点信息。通常所说的局域网（LAN）特指使用路由器分割的网络，也就是广播域。</p>
+<p>路由器是一种具有多个输入&#x2F;输出端口的专用计算机。</p>
+<p>当源主机向目标主机发送数据报时，路由器先检查源主机与目标主机是否连接在同一网络上。若源主机和目标主机在同一网络上，则<strong>直接交付</strong>而无需通过路由器。若不在同一个网络上，则路由器按照转发表指出的路由将分组转发给下一个路由器，这称为<strong>间接交付</strong>。</p>
+<p>从结构上看，路由器由<strong>路由选择和分组转发</strong>两部分组成。从模型的角度看，路由器是网络层设备，它实现了网络层的下三层，即网络层、数据链路层和网络层。<br><strong>路由选择</strong>部分也称控制部分。<br><strong>分组转发</strong>部分由三部分组成：交换结构、一组输入接口和一组输出接口。<br>交换结构也称交换组织，其作用是根据转发表对分组进行处理，将某个输入端口进入的分组从一个合适的输出端口输出转发出去。</p>
+<p>路由表是根据路由选择算法得出的，主要用途是路由选择。标准的路由表有四个项目：目标网络IP地址、子网掩码、下一跳IP地址、接口。<br>转发表是从路由表得出的，其表项和路由器表项有直接的对应关系。</p>
+]]></content>
+      <categories>
+        <category>408-计算机网络</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>计算机网络</tag>
+        <tag>网络层</tag>
+      </tags>
+  </entry>
+</search>
