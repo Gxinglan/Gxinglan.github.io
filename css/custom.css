@@ -52,3 +52,12 @@ body, [data-theme="dark"] {
 #page-header:before {
   background-color: transparent !important;
 }
+
+/* 页脚融入星空，去掉默认的淡蓝色背景条 */
+#footer {
+  background: linear-gradient(to top, rgba(9, 10, 15, 0.9) 0%, rgba(9, 10, 15, 0.45) 55%, transparent 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+#footer .footer-other {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
