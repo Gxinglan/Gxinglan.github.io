@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>[408] [计算机网络] 参考模型与各层基本概要</title>
-    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%90%84%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%A6%81/</url>
+    <url>/2026/05/02/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%90%84%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%A6%81/</url>
     <content><![CDATA[<h1 id="ISO-OSI参考模型"><a href="#ISO-OSI参考模型" class="headerlink" title="ISO&#x2F;OSI参考模型"></a>ISO&#x2F;OSI参考模型</h1><h2 id="1-物理层"><a href="#1-物理层" class="headerlink" title="1.物理层"></a>1.物理层</h2><p>物理层的传输单元是比特，功能是在物理介质上数据端设备透明地传输原始比特流。<br>物理层的主要研究内容如下：</p>
 <ul>
 <li>通信链路与通信节点的连接需要一些电路接口，物理层规定了这些接口的一些参数。</li>
@@ -88,7 +88,7 @@
   </entry>
   <entry>
     <title>[408] [计算机网络] 传输层</title>
-    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/</url>
+    <url>/2026/05/12/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/</url>
     <content><![CDATA[<h1 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h1><p>传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。<br><strong>传输层的主要功能如下</strong>：</p>
 <ul>
 <li><strong>应用进程之间的逻辑通信</strong><br>应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
@@ -267,7 +267,7 @@
   </entry>
   <entry>
     <title>[408] [计算机网络] 应用层</title>
-    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/</url>
+    <url>/2026/05/23/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/</url>
     <content><![CDATA[<h1 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h1><h2 id="1-客户-服务器模型"><a href="#1-客户-服务器模型" class="headerlink" title="1.客户&#x2F;服务器模型"></a>1.客户&#x2F;服务器模型</h2><p>在<strong>客户服务器（C&#x2F;S）模型</strong>中，有一个总是打开的主机称为<strong>服务器</strong>，他服务于许多来自其他称为<strong>客户机</strong>的主角请求。其工作流程如下：</p>
 <ul>
 <li>服务器处于接收请求的状态。</li>
@@ -1032,7 +1032,7 @@
   </entry>
   <entry>
     <title>[408] [计算机网络] 物理层</title>
-    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%89%A9%E7%90%86%E5%B1%82/</url>
+    <url>/2026/05/03/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%89%A9%E7%90%86%E5%B1%82/</url>
     <content><![CDATA[<h1 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a>通信基础</h1><p>数据和信号都有模拟和数字之分：</p>
 <ul>
 <li>模拟数据（或模拟信号）的取值是连续的。</li>
@@ -1082,7 +1082,7 @@
   </entry>
   <entry>
     <title>[408] [计算机网络] 数据链路层</title>
-    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
+    <url>/2026/05/06/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
     <content><![CDATA[<h1 id="数据链路层的功能"><a href="#数据链路层的功能" class="headerlink" title="数据链路层的功能"></a>数据链路层的功能</h1><p>封装成帧、透明传输和差错检测。<br><strong>数据链路层使用的信道</strong>主要有两种：</p>
 <ul>
 <li><strong>点对点信道</strong>：使用一对一的通信方式。PPP则是目前使用最广泛的点对点协议。</li>
@@ -1398,7 +1398,7 @@
   </entry>
   <entry>
     <title>[408] [计算机网络] 网络层</title>
-    <url>/2026/06/15/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
+    <url>/2026/05/08/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
     <content><![CDATA[<h1 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a>网络层的功能</h1><p>网络层提供主机到主机的通信服务，主要任务是将分组从源主机经过多个网络和多段链路传输到目标主机。该任务可划分为<strong>分组转发和路由选择</strong>两个重要功能。<br><img src="/img/408/wl1.png"></p>
 <h2 id="1-异构网络互联"><a href="#1-异构网络互联" class="headerlink" title="1.异构网络互联"></a>1.异构网络互联</h2><p><strong>网络互连</strong>：指将两个以上的计算机网络，通过一定的方法，用一些中继系统相互连接起来，以构建更大的网络系统。<br>中继系统分为以下4类：</p>
 <ul>
