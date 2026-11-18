@@ -1,462 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>[408] [计算机网络] 参考模型与各层基本概要</title>
-    <url>/2026/05/02/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%90%84%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%A6%81/</url>
-    <content><![CDATA[<h1 id="ISO-OSI参考模型"><a href="#ISO-OSI参考模型" class="headerlink" title="ISO&#x2F;OSI参考模型"></a>ISO&#x2F;OSI参考模型</h1><h2 id="1-物理层"><a href="#1-物理层" class="headerlink" title="1.物理层"></a>1.物理层</h2><p>物理层的传输单元是比特，功能是在物理介质上数据端设备透明地传输原始比特流。<br>物理层的主要研究内容如下：</p>
-<ul>
-<li>通信链路与通信节点的连接需要一些电路接口，物理层规定了这些接口的一些参数。</li>
-<li>物理层规定了通信链路上所传输的信号的意义和电气特征。</li>
-</ul>
-<h2 id="2-数据链路层"><a href="#2-数据链路层" class="headerlink" title="2.数据链路层"></a>2.数据链路层</h2><p>数据链路层的传输单位是帧。<br>将物理层提供的可能出错的物理链接改造为逻辑上无差错的数据链路。<br>数据链路层将网络层交来的IP分组封装成帧，并且可靠的传输到相邻节点的网络层。其主要功能包括封装成帧、差错检测与纠正、流量控制和贡献信道上的截止访问控制MAC<br>典型协议有SDLC、HDLC、PPP等。<br>具备物理寻址，流量控制，差错检测等功能，但是不具备拥塞控制。</p>
-<h2 id="3-网络层"><a href="#3-网络层" class="headerlink" title="3.网络层"></a>3.网络层</h2><p>网络层的传输单位是数据报。<br>主要任务是将网络层的协议数据单元（分组）从源主机传输到目标主机，为分组交换网上的不同主机提供通讯服务。<br>网络层既提供有链接可靠的虚电路服务，又提供无连接不可靠的数据报服务。<br>具有路由选择、流量控制、拥塞控制、差错控制和网际互联等功能。<br>典型协议有IP、IPX、ICMP、IGMP、ARP、RARP、RIP和OSRF等。</p>
-<h2 id="4-传输层"><a href="#4-传输层" class="headerlink" title="4.传输层"></a>4.传输层</h2><p>传输层也称运输层，负责主机中两个进程之间的通信，提供端到端的流量控制、差错控制、连接建立与释放、可靠传输管理等服务，传输层仅提供有连接可靠的服务。<br>数据链路层提供的是点到点通信。传输层提供的是端到端通信。<br>端到端通信是指运行在不同主机内的两个进程之间的通信。<br>传输层具有复用和分用的功能：</p>
-<ul>
-<li>复用是指多个应用层进程可同时使用下面传输层的服务。</li>
-<li>分用是指传输层将收到的信息分别交付给上面应用层中相应的进程</li>
-</ul>
-<p>典型协议有TCP、UDP。</p>
-<h2 id="5-会话层"><a href="#5-会话层" class="headerlink" title="5.会话层"></a>5.会话层</h2><p>会话层允许不同主机上的各个进程之间进行会话。这种服务主要为表示层实体或用户进程建立连接，并在连接上有序地传输数据，这就是会话，也称为建立同步（SYN）。<br>会话层负责管理主机间的会话进程，包括建立、管理和终止进程间的会话。<br>会话层包含一种称为检查点的机制来维持可靠会话，使通信会话在通信失效时从检查点继续恢复通信，即断点下载的原理。</p>
-<h2 id="6-表示层"><a href="#6-表示层" class="headerlink" title="6.表示层"></a>6.表示层</h2><p>表示层主要处理不同主机中交换信息的表示方式。<br>表示层采用抽象的标准方式定义数据结构，并采用标准的编码形式。</p>
-<h2 id="7-应用层"><a href="#7-应用层" class="headerlink" title="7.应用层"></a>7.应用层</h2><p>应用层是OSI参考模型的最高层，是用户与网络的接口。<br>典型协议有FTP、SMIP、HTTP等。</p>
-<h1 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP&#x2F;IP模型"></a>TCP&#x2F;IP模型</h1><p>从低到高依次为网络接口层、网际层、传输层和应用层。</p>
-<h2 id="1-网络接口层"><a href="#1-网络接口层" class="headerlink" title="1.网络接口层"></a>1.网络接口层</h2><p>功能类似于OSI参考模型的物理层和数据链路层，其作用是从主机或节点接收IP分组，并将它们发送到指定的物理网络上。</p>
-<h2 id="2-网际层（主机-主机）"><a href="#2-网际层（主机-主机）" class="headerlink" title="2.网际层（主机-主机）"></a>2.网际层（主机-主机）</h2><p>功能上类似于OSI参考模型的网络层。<br>网际层将分组发往任何网络，并为其独立地选择合适的路由，但不保证各个分组有序地到达，各个分组的有序和可靠交付由高层负责。<br>网际层仅提供无连接不可靠的IP，数据传输的单位是IP数据报。</p>
-<h2 id="3-传输层（应用-应用或进程-进程）"><a href="#3-传输层（应用-应用或进程-进程）" class="headerlink" title="3.传输层（应用-应用或进程-进程）"></a>3.传输层（应用-应用或进程-进程）</h2><p>类似于OSI参考模型中的传输层。即使得发送端和目的端主机上的对等实体进行会话。<br>传输层主要使用以下两种协议：</p>
-<ul>
-<li><strong>传输控制协议（TCP）</strong>：它是面向连接的，能够提供可靠的交付，数据传输的单位是报文段。</li>
-<li><strong>用户数据报协议（UDP）</strong>：无连接，不可靠交付，最大努力交付，数据传输的单位是用户数据报。</li>
-</ul>
-<h2 id="4-应用层（用户-用户）"><a href="#4-应用层（用户-用户）" class="headerlink" title="4.应用层（用户-用户）"></a>4.应用层（用户-用户）</h2><p>包括所有的高层协议，如Telent、FTP、DNS、SMTP和HTTP等。</p>
-<h1 id="网络的5层协议体系结构模型"><a href="#网络的5层协议体系结构模型" class="headerlink" title="网络的5层协议体系结构模型"></a>网络的5层协议体系结构模型</h1><p>包括物理层、数据链路层、网络层、传输层、应用层。</p>
-<h2 id="1-物理层-1"><a href="#1-物理层-1" class="headerlink" title="1.物理层"></a>1.物理层</h2><p>负责在连接各台计算机的传输介质上传输数据比特流。<br>物理层的接口特性</p>
-<ul>
-<li>机械特性</li>
-<li>电气特性：指明在接口电缆的各条线上电压范围、传输速率和距离限制。</li>
-<li>功能特性：指明某条线上出现的某一电平的电压表示何种意义以及每条线的功能。</li>
-<li>过程特征：顺序</li>
-</ul>
-<h2 id="2-数据链路层-1"><a href="#2-数据链路层-1" class="headerlink" title="2.数据链路层"></a>2.数据链路层</h2><p>主要任务是让帧在一段链路上或一个网络中传输。</p>
-<ul>
-<li>链路管理：数据链路层连接的建立、维持和释放过程。主要用于面向连接的服务。</li>
-<li>封装成帧：是指一段数据的前后分别添加首部和尾部，构成帧。</li>
-<li>透明传输：是指不论什么样的比特组合的数据，都能后按照原样无差错地在这个数据链路上传输。</li>
-<li>流量控制：实际上是限制发送方的发送速率。<br>在OSI体系结构中，数据链路层具有流量控制的功能。而在TCP&#x2F;IP体系结构中，流量控制功能被移到了传输层。他们控制的对象不同。对数据链路层来说，控制的是相邻节点之间的数据链路上的流量，而对传输层来说，控制的则是从源端到目的端之间的流量。</li>
-<li>差错检测</li>
-</ul>
-<p>数据链路层使用的信道主要有两种：</p>
-<ul>
-<li>点对点信道：使用一对一通信方式。PPP是目前使用最广泛的点对点协议。</li>
-<li>广播信道：使用一对多的广播通信方式。采用共享广播信道的有线局域网普遍使用CSMA&#x2F;CD协议，而无线局域网则使用CSMA&#x2F;CA协议。</li>
-</ul>
-<h2 id="3-网络层-1"><a href="#3-网络层-1" class="headerlink" title="3.网络层"></a>3.网络层</h2><p>网络层提供主机到主机的通信服务，主要任务是将分组从源主机经过多个网络和多端链路传输到目标主机。该任务可划分为分组转发和路由选择两种重要功能。</p>
-<ul>
-<li>分组转发：指路由器根据转发表将分组从合适的端口转发出去。</li>
-<li>路由选择：根据路由协议构造路由表，同时经常或定期地与相邻路由器交换信息，获取网络最新拓扑，动态更新维护路由表，以决定分组到达目的地节点的最优路径。<br>OSI参考模型曾主张在网络层使用面向连接的虚电路服务。<br>TCP&#x2F;IP体系的网络层提供的是无连接的数据报服务，其核心思想是应由用户主机来保证通信的可靠性。网络层向上 只提供简单灵活的、无连接的、尽最大努力交付的数据报服务。通信的可靠性可以由更高层的传输层来负责。</li>
-</ul>
-<p>网络层提供的两种服务</p>
-<ul>
-<li>面向连接的虚电路服务：当两台计算机进行通信时，应当先建立网络层的连接。通信过程分为虚电路建立、数据传输和虚电路释放。</li>
-<li>无连接的数据报服务：网络在发送分组前不需要先建立连接。源主机的高层协议将报文拆成若干较小的数据段，并加上地址等控制信息后构成分组。中间节点存储分组很短一段时间，找到最佳的路由后，尽快转发每个分组。同时，当分组正在某一链路上传送时，分组并不占用网络其他部分的资源。因为采用存储转发技术，资源是共享的。</li>
-</ul>
-<p>拥塞控制，两种方法：</p>
-<ul>
-<li>开环控制：在设计网络时事先将有关发生拥塞的因素考虑周到，力求网络在工作时不产生拥塞。静态</li>
-<li>闭环控制：采用监测网络系统去监视，即使检测哪里发生了拥塞，然后将拥塞信息传到合适的地方，以便调整网络系统的运行，并解决出现的问题。动态</li>
-</ul>
-<h2 id="4-传输层-1"><a href="#4-传输层-1" class="headerlink" title="4.传输层"></a>4.传输层</h2><p>数据链路层提供链路上相邻节点之间的逻辑通信，网络层提供主机之间的逻辑通信。传输层位于网络层之上、应用层之下，它为运行在不同主机上的进程之间提供逻辑通信。<br>传输层属于面向通信部分的最高层，同时也是用户功能中的最底层。<br>传输层的功能如下：</p>
-<ul>
-<li>应用进程之间的逻辑通信：端到端的逻辑通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
-<li>复用和分用：复用是指发送方不同的应用进程都可以使用同一传输层协议传送数据。分用是指接收方的传输层在剥去报文的首部后能够把这些数据正确交付到目标的应用进程。</li>
-<li>差分检测</li>
-<li>提供面向连接和无连接的传输协议</li>
-</ul>
-<h2 id="5-应用层"><a href="#5-应用层" class="headerlink" title="5.应用层"></a>5.应用层</h2><p>网络应用模型：客户&#x2F;服务器模型，P2P模型</p>
-<ul>
-<li>客户&#x2F;服务器模型（C&#x2F;S模型）：有一个总是打开的主机称为服务器，它服务于许多来自其他称为客户机的主机请求。最主要的特征是，客户是服务请求方，服务器是服务提供方。</li>
-<li>P2P模型：整个网络中的传输内容不再被同时保存在中心服务器中，每个节点都同时具有下载、上传的功能，其权利和义务都是大体对等的。<br>各种高层协议：如域名系统DNS，文件传输协议FTP，电子邮箱E-mail等</li>
-</ul>
-]]></content>
-      <categories>
-        <category>408-计算机网络</category>
-      </categories>
-      <tags>
-        <tag>408</tag>
-        <tag>计算机网络</tag>
-        <tag>参考模型与各层基本概要</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[408] [计算机网络] 传输层</title>
-    <url>/2026/05/12/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/</url>
-    <content><![CDATA[<h1 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h1><p>传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。<br><strong>传输层的主要功能如下</strong>：</p>
-<ul>
-<li><strong>应用进程之间的逻辑通信</strong><br>应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
-<li><strong>复用和分用</strong><br>复用是指发送方不同的应用进程都可以使用同一个传输层协议传送数据。<br>分用是指接受方的传输层在剥去报文的首部后能够把这些数据正确交付到目的应用进程。</li>
-<li><strong>差错检测</strong><br>对于YCP，若接收方发现报文段出错，则要求发送方重发该报文段。对于UDP，若接收方发现数据报出错，则直接丢弃。</li>
-<li><strong>提供面向连接和无连接的传输协议</strong></li>
-</ul>
-<h1 id="1-传输层的寻址与端口"><a href="#1-传输层的寻址与端口" class="headerlink" title="1.传输层的寻址与端口"></a>1.传输层的寻址与端口</h1><p><strong>端口</strong>能让应用层的各种进程将其数据通过端口向下交付给传输层，以及让传输层知道应当将其报文段中的数据向上通过端口交付给应用层相应的进程。<br><strong>硬件端口</strong>是不同硬件设备进行交互的接口，<strong>软件端口</strong>是应用层的各种协议进程与传输实体进行层间交互的一种地址。<br>传输层使用的是软件接口。</p>
-<p><strong>端口号</strong>只具有本地意义，根据端口号范围可将端口分为两类：</p>
-<ul>
-<li><strong>服务器使用的端口号</strong>：分为两类，最重要的一类是<strong>熟知端口号</strong>，数值为0-1023，IANA（互联网地址指派机构）把这些端口号指派给了TCP&#x2F;IP最重要的一些应用程序。另一类成为<strong>登记端口号</strong>，数值为1024-49151，它是供没有熟知端口号的应用程序使用的，使用这类端口号必须在IANA登记。<br>FTP 21; TELVET 23; SMTP 25; DNS 53; TFTP 69;HTTP 80;SNMP 161。</li>
-<li><strong>客户端使用的端口号</strong>：数值为49152-65535。因为这类端口号仅在客户进程运行时才动态选择，所有也称<strong>短暂端口号</strong>。</li>
-</ul>
-<h1 id="2-无连接服务和面向连接服务"><a href="#2-无连接服务和面向连接服务" class="headerlink" title="2.无连接服务和面向连接服务"></a>2.无连接服务和面向连接服务</h1><p>TCP&#x2F;IP族在IP层之上使用了两个传输协议：一个是<strong>面向连接的传输控制协议（TCP）</strong>，；另一个是<strong>无连接的用户数据报协议（UDP）</strong>。</p>
-<p>TCP提供面向连接的可靠服务，不提供广播或多播服务。主要适用于可靠性更重要的场合，如文件传输协议（FTP）、超文本传输协议（HTTP）、远程登录（TELVET）等。</p>
-<p>UDP提供无连接的不可靠服务。UPD在IP层之上仅提供两个附加服务：多路复用和对数据的错误检查。使用UDP的应用主要包括小文件传送协议（TFTP）、DNS、SNMP和实时传输协议（RTP）。</p>
-<p>一些典型互联网应用锁用的TCP&#x2F;IP应用层协议和传输层协议如下：</p>
-<table>
-<thead>
-<tr>
-<th>互联网应用</th>
-<th>TCP&#x2F;IP 应用层协议</th>
-<th>TCP&#x2F;IP 传输层协议</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>域名解析</td>
-<td>域名系统（DNS）</td>
-<td>UDP</td>
-</tr>
-<tr>
-<td>文件传送</td>
-<td>简单文件传送协议（TFTP）</td>
-<td>UDP</td>
-</tr>
-<tr>
-<td>路由选择</td>
-<td>路由信息协议（RIP）</td>
-<td>UDP</td>
-</tr>
-<tr>
-<td>IP 地址分配</td>
-<td>动态主机配置协议（DHCP）</td>
-<td>UDP</td>
-</tr>
-<tr>
-<td>网络管理</td>
-<td>简单网络管理协议（SNMP）</td>
-<td>UDP</td>
-</tr>
-<tr>
-<td>电子邮件</td>
-<td>简单邮件传送协议（SMTP）</td>
-<td>TCP</td>
-</tr>
-<tr>
-<td>远程终端接入</td>
-<td>远程终端协议（TELNET）</td>
-<td>TCP</td>
-</tr>
-<tr>
-<td>万维网</td>
-<td>超文本传送协议（HTTP）</td>
-<td>TCP</td>
-</tr>
-<tr>
-<td>文件传送</td>
-<td>文件传送协议（FTP）</td>
-<td>TCP</td>
-</tr>
-</tbody></table>
-<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p>UDP仅在IP层的数据报服务之上增加了复用、分用和差错检测的功能。<br><strong>UDP的特点</strong>：</p>
-<ul>
-<li>UDP无须建立连接。</li>
-<li>无连接状态。</li>
-<li>UDP的首部开销小。</li>
-<li>UDP没有拥塞控制。</li>
-<li>UDP支持一对一、一对多、多对一和多对多的交互通信。</li>
-</ul>
-<p>UDP常用于一次性传输较少数据的网络应用。<br>UDP是面向报文的，报文不可分割，是UDP数据报处理的最小单位。</p>
-<h2 id="1-UDP的首部格式"><a href="#1-UDP的首部格式" class="headerlink" title="1.UDP的首部格式"></a>1.UDP的首部格式</h2><p><img src="/img/408/c1.png" alt="图片说明"></p>
-<ul>
-<li><strong>源端口</strong>。在需要对方回信时选用，不需要时可用全0。</li>
-<li><strong>目的端口</strong>。这在终点交付报文时必须使用到。</li>
-<li><strong>长度</strong>。UDP数据报的长度，最小值是8。</li>
-<li><strong>校验和</strong>。检验UDP数据报在传输中是否有错。有错就丢弃。</li>
-</ul>
-<p>当传输层从IP层收到UDP数据报时，就根据首部中的目的端口，把UDP数据报通过相应的端口，上交最后的终点——应用进程<br>若接收方UDP发现收到的报文中的目的端口号不正确，则就丢弃该报文，并由ICMP发送“端口不可达”差错报文给发送方。</p>
-<h2 id="2-UDP检验"><a href="#2-UDP检验" class="headerlink" title="2.UDP检验"></a>2.UDP检验</h2><p>UDP计算检验和的方法和计算IP数据报首部检验和的方法基本相同。不同的是：IP数据报的校验和只检验IP数据报的首部，但UDP的校验和要将首部和数据部分一起检验。<br><strong>UDP计算校验和的方法</strong>：在发送方，先把全0放入校验和阻断，再把伪首部和UDP数据报看成是由许多16位的字串接起来的。若UDP数据报的数据部分不是偶数个字节，则要在末尾填入一个全0字节（但此字节不发送）。然后按二进制反码计算出这些16位字的和。将此和的二进制反码写入检验和字段，并发送。在接收方，把收到的UDP数据报连同伪首部（若不是偶数个数字节，则还需补上一个全0字节）后，按二进制反码求这些16位字的和。当无差错时其结果应该全1，否则就表明有差错出现，接收方就应丢弃这个UDP数据报。</p>
-<p><strong>UDP校验和的计算规则</strong><br><img src="/img/408/c2.png" alt="图片说明"><br><img src="/img/408/c3.png" alt="图片说明"></p>
-<h2 id="3-TCP"><a href="#3-TCP" class="headerlink" title="3.TCP"></a>3.TCP</h2><p>TCP是在不可靠的IP层之上实现的可靠的数据传输协议。<br><strong>主要特点有</strong>：</p>
-<ul>
-<li>TCP是面向连接的传输层协议，TCP连接是一条逻辑连接。</li>
-<li>每一条TCP连接只能有两个断点，每一条TCP连接只能是一对一的。</li>
-<li>TCP提供可靠交付的服务，保证传送的数据无差错、不丢失、不重复且有序。</li>
-<li>TCP提供全双工 通信。</li>
-<li>TCP是面向字节流的。</li>
-</ul>
-<p>TCP和UDP在发送报文时所采用的方式完全不同。UDP报文的长度由发送应用进程决定，而TCP报文的长度则根据接收方给出的窗口值和当前网络拥塞程度来决定。</p>
-<h2 id="1-TCP报文段"><a href="#1-TCP报文段" class="headerlink" title="1.TCP报文段"></a>1.TCP报文段</h2><p>TCP传送的数据单元称为报文段。TCP报文段既可用来运载数据，又可用来建立连接、释放连接和应答，一个TCP报文段分为首部和数据两部分，整个TCP报文段作为IP数据报的数据部分封装在IP数据报中。<br><img src="/img/408/c4.png" alt="图片说明"></p>
-<ul>
-<li><strong>序号</strong>：占4B。范围是0 - $2^{32}-1$。TCP连接中传送的字节流中的每个字节都要按顺序编号，序号字段值指的是本报文段所发送的数据的第一个字节的序号。</li>
-<li><strong>确定号</strong>：占4B。是期望收到对方下一个报文段的第一个数据字节的序号。</li>
-<li><strong>数据偏移（首部长度）</strong>：占4位，它指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。</li>
-<li><strong>保留</strong>：占6位，目前应置为0。</li>
-<li><strong>紧急位URG</strong>：当URG&#x3D;1时，表明紧急指针字段有效。它告诉系统此报文段中有紧急数据，应尽快传送。紧急数据被插入至报文段的最前面，而在紧急数据后面的数据仍是普通数据，因此要与首部中的紧急指针字段配合使用。</li>
-<li><strong>确定位ACK</strong>：仅当ACK&#x3D;1时确定号字段才有效。当ACK&#x3D;0时，确定号无效。</li>
-<li><strong>推送位PSH（Push）</strong>：两个应用进程进行交互式通信时，都希望在键入一个命令后立即就能收到对方的响应，此时发送方TCP将PSH置为1，接收方TCP收到PSH&#x3D;1的报文段后，就尽快交付给接收应用进程，而不在等到整个缓存都填满了后再向上交付。</li>
-<li><strong>同步位SYN</strong>：到SYN&#x3D;1时表示这是一个链接请求或连接接受报文。</li>
-<li><strong>终止位FIN</strong>：用来释放一个链接。当FIM&#x3D;1时，表明此报文段的发送方的数据已发送完毕，并要求释放传输裂解。</li>
-<li><strong>窗口</strong>：占2B，窗口值告诉对方，从本报文段首部中的确定号算起，接收方目前允许对方发送的数据量（以字节为单位）。</li>
-<li><strong>校验和</strong>：占2B，校验和字段校验的范围包括首部和数据两部分。计算校验和时，和UDP一样，要在TCP报文段的前面加上12B的维首部。</li>
-<li><strong>紧急指针</strong>：占2B，仅在URG&#x3D;1时才有意义，它指出报文段中的紧急数据的字节数。即使窗口为零，也可以发送紧急数据。</li>
-<li><strong>选项</strong>：长度可变，最长可达40B。</li>
-<li><strong>填充</strong>：这是为了使整个首部长度是4B的整数倍。</li>
-</ul>
-<h2 id="2-TCP连接管理"><a href="#2-TCP连接管理" class="headerlink" title="2.TCP连接管理"></a>2.TCP连接管理</h2><p>TCP连接的端口即为<strong>套接字</strong>，每一条TCP连接唯一地被通信的两个端口（两个套接字）所确定。同一个IP地址可以有多个不同的TCP连接，而同一个端口号也可以出现在多个不同的TCP连接中。<br>TCP连接的建立采用<strong>客户&#x2F;服务器模式</strong>。</p>
-<p><strong>TCP连接的建立</strong><br>经历以下三个步骤，通常称为<strong>三次握手</strong>：<br><img src="/img/408/c5.png" alt="图片说明"><br>建立连接前，服务器处于LISTEN（收听）状态，等待客户的连接请求。</p>
-<ul>
-<li><strong>第一步</strong>：客户向服务器发送连接请求报文段。该报文段的 <code>SYN = 1</code>，同时选择一个初始序号 <code>seq = x</code>。TCP 规定，SYN 报文段（<code>SYN=1</code> 的报文段）不能携带数据，但仍消耗一个序号，因此客户下一次发送的报文段序号 <code>seq = x + 1</code>。此时，客户进入 <code>SYN-SENT</code>（同步已发送）状态。</li>
-<li><strong>第二步</strong>：服务器收到连接请求后，若同意建立连接，则向客户返回确认报文段。该报文段的 <code>SYN = 1</code>、<code>ACK = 1</code>，确认序号 <code>ack = x + 1</code>，同时选择自己的初始序号 <code>seq = y</code>。确认报文段同样不能携带数据，但也消耗一个序号。此时，服务器进入 <code>SYN-RCVD</code>（同步已收到）状态。</li>
-<li><strong>第三步</strong>：客户收到确认后，再向服务器发送最终确认。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = y + 1</code>，序号 <code>seq = x + 1</code>。此报文段可以携带数据。若不携带数据，则不消耗序号，下一个数据报文段的序号仍为 <code>x + 1</code>。此时，客户进入 <code>ESTABLISHED</code>（已建立连接）状态。</li>
-</ul>
-<p>当服务器收到来自客户机的确定后，也进入ESTABLISHED状态。</p>
-<p><strong>TCP连接的释放</strong><br>TCP连接释放的过程通常称为<strong>四次挥手</strong>：<br><img src="/img/408/c6.png" alt="图片说明"></p>
-<ul>
-<li><strong>第一步</strong>：客户决定关闭连接时，向服务器发送连接释放报文段，并停止发送数据（主动关闭）。<br>该报文段的 <code>FIN = 1</code>，序号 <code>seq = u</code>，其值等于此前已发送数据的最后一个字节序号加 1。TCP 规定，FIN 报文段（<code>FIN = 1</code> 的报文段）即使不携带数据，也消耗一个序号。此时，客户进入 <code>FIN-WAIT-1</code>（终止等待 1）状态。由于 TCP 是全双工的，可视为连接包含两条独立的数据通路；发送 FIN 的一端关闭了其发送方向，但对方仍可继续发送数据。</li>
-<li><strong>第二步</strong>：服务器收到连接释放报文段后，立即发送确认报文段。该报文段的 <code>ACK = 1</code>，确认序号 <code>ack = u + 1</code>，序号 <code>seq = v</code>（<code>v</code> 为服务器此前已发送数据的最后一个字节序号加 1）。随后，服务器进入 <code>CLOSE-WAIT</code>（关闭等待）状态。此时，从客户到服务器方向的连接已释放，但从服务器到客户方向的连接并未释放，TCP 连接处于半关闭状态。客户收到确认后，进入 <code>FIN-WAIT-2</code>（终止等待 2）状态，等待服务器发出的连接释放报文段。</li>
-<li><strong>第三步</strong>：若服务器已经没有要向客户发送的数据，就向其发送连接释放报文段。该报文段的 <code>FIN = 1</code>、<code>ACK = 1</code>，序号 <code>seq = w</code>（<code>w</code> 可能大于 <code>v</code>，因服务器在半关闭期间可能又发送了数据），还需重复此前已发送的确认序号 <code>ack = u + 1</code>。此时，服务器进入 <code>LAST-ACK</code>（最后确认）状态。</li>
-<li><strong>第四步</strong>：客户收到连接释放报文段后，必须发送最终确认，并进入 <code>TIME-WAIT</code>（时间等待）状态。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = w + 1</code>，序号 <code>seq = u + 1</code>。服务器收到此确认后，即进入 <code>CLOSED</code>（连接关闭）状态。客户在 <code>TIME-WAIT</code> 状态下，还需等待时间等待计时器设置的时间 <code>2MSL</code>（Maximum Segment Lifetime，最长报文段寿命）后，才进入 <code>CLOSED</code> 状态。</li>
-</ul>
-<p><strong>对上述TCP连接的建立和释放的总结如下</strong>：<br>1）建立连接分为3步：</p>
-<ul>
-<li>SYN&#x3D;1，seq&#x3D;x</li>
-<li>SYN&#x3D;1，ACK&#x3D;1，seq&#x3D;y，ack&#x3D;x+1</li>
-<li>ACK&#x3D;1，seq&#x3D;x+1，ack&#x3D;y+1</li>
-</ul>
-<p>2）释放过程分为4步：</p>
-<ul>
-<li>FIN&#x3D;1，seq&#x3D;u</li>
-<li>ACK&#x3D;1，seq&#x3D;v，ack&#x3D;u+1</li>
-<li>FIN&#x3D;1，ACK&#x3D;1，seq&#x3D;w，ack&#x3D;u+1</li>
-<li>ACK&#x3D;1，seq&#x3D;u+1，ack&#x3D;w+1</li>
-</ul>
-<h2 id="3-TCP可靠传输"><a href="#3-TCP可靠传输" class="headerlink" title="3.TCP可靠传输"></a>3.TCP可靠传输</h2><p>TCP在不可靠的IP层之上建立一种可靠数据传输服务。<br><strong>序号</strong><br>TCP首部的序号字段用来保证数据能有序提交给应用层，序号建立在传输的字节流之上，而步建立在报文段之上。</p>
-<p><strong>确定</strong><br>TCP首部的确定号是期望收到对方的下一个报文段的数据的第一个字节的序号。<br>TCP默认使用<strong>累加确定</strong>，即TCP只确定数据流中第一个丢失字节为止的字节，这样可以减少传输开销。</p>
-<p><strong>重传</strong><br>有两种事件会导致TCP对报文段进行重传：<strong>超时和冗余ACK</strong><br>（1）超时<br>TCP每次发送一个报文段，就对这个报文段设置一个超时计时器。计时器设置的重传时间到期但未收到确认时，就要重传这一报文段。<br>TCP采用一种自适用算法，它记录一个报文段发出的时间，以及收到相应确定的时间，这两个时间之差称为报文段的<strong>往返时间（RTT）</strong>。TCP维护了RTT的一个<strong>加权平均往返时间RTTS</strong>，它会随新测量RTT样本值的变化而变化。超时计数器设置的**超时重传时间（RTO）**应略大于RTTS，但也不能大太多，否则当报文段丢失时，TCP不能很快重传，导致数据传输时延大。</p>
-<p>（2）冗余ACK（冗余确定）<br>发送方通常可在超时事件发生之前通过注意所谓的<strong>冗余ACK</strong>来较好地检测丢包情况。冗余ACK就是再次确定某个报文段ACK，而发送方先前已经收到该报文段的确定。这种技术通常称为<strong>快速重传</strong>。</p>
-<h2 id="4-TCP流量控制"><a href="#4-TCP流量控制" class="headerlink" title="4.TCP流量控制"></a>4.TCP流量控制</h2><p>流量控制的功能就是让发送方的发送速率不要太快，以便让接收方来得及接收。<br>TCP利用<strong>滑动窗口机制</strong>来实现流量控制。<br>发送方的发送窗口不能超过接收方给出的接收窗口值，以限制发送方向网络注入报文的速率。<br><strong>利用接收滑动窗口实现流量控制的过程</strong><br><img src="/img/408/c7.png" alt="图片说明"><br>TCP为每个连接设有一个<strong>持续计时器</strong>，只要发送方收到对方的零窗口通知，就启动持续计时器。若计时器超时，就发送一个零窗口探测报文段，而对方就在确定这个探测报文段时给出现在的窗口值。若窗口仍然为零，则发送方收到确定报文段后就重新设置接收计时器。</p>
-<p><strong>传输层和数据链路层的流量控制的区别是</strong>：传输层实现的是端到端，即两个进程之间的流量控制；数据链路层实现的是两个中间的相邻节点之间的流量控制。此外，数据链路层的滑动窗口协议的窗口大小不能动态变化，传输层的窗口大小则可以动态变化。</p>
-<h2 id="5-TCP拥塞控制"><a href="#5-TCP拥塞控制" class="headerlink" title="5.TCP拥塞控制"></a>5.TCP拥塞控制</h2><p>拥塞控制是指防止过多的数据注入网络，保证网络中的路由器或链路不致过载。<br>TCP进行拥塞控制的算法有四种：<strong>慢开始、拥塞避免、快重传和快恢复</strong>。<br><strong>发送方控制拥塞窗口的原则</strong>：只要网络未出现用三个，拥塞窗口就再增大一些，以便把更多的分组发送出去，以提高网络的利用率。但只要网络出现拥塞，拥塞窗口就减少一些，以减少注入网络的分组数，以缓解网络出现的拥塞。</p>
-<p>发送窗口的上限值应取接收窗口rwnd和拥塞窗口cwnd中较小的一个。<br>注：下面采用最大报文段长度MSS作为拥塞窗口大小的单位。<br><strong>慢开始和拥塞避免</strong><br><strong>慢开始算法</strong>：思路是当发送方刚开始发送数据时，因为并不清楚网络的负荷情况，若立即把大量数据注入网络，则有可能引发网络拥塞。具体方法是：先发送少量数据探测一下，若没有发送拥塞，则适当增大拥塞窗口，即由小到大逐渐增大拥塞窗口（发送窗口）。<br><strong>拥塞避免算法</strong>：思路是让拥塞窗口cwnd缓慢增大，具体做法是：每经过一个往返时延RTT就把发送方的拥塞窗口加1，而不是加倍，使拥塞窗口cwnd按线性规律换吗增长（<strong>加法增大</strong>）。<br>根据cwnd的大小执行不同的算法，可归纳如下：</p>
-<ul>
-<li>当cwnd &lt; ssthresh时，使用慢开始算法。</li>
-<li>当cwnd &gt; ssthresh时，停止使用慢开始算法，而改用拥塞避免算法。</li>
-<li>当cwnd &#x3D; ssthresh时，既可使用慢开始算法，也可使用拥塞避免算法（常规做法）。</li>
-</ul>
-<p><strong>网络拥塞的处理</strong>：首先把慢开始门限ssthresh设置为出现拥塞时的发送方的cwnd值的一半（但不能小于2），然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
-<p><strong>慢开始和拥塞避免算法的实现过程</strong>：<br><img src="/img/408/c8.png" alt="图片说明"></p>
-<ul>
-<li>起初时，拥塞窗口置为1，即cwnd-1，慢开始门限置为16，即ssthresh&#x3D;16。</li>
-<li>慢开始阶段，发送方每收到一个队新报文的确定ACK，就把拥塞窗口cwnd值加1，也即经过每个传输轮次（RTT），cwnd呈指数规律增长。当cwnd增长到慢开始门限ssthresh时，就改用拥塞避免算法，cwnd按线性规律增长。</li>
-<li>当cwnd&#x3D;24时，网络出现超时，调整ssthresh值为12（超时时cwnd值的一半），同时cwnd置为1，并执行慢开始算法；当cwnd&#x3D;12时，改为执行拥塞避免算法。</li>
-</ul>
-<p><strong>快重传和快恢复</strong><br><strong>快重传算法</strong>：是使发送方尽快进行重传，而不等超时计时器超时再重传。<br><strong>快恢复算法</strong>：当发送方连续收到3个冗余ACK（重复确定）时，执行乘法减小方法，把慢开始门限ssthresh调整为当前cwnd的一半。<br><img src="/img/408/c9.png" alt="图片说明"><br>在TCP连接建立和网络出现超时时，采用慢开始和拥塞控制避免算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd&#x3D;1）；当发送方收到3个冗余ACK时，采用快重传和快恢复算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd-ssthresh）。</p>
-<p>发送方发送窗口的大小由流量控制和拥塞控制共同决定。<br>发送方发生窗口的实际大小是由rwnd和cwnd中较小的一个确定的。</p>
-]]></content>
-      <categories>
-        <category>408-计算机网络</category>
-      </categories>
-      <tags>
-        <tag>408</tag>
-        <tag>计算机网络</tag>
-        <tag>传输层</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[408] [计算机网络] 应用层</title>
-    <url>/2026/05/23/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/</url>
-    <content><![CDATA[<h1 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h1><h2 id="1-客户-服务器模型"><a href="#1-客户-服务器模型" class="headerlink" title="1.客户&#x2F;服务器模型"></a>1.客户&#x2F;服务器模型</h2><p>在<strong>客户服务器（C&#x2F;S）模型</strong>中，有一个总是打开的主机称为<strong>服务器</strong>，他服务于许多来自其他称为<strong>客户机</strong>的主角请求。其工作流程如下：</p>
-<ul>
-<li>服务器处于接收请求的状态。</li>
-<li>客户机发出服务请求，并等待接收结果。</li>
-<li>服务器收到请求后，分析请求，进行必要的处理，得到结果并发送给客户机。</li>
-</ul>
-<p><strong>最重要的特征</strong>：客户是服务请求方，服务器是服务提供方。<br>客户&#x2F;服务器模型的主要特点还有：</p>
-<ul>
-<li>网络中各计算机的地位不平等，服务器可通过对用户权限的限制来达到管理客户机的目的。整个网络的管理工作由少数服务器负责，因此网络的管理非常集中和方便。</li>
-<li>客户机相互之间不直接。</li>
-<li>可扩展性不佳。</li>
-</ul>
-<h2 id="2-P2P模型"><a href="#2-P2P模型" class="headerlink" title="2.P2P模型"></a>2.P2P模型</h2><p>整个网络中传输内容不再被保存在中心服务器上，每个节点都同时具有下载、上传的功能，其权利和义务都是大体对等的。<br>与C&#x2F;S模型相比，P2P模型的优点主要体现如下：</p>
-<ul>
-<li>减轻了服务器的计算压力，消除了对某个服务器的完全依赖，可以将任务分配到各个节点上，因此大大提高了系统效率和资源利用率。</li>
-<li>多个客户机之间可以直接共享文档。</li>
-<li>可扩展性好，传统服务器有响应和带宽的限制，因此只能接受一定数量的请求。</li>
-<li>网络健壮性强，单个节点的失效不会影响其他部分的节点。</li>
-</ul>
-<h1 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h1><p>域名系统是因特网使用的命名系统，用来把便于人们记忆的具有特定含义的主机名转换为便于机器处理的IP地址。<br>从概念上可将DNS分为三部分：局次域名空间、域名服务器和解析器。</p>
-<h2 id="1-层次域名空间"><a href="#1-层次域名空间" class="headerlink" title="1.层次域名空间"></a>1.层次域名空间</h2><p>因特网采用<strong>层次树状结构</strong>的命名方式。采用这种命名方法，任何一个连接到因特网的主机或路由器，都有一个唯一的层次结构名称，即<strong>域名</strong>。<br><strong>域</strong>的名字空间中一个可被管理的划分。<br>每个域名都由标号序列组成，而各标号之间用点隔开。<br>关于域名：</p>
-<ul>
-<li>标号中的英文不区分大小写。</li>
-<li>标号中除连字符外不能使用其他的标号符号。</li>
-<li>每个标号不超过63个字符，多标号组成的完整域名最长不超过255个字符。</li>
-<li>级别最低的域名写在最左边，级别最高的顶级域名写在最右边。</li>
-</ul>
-<p><strong>顶级域名</strong>（TLD）分为如下三大类：</p>
-<ul>
-<li><strong>国家（地区）顶级域名（nTLD）</strong>。国家和某些地区的域名。</li>
-<li><strong>通用顶级域名（gTLD）</strong>。com公司，net网络服务机构，org非盈利性机构，edu教育机构，gov国家或政府部门。</li>
-<li><strong>基础结构域名（arpa）</strong>。用于方向域名解析，即IP地址方向解析为域名。</li>
-</ul>
-<p>在域名系统中，各级域名由其上一级的域名管理机构管理，顶级域名由因特网名称与数字地址分配机构（ICANN）管理。<br>国家顶级域名下注册的二级域名均由该国家自行确定，每个组织都可以将它的域再分成一定数量的子域，并将这些子域委托给其他组织去管理。</p>
-<h2 id="2-域名服务器"><a href="#2-域名服务器" class="headerlink" title="2.域名服务器"></a>2.域名服务器</h2><p>域名到IP地址的解析是由运行在域名服务器上的程序完成的，一个服务器所负责管辖的（或有权限的）范围成为<strong>区</strong>（小于或等于域）。</p>
-<p><strong>根域名服务器</strong><br>根域名服务器是最高层次的域名服务器为，所有的根域名服务器都知道所有的顶级域名服务器的域名和IP地址。<br>因特网上有13个根域名服务器。<br>根域名服务器用来关系额顶级域，通常它并不直接将待查询的域名直接转换成IP地址，而是告诉本地域名服务器下一步应当找哪个登记域名服务器进行查询。</p>
-<p><strong>顶级域名服务器</strong><br>这域名服务器负责管理在该顶级域名服务器注册的所有二级域名。</p>
-<p><strong>权限域名服务器（授权域名服务器）</strong><br>每台主机都必须在权限域名服务器处登记。一台主机最好至少有两个权限域名服务器。<br>实际上，许多域名服务器都同时充当本地域名服务器和权限域名服务器。权限域名服务器总能将其管辖的主机名转换为该主机的IP地址。</p>
-<p><strong>本地域名服务器</strong><br>每个因特网服务提供者（ISP），或一所大学，甚至一所大学中的各个系，都可以拥有一个本地域名服务器。<br>当一台主机发出DNS查询请求时，这个查询请求报文就发送给该主机的本地域名服务器。<br>事实上，我们在Windows系统中配置“本地连接”时，就需要填写DNS地址，这个地址就是本地DNS（域名服务器）的地址。<br><strong>DNS的层次结构</strong>如下：<br><img src="/img/408/y1.png" alt="图片说明文字"></p>
-<h2 id="3-域名解析过程"><a href="#3-域名解析过程" class="headerlink" title="3.域名解析过程"></a>3.域名解析过程</h2><p>域名解析是指把域名转化为IP地址的过程。<br>域名解析方式有两种方式：递归查询和迭代查询</p>
-<ul>
-<li>主机向本地域名服务器的查询都采用<strong>递归查询</strong><br><strong>递归查询</strong>是指若主机所查询的本地域名服务器不知道被查询域名的IP地址，则本地域名服务器就以DNS客户的身份，向根域服务器继续发出查询请求报文（替代主机继续查询（，而不是让改主机自己进行下一步的查询。</li>
-<li>主机域名服务器向其他域名服务器采用<strong>递归查询</strong>或<strong>迭代查询</strong></li>
-</ul>
-<p><strong>递归查询DNS的工作原理</strong><br>如下图a所示，本地域名服务器只需向根域名服务器查询一次，后面的几次查询都是递归地在其他几个域名服务器之间进行的[步骤3-6]。在步骤7中，本地服务器从根域名服务器得到了所需的IP地址，最后在步骤8中，本地域名服务器把查询结果告诉发起查询的主机。<br>因为该方法给根域名服务器造成了负载过大，所以实际上几乎不使用。<br><strong>迭代查询DNS的工作原理</strong><br>本地域名服务器向跟域名服务器的查询通常是采用<strong>迭代查询</strong>。当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地域名服务器“下一步应当向哪个顶级域名服务器进行查询”，如下图b所示。<br><img src="/img/408/y2.png" alt="图片说明文字"><br>过程举例（假定某客户机向获知域名为y.abc.com主机的IP地址）域名解析过程（最多需要使用8个UDP报文：4个查询报文和4个回答报文）如下：</p>
-<ul>
-<li>客户机向其本地域名服务器发出DNS请求报文（递归查询）。</li>
-<li>本地域名服务器收到请求后，查询本地缓存，若没有该记录，则以DNS客户的身份向根域名服务器发出解析请求报文（迭代查询）。</li>
-<li>根域名服务器收到请求后，判断该域名属于.com域，将对应的顶级域名服务器dns.com的IP地址返回给本地域名服务器。</li>
-<li>本地域名服务器dns.com收到请求后，判断该域名属于aabc.com域，因此将对应的权限域名服务器dns.abc.com的IP地址返回给本地域名服务器。</li>
-<li>本地域名服务器向权限服务器dns.abc.com发出解析请求报文（迭代查询）。</li>
-<li>权限域名服务器dns.abc.com收到请求后，将查询结果返回给本地域名服务器。</li>
-<li>本地域名服务器将查询结果保存到本地缓存，同时返回给客户端。</li>
-</ul>
-<h1 id="文件传输协议"><a href="#文件传输协议" class="headerlink" title="文件传输协议"></a>文件传输协议</h1><h2 id="1-FIP的工作原理"><a href="#1-FIP的工作原理" class="headerlink" title="1.FIP的工作原理"></a>1.FIP的工作原理</h2><p>**文件传输协议（FTP）**是因特网上使用得最广泛的文件传输协议。<br>FTP提供交互式的访问，运行客户指明文件的类型和格式，并允许文件具有存取权限。<br>FTP提供以下功能：</p>
-<ul>
-<li>提供不同类型主机系统（硬、软件体系等都可以不同）之间的文件传输能力。</li>
-<li>以用户权限管理的方式通过用户对远程FTP服务器上的文件管理能力。</li>
-<li>以匿名FTP的方式提供公用文件共享的能力。</li>
-</ul>
-<p>FTP采用客户&#x2F;服务器的工作方式。使用TCP可靠的传输服务。<br>DTP服务器进程由两大部分组成：一个主进程，负责接收新的请求；另外由若干从属进程，负责处理单个请求。其工作步骤如下：</p>
-<ul>
-<li>打开熟知端口21（控制端口），使客户进程能够连接上。</li>
-<li>等待客户进程发连接请求。</li>
-<li>启动从属进程处理客户进程发来的请求。从属进程对客户进程的请求处理完毕后即终止。</li>
-<li>回到等待状态，继续接受其他客户进程的请求。主进程与从属进程是并发执行的。</li>
-</ul>
-<h2 id="2-控制连接与数据连接"><a href="#2-控制连接与数据连接" class="headerlink" title="2.控制连接与数据连接"></a>2.控制连接与数据连接</h2><p>FTP在工作时使用两个并行的TCP连接，一个是控制连接（服务器端口号21），一个是数据连接（服务器端口号20）。<br><strong>1).控制连接</strong><br>服务器监听21端口，等待客户链接，建立在这个端口上的连接称为<strong>控制连接</strong>，用来传输控制信息。<br><strong>2).数据连接</strong><br>数据连接用来连接客户端和服务器端的数据传送进程，数据传送进程实际完成文件的传送，在传送完毕后关闭“数据传送连接”并结束运行。<br>数据连接有两种传输模式：<strong>主动模式PSRT</strong>和<strong>被动模式PASV</strong>。</p>
-<ul>
-<li><strong>PORT模式的工作原理</strong>：客户端连接服务器的21端口，登录成功后要读取数据时，客户端随机开发一个端口，并发送命令告知服务器，服务器收到PORT命令和端口号后，通过20端口和客户端开放的端口进行连接，发送数据。</li>
-<li><strong>PASV模式</strong>：不同点在于客户端要读取数据时，发送PASV命令到服务器，服务器在本地随机开发一个端口，并告知客户端，客户端再连接到服务器开发的端口进行数据传输。</li>
-</ul>
-<p>主动模式传送数据时服务器连接到客户端的端口；被动模式传送数据时客户端连接到服务器的端口。</p>
-<h1 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h1><h2 id="1-电子邮件系统的组成节后"><a href="#1-电子邮件系统的组成节后" class="headerlink" title="1.电子邮件系统的组成节后"></a>1.电子邮件系统的组成节后</h2><p>电子邮件是一种异步通信方式。<br>一个电子邮件系统应具有三个最重要的组件：用户代理、邮件服务器和电子邮件使用的协议。</p>
-<ul>
-<li><strong>用户代理</strong>：用户和电子邮件系统的接口。</li>
-<li><strong>邮件服务器</strong>：它的功能是发送和接收邮件，同时还要向发件人报告邮件传送的情况。</li>
-<li><strong>邮件发送协议和读取协议</strong>：邮件发送协议用于用户代理向邮件服务器发送邮件或在邮件服务器之间发送邮件。<br>需要主要的是，SMTP用的是<strong>推</strong>的通信方式。POP0用的是<strong>拉</strong>的通信方式。</li>
-</ul>
-<p>电子邮件的收发过程：</p>
-<ul>
-<li>发件人调用用户代理来撰写和编辑哟啊发送的邮件。</li>
-<li>邮件撰写完后，发件人电力“发送邮件”按钮，把发送邮件的工作全都交给用户代理来完成，就什么都不用管了。用户代理用SMTP把邮件传送给发送端邮件服务器。</li>
-<li>发送端邮件服务器将邮件放入邮件缓存队列中，等待发送。</li>
-<li>发送端邮件服务器的SMTP客户与接收端邮件服务器的SMTP服务器建立TCP连接，然后就把邮件缓存矩阵中的邮件依次发送出去。注意，邮件是直接传送到接收端邮件服务器的，而不会在互联网的某个中间邮件服务器落地。</li>
-<li>运行在接收端邮件服务器中的SMTP服务器进程收到邮件后，将邮件放入收件人的用户邮箱，等待收件人在方便时进行读取。</li>
-<li>收件人打收信时，调用用户代理，使用POP3（或IMAP）协议将自己的邮件从接收端邮件服务器的用户邮箱中取回。</li>
-</ul>
-<h2 id="2、电子邮箱格式和MIME"><a href="#2、电子邮箱格式和MIME" class="headerlink" title="2、电子邮箱格式和MIME"></a>2、电子邮箱格式和MIME</h2><p>一个电子邮件分为<strong>信封</strong>和<strong>内容</strong>两大部分，邮件内容分为<strong>首部</strong>和<strong>主体</strong>两部分。<br><strong>To</strong>是必填的关键字，后面填入一个或多个收件人的电子邮件地址。<br><strong>Subject</strong>是可选关键字，是邮件的主题。<br><strong>From</strong>是一个必填的关键字，但它通常由邮件系统自动填入。</p>
-<p><strong>多用途因特网邮件扩展（MIME）</strong><br>MIME并未改动SMTP或取代他。当发送端发送的邮件中包含有非ASCII码数据时，不直接使用SMTP进程传送，而是通过MIME进行转换，并非ASCII码数据转换为ASCII码数据。之后，就可以使用SMTP进行传送。接收端也要使用MIME对接收到的ASCII码数据进行行逆转换，以便可以得到包含有非ASCII码数据的邮件。</p>
-<p>MIM主要包含以下三部分内容：</p>
-<ul>
-<li>5个新的邮件首部字段，包括MIME版本、内容描述、内容标识、传送编码和内容类型。</li>
-<li>定义了许多邮件内容的格式，对多媒体电子邮件的表示方法进行了标准化。</li>
-<li>定义了传送编码，可对任何内容格式进行转换，而不会被邮件系统改变。</li>
-</ul>
-<h2 id="3-SMTP和POP3"><a href="#3-SMTP和POP3" class="headerlink" title="3.SMTP和POP3"></a>3.SMTP和POP3</h2><p><strong>SMTP</strong><br><strong>简单邮件传输协议</strong>（SMTP）是一种提供可靠且有效的电子邮件传输的协议，它控制两个相互通信的SMTP进程叫唤信息。采用<strong>客户&#x2F;服务器模式</strong>，用的是<strong>TCP连接</strong>，端口号是<strong>25</strong>。<br>SMTP通信有以下三个阶段：</p>
-<ul>
-<li>连接建立<br>注：TCP连接总是在发送方和接收方这两个邮件服务器之间直接建立。</li>
-<li>邮件传送<br>RCPT指令的作用是，先弄清接收方系统是否已做好节后邮件的准备，然后才发送邮件。</li>
-<li>连接释放</li>
-</ul>
-<p><strong>POP3和IMAP</strong><br><strong>邮局协议</strong>（POP）是一个非常简单但功能有限的邮件读取协议，POP也采用<strong>客户&#x2F;服务器模式</strong>，在传输层使用<strong>TCP</strong>，端口号是<strong>110</strong>。<br>接收方的用户代理必须运行POP客户程序。<br>POP有<strong>两种工作模式</strong>：</p>
-<ul>
-<li><strong>下载并保留</strong>：用户从邮件服务器上读取邮件后，邮件依然会保存在邮件服务器上，用户可再次从服务器上读取该邮件。</li>
-<li><strong>下载并删除</strong>：邮件一旦被读取，就被从邮件服务器上删除。</li>
-</ul>
-<p><strong>因特网报文存取协议</strong>（IMAP），IMAP为用户通过了创建文件夹、在不同文件夹之间移动邮件及在远程文件夹中查询邮件等联机命令。<br>IMAP允许用户代理只获取报文的某些部分。</p>
-<p>此外，用户浏览器与Hotmail或Gmail的邮件服务器之间的邮件发送或接收使用规定是HTTP，而仅在不同邮件服务器之间传送邮件时才使用SMTP。</p>
-<h1 id="网维网"><a href="#网维网" class="headerlink" title="网维网"></a>网维网</h1><h2 id="1-WWW的概念与组成结构"><a href="#1-WWW的概念与组成结构" class="headerlink" title="1.WWW的概念与组成结构"></a>1.WWW的概念与组成结构</h2><p>万维网（WWW）是一个分布式、联机式的信息存储空间，这个空间中：一样有用的事物称为一样资源，并由一个全域**统一资源定位符（URL）**标识。这些资源通过超文本传输协议（HTTP）传送给使用者，而后者通过点击链接来获取资源。<br>万维网的内核部分是由三个标准构成的：</p>
-<ul>
-<li><strong>统一资源定位符（URL）</strong>。负责表示万维网上的各种文档，并使每个文档在整个万维网的范围内具有唯一的标识符URL。</li>
-<li><strong>超文本传输协议（HTTP）</strong>：一个应用层协议，它使用TCP连接进行可靠的传输，HTTP是万维网客户程序和服务器程序之间交互所必须严格遵守的协议。</li>
-<li><strong>超文本标记语言（HTML）</strong>：一种文档结构的标记语言，它使用一些约定的标记对页面上的各种信息、格式进行描述。</li>
-</ul>
-<p>URL的一般形式是：&lt;协议&gt;:&#x2F;&#x2F;&lt;主机&gt;:&lt;端口&gt;&#x2F;&lt;路径&gt;</p>
-<p>万维网以客户&#x2F;服务器模式工作，工作流程如下：</p>
-<ul>
-<li>Web用户使用浏览器（指定URL）与Web服务器建立连接，并发送浏览请求。</li>
-<li>Wen服务器把URL转换为文件路径，并返回信息给Web浏览器。</li>
-<li>通信完成，关闭连接。</li>
-</ul>
-<h2 id="2-超文本传输协议-HTTP"><a href="#2-超文本传输协议-HTTP" class="headerlink" title="2.超文本传输协议 HTTP"></a>2.超文本传输协议 HTTP</h2><p>HTTP是<strong>面向事务</strong>的应用层协议。<br>HTTP操作过程（万维网的操作过程），用户点击鼠标后发生的实践顺序如下（以访问清华大学的网站为例）：</p>
-<ul>
-<li>浏览器分析连接指向页面的URL（<a href="http://www.tsinghua.edu.cn/chn/index.htm%EF%BC%89%E3%80%82">http://www.tsinghua.edu.cn/chn/index.htm）。</a></li>
-<li>浏览器向DNS请求<a href="http://www.tsinghua.edu.cn的ip地址./">www.tsinghua.edu.cn的IP地址。</a></li>
-<li>域名系统DNS解析出清华大学服务器的IP地址。</li>
-<li>浏览器与该服务器建立TCP连接（默认端口号为80）。</li>
-<li>浏览器发出HTTP请求：GET&#x2F;chn&#x2F;index.htm。</li>
-<li>服务器通过HTTP响应把文件index.htm发送给浏览器。</li>
-<li>释放TCP连接。</li>
-<li>浏览器解析文件index.htm，并将Web页显示给用户。</li>
-</ul>
-<p><strong>HTTP的特点</strong><br>HTTP使用TCP作为传输层协议。<br>HTTP本身是无连接的。<br>HTTP是无状态的。HTTP通常使用Cookie加数据库的方式来跟踪用户的活动。</p>
-<p><strong>HTTP页面请求时间的分析</strong><br>对于<strong>非持续连接</strong>，每个页面元素对象的传输都需要单独建立一个TCP连接，如图6.12所示。请求一个万维网文档所需的时间是该文档的传输时间加上两倍往返时间RTT。<br>对于<strong>持续连接</strong>，是指万维网服务器在发送响应后仍然保持这条连接，使同一个客户和该服务器可以继续在这条TCP连接上传送后续的HTTP请求报文和响应，如图6.13所示。<br><img src="/img/408/y3.png" alt="图片说明文字"></p>
-<p><strong>HTTP&#x2F;1.1页面请求时间分析</strong><br>HTTP&#x2F;1.1默认使用持续连接，持续连接又分为非流水线和流水线两种工作方式。<br>对于<strong>非流水线方式</strong>，客户在收到前一个响应后才能发出下一个请求。<br>对于<strong>流水线方式</strong>，客户可以连续发出对各种对象的请求，服务器就可连续响应这些请求。</p>
-<p>HTTP是基于TCP的，所以每RTT内传送的数据量还要受到TCP发送窗口的限制。</p>
-<p><strong>HTTP的报文结构</strong><br>HTTP是<strong>面向文本</strong>的，有两类HTTP报文：</p>
-<ul>
-<li><strong>请求报文</strong>：从客户向服务器发送的请求报文。</li>
-<li><strong>响应报文</strong>：从服务器到客户的回答。<br><img src="/img/408/y4.png" alt="图片说明文字"><br>两类报文都由三部分组成：</li>
-<li><strong>开始行</strong>：在请求报文中的开始行称为<strong>请求行</strong>，而在响应报文中的开始行称为<strong>状态行</strong>。</li>
-<li><strong>首部行</strong>：用来说明浏览器、服务器或报文主体的一些信息。</li>
-<li><strong>实体主体</strong>：在请求报文中一班不用这个字段，而在响应报文中也可能没有这个字段。</li>
-</ul>
-<p>表 6  HTTP 请求报文中常用的几个方法</p>
-<table>
-<thead>
-<tr>
-<th>方法（操作）</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>GET</td>
-<td>请求读取由 URL 标识的信息</td>
-</tr>
-<tr>
-<td>HEAD</td>
-<td>请求读取由 URL 标识的信息的首部</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>给服务器添加信息（如注释）</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>在指定 URL 处存储一个文档</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>删除由 URL 标识的资源</td>
-</tr>
-<tr>
-<td>CONNECT</td>
-<td>用于代理服务器</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>408-计算机网络</category>
-      </categories>
-      <tags>
-        <tag>408</tag>
-        <tag>计算机网络</tag>
-        <tag>应用层</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2026年Kaggle Playground Series -Season 6 Episode 4 预测灌溉需求</title>
     <url>/2026/06/15/Kaggle-Predicting-Irrigation-Need/</url>
     <content><![CDATA[<h1 id="1-题目概述"><a href="#1-题目概述" class="headerlink" title="1. 题目概述"></a>1. 题目概述</h1><p>2026年Kaggle Playground Series -Season 6 Episode 4<br>这是一篇关于预测灌溉需求的代码讲解文章。</p>
@@ -983,52 +527,143 @@
       </tags>
   </entry>
   <entry>
-    <title>欢迎来到我的博客！</title>
-    <url>/2026/06/15/welcome/</url>
-    <content><![CDATA[<p>Hello! 欢迎大家来到我的个人博客。我是 <strong>星阑</strong>，目前是一名2023届<strong>网络空间安全</strong>专业的本科在读生。</p>
-<h2 id="📄-学术论文"><a href="#📄-学术论文" class="headerlink" title="📄 学术论文"></a>📄 学术论文</h2><ul>
-<li>J. Gao, R. Zhao, X. Tao, X. Xiong and Y. Zhang, “Visual Semantics Oriented Video Privacy Protection Balancing Privacy and Visual Usability,” in IEEE Transactions on Circuits and Systems for Video Technology, doi: 10.1109&#x2F;TCSVT.2026.3701276</li>
-<li>Su, M., Gao, J., Zhao, R. et al. Visually meaningful encryption for UAV image management achieving a balance between privacy and visual usability. Peer-to-Peer Netw. Appl. 19, 15 (2026). <a href="https://doi.org/10.1007/s12083-025-02127-0">https://doi.org/10.1007/s12083-025-02127-0</a></li>
-</ul>
-<h2 id="🏆-竞赛获奖"><a href="#🏆-竞赛获奖" class="headerlink" title="🏆 竞赛获奖"></a>🏆 竞赛获奖</h2><p><strong>国家级奖项</strong></p>
-<ul>
-<li>一等奖：2026 年 ISCC 全国大学生信息安全与对抗技术大赛线上挑战赛</li>
-<li>二等奖：2025 年 ISCC 全国大学生信息安全与对抗技术大赛破阵夺旗赛</li>
-<li>二等奖：2025 年全国高校密码数学挑战赛</li>
-<li>二等奖：2025 年 ISCC 全国大学生信息安全与对抗技术大赛博弈对抗赛</li>
-<li>二等奖：2025 年 计算机设计大赛</li>
-<li>二等奖：2025 年商业精英挑战赛创业计划赛道</li>
-<li>二等奖：2024 年睿抗机器人开发者大赛网络安全赛项</li>
-<li>三等奖：2025 年 ISCC 全国大学生信息安全与对抗技术大赛无限擂台赛</li>
-<li>三等奖：2025 年第十八届全国大学生信息安全竞赛暨第二届 “长城杯” 铁人三项赛（防护赛）全国半决赛</li>
-<li>全国百强团队：2025 年 “调研中国”</li>
-<li>全国优秀团队：2025 年 “调研中国”</li>
-</ul>
-<p><strong>区域及省级奖项</strong></p>
-<ul>
-<li>综合赛区一等奖：2026 年 ISCC 全国大学生信息安全与对抗技术大赛线上挑战赛</li>
-<li>中南赛区一等奖：2025 年高校数学密码挑战赛</li>
-<li>中南赛区二等奖：2024 年高校数学密码挑战赛</li>
-<li>省级一等奖：2025 年江西省信息安全技术大赛决赛</li>
-<li>省级一等奖：2026 年计算机设计大赛</li>
-<li>省级一等奖：2024 年江西省信息安全技术大赛决赛</li>
-<li>省级二等奖：2025 年计算机设计大赛</li>
-<li>省级二等奖：2024 年睿抗机器人开发者大赛网络安全赛项</li>
-<li>省级二等奖：2025 年蓝桥杯全国软件和信息技术专业人才大赛网络安全赛项</li>
-<li>省级三等奖：2025 年睿抗机器人开发者大赛编程技术赛项</li>
-<li>省级三等奖：2024 年 “长城杯” 铁人三项赛（防护赛）</li>
-</ul>
-<h2 id="💻-项目"><a href="#💻-项目" class="headerlink" title="💻 项目"></a>💻 项目</h2><ul>
-<li>国家级：2026年大学生创新创业训练项目 - 创新实践项目</li>
-<li>省级：2026年大学生创新创业训练项目 - 青年红色筑梦之旅项目</li>
-<li>省级：2025年大学生创新创业训练项目 - 创新实践项目</li>
-<li>省级：2025年大学生创新创业训练项目 - 青年红色筑梦之旅项目</li>
-<li>校级：2025年发展型资助项目 - 数据库方向</li>
-<li>校级：2025年发展型资助项目 - 社科方向</li>
-<li>校级：2026年发展型资助项目（重点项目） - 密码学方向</li>
-<li>校级：2026年发展型资助项目 - 法学隐私保护方向</li>
-</ul>
+    <title>[408] [数据结构] 树-代码基础</title>
+    <url>/2026/05/25/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E6%A0%91-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="1-二叉树"><a href="#1-二叉树" class="headerlink" title="1.二叉树"></a>1.二叉树</h1><h2 id="1-1-二叉树的链式存储结构"><a href="#1-1-二叉树的链式存储结构" class="headerlink" title="1.1 二叉树的链式存储结构"></a>1.1 二叉树的链式存储结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct BiTNode&#123;</span><br><span class="line">    ElemType data;    //数据域</span><br><span class="line">    struct BiTNode *lchild,*rchild;    //分别指向左右孩子的指针</span><br><span class="line">&#125;BiUNode,*BiTree;</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-二叉树的遍历"><a href="#1-2-二叉树的遍历" class="headerlink" title="1.2 二叉树的遍历"></a>1.2 二叉树的遍历</h2><h3 id="1-2-1-先序遍历"><a href="#1-2-1-先序遍历" class="headerlink" title="1.2.1 先序遍历"></a>1.2.1 先序遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void PerOrder(BiTree T)&#123;</span><br><span class="line">    if(T!=NULL)&#123;</span><br><span class="line">        visit(T);</span><br><span class="line">        PreOrder(T-&gt;lchild);</span><br><span class="line">        PerOrder(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-中序遍历"><a href="#1-2-2-中序遍历" class="headerlink" title="1.2.2 中序遍历"></a>1.2.2 中序遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InOrder(BiTree T)&#123;</span><br><span class="line">    if(T!=NULL)&#123;</span><br><span class="line">        InOrder(T-&gt;lchild);</span><br><span class="line">        visit(T);</span><br><span class="line">        InOrder(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-3-后序遍历"><a href="#1-2-3-后序遍历" class="headerlink" title="1.2.3 后序遍历"></a>1.2.3 后序遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void PostOrder(BiTree T)&#123;</span><br><span class="line">    if(T!=NULL)&#123;</span><br><span class="line">        PostOrder(T-&gt;lchild);</span><br><span class="line">        PostOrder(T-&gt;rchild);</span><br><span class="line">        visit(T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-4-层次遍历"><a href="#1-2-4-层次遍历" class="headerlink" title="1.2.4 层次遍历"></a>1.2.4 层次遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void LevelOrder(BiTree T)&#123;</span><br><span class="line">    InitQueue(Q);    //初始化辅助队列</span><br><span class="line">    BiTree p;    </span><br><span class="line">    EnQueue(Q,T);     //将根结点入队</span><br><span class="line">    while(!IsEmpty(Q))&#123;  //队列不空则循环</span><br><span class="line">        DeQueue(Q,p);    //队头结点出队</span><br><span class="line">        visit(p);    //访问出队结点</span><br><span class="line">        if(p-&gt;lchild!=NULL)</span><br><span class="line">            EnQueue(Q,p-&gt;lchild);  //若左孩子不空，则左孩子入队</span><br><span class="line">        if(p-&gt;rchild!=NULL)</span><br><span class="line">            EnQueue(Q,p-&gt;rchild);   //若右孩子不空，则右孩子入队</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-线索二叉树"><a href="#2-线索二叉树" class="headerlink" title="2.线索二叉树"></a>2.线索二叉树</h1><h2 id="2-1-线索二叉树的存储结构"><a href="#2-1-线索二叉树的存储结构" class="headerlink" title="2.1 线索二叉树的存储结构"></a>2.1 线索二叉树的存储结构</h2><p>线索二叉树的存储结构可定义为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct ThreadNode&#123;</span><br><span class="line">    ElemType data;     //数据元素</span><br><span class="line">    struct THreadNode *lchild, *rchild;   //左右孩子指针</span><br><span class="line">    int ltag,rtag;    //左右线索标志</span><br><span class="line">&#125;ThreadNode,*ThreadTree;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-中序线索二叉树的构造"><a href="#2-2-中序线索二叉树的构造" class="headerlink" title="2.2 中序线索二叉树的构造"></a>2.2 中序线索二叉树的构造</h2><p>通过中序遍历对二叉树线索化的递归算法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InThread(ThreadTree &amp;p,ThreadTree &amp;pre)&#123;</span><br><span class="line">    if(p!=NULL)&#123;</span><br><span class="line">        InThread(p-&gt;lchild,pre);    //递归，线索化左子树</span><br><span class="line">        if(p-&gt;lchild==NULL)&#123;       //当前结点的左子树为空</span><br><span class="line">            p-&gt;lchild=pre;      //建立当前结点的前驱线索</span><br><span class="line">            p-&gt;ltag=1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(pre!=NULL&amp;&amp;pre-&gt;rchild==NULL)&#123;  //前驱结点非空且其右子树为空</span><br><span class="line">            pre-&gt;rchild=p;    //建立前驱结点的后继线索</span><br><span class="line">            pre-&gt;rtag=1;</span><br><span class="line">        &#125;</span><br><span class="line">        pre=p;         //标记当前结点成为刚刚访问过的结点</span><br><span class="line">        InThread(p-&gt;rchild,pre);    //递归，线索化右子树</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>建立中序线索二叉树的主过程如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void CreateInThread(ThreadTree T)&#123;</span><br><span class="line">    ThreadTree pre=MU;;;</span><br><span class="line">    if(T!=NULL)&#123;    //非空二叉树，线索化</span><br><span class="line">        InThread(T,pre);    //线索化二叉树</span><br><span class="line">        pre-&gt;rchild=NULL;   //处理遍历的最后一个结点</span><br><span class="line">        pre-&gt;rtag=1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-中序线索二叉树的遍历"><a href="#2-3-中序线索二叉树的遍历" class="headerlink" title="2.3 中序线索二叉树的遍历"></a>2.3 中序线索二叉树的遍历</h2><p>不含头结点的中序线索二叉树遍历相关算法如下：<br>1）求中序序列中的第一个结点：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ThreadNode *Firstnode(ThreadNode *p)&#123;</span><br><span class="line">    while(p-&gt;ltag==0) p=p-&gt;lchild;  //沿左孩子链走到最左下结点</span><br><span class="line">    return p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2）求结点p在中序序列中的后继：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ThreadNode *Nextnode(ThreadNode *p)&#123;</span><br><span class="line">    if(p-&gt;rtag==0) return Firstnode(p-&gt;rchild);   //右指数中最左下结点</span><br><span class="line">    else return p-&gt;rchild;      //若rtag==1则直接返回后继线索</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）利用上面两个算法，可实现非递归的中序遍历：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Inorder(ThreadNode T)&#123;</span><br><span class="line">    for(ThreadNode *p=Firstnode(T);p!=NULL; p=Nextnode(p))</span><br><span class="line">        visit(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-树的存储结构"><a href="#3-树的存储结构" class="headerlink" title="3.树的存储结构"></a>3.树的存储结构</h1><h2 id="3-1-双亲表示法的实现"><a href="#3-1-双亲表示法的实现" class="headerlink" title="3.1 双亲表示法的实现"></a>3.1 双亲表示法的实现</h2><p>双亲表示法的存储结构定义如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAX_TREE_SIZE 100   //树中最多结点数</span><br><span class="line">typedef struct&#123;    //树的结点定义</span><br><span class="line">    ElemType data;     //数据元素</span><br><span class="line">    int parent;      //双亲位置域</span><br><span class="line">&#125;PTNode;</span><br><span class="line">typedef strucct&#123;    //树的类型定义</span><br><span class="line">    PTNode nodes[MAX_TREE_SIZE];   //双亲表示</span><br><span class="line">    int n;    //结点数</span><br><span class="line">&#125;PTree;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-孩子兄弟表示法的实现"><a href="#3-2-孩子兄弟表示法的实现" class="headerlink" title="3.2 孩子兄弟表示法的实现"></a>3.2 孩子兄弟表示法的实现</h2><p>孩子兄弟表示法的存储结构描述如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct CSNode&#123;</span><br><span class="line">    ElemType data;     //数据域</span><br><span class="line">    struct CSNode *fristchild,*nextsibling;   //第一个孩子和右兄弟指针</span><br><span class="line">&#125;CSNode,*CSTree;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-并查集的基本实现"><a href="#4-并查集的基本实现" class="headerlink" title="4.并查集的基本实现"></a>4.并查集的基本实现</h1><p>并查集的结构定义如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define SIZE 100</span><br><span class="line">int   UFSetsp[SIZE];    //集合元素数组（双亲指针数组）</span><br></pre></td></tr></table></figure>
+<p>并查集的初始化操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Initial(int Sp[])&#123;   //S即并查集</span><br><span class="line">    for(int i=0;i&lt;SIZE;i++)   //每个自成一个单元素集合</span><br><span class="line">        S[i]=-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并查集的Find操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Find(int S[], int x)&#123;</span><br><span class="line">    while(S[x]&gt;=0)    //循环寻找x的根</span><br><span class="line">        x=S[x];</span><br><span class="line">    return x;      //根的S[]小于0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并查集的Union操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Union(int S[],int Root1,int Root2)&#123;</span><br><span class="line">    if(Root1==Root2) return;    //要求Root1与Root2是不同的集合</span><br><span class="line">    S[Root2]=Root1;     //将根Root2连接到另一根Root1下面</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-并查集实现的优化"><a href="#5-并查集实现的优化" class="headerlink" title="5.并查集实现的优化"></a>5.并查集实现的优化</h2><p>1）改进的Union操作</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Union(int S[], int Root1, int Root2)&#123;</span><br><span class="line">    if(Root1==Root2) return;</span><br><span class="line">    if(S[Root2]&gt;S[Root1])&#123;   //Root2结点数更少</span><br><span class="line">        S[Root1]+=S[Root2];    //累加集合中的元素总数</span><br><span class="line">        S[Root2]=Root1;       //小树合并到大树</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;        //Root1结点数更少</span><br><span class="line">        S[Root2]+=S[Root1];      //累加结点总数</span><br><span class="line">        S[Root1]=Root2;    //小树合并到大树</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2）改进的Find操作</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Find(int S[], int x)&#123;</span><br><span class="line">    int root=x;</span><br><span class="line">    while(S[root]&gt;=0)    //循环找到根</span><br><span class="line">        root=S[root];</span><br><span class="line">    while(x!=root)&#123;   //压缩路径</span><br><span class="line">        int t=S[x];    //t指向x的父结点</span><br><span class="line">        S[x]=root;     //x直接挂到根结点下面</span><br><span class="line">        x=t;</span><br><span class="line">    &#125;</span><br><span class="line">    return root;   //返回根结点编号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>408-数据结构</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [数据结构] 串-代码基础</title>
+    <url>/2026/05/25/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E4%B8%B2-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="1-串的存储结构"><a href="#1-串的存储结构" class="headerlink" title="1.串的存储结构"></a>1.串的存储结构</h1><h2 id="1-1-定长顺序存储结构"><a href="#1-1-定长顺序存储结构" class="headerlink" title="1.1 定长顺序存储结构"></a>1.1 定长顺序存储结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXLEN 255   //预定义最大串长为255</span><br><span class="line">typedef struct&#123;</span><br><span class="line">    char ch[MAXLEN];    //每个分量存储一个字符</span><br><span class="line">    int length;   //串的实际长度</span><br><span class="line">&#125;SString;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-堆分配存储表示"><a href="#1-2-堆分配存储表示" class="headerlink" title="1.2 堆分配存储表示"></a>1.2 堆分配存储表示</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">    char *ch;    //按串长分配存储区，ch指向串的基地址</span><br><span class="line">    int length;    //串的长度</span><br><span class="line">&#125;HString;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-块链存储表示"><a href="#1-3-块链存储表示" class="headerlink" title="1.3 块链存储表示"></a>1.3 块链存储表示</h2><p>类似于线性表的链式存储结构，串也可采用链表形式存储。考虑到串的特殊性（每个元素仅为单个字符），实际实现中，每个链表结点可存放一个或多个字符。每个结点称为一个块，每个链表称为块链结构。</p>
+<h1 id="2-串的模式匹配"><a href="#2-串的模式匹配" class="headerlink" title="2.串的模式匹配"></a>2.串的模式匹配</h1><h2 id="2-1-简单的模式匹配算法"><a href="#2-1-简单的模式匹配算法" class="headerlink" title="2.1 简单的模式匹配算法"></a>2.1 简单的模式匹配算法</h2><p>暴力匹配算法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int index(SString S, SString T)&#123;</span><br><span class="line">    int i=1, j=1;</span><br><span class="line">    while(i&lt;=S.length&amp;&amp;j&lt;=T.length)&#123;</span><br><span class="line">        if(S.ch[i]==T.ch[j])&#123;</span><br><span class="line">            ++i;++j;      //继续比较后继字符</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            i=i-j+2; j=1;     //指针后退重新开始匹配</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(j&gt;T.length) return i-T.length;   //匹配成功，返回起始位置</span><br><span class="line">    else return 0;   //匹配失败</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
+      <categories>
+        <category>408-数据结构</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>数据结构</tag>
+        <tag>串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [数据结构] 顺序表-代码基础</title>
+    <url>/2026/05/11/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h2 id="1-顺序表的定义"><a href="#1-顺序表的定义" class="headerlink" title="1.顺序表的定义"></a>1.顺序表的定义</h2><p>静态分配的顺序表存储结构描述为：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MaxSize 50              <span class="comment">// 定义线性表的最大长度</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span>           </span><br><span class="line">    ElemType data[MaxSize];     <span class="comment">// 顺序表的元素</span></span><br><span class="line">    <span class="type">int</span> length;                 <span class="comment">// 顺序表的当前长度</span></span><br><span class="line">&#125;SqList;                        <span class="comment">// 顺序表的类型定义</span></span><br></pre></td></tr></table></figure>
+<p>动态分配的顺序表存储结构描述为：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> InitSize 100        <span class="comment">//表长度的初始定义</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span>             </span><br><span class="line">    ElemType *data;         <span class="comment">//指示动态分配数组的指针</span></span><br><span class="line">    <span class="type">int</span> MaxSize, length;    <span class="comment">//数组的最大容量和当前个数</span></span><br><span class="line">&#125; SqList;                   <span class="comment">//动态分配数组顺序表的类型定义</span></span><br></pre></td></tr></table></figure>
+<p>C的初始动态分配语句为</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">L.data=(ElemType *)<span class="built_in">malloc</span>(InitSize*<span class="keyword">sizeof</span>(ElemType));</span><br></pre></td></tr></table></figure>
+<p><em>malloc</em> 前面括号表明数据类型，后面括号是计算要分配的总字节空间.</p>
+<p>C++的初始动态分配语句：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">L.data=new ElemType[InitSize];</span><br></pre></td></tr></table></figure>
+<h2 id="2-顺序表初始化"><a href="#2-顺序表初始化" class="headerlink" title="2.顺序表初始化"></a>2.顺序表初始化</h2><p>静态分配:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//SqList L;                 // 定义一个顺序表变量L</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InitList</span><span class="params">(SqList &amp;L)</span>&#123;     <span class="comment">// 构造一个空的顺序表L</span></span><br><span class="line">    L.length=<span class="number">0</span>;             <span class="comment">// 顺序表长度为0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>动态分配：分配初始大小的数组空间，并设置长度和容量</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">InitList</span><span class="params">(SqList &amp;L)</span>&#123;     <span class="comment">// 构造一个空的顺序表L</span></span><br><span class="line">    L.data=(ElemType *)<span class="built_in">malloc</span>(InitSize*<span class="keyword">sizeof</span>(ElemType)); <span class="comment">// 动态分配内存空间</span></span><br><span class="line">    L.MaxSize=InitSize;             <span class="comment">// 设置最大容量</span></span><br><span class="line">    L.length=<span class="number">0</span>;                     <span class="comment">// 顺序表长度为0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-插入操作"><a href="#3-插入操作" class="headerlink" title="3.插入操作"></a>3.插入操作</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">ListInsert</span><span class="params">(SqList &amp;L, <span class="type">int</span> i, ElemType e)</span>&#123; <span class="comment">// 在顺序表L的第i个位置插入元素e</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L.length+<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 插入位置不合法</span></span><br><span class="line">    <span class="keyword">if</span>(L.length&gt;=L.MaxSize) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 顺序表已满，无法插入</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=L.length; j&gt;=i; j--) <span class="comment">// 将第i个位置及之后的元素后移</span></span><br><span class="line">        L.data[j]=L.data[j<span class="number">-1</span>];</span><br><span class="line">    L.data[i<span class="number">-1</span>]=e; <span class="comment">// 插入元素e</span></span><br><span class="line">    L.length++; <span class="comment">// 顺序表长度增加1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 插入成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最好情况：插入队尾，时间复杂度为$Q(1)$。<br>最坏情况：插入队首，时间复杂度为$Q(n)$。<br>平均情况：时间复杂度为$Q(n)$。</p>
+<h2 id="4-删除操作"><a href="#4-删除操作" class="headerlink" title="4.删除操作"></a>4.删除操作</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">ListDelete</span><span class="params">(SqList &amp;L, <span class="type">int</span> i, ElemType &amp;e)</span>&#123; <span class="comment">// 删除顺序表L的第i个位置的元素，并将其值保存在e中</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L.length) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 删除位置不合法</span></span><br><span class="line">    e=L.data[i<span class="number">-1</span>]; <span class="comment">// 将要删除的元素值保存在e中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=i; j&lt;L.length; j++) <span class="comment">// 将第i个位置之后的元素前移</span></span><br><span class="line">        L.data[j<span class="number">-1</span>]=L.data[j];</span><br><span class="line">    L.length--; <span class="comment">// 顺序表长度减少1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 删除成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最好情况：删除队尾元素，时间复杂度为$Q(1)$。<br>最坏情况：删除队首元素，时间复杂度为$Q(n)$。<br>平均情况：时间复杂度为$Q(n)$。</p>
+<h2 id="5-按值查找（顺序查找）"><a href="#5-按值查找（顺序查找）" class="headerlink" title="5.按值查找（顺序查找）"></a>5.按值查找（顺序查找）</h2><p>在顺序表L中查找第一个值等于e的元素，返回其位序；若未找到，则返回0。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">LocateElem</span><span class="params">(SqList L, ElemType e)</span>&#123; <span class="comment">// 在顺序表L中查找元素e，返回其位置</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;L.length; i++) <span class="comment">// 从第一个元素开始查找</span></span><br><span class="line">        <span class="keyword">if</span>(L.data[i]==e) <span class="keyword">return</span> i+<span class="number">1</span>; <span class="comment">// 找到元素e，返回其位置（从1开始计数）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 没有找到元素e，返回0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最好情况：目标元素在队首，时间复杂度为$Q(1)$。<br>最坏情况：目标元素在队尾或不存在，时间复杂度为$Q(n)$。<br>平均情况：时间复杂度为$Q(n)$。<br>顺序表的按序列查找非常简单，直接通过数组下标访问即可，时间复杂度为$Q(1)$。</p>
+]]></content>
+      <categories>
+        <category>408-数据结构</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>数据结构</tag>
+        <tag>顺序表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [数据结构] 队列-代码基础</title>
+    <url>/2026/05/25/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E9%98%9F%E5%88%97-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>队列：先进先出，后进后出</p>
+<h1 id="1-队列的顺序存储结构"><a href="#1-队列的顺序存储结构" class="headerlink" title="1.队列的顺序存储结构"></a>1.队列的顺序存储结构</h1><p>队列的顺序存储类型可定义为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MaxSize 50    //定义队列中元素的最大个数</span><br><span class="line">typedef struct&#123;</span><br><span class="line">    ElemTpye data[MaxSize];     //用数组存放队列元素</span><br><span class="line">    int front,rear;     //队首指针和队尾指针</span><br><span class="line">&#125;SqQueue;</span><br></pre></td></tr></table></figure>
+<p><strong>初始状态</strong>：Q.front&#x3D;Q.rear-0<br><strong>入队操作</strong>：当队列未满时，先将元素存入队尾，再将队尾指针加1<br><strong>出队操作</strong>：当队列非空时，先取出队首元素，再将队首指针加1</p>
+<h2 id="1-1-循环队列"><a href="#1-1-循环队列" class="headerlink" title="1.1 循环队列"></a>1.1 循环队列</h2><p><strong>初始状态</strong>：Q.front&#x3D;Q.rear&#x3D;0<br><strong>队首指针进1</strong>：Q.front&#x3D;(Q.front+1)%MaxSize<br><strong>队尾指针进1</strong>：Q.rear&#x3D;(Q.rear+1)%MaxSize<br><strong>队列长度</strong>：(Q,rear+MaxSize-Q.front)%MaxSize<br><strong>出入队操作</strong>：指针均按顺时针方向移动<br><strong>在循环队列判空和判满时的三种类型情况</strong>：</p>
+<ul>
+<li><strong>牺牲一个存储单元</strong>：入队时少用一个存储单元，约定“队尾指针的下一位置为队首”作为队满标志。<br><strong>队满条件</strong>：(Q.rear+1)%MaxSize &#x3D;&#x3D; Q.front<br><strong>队空条件</strong>：Q.front &#x3D;&#x3D; Q.rear<br><strong>队列中元素个数</strong>:(Q.rear-Q.front+MaxSize)%MaxSize</li>
+<li><strong>增设size成员</strong>：记录当前元素个数。若入队成功，则size++，若出队成功，则size–<br><strong>队空条件</strong>：Q.size &#x3D;&#x3D; 0<br><strong>队满条件</strong>：Q.size &#x3D;&#x3D; Maxsize<br>两种情形均有Q.front &#x3D;&#x3D; Q.rear，由rear区分队空与队满。</li>
+<li><strong>增设tag标志位</strong><br>出队后置tag&#x3D;0，若此时Q.front &#x3D;&#x3D; Q.rear，则为队空。<br>入队后置tag&#x3D;1，若此时Q.front &#x3D;&#x3D; Q.rear，则为队满。</li>
+</ul>
+<h2 id="1-2-循环队列的操作（基于牺牲一个单元法）"><a href="#1-2-循环队列的操作（基于牺牲一个单元法）" class="headerlink" title="1.2 循环队列的操作（基于牺牲一个单元法）"></a>1.2 循环队列的操作（基于牺牲一个单元法）</h2><h3 id="1-2-1-初始化"><a href="#1-2-1-初始化" class="headerlink" title="1.2.1 初始化"></a>1.2.1 初始化</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">    Q.rear=Q.front=0;      //初始化队首、队尾指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-判队空"><a href="#1-2-2-判队空" class="headerlink" title="1.2.2 判队空"></a>1.2.2 判队空</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool QueueEmpty(SqQueue Q)&#123;</span><br><span class="line">    if(Q.rear == Q.front)          //队空条件</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-3-入队"><a href="#1-2-3-入队" class="headerlink" title="1.2.3 入队"></a>1.2.3 入队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool EnQueue(SqQueue &amp;Q, ElemType x)&#123;</span><br><span class="line">    if((Q.rear+1)%MaxSize==Q.front)      //队满则报错</span><br><span class="line">        return false;</span><br><span class="line">    Q.data[Q.rear]=x;</span><br><span class="line">    Q.rear=(Q.rear+1)%MaxSize;    //队尾指针加1取模</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-4-出队"><a href="#1-2-4-出队" class="headerlink" title="1.2.4 出队"></a>1.2.4 出队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool DeQueue(SqQueue &amp;Q, ElemType &amp;x)&#123;</span><br><span class="line">    if(Q.rear==Q.front)    //队空则报错</span><br><span class="line">        return false;</span><br><span class="line">    x=Q.data[Q.front];</span><br><span class="line">    Q.front=(Q.front+1)%MaxSize;    //队首指针加1取模</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-队列的链式存储结构"><a href="#2-队列的链式存储结构" class="headerlink" title="2.队列的链式存储结构"></a>2.队列的链式存储结构</h1><p>链式队列的类型可定义为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct LinkNode&#123;   //链式队列节点</span><br><span class="line">    ElemType data;</span><br><span class="line">    struct LinkNode *next;</span><br><span class="line">&#125;LinkNode;</span><br><span class="line">typedef struct&#123;  //链式队列</span><br><span class="line">    LinkNode *front,*rear;    //队列的队头和队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-1-链式队列的基本操作"><a href="#2-1-链式队列的基本操作" class="headerlink" title="2.1 链式队列的基本操作"></a>2.1 链式队列的基本操作</h2><h3 id="2-1-1-初始化"><a href="#2-1-1-初始化" class="headerlink" title="2.1.1 初始化"></a>2.1.1 初始化</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InitQueue(LinkQueue &amp;Q)&#123;   //初始化带头结点的链式队列</span><br><span class="line">    Q.front=Q.rear=(LinkNode*)malloc(sizeof(LinkNode));    //建立头结点</span><br><span class="line">    Q.front-&gt;next=NULL;    //初始为空</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-判队空"><a href="#2-1-2-判队空" class="headerlink" title="2.1.2 判队空"></a>2.1.2 判队空</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool QueueEmpty(LinkQueue Q)&#123;</span><br><span class="line">    if(Q.front==Q.rear)    //判空条件</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-3-入队"><a href="#2-1-3-入队" class="headerlink" title="2.1.3 入队"></a>2.1.3 入队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void EnQueue(LinkQueue &amp;Q, ElemType x)&#123;</span><br><span class="line">    LinkNode *s=(LinkNode *)malloc(sizeof(LinkNode));   //创建新结点</span><br><span class="line">    s-&gt;data=x;</span><br><span class="line">    s-&gt;next=NULL;</span><br><span class="line">    Q,rear-&gt;next=s;     //插入链尾</span><br><span class="line">    Q.rear=s;       //修改尾指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-4-出队"><a href="#2-1-4-出队" class="headerlink" title="2.1.4 出队"></a>2.1.4 出队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool DeQueue(LinkQueue &amp;Q, ElemType &amp;x)&#123;</span><br><span class="line">    if(Q.front==Q.rear)</span><br><span class="line">        return false;     //空队</span><br><span class="line">    LinkNode *p=Q.front-&gt;next;</span><br><span class="line">    x=p-&gt;data;</span><br><span class="line">    Q.front-&gt;next=p-&gt;next;</span><br><span class="line">    if(Q.rear==p)</span><br><span class="line">        Q.rear==Q.front;    //若原队列中只有一个结点，删除后变空</span><br><span class="line">    free(p);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>408-数据结构</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>数据结构</tag>
+        <tag>队列</tag>
+      </tags>
   </entry>
   <entry>
     <title>[408] [计算机网络] 物理层</title>
@@ -1078,6 +713,245 @@
         <tag>408</tag>
         <tag>计算机网络</tag>
         <tag>物理层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [数据结构] 链表-代码基础</title>
+    <url>/2026/05/24/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E9%93%BE%E8%A1%A8-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="1-单链表的定义"><a href="#1-单链表的定义" class="headerlink" title="1.单链表的定义"></a>1.单链表的定义</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct LNode&#123;   //定义单链表结点类型</span><br><span class="line">    ElemType data;     //数据域</span><br><span class="line">    struct LNode *next;   //指针域</span><br><span class="line">&#125;LNode, *LinkList;</span><br></pre></td></tr></table></figure>
+<p>单链表是一种非随机存取的存储结构。<br>当头指针为NULL时，表示链表为空。<br>在带头结点的单链表中，头指针L指向头结点，而头结点的next指向第一个数据节点。<br>在不带头结点的单链表中，头指针L直接指向第一个数据结点。</p>
+<h1 id="2-单链表上基本操作的实现"><a href="#2-单链表上基本操作的实现" class="headerlink" title="2.单链表上基本操作的实现"></a>2.单链表上基本操作的实现</h1><h2 id="2-1-单链表的初始化"><a href="#2-1-单链表的初始化" class="headerlink" title="2.1 单链表的初始化"></a>2.1 单链表的初始化</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool InitList(LinkList &amp;L)&#123;   //带头结点的单链表初始化</span><br><span class="line">    L=(LNode*)malloc(sizeof(LNode));   //创建头结点</span><br><span class="line">    L-&gt;next=NULL;    //头节点之后暂无数据结点</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不带头结点的单链表初始化时，只需将头指针L初始化为NULL。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool InitList(LinkList &amp;L)&#123;   //不带头结点的单链表初始化</span><br><span class="line">    L=NULL;   </span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-求表长操作"><a href="#2-2-求表长操作" class="headerlink" title="2.2 求表长操作"></a>2.2 求表长操作</h2><p>求表长是指统计单链表中数据结点的个数（不包括头结点）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Length(LinkList L)&#123;</span><br><span class="line">    int len=0;    //计数变量，初始为0</span><br><span class="line">    LNode *p=L;</span><br><span class="line">    while(p-&gt;next!=NULL)&#123;</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        len++;   //每访问一个结点，计数加1</span><br><span class="line">    &#125;</span><br><span class="line">    return len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求表长操作的时间复杂度为$O(n)$。</p>
+<h2 id="2-3-按序号查找结点"><a href="#2-3-按序号查找结点" class="headerlink" title="2.3 按序号查找结点"></a>2.3 按序号查找结点</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LNode *GetElem(LinkList L, int i)&#123;</span><br><span class="line">    LNode *p=L;      //指针p指向当前扫描结点。</span><br><span class="line">    int j=0;     //j记录当前位序，头结点为第0个结点。</span><br><span class="line">    while(p!=NULL&amp;&amp;j&lt;i)&#123;      //循环找到第i个结点</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    return p;     //返回第i个节点的指针或NULL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按序号查找操作的时间复杂度为$O(n)$。</p>
+<h2 id="2-4-按值查找表结点"><a href="#2-4-按值查找表结点" class="headerlink" title="2.4 按值查找表结点"></a>2.4 按值查找表结点</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LNode *LocateElem(LinkList L, elemtype e)&#123;</span><br><span class="line">    LNode *p=L-&gt;next;</span><br><span class="line">    while(p!=NULL&amp;&amp;p-&gt;data!=e)   //从第一个结点开始擦汗中阿数据域为e的节点</span><br><span class="line">        p=p-&gt;next;   </span><br><span class="line">        return p;    //找到后返回该结点指针，否则返回NULL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按值查找操作的时间复杂度为$O(n)$。</p>
+<h2 id="2-5-插入结点操作"><a href="#2-5-插入结点操作" class="headerlink" title="2.5 插入结点操作"></a>2.5 插入结点操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool ListInsert(LinkList &amp;L, int i, Elemtype e)&#123;</span><br><span class="line">    LNode *p=L;            //p指向当前扫描结点</span><br><span class="line">    int j=0;        //j记录当前位序，头结点为第0个结点</span><br><span class="line">    while(p!=NULL&amp;&amp;j&lt;i-1)&#123;     //循环找到第i-1个结点</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    if(p==NULL)    //i值不合法</span><br><span class="line">        return false;</span><br><span class="line">    LNode *s=(LNode*)malloc(sizeof(LNode));</span><br><span class="line">    s-&gt;data=e;</span><br><span class="line">    s-&gt;next=p-&gt;next;      //(1)</span><br><span class="line">    p-&gt;next=s;            //(2)</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$O(n)$。</p>
+<p>(1)和(2)的顺序不可颠倒。<br><strong>扩展</strong>：对某个节点进行前插操作。<br>前插操作是指在某结点前插入一个新结点，与后插操作相反。<br>主要代码片段如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s-&gt;next=p-&gt;next;    //修改指针域，不能颠倒</span><br><span class="line">p=&gt;next=s;</span><br><span class="line">temp=p-&gt;data;       //交换数据域部分</span><br><span class="line">p-&gt;data=s-&gt;data;</span><br><span class="line">s-&gt;data=temp;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$O(n)$。</p>
+<h2 id="2-6-删除结点操作"><a href="#2-6-删除结点操作" class="headerlink" title="2.6 删除结点操作"></a>2.6 删除结点操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool ListDelete(LinkList &amp;L, int i, ElemType &amp;e)&#123;</span><br><span class="line">    LNode *p=L;     //指针p指向当前扫描到的结点</span><br><span class="line">    int j=0;     //记录当前结点的位序，头结点是第0个结点</span><br><span class="line">    while(p-&gt;next!=NULL&amp;&amp;j&lt;i-1)&#123;   //循环找到第i-1个结点</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    if(p-&gt;next==NULL||j&gt;i-1)     //i值不合法</span><br><span class="line">        return false;</span><br><span class="line">    LNode *q=p-&gt;next;     //令q指向被删除结点</span><br><span class="line">    e=q-&gt;data;    //用e返回元素的值</span><br><span class="line">    p-&gt;next=q-&gt;next;    //将*q节点从链中“断开”</span><br><span class="line">    free(q);     //释放节点的存储空间</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度为$O(n)$。<br><strong>扩展</strong>：删除给定结点*p。<br>主要代码片段：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LNode *q=p-&gt;next;    //令q指向*p的后继结点</span><br><span class="line">p-&gt;data=p-&gt;next-&gt;data;   //用后继结点的数据域覆盖</span><br><span class="line">p-&gt;next=q-&gt;next;     //将*q节点从链中“断开”</span><br><span class="line">free(q);     //释放后继结点的存储空间</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$O(n)$。</p>
+<h2 id="2-7-采用头插法建立单链表"><a href="#2-7-采用头插法建立单链表" class="headerlink" title="2.7 采用头插法建立单链表"></a>2.7 采用头插法建立单链表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LinkList List_HeadInsert(LinkList &amp;L)&#123;  //逆向建立单链表</span><br><span class="line">    LNode *s; int x;      //设元素类型为整数</span><br><span class="line">    L=(LNode*)malloc(sizeof(LNode));   //创建头结点</span><br><span class="line">    L-&gt;next=NULL;      //初始为空链表</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;x);    //输入结点的值</span><br><span class="line">    while(x1=9999)&#123;    //输入9999表示结束</span><br><span class="line">        s=(LNode*)malloc(sizeof(LNode));  //创建新结点</span><br><span class="line">        s-&gt;data=x;</span><br><span class="line">        s-&gt;next=L-&gt;next;</span><br><span class="line">        L-&gt;next=s;     //将新结点插入表中，L为头结点</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;x);</span><br><span class="line">    &#125;</span><br><span class="line">    return L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每插入一个结点的时间复杂度为$O(1)$，总时间复杂度为$O(n)$。</p>
+<h2 id="2-8-采用尾插法建立单链表"><a href="#2-8-采用尾插法建立单链表" class="headerlink" title="2.8 采用尾插法建立单链表"></a>2.8 采用尾插法建立单链表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LinkList List_TailInsert(LinkList &amp;L)&#123;   //正向建立单链表</span><br><span class="line">    int x;      //设元素类型为整数</span><br><span class="line">    L-(LNode*)malloc(sizeof(LNode));    //创建头结点</span><br><span class="line">    LNode *s, *r=L;    //r为表尾指针</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;x);    //输入结点的值</span><br><span class="line">    while(x!=9999)&#123;    //输入9999表示结束</span><br><span class="line">        s=(LNode*)malloc(sizeof(LNode));</span><br><span class="line">        s-&gt;data=x;</span><br><span class="line">        r-&gt;next=s;</span><br><span class="line">        r=s;    //r指向新的表尾结点</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;x);</span><br><span class="line">    &#125;</span><br><span class="line">    r-&gt;next=NULL;    //尾节点置空</span><br><span class="line">    return L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为附设了一个尾指针，故无须遍历查找尾部，总时间复杂度为$O(n)$。</p>
+<h1 id="3-双链表"><a href="#3-双链表" class="headerlink" title="3.双链表"></a>3.双链表</h1><h2 id="3-1-双链表的定义"><a href="#3-1-双链表的定义" class="headerlink" title="3.1 双链表的定义"></a>3.1 双链表的定义</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct DNode&#123;  //定义双链表结点类型</span><br><span class="line">    ElemType data;   //数据域</span><br><span class="line">    struct DNode *prior,*next;   //前驱和后继指针</span><br><span class="line">&#125;DNode, *Dlinklist;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-双链表的插入操作"><a href="#3-2-双链表的插入操作" class="headerlink" title="3.2 双链表的插入操作"></a>3.2 双链表的插入操作</h2><p>核心代码片段如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s-&gt;next=p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior=s;</span><br><span class="line">s-&gt;prior=p;</span><br><span class="line">p-&gt;next=s;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-双链表的删除操作"><a href="#3-3-双链表的删除操作" class="headerlink" title="3.3 双链表的删除操作"></a>3.3 双链表的删除操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">p-&gt;next=q-next;</span><br><span class="line">q-&gt;next-&gt;prior=p;</span><br><span class="line">free(q);</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-静态链表"><a href="#4-静态链表" class="headerlink" title="4.静态链表"></a>4.静态链表</h1><p>定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MaxSize 50   //静态链表的最大长度</span><br><span class="line">typedef struct&#123;   //静态链表的结构类型定义</span><br><span class="line">    ElemType data;  //存储数据元素</span><br><span class="line">    int next;   //下一个元素的数组下标</span><br><span class="line">&#125; SLinkList[MaxSize];</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>408-数据结构</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>数据结构</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [计算机网络] 应用层</title>
+    <url>/2026/05/23/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%BA%94%E7%94%A8%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h1><h2 id="1-客户-服务器模型"><a href="#1-客户-服务器模型" class="headerlink" title="1.客户&#x2F;服务器模型"></a>1.客户&#x2F;服务器模型</h2><p>在<strong>客户服务器（C&#x2F;S）模型</strong>中，有一个总是打开的主机称为<strong>服务器</strong>，他服务于许多来自其他称为<strong>客户机</strong>的主角请求。其工作流程如下：</p>
+<ul>
+<li>服务器处于接收请求的状态。</li>
+<li>客户机发出服务请求，并等待接收结果。</li>
+<li>服务器收到请求后，分析请求，进行必要的处理，得到结果并发送给客户机。</li>
+</ul>
+<p><strong>最重要的特征</strong>：客户是服务请求方，服务器是服务提供方。<br>客户&#x2F;服务器模型的主要特点还有：</p>
+<ul>
+<li>网络中各计算机的地位不平等，服务器可通过对用户权限的限制来达到管理客户机的目的。整个网络的管理工作由少数服务器负责，因此网络的管理非常集中和方便。</li>
+<li>客户机相互之间不直接。</li>
+<li>可扩展性不佳。</li>
+</ul>
+<h2 id="2-P2P模型"><a href="#2-P2P模型" class="headerlink" title="2.P2P模型"></a>2.P2P模型</h2><p>整个网络中传输内容不再被保存在中心服务器上，每个节点都同时具有下载、上传的功能，其权利和义务都是大体对等的。<br>与C&#x2F;S模型相比，P2P模型的优点主要体现如下：</p>
+<ul>
+<li>减轻了服务器的计算压力，消除了对某个服务器的完全依赖，可以将任务分配到各个节点上，因此大大提高了系统效率和资源利用率。</li>
+<li>多个客户机之间可以直接共享文档。</li>
+<li>可扩展性好，传统服务器有响应和带宽的限制，因此只能接受一定数量的请求。</li>
+<li>网络健壮性强，单个节点的失效不会影响其他部分的节点。</li>
+</ul>
+<h1 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h1><p>域名系统是因特网使用的命名系统，用来把便于人们记忆的具有特定含义的主机名转换为便于机器处理的IP地址。<br>从概念上可将DNS分为三部分：局次域名空间、域名服务器和解析器。</p>
+<h2 id="1-层次域名空间"><a href="#1-层次域名空间" class="headerlink" title="1.层次域名空间"></a>1.层次域名空间</h2><p>因特网采用<strong>层次树状结构</strong>的命名方式。采用这种命名方法，任何一个连接到因特网的主机或路由器，都有一个唯一的层次结构名称，即<strong>域名</strong>。<br><strong>域</strong>的名字空间中一个可被管理的划分。<br>每个域名都由标号序列组成，而各标号之间用点隔开。<br>关于域名：</p>
+<ul>
+<li>标号中的英文不区分大小写。</li>
+<li>标号中除连字符外不能使用其他的标号符号。</li>
+<li>每个标号不超过63个字符，多标号组成的完整域名最长不超过255个字符。</li>
+<li>级别最低的域名写在最左边，级别最高的顶级域名写在最右边。</li>
+</ul>
+<p><strong>顶级域名</strong>（TLD）分为如下三大类：</p>
+<ul>
+<li><strong>国家（地区）顶级域名（nTLD）</strong>。国家和某些地区的域名。</li>
+<li><strong>通用顶级域名（gTLD）</strong>。com公司，net网络服务机构，org非盈利性机构，edu教育机构，gov国家或政府部门。</li>
+<li><strong>基础结构域名（arpa）</strong>。用于方向域名解析，即IP地址方向解析为域名。</li>
+</ul>
+<p>在域名系统中，各级域名由其上一级的域名管理机构管理，顶级域名由因特网名称与数字地址分配机构（ICANN）管理。<br>国家顶级域名下注册的二级域名均由该国家自行确定，每个组织都可以将它的域再分成一定数量的子域，并将这些子域委托给其他组织去管理。</p>
+<h2 id="2-域名服务器"><a href="#2-域名服务器" class="headerlink" title="2.域名服务器"></a>2.域名服务器</h2><p>域名到IP地址的解析是由运行在域名服务器上的程序完成的，一个服务器所负责管辖的（或有权限的）范围成为<strong>区</strong>（小于或等于域）。</p>
+<p><strong>根域名服务器</strong><br>根域名服务器是最高层次的域名服务器为，所有的根域名服务器都知道所有的顶级域名服务器的域名和IP地址。<br>因特网上有13个根域名服务器。<br>根域名服务器用来关系额顶级域，通常它并不直接将待查询的域名直接转换成IP地址，而是告诉本地域名服务器下一步应当找哪个登记域名服务器进行查询。</p>
+<p><strong>顶级域名服务器</strong><br>这域名服务器负责管理在该顶级域名服务器注册的所有二级域名。</p>
+<p><strong>权限域名服务器（授权域名服务器）</strong><br>每台主机都必须在权限域名服务器处登记。一台主机最好至少有两个权限域名服务器。<br>实际上，许多域名服务器都同时充当本地域名服务器和权限域名服务器。权限域名服务器总能将其管辖的主机名转换为该主机的IP地址。</p>
+<p><strong>本地域名服务器</strong><br>每个因特网服务提供者（ISP），或一所大学，甚至一所大学中的各个系，都可以拥有一个本地域名服务器。<br>当一台主机发出DNS查询请求时，这个查询请求报文就发送给该主机的本地域名服务器。<br>事实上，我们在Windows系统中配置“本地连接”时，就需要填写DNS地址，这个地址就是本地DNS（域名服务器）的地址。<br><strong>DNS的层次结构</strong>如下：<br><img src="/img/408/y1.png" alt="图片说明文字"></p>
+<h2 id="3-域名解析过程"><a href="#3-域名解析过程" class="headerlink" title="3.域名解析过程"></a>3.域名解析过程</h2><p>域名解析是指把域名转化为IP地址的过程。<br>域名解析方式有两种方式：递归查询和迭代查询</p>
+<ul>
+<li>主机向本地域名服务器的查询都采用<strong>递归查询</strong><br><strong>递归查询</strong>是指若主机所查询的本地域名服务器不知道被查询域名的IP地址，则本地域名服务器就以DNS客户的身份，向根域服务器继续发出查询请求报文（替代主机继续查询（，而不是让改主机自己进行下一步的查询。</li>
+<li>主机域名服务器向其他域名服务器采用<strong>递归查询</strong>或<strong>迭代查询</strong></li>
+</ul>
+<p><strong>递归查询DNS的工作原理</strong><br>如下图a所示，本地域名服务器只需向根域名服务器查询一次，后面的几次查询都是递归地在其他几个域名服务器之间进行的[步骤3-6]。在步骤7中，本地服务器从根域名服务器得到了所需的IP地址，最后在步骤8中，本地域名服务器把查询结果告诉发起查询的主机。<br>因为该方法给根域名服务器造成了负载过大，所以实际上几乎不使用。<br><strong>迭代查询DNS的工作原理</strong><br>本地域名服务器向跟域名服务器的查询通常是采用<strong>迭代查询</strong>。当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地域名服务器“下一步应当向哪个顶级域名服务器进行查询”，如下图b所示。<br><img src="/img/408/y2.png" alt="图片说明文字"><br>过程举例（假定某客户机向获知域名为y.abc.com主机的IP地址）域名解析过程（最多需要使用8个UDP报文：4个查询报文和4个回答报文）如下：</p>
+<ul>
+<li>客户机向其本地域名服务器发出DNS请求报文（递归查询）。</li>
+<li>本地域名服务器收到请求后，查询本地缓存，若没有该记录，则以DNS客户的身份向根域名服务器发出解析请求报文（迭代查询）。</li>
+<li>根域名服务器收到请求后，判断该域名属于.com域，将对应的顶级域名服务器dns.com的IP地址返回给本地域名服务器。</li>
+<li>本地域名服务器dns.com收到请求后，判断该域名属于aabc.com域，因此将对应的权限域名服务器dns.abc.com的IP地址返回给本地域名服务器。</li>
+<li>本地域名服务器向权限服务器dns.abc.com发出解析请求报文（迭代查询）。</li>
+<li>权限域名服务器dns.abc.com收到请求后，将查询结果返回给本地域名服务器。</li>
+<li>本地域名服务器将查询结果保存到本地缓存，同时返回给客户端。</li>
+</ul>
+<h1 id="文件传输协议"><a href="#文件传输协议" class="headerlink" title="文件传输协议"></a>文件传输协议</h1><h2 id="1-FIP的工作原理"><a href="#1-FIP的工作原理" class="headerlink" title="1.FIP的工作原理"></a>1.FIP的工作原理</h2><p>**文件传输协议（FTP）**是因特网上使用得最广泛的文件传输协议。<br>FTP提供交互式的访问，运行客户指明文件的类型和格式，并允许文件具有存取权限。<br>FTP提供以下功能：</p>
+<ul>
+<li>提供不同类型主机系统（硬、软件体系等都可以不同）之间的文件传输能力。</li>
+<li>以用户权限管理的方式通过用户对远程FTP服务器上的文件管理能力。</li>
+<li>以匿名FTP的方式提供公用文件共享的能力。</li>
+</ul>
+<p>FTP采用客户&#x2F;服务器的工作方式。使用TCP可靠的传输服务。<br>DTP服务器进程由两大部分组成：一个主进程，负责接收新的请求；另外由若干从属进程，负责处理单个请求。其工作步骤如下：</p>
+<ul>
+<li>打开熟知端口21（控制端口），使客户进程能够连接上。</li>
+<li>等待客户进程发连接请求。</li>
+<li>启动从属进程处理客户进程发来的请求。从属进程对客户进程的请求处理完毕后即终止。</li>
+<li>回到等待状态，继续接受其他客户进程的请求。主进程与从属进程是并发执行的。</li>
+</ul>
+<h2 id="2-控制连接与数据连接"><a href="#2-控制连接与数据连接" class="headerlink" title="2.控制连接与数据连接"></a>2.控制连接与数据连接</h2><p>FTP在工作时使用两个并行的TCP连接，一个是控制连接（服务器端口号21），一个是数据连接（服务器端口号20）。<br><strong>1).控制连接</strong><br>服务器监听21端口，等待客户链接，建立在这个端口上的连接称为<strong>控制连接</strong>，用来传输控制信息。<br><strong>2).数据连接</strong><br>数据连接用来连接客户端和服务器端的数据传送进程，数据传送进程实际完成文件的传送，在传送完毕后关闭“数据传送连接”并结束运行。<br>数据连接有两种传输模式：<strong>主动模式PSRT</strong>和<strong>被动模式PASV</strong>。</p>
+<ul>
+<li><strong>PORT模式的工作原理</strong>：客户端连接服务器的21端口，登录成功后要读取数据时，客户端随机开发一个端口，并发送命令告知服务器，服务器收到PORT命令和端口号后，通过20端口和客户端开放的端口进行连接，发送数据。</li>
+<li><strong>PASV模式</strong>：不同点在于客户端要读取数据时，发送PASV命令到服务器，服务器在本地随机开发一个端口，并告知客户端，客户端再连接到服务器开发的端口进行数据传输。</li>
+</ul>
+<p>主动模式传送数据时服务器连接到客户端的端口；被动模式传送数据时客户端连接到服务器的端口。</p>
+<h1 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h1><h2 id="1-电子邮件系统的组成节后"><a href="#1-电子邮件系统的组成节后" class="headerlink" title="1.电子邮件系统的组成节后"></a>1.电子邮件系统的组成节后</h2><p>电子邮件是一种异步通信方式。<br>一个电子邮件系统应具有三个最重要的组件：用户代理、邮件服务器和电子邮件使用的协议。</p>
+<ul>
+<li><strong>用户代理</strong>：用户和电子邮件系统的接口。</li>
+<li><strong>邮件服务器</strong>：它的功能是发送和接收邮件，同时还要向发件人报告邮件传送的情况。</li>
+<li><strong>邮件发送协议和读取协议</strong>：邮件发送协议用于用户代理向邮件服务器发送邮件或在邮件服务器之间发送邮件。<br>需要主要的是，SMTP用的是<strong>推</strong>的通信方式。POP0用的是<strong>拉</strong>的通信方式。</li>
+</ul>
+<p>电子邮件的收发过程：</p>
+<ul>
+<li>发件人调用用户代理来撰写和编辑哟啊发送的邮件。</li>
+<li>邮件撰写完后，发件人电力“发送邮件”按钮，把发送邮件的工作全都交给用户代理来完成，就什么都不用管了。用户代理用SMTP把邮件传送给发送端邮件服务器。</li>
+<li>发送端邮件服务器将邮件放入邮件缓存队列中，等待发送。</li>
+<li>发送端邮件服务器的SMTP客户与接收端邮件服务器的SMTP服务器建立TCP连接，然后就把邮件缓存矩阵中的邮件依次发送出去。注意，邮件是直接传送到接收端邮件服务器的，而不会在互联网的某个中间邮件服务器落地。</li>
+<li>运行在接收端邮件服务器中的SMTP服务器进程收到邮件后，将邮件放入收件人的用户邮箱，等待收件人在方便时进行读取。</li>
+<li>收件人打收信时，调用用户代理，使用POP3（或IMAP）协议将自己的邮件从接收端邮件服务器的用户邮箱中取回。</li>
+</ul>
+<h2 id="2、电子邮箱格式和MIME"><a href="#2、电子邮箱格式和MIME" class="headerlink" title="2、电子邮箱格式和MIME"></a>2、电子邮箱格式和MIME</h2><p>一个电子邮件分为<strong>信封</strong>和<strong>内容</strong>两大部分，邮件内容分为<strong>首部</strong>和<strong>主体</strong>两部分。<br><strong>To</strong>是必填的关键字，后面填入一个或多个收件人的电子邮件地址。<br><strong>Subject</strong>是可选关键字，是邮件的主题。<br><strong>From</strong>是一个必填的关键字，但它通常由邮件系统自动填入。</p>
+<p><strong>多用途因特网邮件扩展（MIME）</strong><br>MIME并未改动SMTP或取代他。当发送端发送的邮件中包含有非ASCII码数据时，不直接使用SMTP进程传送，而是通过MIME进行转换，并非ASCII码数据转换为ASCII码数据。之后，就可以使用SMTP进行传送。接收端也要使用MIME对接收到的ASCII码数据进行行逆转换，以便可以得到包含有非ASCII码数据的邮件。</p>
+<p>MIM主要包含以下三部分内容：</p>
+<ul>
+<li>5个新的邮件首部字段，包括MIME版本、内容描述、内容标识、传送编码和内容类型。</li>
+<li>定义了许多邮件内容的格式，对多媒体电子邮件的表示方法进行了标准化。</li>
+<li>定义了传送编码，可对任何内容格式进行转换，而不会被邮件系统改变。</li>
+</ul>
+<h2 id="3-SMTP和POP3"><a href="#3-SMTP和POP3" class="headerlink" title="3.SMTP和POP3"></a>3.SMTP和POP3</h2><p><strong>SMTP</strong><br><strong>简单邮件传输协议</strong>（SMTP）是一种提供可靠且有效的电子邮件传输的协议，它控制两个相互通信的SMTP进程叫唤信息。采用<strong>客户&#x2F;服务器模式</strong>，用的是<strong>TCP连接</strong>，端口号是<strong>25</strong>。<br>SMTP通信有以下三个阶段：</p>
+<ul>
+<li>连接建立<br>注：TCP连接总是在发送方和接收方这两个邮件服务器之间直接建立。</li>
+<li>邮件传送<br>RCPT指令的作用是，先弄清接收方系统是否已做好节后邮件的准备，然后才发送邮件。</li>
+<li>连接释放</li>
+</ul>
+<p><strong>POP3和IMAP</strong><br><strong>邮局协议</strong>（POP）是一个非常简单但功能有限的邮件读取协议，POP也采用<strong>客户&#x2F;服务器模式</strong>，在传输层使用<strong>TCP</strong>，端口号是<strong>110</strong>。<br>接收方的用户代理必须运行POP客户程序。<br>POP有<strong>两种工作模式</strong>：</p>
+<ul>
+<li><strong>下载并保留</strong>：用户从邮件服务器上读取邮件后，邮件依然会保存在邮件服务器上，用户可再次从服务器上读取该邮件。</li>
+<li><strong>下载并删除</strong>：邮件一旦被读取，就被从邮件服务器上删除。</li>
+</ul>
+<p><strong>因特网报文存取协议</strong>（IMAP），IMAP为用户通过了创建文件夹、在不同文件夹之间移动邮件及在远程文件夹中查询邮件等联机命令。<br>IMAP允许用户代理只获取报文的某些部分。</p>
+<p>此外，用户浏览器与Hotmail或Gmail的邮件服务器之间的邮件发送或接收使用规定是HTTP，而仅在不同邮件服务器之间传送邮件时才使用SMTP。</p>
+<h1 id="网维网"><a href="#网维网" class="headerlink" title="网维网"></a>网维网</h1><h2 id="1-WWW的概念与组成结构"><a href="#1-WWW的概念与组成结构" class="headerlink" title="1.WWW的概念与组成结构"></a>1.WWW的概念与组成结构</h2><p>万维网（WWW）是一个分布式、联机式的信息存储空间，这个空间中：一样有用的事物称为一样资源，并由一个全域**统一资源定位符（URL）**标识。这些资源通过超文本传输协议（HTTP）传送给使用者，而后者通过点击链接来获取资源。<br>万维网的内核部分是由三个标准构成的：</p>
+<ul>
+<li><strong>统一资源定位符（URL）</strong>。负责表示万维网上的各种文档，并使每个文档在整个万维网的范围内具有唯一的标识符URL。</li>
+<li><strong>超文本传输协议（HTTP）</strong>：一个应用层协议，它使用TCP连接进行可靠的传输，HTTP是万维网客户程序和服务器程序之间交互所必须严格遵守的协议。</li>
+<li><strong>超文本标记语言（HTML）</strong>：一种文档结构的标记语言，它使用一些约定的标记对页面上的各种信息、格式进行描述。</li>
+</ul>
+<p>URL的一般形式是：&lt;协议&gt;:&#x2F;&#x2F;&lt;主机&gt;:&lt;端口&gt;&#x2F;&lt;路径&gt;</p>
+<p>万维网以客户&#x2F;服务器模式工作，工作流程如下：</p>
+<ul>
+<li>Web用户使用浏览器（指定URL）与Web服务器建立连接，并发送浏览请求。</li>
+<li>Wen服务器把URL转换为文件路径，并返回信息给Web浏览器。</li>
+<li>通信完成，关闭连接。</li>
+</ul>
+<h2 id="2-超文本传输协议-HTTP"><a href="#2-超文本传输协议-HTTP" class="headerlink" title="2.超文本传输协议 HTTP"></a>2.超文本传输协议 HTTP</h2><p>HTTP是<strong>面向事务</strong>的应用层协议。<br>HTTP操作过程（万维网的操作过程），用户点击鼠标后发生的实践顺序如下（以访问清华大学的网站为例）：</p>
+<ul>
+<li>浏览器分析连接指向页面的URL（<a href="http://www.tsinghua.edu.cn/chn/index.htm%EF%BC%89%E3%80%82">http://www.tsinghua.edu.cn/chn/index.htm）。</a></li>
+<li>浏览器向DNS请求<a href="http://www.tsinghua.edu.cn的ip地址./">www.tsinghua.edu.cn的IP地址。</a></li>
+<li>域名系统DNS解析出清华大学服务器的IP地址。</li>
+<li>浏览器与该服务器建立TCP连接（默认端口号为80）。</li>
+<li>浏览器发出HTTP请求：GET&#x2F;chn&#x2F;index.htm。</li>
+<li>服务器通过HTTP响应把文件index.htm发送给浏览器。</li>
+<li>释放TCP连接。</li>
+<li>浏览器解析文件index.htm，并将Web页显示给用户。</li>
+</ul>
+<p><strong>HTTP的特点</strong><br>HTTP使用TCP作为传输层协议。<br>HTTP本身是无连接的。<br>HTTP是无状态的。HTTP通常使用Cookie加数据库的方式来跟踪用户的活动。</p>
+<p><strong>HTTP页面请求时间的分析</strong><br>对于<strong>非持续连接</strong>，每个页面元素对象的传输都需要单独建立一个TCP连接，如图6.12所示。请求一个万维网文档所需的时间是该文档的传输时间加上两倍往返时间RTT。<br>对于<strong>持续连接</strong>，是指万维网服务器在发送响应后仍然保持这条连接，使同一个客户和该服务器可以继续在这条TCP连接上传送后续的HTTP请求报文和响应，如图6.13所示。<br><img src="/img/408/y3.png" alt="图片说明文字"></p>
+<p><strong>HTTP&#x2F;1.1页面请求时间分析</strong><br>HTTP&#x2F;1.1默认使用持续连接，持续连接又分为非流水线和流水线两种工作方式。<br>对于<strong>非流水线方式</strong>，客户在收到前一个响应后才能发出下一个请求。<br>对于<strong>流水线方式</strong>，客户可以连续发出对各种对象的请求，服务器就可连续响应这些请求。</p>
+<p>HTTP是基于TCP的，所以每RTT内传送的数据量还要受到TCP发送窗口的限制。</p>
+<p><strong>HTTP的报文结构</strong><br>HTTP是<strong>面向文本</strong>的，有两类HTTP报文：</p>
+<ul>
+<li><strong>请求报文</strong>：从客户向服务器发送的请求报文。</li>
+<li><strong>响应报文</strong>：从服务器到客户的回答。<br><img src="/img/408/y4.png" alt="图片说明文字"><br>两类报文都由三部分组成：</li>
+<li><strong>开始行</strong>：在请求报文中的开始行称为<strong>请求行</strong>，而在响应报文中的开始行称为<strong>状态行</strong>。</li>
+<li><strong>首部行</strong>：用来说明浏览器、服务器或报文主体的一些信息。</li>
+<li><strong>实体主体</strong>：在请求报文中一班不用这个字段，而在响应报文中也可能没有这个字段。</li>
+</ul>
+<p>表 6  HTTP 请求报文中常用的几个方法</p>
+<table>
+<thead>
+<tr>
+<th>方法（操作）</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>请求读取由 URL 标识的信息</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>请求读取由 URL 标识的信息的首部</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>给服务器添加信息（如注释）</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>在指定 URL 处存储一个文档</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除由 URL 标识的资源</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>用于代理服务器</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>408-计算机网络</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>计算机网络</tag>
+        <tag>应用层</tag>
       </tags>
   </entry>
   <entry>
@@ -1397,6 +1271,54 @@
       </tags>
   </entry>
   <entry>
+    <title>欢迎来到我的博客！</title>
+    <url>/2026/06/15/welcome/</url>
+    <content><![CDATA[<p>Hello! 欢迎大家来到我的个人博客。我是 <strong>星阑</strong>，目前是一名2023届<strong>网络空间安全</strong>专业的本科在读生。</p>
+<h2 id="📄-学术论文"><a href="#📄-学术论文" class="headerlink" title="📄 学术论文"></a>📄 学术论文</h2><ul>
+<li>J. Gao, R. Zhao, X. Tao, X. Xiong and Y. Zhang, “Visual Semantics Oriented Video Privacy Protection Balancing Privacy and Visual Usability,” in IEEE Transactions on Circuits and Systems for Video Technology, doi: 10.1109&#x2F;TCSVT.2026.3701276</li>
+<li>Su, M., Gao, J., Zhao, R. et al. Visually meaningful encryption for UAV image management achieving a balance between privacy and visual usability. Peer-to-Peer Netw. Appl. 19, 15 (2026). <a href="https://doi.org/10.1007/s12083-025-02127-0">https://doi.org/10.1007/s12083-025-02127-0</a></li>
+</ul>
+<h2 id="🏆-竞赛获奖"><a href="#🏆-竞赛获奖" class="headerlink" title="🏆 竞赛获奖"></a>🏆 竞赛获奖</h2><p><strong>国家级奖项</strong></p>
+<ul>
+<li>一等奖：2026 年 ISCC 全国大学生信息安全与对抗技术大赛线上挑战赛</li>
+<li>二等奖：2025 年 ISCC 全国大学生信息安全与对抗技术大赛破阵夺旗赛</li>
+<li>二等奖：2025 年全国高校密码数学挑战赛</li>
+<li>二等奖：2025 年 ISCC 全国大学生信息安全与对抗技术大赛博弈对抗赛</li>
+<li>二等奖：2025 年 计算机设计大赛</li>
+<li>二等奖：2025 年商业精英挑战赛创业计划赛道</li>
+<li>二等奖：2024 年睿抗机器人开发者大赛网络安全赛项</li>
+<li>三等奖：2025 年 ISCC 全国大学生信息安全与对抗技术大赛无限擂台赛</li>
+<li>三等奖：2025 年第十八届全国大学生信息安全竞赛暨第二届 “长城杯” 铁人三项赛（防护赛）全国半决赛</li>
+<li>全国百强团队：2025 年 “调研中国”</li>
+<li>全国优秀团队：2025 年 “调研中国”</li>
+</ul>
+<p><strong>区域及省级奖项</strong></p>
+<ul>
+<li>综合赛区一等奖：2026 年 ISCC 全国大学生信息安全与对抗技术大赛线上挑战赛</li>
+<li>中南赛区一等奖：2025 年高校数学密码挑战赛</li>
+<li>中南赛区二等奖：2024 年高校数学密码挑战赛</li>
+<li>省级一等奖：2025 年江西省信息安全技术大赛决赛</li>
+<li>省级一等奖：2026 年计算机设计大赛</li>
+<li>省级一等奖：2024 年江西省信息安全技术大赛决赛</li>
+<li>省级二等奖：2025 年计算机设计大赛</li>
+<li>省级二等奖：2024 年睿抗机器人开发者大赛网络安全赛项</li>
+<li>省级二等奖：2025 年蓝桥杯全国软件和信息技术专业人才大赛网络安全赛项</li>
+<li>省级三等奖：2025 年睿抗机器人开发者大赛编程技术赛项</li>
+<li>省级三等奖：2024 年 “长城杯” 铁人三项赛（防护赛）</li>
+</ul>
+<h2 id="💻-项目"><a href="#💻-项目" class="headerlink" title="💻 项目"></a>💻 项目</h2><ul>
+<li>国家级：2026年大学生创新创业训练项目 - 创新实践项目</li>
+<li>省级：2026年大学生创新创业训练项目 - 青年红色筑梦之旅项目</li>
+<li>省级：2025年大学生创新创业训练项目 - 创新实践项目</li>
+<li>省级：2025年大学生创新创业训练项目 - 青年红色筑梦之旅项目</li>
+<li>校级：2025年发展型资助项目 - 数据库方向</li>
+<li>校级：2025年发展型资助项目 - 社科方向</li>
+<li>校级：2026年发展型资助项目（重点项目） - 密码学方向</li>
+<li>校级：2026年发展型资助项目 - 法学隐私保护方向</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>[408] [计算机网络] 网络层</title>
     <url>/2026/05/08/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
     <content><![CDATA[<h1 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a>网络层的功能</h1><p>网络层提供主机到主机的通信服务，主要任务是将分组从源主机经过多个网络和多段链路传输到目标主机。该任务可划分为<strong>分组转发和路由选择</strong>两个重要功能。<br><img src="/img/408/wl1.png"></p>
@@ -1415,7 +1337,7 @@
 <li><strong>路由选择</strong>：根据路由协议构造路由表，同时经常或定期地与相邻路由器交换信息，获取网络最新拓扑，动态更新维护路由器，以决定分组到达目的地节点的最优路径。</li>
 <li><strong>分组转发</strong>：指路由器根据转发表将分组从合适的端口转发出去。</li>
 </ul>
-<h2 id="3-网络层提供的两种服务"><a href="#3-网络层提供的两种服务" class="headerlink" title="3.网络层提供的两种服务"></a>3.网络层提供的两种服务</h2><p><strong>（1）面向连接的虚电路服务</strong><br>当两台计算机进行通信时，应当先建立网络层的连接，也即是建立一条<strong>逻辑</strong>上的<strong>虚电路（VC）</strong>。<br>整个通信过程分为三个阶段：虚电路建立、数据传输与虚电路释放。<br>每次建立虚电路时，将一个未用过的**虚电路号（VCID）**分配给该虚电路。分组的首部仅在连接建立时使用完整的目的地址，之后每个分组的首部只需携带这条虚电路的编号即可。</p>
+<h2 id="3-网络层提供的两种服务"><a href="#3-网络层提供的两种服务" class="headerlink" title="3.网络层提供的两种服务"></a>3.网络层提供的两种服务</h2><p><strong>（1）面向连接的虚电路服务</strong><br>当两台计算机进行通信时，应当先建立网络层的连接，也即是建立一条<strong>逻辑</strong>上的<strong>虚电路（VC）</strong>。<br>整个通信过程分为三个阶段：虚电路建立、数据传输与虚电路释放。<br>每次建立虚电路时，将一个未用过的 <strong>虚电路号（VCID）</strong> 分配给该虚电路。分组的首部仅在连接建立时使用完整的目的地址，之后每个分组的首部只需携带这条虚电路的编号即可。</p>
 <p>虚电路方式的<strong>工作原理</strong>：</p>
 <ul>
 <li>数据传输前，主机A和主机B先建立连接，主机A发送“呼叫请求”分组，该分组通过中间节点送往主机B，若主机B同意连接，则发送：呼叫应答“分组予以确定。</li>
@@ -1470,7 +1392,7 @@
 <li><strong>开环控制</strong>：在设计网络时事先将有关发生堵塞的音色考虑周到，力求网络在工作时不产生拥塞。这是一种<strong>静态</strong>的预防方法。</li>
 <li><strong>闭环控制</strong>：实现不考虑有关发生拥塞的各种因素，采用检测网络系统去监视，即使检测哪里发生了拥塞，然后将拥塞控制信号传到合适的地方，以便调整网络系统的运行，并解决发现的问题。是一种<strong>动态</strong>的方法。</li>
 </ul>
-<h1 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h1><h2 id="1-IPv4分组"><a href="#1-IPv4分组" class="headerlink" title="1.IPv4分组"></a>1.IPv4分组</h2><p>网际协议<br>IP定义数据传送的基本单位——IP分组及其确切的数据格式。<br>一个IP分组（或成IP数据报）由<strong>首部</strong>和<strong>数据部分</strong>组成。结构如下图：</p>
+<h1 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h1><h2 id="1-IPv4分组"><a href="#1-IPv4分组" class="headerlink" title="1.IPv4分组"></a>1.IPv4分组</h2><p>网际协议<br>IP定义数据传送的基本单位——IP分组及其确切的数据格式。<br>一个IP分组（或成IP数据报）由<strong>首部</strong>和<strong>数据部分</strong>组成。结构如下图：<br><img src="/img/408/wl2.png"></p>
 <p>IPv4首部的部分重要字段含义如下：</p>
 <ul>
 <li><strong>版本</strong>：占4位，指IP的版本。</li>
@@ -1487,8 +1409,8 @@
 </ul>
 <p><strong>IP数据报分片</strong><br>一个链路层数据帧能承载的最大数据量称为<strong>最大传送单元（MTU）</strong>。<br>片在目的地的网络层被重新组装。目的主机使用IP首部中的标识、标志和片偏移字段来完成对片的重组。</p>
 <p>只有当DF&#x3D;0时，该IP数据报才可被分片。MF则用来告知目的主机该IP数据报是否为原始数据报的最后一个片。当MF&#x3D;1时，表示相应的原始数据报还有后续的片。当MF&#x3D;0时，表示该数据报是相应原始数据报的最后一个片。</p>
-<p>IP分片的原理及相关字段的分析（<strong>小计算题</strong>）<br>一个长4000B的IP数据报（首部20B，数据部分3980B）到达一个路由器，需要转发到一条MTU为1500B的链路上。这意味着原始数据报中的3980B数据必须分配到3个独立的片中（每片也是一个IP数据报），每片的数据部分依次为1480B、1480B和1020B。假定原始数据报的标识号为777，则分成的3片如下图所示：</p>
-<h2 id="2-IPv4地址和NAT"><a href="#2-IPv4地址和NAT" class="headerlink" title="2.IPv4地址和NAT"></a>2.IPv4地址和NAT</h2><p><strong>IPv4地址</strong><br>IP地址是给连接到互联网上的每台主机（或路由器）的每个接口，分配的一个在全球范围内唯一的32位标识符。<br>都由<strong>网络号</strong>和<strong>主机号</strong>两部分组成。<br>一个网络号在整个互联网范围内必须是唯一的，主机号标志该主机（或路由器）。<br><strong>分类的IP地址</strong></p>
+<p>IP分片的原理及相关字段的分析（<strong>小计算题</strong>）<br>一个长4000B的IP数据报（首部20B，数据部分3980B）到达一个路由器，需要转发到一条MTU为1500B的链路上。这意味着原始数据报中的3980B数据必须分配到3个独立的片中（每片也是一个IP数据报），每片的数据部分依次为1480B、1480B和1020B。假定原始数据报的标识号为777，则分成的3片如下图所示：（水印是参考的电子书上的水印，与本作者无关）<br><img src="/img/408/wl3.png"></p>
+<h2 id="2-IPv4地址和NAT"><a href="#2-IPv4地址和NAT" class="headerlink" title="2.IPv4地址和NAT"></a>2.IPv4地址和NAT</h2><p><strong>IPv4地址</strong><br>IP地址是给连接到互联网上的每台主机（或路由器）的每个接口，分配的一个在全球范围内唯一的32位标识符。<br>都由<strong>网络号</strong>和<strong>主机号</strong>两部分组成。<br>一个网络号在整个互联网范围内必须是唯一的，主机号标志该主机（或路由器）。<br><strong>分类的IP地址</strong><br><img src="/img/408/wl4.png"></p>
 <p><strong>特殊IP地址</strong>：</p>
 <ul>
 <li>主机号全为0表示本网络本身，如202.98.174.0。</li>
@@ -1497,7 +1419,7 @@
 <li>32位全为0，即0.0.0.0，表示本网络上的本主机（见DHCP）。</li>
 <li>32位全为1，即255.255.255.255，表示受限广播地址，只在本网络上进行广播。</li>
 </ul>
-<p><strong>常见的三种类别IP地址的使用范围</strong></p>
+<p><strong>常见的三种类别IP地址的使用范围</strong><br><img src="/img/408/wl5.png"></p>
 <p><strong>IP地址的重要特点</strong>：</p>
 <ul>
 <li>每个IP地址都由网络号和主机号两部分组成。</li>
@@ -1513,7 +1435,7 @@
 <li>192.168.0.0&#x2F;16，即192.168.0.0-192.168.255.255，相当于256个连续的C类网络。</li>
 </ul>
 <p>采用私有IP地址的互联网称为<strong>专用互联网</strong>或<strong>本地互联网</strong>。私有IP地址也称<strong>可重用地址</strong>。<br>NAT路由器使用<strong>NAT转换表</strong>进行本地IP地址和全球IP地址的转换。NAT转换表中存放着{本地IP地址：端口}到{全球IP地址：端口}的映射。通过这种映射方式，可让多个私有IP地址映射到一个全球IP地址。</p>
-<p><strong>NAT的原理和应用</strong><br>NAT的工作原理：（如下图）</p>
+<p><strong>NAT的原理和应用</strong><br>NAT的工作原理：（如下图）<br><img src="/img/408/wl6.png"></p>
 <ul>
 <li>假设用户主机10.0.0.1（随机端口3345）向Web服务器128.116.40.186（端口80）发送请求。</li>
 <li>NAT路由器收到IP分组后，为该IP分组生成一个新端口号5001，将IP分组的源地址改为138.76.29.7（NAT路由器的全球IP地址），将源端口号改为5001。NAT路由器在NAT转换表中增加一个表项。</li>
@@ -1537,7 +1459,7 @@
 <p><strong>（3）无分类编址 CIDR</strong><br><strong>无分类域间路由选择</strong>（CIDR）是在变长子网掩码的基础上，提出的一种消除传统A、B、C类地址及划分子网的概念。<br>CIDR使用<strong>网络前缀</strong>的概念代替网络的概念，与号才能通分类IP地址最大的区别就是，网络前缀的位数不是固定的，可以任意选取。<br>CIDR的记法是：IP地址::&#x3D;{&lt;网络前缀&gt;,&lt;主机号&gt;}</p>
 <p>CIDR还使用<strong>斜线记法</strong>（也称CIDR记法），即记为“IP地址&#x2F;网络前缀所占的位数”。其中，网络前缀所占的位数对应网络好的部分，等效于子网掩码中连续1的部分。<br>斜线记法不仅能表示其IP地址，还能表示这个地址块的网络前缀有多少位。<br>CIDR将网络浅醉都相同的连续IP地址组成一个CIDR地址块。<br>CIDR地址块中的地址数一定是2的整数次幂，实际可指派的地址数通常为$2^N-2$，$N$表示主机号的位数，主机号全0代表网络号，主机号全1为广播地址。</p>
 <p><strong>（4）路由聚合</strong><br>一个大的CIDR地址块中包含很多小地址块，由此在路由表中就可利用较大的一个CIDR地址块来代替许多较小的地址块，这种方法称为<strong>路由聚合</strong>。<br><strong>路由聚合的分析</strong></p>
-<p>如下图网络，若不使用路由聚合，则R1的路由表中需要分别有到网络1和网络2的路由表项。不难发现，网络1和网络2的网络前缀在二进制表示的情况下，前16为都是相同的，第17位分别是0和1，并且从R1到网络1和网络2的路由的下一跳皆为R2。若使用路由集合，则在R1看来，网络1和网络2可以构成一个更大的地址块206.1.0.0&#x2F;16，到网络1和网络2的两条路就可聚合成一条到206.1.0.0&#x2F;16的路由。</p>
+<p>如下图网络，若不使用路由聚合，则R1的路由表中需要分别有到网络1和网络2的路由表项。不难发现，网络1和网络2的网络前缀在二进制表示的情况下，前16为都是相同的，第17位分别是0和1，并且从R1到网络1和网络2的路由的下一跳皆为R2。若使用路由集合，则在R1看来，网络1和网络2可以构成一个更大的地址块206.1.0.0&#x2F;16，到网络1和网络2的两条路就可聚合成一条到206.1.0.0&#x2F;16的路由。<br><img src="/img/408/image-5.png" alt="alt text"></p>
 <p><strong>最长前端匹配</strong>：使用CIDR时，路由器中的表项由“网络前缀”和“下一跳地址”组成。在查找路由表时可能会得到不止一个匹配结果。此时，应当从匹配结果中<strong>选择具有最长网络前缀的路由</strong>，因为网络前缀越长，其地址块就越小，因而路由就越具体。</p>
 <p><strong>CIDR查找路由表的方法</strong>：为了更有效地查找最长前缀匹配，通常将无分类编址的路由表存放在一中层次式数据结构（通常采用二叉线索）中，然后自上而下地按层次进行查找。</p>
 <h2 id="4-网络层转发分组的过程"><a href="#4-网络层转发分组的过程" class="headerlink" title="4.网络层转发分组的过程"></a>4.网络层转发分组的过程</h2><p>在转发表中，每条路由必须有下面两条信息：（目的网络地址，下一跳地址）<br>采用CIDR编址时，若一个分组在转发表中可以找到多个匹配的前缀，则应当使用最长前缀匹配。<br>在理由表还可以增加两种特殊的路由：</p>
@@ -1559,7 +1481,8 @@
 <li>在局域网的链路层，只能看见MAC地址。IP数据报被封装在MAC帧中。通过路由器转发时，IP数据报在每个网络中都被路由器解封装和重新封装，其MAC帧首部中的源地址和目的地址会不断改变。这也决定了无法使用MAC地址跨网络通信。</li>
 <li>尽管互连在一起的网络的硬件地址体系各不相同，但IP层抽象的互联网屏蔽了下层这些复杂的细节。</li>
 </ul>
-<p><strong>地址解析协议（ARP)</strong><br>用于完成IP地址到MAC地址的映射。<br>每台主机都设有一个ARP高速缓存，用来存放本局域网上各主机和路由器的IP地址到MAC地址的映射表，称为<strong>ARP表</strong>。<br><strong>ARP工作在网络层，工作原理为</strong></p>
+<p><strong>地址解析协议（ARP)</strong><br>用于完成IP地址到MAC地址的映射。<br>每台主机都设有一个ARP高速缓存，用来存放本局域网上各主机和路由器的IP地址到MAC地址的映射表，称为<strong>ARP表</strong>。</p>
+<p><img src="/img/408/2a2f6f534878dfeeb86f08b0d77130fb.png" alt="alt text"><br><strong>ARP工作在网络层，工作原理为</strong></p>
 <ul>
 <li>主机A欲向本局域网上的某台主机B发送IP数据报时，先在其ARP高速缓存中查看有无主机B的IP地址。</li>
 <li>若<strong>有</strong>，则可以查出其对应的硬件地址，再将此硬件地址写入MAC帧，然后通过局域网将该MAC帧发往此硬件地址。</li>
@@ -1621,7 +1544,7 @@
 <li>取消了检验的字段。</li>
 <li>取消了选项字段。</li>
 </ul>
-<p><strong>IPv6基本首部字段</strong>：</p>
+<p><strong>IPv6基本首部字段</strong>：<br><img src="/img/408/image-3.png" alt="alt text"></p>
 <ul>
 <li><strong>版本</strong>：占4位。</li>
 <li><strong>通信量类</strong>：占8位，用来区分不同的IPv6该字段的值是6。</li>
@@ -1662,7 +1585,7 @@
 <li>节点x的距离向量，即x到网络中其他节点的费用。</li>
 <li>他收到的每个邻居的距离向量。即x的每个邻居到网络中其他节点的费用。</li>
 </ul>
-<p><strong>距离向量路由算法的具体实现</strong><br>如下图，a表的各列依次是三个节点的初始化距离向量，此时各节点之间尚未交换过任何路由信息。因此各节点的初始化距离向量就等于它到每个直接相邻邻居v的费用。</p>
+<p><strong>距离向量路由算法的具体实现</strong><br>如下图，a表的各列依次是三个节点的初始化距离向量，此时各节点之间尚未交换过任何路由信息。因此各节点的初始化距离向量就等于它到每个直接相邻邻居v的费用。<br><img src="/img/408/image-4.png" alt="alt text"></p>
 <p>初始化后，每个节点第一次向它的所有邻居发送其距离向量，在接收到该更新报文后，每个节点重新计算自己的距离向量，如b表。<br>节点的距离向量变化后，再次向它们的邻居发送它们更新的距离向量，而没有变化的节点y不用发送更新报文。接收到邻居的更新报文后，节点又重新计算它们的距离向量，这次没有节点更新，因此也无更新报文发送，算法进入静止状态。如c表。</p>
 <p><strong>链路状态路由算法</strong><br><strong>链路状态</strong>是指本路由器都和那些路由器相邻，以及相应链路的代价。<br>主要执行的<strong>两个任务</strong>：</p>
 <ul>
@@ -1812,224 +1735,268 @@
       </tags>
   </entry>
   <entry>
-    <title>[408] [数据结构] 串-代码基础</title>
-    <url>/2026/05/25/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E4%B8%B2-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="1-串的存储结构"><a href="#1-串的存储结构" class="headerlink" title="1.串的存储结构"></a>1.串的存储结构</h1><h2 id="1-1-定长顺序存储结构"><a href="#1-1-定长顺序存储结构" class="headerlink" title="1.1 定长顺序存储结构"></a>1.1 定长顺序存储结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXLEN 255   //预定义最大串长为255</span><br><span class="line">typedef struct&#123;</span><br><span class="line">    char ch[MAXLEN];    //每个分量存储一个字符</span><br><span class="line">    int length;   //串的实际长度</span><br><span class="line">&#125;SString;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-2-堆分配存储表示"><a href="#1-2-堆分配存储表示" class="headerlink" title="1.2 堆分配存储表示"></a>1.2 堆分配存储表示</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">    char *ch;    //按串长分配存储区，ch指向串的基地址</span><br><span class="line">    int length;    //串的长度</span><br><span class="line">&#125;HString;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-3-块链存储表示"><a href="#1-3-块链存储表示" class="headerlink" title="1.3 块链存储表示"></a>1.3 块链存储表示</h2><p>类似于线性表的链式存储结构，串也可采用链表形式存储。考虑到串的特殊性（每个元素仅为单个字符），实际实现中，每个链表结点可存放一个或多个字符。每个结点称为一个块，每个链表称为块链结构。</p>
-<h1 id="2-串的模式匹配"><a href="#2-串的模式匹配" class="headerlink" title="2.串的模式匹配"></a>2.串的模式匹配</h1><h2 id="2-1-简单的模式匹配算法"><a href="#2-1-简单的模式匹配算法" class="headerlink" title="2.1 简单的模式匹配算法"></a>2.1 简单的模式匹配算法</h2><p>暴力匹配算法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int index(SString S, SString T)&#123;</span><br><span class="line">    int i=1, j=1;</span><br><span class="line">    while(i&lt;=S.length&amp;&amp;j&lt;=T.length)&#123;</span><br><span class="line">        if(S.ch[i]==T.ch[j])&#123;</span><br><span class="line">            ++i;++j;      //继续比较后继字符</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            i=i-j+2; j=1;     //指针后退重新开始匹配</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(j&gt;T.length) return i-T.length;   //匹配成功，返回起始位置</span><br><span class="line">    else return 0;   //匹配失败</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+    <title>[408] [计算机网络] 传输层</title>
+    <url>/2026/05/12/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E4%BC%A0%E8%BE%93%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h1><p>传输层属于面向通信部分的最高层，同时也是用户功能中的最低层。<br><strong>传输层的主要功能如下</strong>：</p>
+<ul>
+<li><strong>应用进程之间的逻辑通信</strong><br>应用进程之间的通信也称端到端通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
+<li><strong>复用和分用</strong><br>复用是指发送方不同的应用进程都可以使用同一个传输层协议传送数据。<br>分用是指接受方的传输层在剥去报文的首部后能够把这些数据正确交付到目的应用进程。</li>
+<li><strong>差错检测</strong><br>对于YCP，若接收方发现报文段出错，则要求发送方重发该报文段。对于UDP，若接收方发现数据报出错，则直接丢弃。</li>
+<li><strong>提供面向连接和无连接的传输协议</strong></li>
+</ul>
+<h1 id="1-传输层的寻址与端口"><a href="#1-传输层的寻址与端口" class="headerlink" title="1.传输层的寻址与端口"></a>1.传输层的寻址与端口</h1><p><strong>端口</strong>能让应用层的各种进程将其数据通过端口向下交付给传输层，以及让传输层知道应当将其报文段中的数据向上通过端口交付给应用层相应的进程。<br><strong>硬件端口</strong>是不同硬件设备进行交互的接口，<strong>软件端口</strong>是应用层的各种协议进程与传输实体进行层间交互的一种地址。<br>传输层使用的是软件接口。</p>
+<p><strong>端口号</strong>只具有本地意义，根据端口号范围可将端口分为两类：</p>
+<ul>
+<li><strong>服务器使用的端口号</strong>：分为两类，最重要的一类是<strong>熟知端口号</strong>，数值为0-1023，IANA（互联网地址指派机构）把这些端口号指派给了TCP&#x2F;IP最重要的一些应用程序。另一类成为<strong>登记端口号</strong>，数值为1024-49151，它是供没有熟知端口号的应用程序使用的，使用这类端口号必须在IANA登记。<br>FTP 21; TELVET 23; SMTP 25; DNS 53; TFTP 69;HTTP 80;SNMP 161。</li>
+<li><strong>客户端使用的端口号</strong>：数值为49152-65535。因为这类端口号仅在客户进程运行时才动态选择，所有也称<strong>短暂端口号</strong>。</li>
+</ul>
+<h1 id="2-无连接服务和面向连接服务"><a href="#2-无连接服务和面向连接服务" class="headerlink" title="2.无连接服务和面向连接服务"></a>2.无连接服务和面向连接服务</h1><p>TCP&#x2F;IP族在IP层之上使用了两个传输协议：一个是<strong>面向连接的传输控制协议（TCP）</strong>，；另一个是<strong>无连接的用户数据报协议（UDP）</strong>。</p>
+<p>TCP提供面向连接的可靠服务，不提供广播或多播服务。主要适用于可靠性更重要的场合，如文件传输协议（FTP）、超文本传输协议（HTTP）、远程登录（TELVET）等。</p>
+<p>UDP提供无连接的不可靠服务。UPD在IP层之上仅提供两个附加服务：多路复用和对数据的错误检查。使用UDP的应用主要包括小文件传送协议（TFTP）、DNS、SNMP和实时传输协议（RTP）。</p>
+<p>一些典型互联网应用锁用的TCP&#x2F;IP应用层协议和传输层协议如下：</p>
+<table>
+<thead>
+<tr>
+<th>互联网应用</th>
+<th>TCP&#x2F;IP 应用层协议</th>
+<th>TCP&#x2F;IP 传输层协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名解析</td>
+<td>域名系统（DNS）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>文件传送</td>
+<td>简单文件传送协议（TFTP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>路由选择</td>
+<td>路由信息协议（RIP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>IP 地址分配</td>
+<td>动态主机配置协议（DHCP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>网络管理</td>
+<td>简单网络管理协议（SNMP）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td>简单邮件传送协议（SMTP）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>远程终端接入</td>
+<td>远程终端协议（TELNET）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>万维网</td>
+<td>超文本传送协议（HTTP）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>文件传送</td>
+<td>文件传送协议（FTP）</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p>UDP仅在IP层的数据报服务之上增加了复用、分用和差错检测的功能。<br><strong>UDP的特点</strong>：</p>
+<ul>
+<li>UDP无须建立连接。</li>
+<li>无连接状态。</li>
+<li>UDP的首部开销小。</li>
+<li>UDP没有拥塞控制。</li>
+<li>UDP支持一对一、一对多、多对一和多对多的交互通信。</li>
+</ul>
+<p>UDP常用于一次性传输较少数据的网络应用。<br>UDP是面向报文的，报文不可分割，是UDP数据报处理的最小单位。</p>
+<h2 id="1-UDP的首部格式"><a href="#1-UDP的首部格式" class="headerlink" title="1.UDP的首部格式"></a>1.UDP的首部格式</h2><p><img src="/img/408/c1.png" alt="图片说明"></p>
+<ul>
+<li><strong>源端口</strong>。在需要对方回信时选用，不需要时可用全0。</li>
+<li><strong>目的端口</strong>。这在终点交付报文时必须使用到。</li>
+<li><strong>长度</strong>。UDP数据报的长度，最小值是8。</li>
+<li><strong>校验和</strong>。检验UDP数据报在传输中是否有错。有错就丢弃。</li>
+</ul>
+<p>当传输层从IP层收到UDP数据报时，就根据首部中的目的端口，把UDP数据报通过相应的端口，上交最后的终点——应用进程<br>若接收方UDP发现收到的报文中的目的端口号不正确，则就丢弃该报文，并由ICMP发送“端口不可达”差错报文给发送方。</p>
+<h2 id="2-UDP检验"><a href="#2-UDP检验" class="headerlink" title="2.UDP检验"></a>2.UDP检验</h2><p>UDP计算检验和的方法和计算IP数据报首部检验和的方法基本相同。不同的是：IP数据报的校验和只检验IP数据报的首部，但UDP的校验和要将首部和数据部分一起检验。<br><strong>UDP计算校验和的方法</strong>：在发送方，先把全0放入校验和阻断，再把伪首部和UDP数据报看成是由许多16位的字串接起来的。若UDP数据报的数据部分不是偶数个字节，则要在末尾填入一个全0字节（但此字节不发送）。然后按二进制反码计算出这些16位字的和。将此和的二进制反码写入检验和字段，并发送。在接收方，把收到的UDP数据报连同伪首部（若不是偶数个数字节，则还需补上一个全0字节）后，按二进制反码求这些16位字的和。当无差错时其结果应该全1，否则就表明有差错出现，接收方就应丢弃这个UDP数据报。</p>
+<p><strong>UDP校验和的计算规则</strong><br><img src="/img/408/c2.png" alt="图片说明"><br><img src="/img/408/c3.png" alt="图片说明"></p>
+<h2 id="3-TCP"><a href="#3-TCP" class="headerlink" title="3.TCP"></a>3.TCP</h2><p>TCP是在不可靠的IP层之上实现的可靠的数据传输协议。<br><strong>主要特点有</strong>：</p>
+<ul>
+<li>TCP是面向连接的传输层协议，TCP连接是一条逻辑连接。</li>
+<li>每一条TCP连接只能有两个断点，每一条TCP连接只能是一对一的。</li>
+<li>TCP提供可靠交付的服务，保证传送的数据无差错、不丢失、不重复且有序。</li>
+<li>TCP提供全双工 通信。</li>
+<li>TCP是面向字节流的。</li>
+</ul>
+<p>TCP和UDP在发送报文时所采用的方式完全不同。UDP报文的长度由发送应用进程决定，而TCP报文的长度则根据接收方给出的窗口值和当前网络拥塞程度来决定。</p>
+<h2 id="1-TCP报文段"><a href="#1-TCP报文段" class="headerlink" title="1.TCP报文段"></a>1.TCP报文段</h2><p>TCP传送的数据单元称为报文段。TCP报文段既可用来运载数据，又可用来建立连接、释放连接和应答，一个TCP报文段分为首部和数据两部分，整个TCP报文段作为IP数据报的数据部分封装在IP数据报中。<br><img src="/img/408/c4.png" alt="图片说明"></p>
+<ul>
+<li><strong>序号</strong>：占4B。范围是0 - $2^{32}-1$。TCP连接中传送的字节流中的每个字节都要按顺序编号，序号字段值指的是本报文段所发送的数据的第一个字节的序号。</li>
+<li><strong>确定号</strong>：占4B。是期望收到对方下一个报文段的第一个数据字节的序号。</li>
+<li><strong>数据偏移（首部长度）</strong>：占4位，它指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。</li>
+<li><strong>保留</strong>：占6位，目前应置为0。</li>
+<li><strong>紧急位URG</strong>：当URG&#x3D;1时，表明紧急指针字段有效。它告诉系统此报文段中有紧急数据，应尽快传送。紧急数据被插入至报文段的最前面，而在紧急数据后面的数据仍是普通数据，因此要与首部中的紧急指针字段配合使用。</li>
+<li><strong>确定位ACK</strong>：仅当ACK&#x3D;1时确定号字段才有效。当ACK&#x3D;0时，确定号无效。</li>
+<li><strong>推送位PSH（Push）</strong>：两个应用进程进行交互式通信时，都希望在键入一个命令后立即就能收到对方的响应，此时发送方TCP将PSH置为1，接收方TCP收到PSH&#x3D;1的报文段后，就尽快交付给接收应用进程，而不在等到整个缓存都填满了后再向上交付。</li>
+<li><strong>同步位SYN</strong>：到SYN&#x3D;1时表示这是一个链接请求或连接接受报文。</li>
+<li><strong>终止位FIN</strong>：用来释放一个链接。当FIM&#x3D;1时，表明此报文段的发送方的数据已发送完毕，并要求释放传输裂解。</li>
+<li><strong>窗口</strong>：占2B，窗口值告诉对方，从本报文段首部中的确定号算起，接收方目前允许对方发送的数据量（以字节为单位）。</li>
+<li><strong>校验和</strong>：占2B，校验和字段校验的范围包括首部和数据两部分。计算校验和时，和UDP一样，要在TCP报文段的前面加上12B的维首部。</li>
+<li><strong>紧急指针</strong>：占2B，仅在URG&#x3D;1时才有意义，它指出报文段中的紧急数据的字节数。即使窗口为零，也可以发送紧急数据。</li>
+<li><strong>选项</strong>：长度可变，最长可达40B。</li>
+<li><strong>填充</strong>：这是为了使整个首部长度是4B的整数倍。</li>
+</ul>
+<h2 id="2-TCP连接管理"><a href="#2-TCP连接管理" class="headerlink" title="2.TCP连接管理"></a>2.TCP连接管理</h2><p>TCP连接的端口即为<strong>套接字</strong>，每一条TCP连接唯一地被通信的两个端口（两个套接字）所确定。同一个IP地址可以有多个不同的TCP连接，而同一个端口号也可以出现在多个不同的TCP连接中。<br>TCP连接的建立采用<strong>客户&#x2F;服务器模式</strong>。</p>
+<p><strong>TCP连接的建立</strong><br>经历以下三个步骤，通常称为<strong>三次握手</strong>：<br><img src="/img/408/c5.png" alt="图片说明"><br>建立连接前，服务器处于LISTEN（收听）状态，等待客户的连接请求。</p>
+<ul>
+<li><strong>第一步</strong>：客户向服务器发送连接请求报文段。该报文段的 <code>SYN = 1</code>，同时选择一个初始序号 <code>seq = x</code>。TCP 规定，SYN 报文段（<code>SYN=1</code> 的报文段）不能携带数据，但仍消耗一个序号，因此客户下一次发送的报文段序号 <code>seq = x + 1</code>。此时，客户进入 <code>SYN-SENT</code>（同步已发送）状态。</li>
+<li><strong>第二步</strong>：服务器收到连接请求后，若同意建立连接，则向客户返回确认报文段。该报文段的 <code>SYN = 1</code>、<code>ACK = 1</code>，确认序号 <code>ack = x + 1</code>，同时选择自己的初始序号 <code>seq = y</code>。确认报文段同样不能携带数据，但也消耗一个序号。此时，服务器进入 <code>SYN-RCVD</code>（同步已收到）状态。</li>
+<li><strong>第三步</strong>：客户收到确认后，再向服务器发送最终确认。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = y + 1</code>，序号 <code>seq = x + 1</code>。此报文段可以携带数据。若不携带数据，则不消耗序号，下一个数据报文段的序号仍为 <code>x + 1</code>。此时，客户进入 <code>ESTABLISHED</code>（已建立连接）状态。</li>
+</ul>
+<p>当服务器收到来自客户机的确定后，也进入ESTABLISHED状态。</p>
+<p><strong>TCP连接的释放</strong><br>TCP连接释放的过程通常称为<strong>四次挥手</strong>：<br><img src="/img/408/c6.png" alt="图片说明"></p>
+<ul>
+<li><strong>第一步</strong>：客户决定关闭连接时，向服务器发送连接释放报文段，并停止发送数据（主动关闭）。<br>该报文段的 <code>FIN = 1</code>，序号 <code>seq = u</code>，其值等于此前已发送数据的最后一个字节序号加 1。TCP 规定，FIN 报文段（<code>FIN = 1</code> 的报文段）即使不携带数据，也消耗一个序号。此时，客户进入 <code>FIN-WAIT-1</code>（终止等待 1）状态。由于 TCP 是全双工的，可视为连接包含两条独立的数据通路；发送 FIN 的一端关闭了其发送方向，但对方仍可继续发送数据。</li>
+<li><strong>第二步</strong>：服务器收到连接释放报文段后，立即发送确认报文段。该报文段的 <code>ACK = 1</code>，确认序号 <code>ack = u + 1</code>，序号 <code>seq = v</code>（<code>v</code> 为服务器此前已发送数据的最后一个字节序号加 1）。随后，服务器进入 <code>CLOSE-WAIT</code>（关闭等待）状态。此时，从客户到服务器方向的连接已释放，但从服务器到客户方向的连接并未释放，TCP 连接处于半关闭状态。客户收到确认后，进入 <code>FIN-WAIT-2</code>（终止等待 2）状态，等待服务器发出的连接释放报文段。</li>
+<li><strong>第三步</strong>：若服务器已经没有要向客户发送的数据，就向其发送连接释放报文段。该报文段的 <code>FIN = 1</code>、<code>ACK = 1</code>，序号 <code>seq = w</code>（<code>w</code> 可能大于 <code>v</code>，因服务器在半关闭期间可能又发送了数据），还需重复此前已发送的确认序号 <code>ack = u + 1</code>。此时，服务器进入 <code>LAST-ACK</code>（最后确认）状态。</li>
+<li><strong>第四步</strong>：客户收到连接释放报文段后，必须发送最终确认，并进入 <code>TIME-WAIT</code>（时间等待）状态。该确认报文段的 <code>ACK = 1</code>，确认序号 <code>ack = w + 1</code>，序号 <code>seq = u + 1</code>。服务器收到此确认后，即进入 <code>CLOSED</code>（连接关闭）状态。客户在 <code>TIME-WAIT</code> 状态下，还需等待时间等待计时器设置的时间 <code>2MSL</code>（Maximum Segment Lifetime，最长报文段寿命）后，才进入 <code>CLOSED</code> 状态。</li>
+</ul>
+<p><strong>对上述TCP连接的建立和释放的总结如下</strong>：<br>1）建立连接分为3步：</p>
+<ul>
+<li>SYN&#x3D;1，seq&#x3D;x</li>
+<li>SYN&#x3D;1，ACK&#x3D;1，seq&#x3D;y，ack&#x3D;x+1</li>
+<li>ACK&#x3D;1，seq&#x3D;x+1，ack&#x3D;y+1</li>
+</ul>
+<p>2）释放过程分为4步：</p>
+<ul>
+<li>FIN&#x3D;1，seq&#x3D;u</li>
+<li>ACK&#x3D;1，seq&#x3D;v，ack&#x3D;u+1</li>
+<li>FIN&#x3D;1，ACK&#x3D;1，seq&#x3D;w，ack&#x3D;u+1</li>
+<li>ACK&#x3D;1，seq&#x3D;u+1，ack&#x3D;w+1</li>
+</ul>
+<h2 id="3-TCP可靠传输"><a href="#3-TCP可靠传输" class="headerlink" title="3.TCP可靠传输"></a>3.TCP可靠传输</h2><p>TCP在不可靠的IP层之上建立一种可靠数据传输服务。<br><strong>序号</strong><br>TCP首部的序号字段用来保证数据能有序提交给应用层，序号建立在传输的字节流之上，而步建立在报文段之上。</p>
+<p><strong>确定</strong><br>TCP首部的确定号是期望收到对方的下一个报文段的数据的第一个字节的序号。<br>TCP默认使用<strong>累加确定</strong>，即TCP只确定数据流中第一个丢失字节为止的字节，这样可以减少传输开销。</p>
+<p><strong>重传</strong><br>有两种事件会导致TCP对报文段进行重传：<strong>超时和冗余ACK</strong><br>（1）超时<br>TCP每次发送一个报文段，就对这个报文段设置一个超时计时器。计时器设置的重传时间到期但未收到确认时，就要重传这一报文段。<br>TCP采用一种自适用算法，它记录一个报文段发出的时间，以及收到相应确定的时间，这两个时间之差称为报文段的<strong>往返时间（RTT）</strong>。TCP维护了RTT的一个<strong>加权平均往返时间RTTS</strong>，它会随新测量RTT样本值的变化而变化。超时计数器设置的**超时重传时间（RTO）**应略大于RTTS，但也不能大太多，否则当报文段丢失时，TCP不能很快重传，导致数据传输时延大。</p>
+<p>（2）冗余ACK（冗余确定）<br>发送方通常可在超时事件发生之前通过注意所谓的<strong>冗余ACK</strong>来较好地检测丢包情况。冗余ACK就是再次确定某个报文段ACK，而发送方先前已经收到该报文段的确定。这种技术通常称为<strong>快速重传</strong>。</p>
+<h2 id="4-TCP流量控制"><a href="#4-TCP流量控制" class="headerlink" title="4.TCP流量控制"></a>4.TCP流量控制</h2><p>流量控制的功能就是让发送方的发送速率不要太快，以便让接收方来得及接收。<br>TCP利用<strong>滑动窗口机制</strong>来实现流量控制。<br>发送方的发送窗口不能超过接收方给出的接收窗口值，以限制发送方向网络注入报文的速率。<br><strong>利用接收滑动窗口实现流量控制的过程</strong><br><img src="/img/408/c7.png" alt="图片说明"><br>TCP为每个连接设有一个<strong>持续计时器</strong>，只要发送方收到对方的零窗口通知，就启动持续计时器。若计时器超时，就发送一个零窗口探测报文段，而对方就在确定这个探测报文段时给出现在的窗口值。若窗口仍然为零，则发送方收到确定报文段后就重新设置接收计时器。</p>
+<p><strong>传输层和数据链路层的流量控制的区别是</strong>：传输层实现的是端到端，即两个进程之间的流量控制；数据链路层实现的是两个中间的相邻节点之间的流量控制。此外，数据链路层的滑动窗口协议的窗口大小不能动态变化，传输层的窗口大小则可以动态变化。</p>
+<h2 id="5-TCP拥塞控制"><a href="#5-TCP拥塞控制" class="headerlink" title="5.TCP拥塞控制"></a>5.TCP拥塞控制</h2><p>拥塞控制是指防止过多的数据注入网络，保证网络中的路由器或链路不致过载。<br>TCP进行拥塞控制的算法有四种：<strong>慢开始、拥塞避免、快重传和快恢复</strong>。<br><strong>发送方控制拥塞窗口的原则</strong>：只要网络未出现用三个，拥塞窗口就再增大一些，以便把更多的分组发送出去，以提高网络的利用率。但只要网络出现拥塞，拥塞窗口就减少一些，以减少注入网络的分组数，以缓解网络出现的拥塞。</p>
+<p>发送窗口的上限值应取接收窗口rwnd和拥塞窗口cwnd中较小的一个。<br>注：下面采用最大报文段长度MSS作为拥塞窗口大小的单位。<br><strong>慢开始和拥塞避免</strong><br><strong>慢开始算法</strong>：思路是当发送方刚开始发送数据时，因为并不清楚网络的负荷情况，若立即把大量数据注入网络，则有可能引发网络拥塞。具体方法是：先发送少量数据探测一下，若没有发送拥塞，则适当增大拥塞窗口，即由小到大逐渐增大拥塞窗口（发送窗口）。<br><strong>拥塞避免算法</strong>：思路是让拥塞窗口cwnd缓慢增大，具体做法是：每经过一个往返时延RTT就把发送方的拥塞窗口加1，而不是加倍，使拥塞窗口cwnd按线性规律换吗增长（<strong>加法增大</strong>）。<br>根据cwnd的大小执行不同的算法，可归纳如下：</p>
+<ul>
+<li>当cwnd &lt; ssthresh时，使用慢开始算法。</li>
+<li>当cwnd &gt; ssthresh时，停止使用慢开始算法，而改用拥塞避免算法。</li>
+<li>当cwnd &#x3D; ssthresh时，既可使用慢开始算法，也可使用拥塞避免算法（常规做法）。</li>
+</ul>
+<p><strong>网络拥塞的处理</strong>：首先把慢开始门限ssthresh设置为出现拥塞时的发送方的cwnd值的一半（但不能小于2），然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
+<p><strong>慢开始和拥塞避免算法的实现过程</strong>：<br><img src="/img/408/c8.png" alt="图片说明"></p>
+<ul>
+<li>起初时，拥塞窗口置为1，即cwnd-1，慢开始门限置为16，即ssthresh&#x3D;16。</li>
+<li>慢开始阶段，发送方每收到一个队新报文的确定ACK，就把拥塞窗口cwnd值加1，也即经过每个传输轮次（RTT），cwnd呈指数规律增长。当cwnd增长到慢开始门限ssthresh时，就改用拥塞避免算法，cwnd按线性规律增长。</li>
+<li>当cwnd&#x3D;24时，网络出现超时，调整ssthresh值为12（超时时cwnd值的一半），同时cwnd置为1，并执行慢开始算法；当cwnd&#x3D;12时，改为执行拥塞避免算法。</li>
+</ul>
+<p><strong>快重传和快恢复</strong><br><strong>快重传算法</strong>：是使发送方尽快进行重传，而不等超时计时器超时再重传。<br><strong>快恢复算法</strong>：当发送方连续收到3个冗余ACK（重复确定）时，执行乘法减小方法，把慢开始门限ssthresh调整为当前cwnd的一半。<br><img src="/img/408/c9.png" alt="图片说明"><br>在TCP连接建立和网络出现超时时，采用慢开始和拥塞控制避免算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd&#x3D;1）；当发送方收到3个冗余ACK时，采用快重传和快恢复算法（ssthresh&#x3D;cwnd&#x2F;2，cwnd-ssthresh）。</p>
+<p>发送方发送窗口的大小由流量控制和拥塞控制共同决定。<br>发送方发生窗口的实际大小是由rwnd和cwnd中较小的一个确定的。</p>
 ]]></content>
       <categories>
-        <category>408-数据结构</category>
+        <category>408-计算机网络</category>
       </categories>
       <tags>
         <tag>408</tag>
-        <tag>数据结构</tag>
-        <tag>串</tag>
+        <tag>计算机网络</tag>
+        <tag>传输层</tag>
       </tags>
   </entry>
   <entry>
-    <title>[408] [数据结构] 栈-代码基础</title>
-    <url>/2026/05/24/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E6%A0%88-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>栈：先进先出，后近后出</p>
-<h1 id="1-栈的顺序存储结构"><a href="#1-栈的顺序存储结构" class="headerlink" title="1.栈的顺序存储结构"></a>1.栈的顺序存储结构</h1><h2 id="1-1-顺序栈的实现"><a href="#1-1-顺序栈的实现" class="headerlink" title="1.1 顺序栈的实现"></a>1.1 顺序栈的实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MaxSize 50    //定义栈中元素的最大个数</span><br><span class="line">typedef struct    </span><br><span class="line">&#123;</span><br><span class="line">    Elemtpye data[MaxSize];  //存放栈中元素</span><br><span class="line">    int top;      //栈顶指针</span><br><span class="line">&#125;SqStack;</span><br></pre></td></tr></table></figure>
+    <title>[408] [计算机网络] 参考模型与各层基本概要</title>
+    <url>/2026/05/02/%5B408%5D%20%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%5D%20%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%90%84%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%A6%81/</url>
+    <content><![CDATA[<h1 id="ISO-OSI参考模型"><a href="#ISO-OSI参考模型" class="headerlink" title="ISO&#x2F;OSI参考模型"></a>ISO&#x2F;OSI参考模型</h1><h2 id="1-物理层"><a href="#1-物理层" class="headerlink" title="1.物理层"></a>1.物理层</h2><p>物理层的传输单元是比特，功能是在物理介质上数据端设备透明地传输原始比特流。<br>物理层的主要研究内容如下：</p>
 <ul>
-<li><strong>栈顶指针</strong>：S.top，初始时设为S.top&#x3D;-1。</li>
-<li><strong>栈顶元素</strong>：S.data[S.top]。</li>
-<li><strong>入栈操作</strong>：当栈未满时，先将栈顶指针加1，在将元素存入栈顶。</li>
-<li><strong>出栈操作</strong>：当栈非空时，先取出栈顶元素，再将栈顶指针减1。</li>
-<li><strong>栈空条件</strong>：S.top&#x3D;&#x3D;-1。</li>
-<li><strong>栈满条件</strong>：S.top&#x3D;&#x3D;MaxSize-1。</li>
-<li><strong>栈长</strong>：S.top+1。</li>
+<li>通信链路与通信节点的连接需要一些电路接口，物理层规定了这些接口的一些参数。</li>
+<li>物理层规定了通信链路上所传输的信号的意义和电气特征。</li>
 </ul>
-<h2 id="1-2-顺序栈的基本操作"><a href="#1-2-顺序栈的基本操作" class="headerlink" title="1.2 顺序栈的基本操作"></a>1.2 顺序栈的基本操作</h2><h3 id="1-2-1-初始化"><a href="#1-2-1-初始化" class="headerlink" title="1.2.1 初始化"></a>1.2.1 初始化</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InitStack(SqStack &amp;S)&#123;</span><br><span class="line">    S.top=-1;    //初始化栈顶指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-2-栈判空"><a href="#1-2-2-栈判空" class="headerlink" title="1.2.2 栈判空"></a>1.2.2 栈判空</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool StackEmpty(SqStack S)&#123;</span><br><span class="line">    if(S.top==-1)      //栈空</span><br><span class="line">       return true;</span><br><span class="line">    else               //不空</span><br><span class="line">       return false;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-3-入栈"><a href="#1-2-3-入栈" class="headerlink" title="1.2.3 入栈"></a>1.2.3 入栈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool Push(SqStack &amp;S, ElemType x)&#123;</span><br><span class="line">    if(S.top==MaxSize-1)     //栈满，报错</span><br><span class="line">        return false;</span><br><span class="line">    S.data[++S.top] = x;   //指针先加1，再入栈</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-4-出栈"><a href="#1-2-4-出栈" class="headerlink" title="1.2.4 出栈"></a>1.2.4 出栈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool Pop(SqStack &amp;S, ElemType &amp;x)&#123;</span><br><span class="line">    if(S.top==-1)     //栈空，报错</span><br><span class="line">        return false;</span><br><span class="line">    x = S.data[S.top--];</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-5-读栈顶元素"><a href="#1-2-5-读栈顶元素" class="headerlink" title="1.2.5 读栈顶元素"></a>1.2.5 读栈顶元素</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool GetTop(SqStack S, Elemtype &amp;x)&#123;</span><br><span class="line">    if(S.top==-1)    //栈空，报错</span><br><span class="line">        return false;</span><br><span class="line">    x=S.data[S.top];   //x记录栈顶元素</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-栈的链式存储结构"><a href="#2-栈的链式存储结构" class="headerlink" title="2.栈的链式存储结构"></a>2.栈的链式存储结构</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct LinkNode</span><br><span class="line">&#123;</span><br><span class="line">    ElemType data;    //数据域</span><br><span class="line">    struct LinkNode *next;    //指针域</span><br><span class="line">&#125;LiStack;     //链栈类型定义</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>408-数据结构</category>
-      </categories>
-      <tags>
-        <tag>408</tag>
-        <tag>数据结构</tag>
-        <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[408] [数据结构] 链表-代码基础</title>
-    <url>/2026/05/24/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E9%93%BE%E8%A1%A8-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="1-单链表的定义"><a href="#1-单链表的定义" class="headerlink" title="1.单链表的定义"></a>1.单链表的定义</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct LNode&#123;   //定义单链表结点类型</span><br><span class="line">    ElemType data;     //数据域</span><br><span class="line">    struct LNode *next;   //指针域</span><br><span class="line">&#125;LNode, *LinkList;</span><br></pre></td></tr></table></figure>
-<p>单链表是一种非随机存取的存储结构。<br>当头指针为NULL时，表示链表为空。<br>在带头结点的单链表中，头指针L指向头结点，而头结点的next指向第一个数据节点。<br>在不带头结点的单链表中，头指针L直接指向第一个数据结点。</p>
-<h1 id="2-单链表上基本操作的实现"><a href="#2-单链表上基本操作的实现" class="headerlink" title="2.单链表上基本操作的实现"></a>2.单链表上基本操作的实现</h1><h2 id="2-1-单链表的初始化"><a href="#2-1-单链表的初始化" class="headerlink" title="2.1 单链表的初始化"></a>2.1 单链表的初始化</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool InitList(LinkList &amp;L)&#123;   //带头结点的单链表初始化</span><br><span class="line">    L=(LNode*)malloc(sizeof(LNode));   //创建头结点</span><br><span class="line">    L-&gt;next=NULL;    //头节点之后暂无数据结点</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不带头结点的单链表初始化时，只需将头指针L初始化为NULL。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool InitList(LinkList &amp;L)&#123;   //不带头结点的单链表初始化</span><br><span class="line">    L=NULL;   </span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-求表长操作"><a href="#2-2-求表长操作" class="headerlink" title="2.2 求表长操作"></a>2.2 求表长操作</h2><p>求表长是指统计单链表中数据结点的个数（不包括头结点）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Length(LinkList L)&#123;</span><br><span class="line">    int len=0;    //计数变量，初始为0</span><br><span class="line">    LNode *p=L;</span><br><span class="line">    while(p-&gt;next!=NULL)&#123;</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        len++;   //每访问一个结点，计数加1</span><br><span class="line">    &#125;</span><br><span class="line">    return len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>求表长操作的时间复杂度为$O(n)$。</p>
-<h2 id="2-3-按序号查找结点"><a href="#2-3-按序号查找结点" class="headerlink" title="2.3 按序号查找结点"></a>2.3 按序号查找结点</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LNode *GetElem(LinkList L, int i)&#123;</span><br><span class="line">    LNode *p=L;      //指针p指向当前扫描结点。</span><br><span class="line">    int j=0;     //j记录当前位序，头结点为第0个结点。</span><br><span class="line">    while(p!=NULL&amp;&amp;j&lt;i)&#123;      //循环找到第i个结点</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    return p;     //返回第i个节点的指针或NULL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>按序号查找操作的时间复杂度为$O(n)$。</p>
-<h2 id="2-4-按值查找表结点"><a href="#2-4-按值查找表结点" class="headerlink" title="2.4 按值查找表结点"></a>2.4 按值查找表结点</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LNode *LocateElem(LinkList L, elemtype e)&#123;</span><br><span class="line">    LNode *p=L-&gt;next;</span><br><span class="line">    while(p!=NULL&amp;&amp;p-&gt;data!=e)   //从第一个结点开始擦汗中阿数据域为e的节点</span><br><span class="line">        p=p-&gt;next;   </span><br><span class="line">        return p;    //找到后返回该结点指针，否则返回NULL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>按值查找操作的时间复杂度为$O(n)$。</p>
-<h2 id="2-5-插入结点操作"><a href="#2-5-插入结点操作" class="headerlink" title="2.5 插入结点操作"></a>2.5 插入结点操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool ListInsert(LinkList &amp;L, int i, Elemtype e)&#123;</span><br><span class="line">    LNode *p=L;            //p指向当前扫描结点</span><br><span class="line">    int j=0;        //j记录当前位序，头结点为第0个结点</span><br><span class="line">    while(p!=NULL&amp;&amp;j&lt;i-1)&#123;     //循环找到第i-1个结点</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    if(p==NULL)    //i值不合法</span><br><span class="line">        return false;</span><br><span class="line">    LNode *s=(LNode*)malloc(sizeof(LNode));</span><br><span class="line">    s-&gt;data=e;</span><br><span class="line">    s-&gt;next=p-&gt;next;      //(1)</span><br><span class="line">    p-&gt;next=s;            //(2)</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度为$O(n)$。</p>
-<p>(1)和(2)的顺序不可颠倒。<br><strong>扩展</strong>：对某个节点进行前插操作。<br>前插操作是指在某结点前插入一个新结点，与后插操作相反。<br>主要代码片段如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s-&gt;next=p-&gt;next;    //修改指针域，不能颠倒</span><br><span class="line">p=&gt;next=s;</span><br><span class="line">temp=p-&gt;data;       //交换数据域部分</span><br><span class="line">p-&gt;data=s-&gt;data;</span><br><span class="line">s-&gt;data=temp;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度为$O(n)$。</p>
-<h2 id="2-6-删除结点操作"><a href="#2-6-删除结点操作" class="headerlink" title="2.6 删除结点操作"></a>2.6 删除结点操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool ListDelete(LinkList &amp;L, int i, ElemType &amp;e)&#123;</span><br><span class="line">    LNode *p=L;     //指针p指向当前扫描到的结点</span><br><span class="line">    int j=0;     //记录当前结点的位序，头结点是第0个结点</span><br><span class="line">    while(p-&gt;next!=NULL&amp;&amp;j&lt;i-1)&#123;   //循环找到第i-1个结点</span><br><span class="line">        p=p-&gt;next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    if(p-&gt;next==NULL||j&gt;i-1)     //i值不合法</span><br><span class="line">        return false;</span><br><span class="line">    LNode *q=p-&gt;next;     //令q指向被删除结点</span><br><span class="line">    e=q-&gt;data;    //用e返回元素的值</span><br><span class="line">    p-&gt;next=q-&gt;next;    //将*q节点从链中“断开”</span><br><span class="line">    free(q);     //释放节点的存储空间</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度为$O(n)$。<br><strong>扩展</strong>：删除给定结点*p。<br>主要代码片段：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LNode *q=p-&gt;next;    //令q指向*p的后继结点</span><br><span class="line">p-&gt;data=p-&gt;next-&gt;data;   //用后继结点的数据域覆盖</span><br><span class="line">p-&gt;next=q-&gt;next;     //将*q节点从链中“断开”</span><br><span class="line">free(q);     //释放后继结点的存储空间</span><br></pre></td></tr></table></figure>
-<p>时间复杂度为$O(n)$。</p>
-<h2 id="2-7-采用头插法建立单链表"><a href="#2-7-采用头插法建立单链表" class="headerlink" title="2.7 采用头插法建立单链表"></a>2.7 采用头插法建立单链表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LinkList List_HeadInsert(LinkList &amp;L)&#123;  //逆向建立单链表</span><br><span class="line">    LNode *s; int x;      //设元素类型为整数</span><br><span class="line">    L=(LNode*)malloc(sizeof(LNode));   //创建头结点</span><br><span class="line">    L-&gt;next=NULL;      //初始为空链表</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;x);    //输入结点的值</span><br><span class="line">    while(x1=9999)&#123;    //输入9999表示结束</span><br><span class="line">        s=(LNode*)malloc(sizeof(LNode));  //创建新结点</span><br><span class="line">        s-&gt;data=x;</span><br><span class="line">        s-&gt;next=L-&gt;next;</span><br><span class="line">        L-&gt;next=s;     //将新结点插入表中，L为头结点</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;x);</span><br><span class="line">    &#125;</span><br><span class="line">    return L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每插入一个结点的时间复杂度为$O(1)$，总时间复杂度为$O(n)$。</p>
-<h2 id="2-8-采用尾插法建立单链表"><a href="#2-8-采用尾插法建立单链表" class="headerlink" title="2.8 采用尾插法建立单链表"></a>2.8 采用尾插法建立单链表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LinkList List_TailInsert(LinkList &amp;L)&#123;   //正向建立单链表</span><br><span class="line">    int x;      //设元素类型为整数</span><br><span class="line">    L-(LNode*)malloc(sizeof(LNode));    //创建头结点</span><br><span class="line">    LNode *s, *r=L;    //r为表尾指针</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;x);    //输入结点的值</span><br><span class="line">    while(x!=9999)&#123;    //输入9999表示结束</span><br><span class="line">        s=(LNode*)malloc(sizeof(LNode));</span><br><span class="line">        s-&gt;data=x;</span><br><span class="line">        r-&gt;next=s;</span><br><span class="line">        r=s;    //r指向新的表尾结点</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;x);</span><br><span class="line">    &#125;</span><br><span class="line">    r-&gt;next=NULL;    //尾节点置空</span><br><span class="line">    return L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为附设了一个尾指针，故无须遍历查找尾部，总时间复杂度为$O(n)$。</p>
-<h1 id="3-双链表"><a href="#3-双链表" class="headerlink" title="3.双链表"></a>3.双链表</h1><h2 id="3-1-双链表的定义"><a href="#3-1-双链表的定义" class="headerlink" title="3.1 双链表的定义"></a>3.1 双链表的定义</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct DNode&#123;  //定义双链表结点类型</span><br><span class="line">    ElemType data;   //数据域</span><br><span class="line">    struct DNode *prior,*next;   //前驱和后继指针</span><br><span class="line">&#125;DNode, *Dlinklist;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-2-双链表的插入操作"><a href="#3-2-双链表的插入操作" class="headerlink" title="3.2 双链表的插入操作"></a>3.2 双链表的插入操作</h2><p>核心代码片段如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s-&gt;next=p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior=s;</span><br><span class="line">s-&gt;prior=p;</span><br><span class="line">p-&gt;next=s;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-3-双链表的删除操作"><a href="#3-3-双链表的删除操作" class="headerlink" title="3.3 双链表的删除操作"></a>3.3 双链表的删除操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">p-&gt;next=q-next;</span><br><span class="line">q-&gt;next-&gt;prior=p;</span><br><span class="line">free(q);</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-静态链表"><a href="#4-静态链表" class="headerlink" title="4.静态链表"></a>4.静态链表</h1><p>定义：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MaxSize 50   //静态链表的最大长度</span><br><span class="line">typedef struct&#123;   //静态链表的结构类型定义</span><br><span class="line">    ElemType data;  //存储数据元素</span><br><span class="line">    int next;   //下一个元素的数组下标</span><br><span class="line">&#125; SLinkList[MaxSize];</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>408-数据结构</category>
-      </categories>
-      <tags>
-        <tag>408</tag>
-        <tag>数据结构</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[408] [数据结构] 树-代码基础</title>
-    <url>/2026/05/25/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E6%A0%91-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="1-二叉树"><a href="#1-二叉树" class="headerlink" title="1.二叉树"></a>1.二叉树</h1><h2 id="1-1-二叉树的链式存储结构"><a href="#1-1-二叉树的链式存储结构" class="headerlink" title="1.1 二叉树的链式存储结构"></a>1.1 二叉树的链式存储结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct BiTNode&#123;</span><br><span class="line">    ElemType data;    //数据域</span><br><span class="line">    struct BiTNode *lchild,*rchild;    //分别指向左右孩子的指针</span><br><span class="line">&#125;BiUNode,*BiTree;</span><br></pre></td></tr></table></figure>
-<h2 id="1-2-二叉树的遍历"><a href="#1-2-二叉树的遍历" class="headerlink" title="1.2 二叉树的遍历"></a>1.2 二叉树的遍历</h2><h3 id="1-2-1-先序遍历"><a href="#1-2-1-先序遍历" class="headerlink" title="1.2.1 先序遍历"></a>1.2.1 先序遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void PerOrder(BiTree T)&#123;</span><br><span class="line">    if(T!=NULL)&#123;</span><br><span class="line">        visit(T);</span><br><span class="line">        PreOrder(T-&gt;lchild);</span><br><span class="line">        PerOrder(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-2-中序遍历"><a href="#1-2-2-中序遍历" class="headerlink" title="1.2.2 中序遍历"></a>1.2.2 中序遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InOrder(BiTree T)&#123;</span><br><span class="line">    if(T!=NULL)&#123;</span><br><span class="line">        InOrder(T-&gt;lchild);</span><br><span class="line">        visit(T);</span><br><span class="line">        InOrder(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-3-后序遍历"><a href="#1-2-3-后序遍历" class="headerlink" title="1.2.3 后序遍历"></a>1.2.3 后序遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void PostOrder(BiTree T)&#123;</span><br><span class="line">    if(T!=NULL)&#123;</span><br><span class="line">        PostOrder(T-&gt;lchild);</span><br><span class="line">        PostOrder(T-&gt;rchild);</span><br><span class="line">        visit(T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-4-层次遍历"><a href="#1-2-4-层次遍历" class="headerlink" title="1.2.4 层次遍历"></a>1.2.4 层次遍历</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void LevelOrder(BiTree T)&#123;</span><br><span class="line">    InitQueue(Q);    //初始化辅助队列</span><br><span class="line">    BiTree p;    </span><br><span class="line">    EnQueue(Q,T);     //将根结点入队</span><br><span class="line">    while(!IsEmpty(Q))&#123;  //队列不空则循环</span><br><span class="line">        DeQueue(Q,p);    //队头结点出队</span><br><span class="line">        visit(p);    //访问出队结点</span><br><span class="line">        if(p-&gt;lchild!=NULL)</span><br><span class="line">            EnQueue(Q,p-&gt;lchild);  //若左孩子不空，则左孩子入队</span><br><span class="line">        if(p-&gt;rchild!=NULL)</span><br><span class="line">            EnQueue(Q,p-&gt;rchild);   //若右孩子不空，则右孩子入队</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-线索二叉树"><a href="#2-线索二叉树" class="headerlink" title="2.线索二叉树"></a>2.线索二叉树</h1><h2 id="2-1-线索二叉树的存储结构"><a href="#2-1-线索二叉树的存储结构" class="headerlink" title="2.1 线索二叉树的存储结构"></a>2.1 线索二叉树的存储结构</h2><p>线索二叉树的存储结构可定义为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct ThreadNode&#123;</span><br><span class="line">    ElemType data;     //数据元素</span><br><span class="line">    struct THreadNode *lchild, *rchild;   //左右孩子指针</span><br><span class="line">    int ltag,rtag;    //左右线索标志</span><br><span class="line">&#125;ThreadNode,*ThreadTree;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-中序线索二叉树的构造"><a href="#2-2-中序线索二叉树的构造" class="headerlink" title="2.2 中序线索二叉树的构造"></a>2.2 中序线索二叉树的构造</h2><p>通过中序遍历对二叉树线索化的递归算法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InThread(ThreadTree &amp;p,ThreadTree &amp;pre)&#123;</span><br><span class="line">    if(p!=NULL)&#123;</span><br><span class="line">        InThread(p-&gt;lchild,pre);    //递归，线索化左子树</span><br><span class="line">        if(p-&gt;lchild==NULL)&#123;       //当前结点的左子树为空</span><br><span class="line">            p-&gt;lchild=pre;      //建立当前结点的前驱线索</span><br><span class="line">            p-&gt;ltag=1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(pre!=NULL&amp;&amp;pre-&gt;rchild==NULL)&#123;  //前驱结点非空且其右子树为空</span><br><span class="line">            pre-&gt;rchild=p;    //建立前驱结点的后继线索</span><br><span class="line">            pre-&gt;rtag=1;</span><br><span class="line">        &#125;</span><br><span class="line">        pre=p;         //标记当前结点成为刚刚访问过的结点</span><br><span class="line">        InThread(p-&gt;rchild,pre);    //递归，线索化右子树</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>建立中序线索二叉树的主过程如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void CreateInThread(ThreadTree T)&#123;</span><br><span class="line">    ThreadTree pre=MU;;;</span><br><span class="line">    if(T!=NULL)&#123;    //非空二叉树，线索化</span><br><span class="line">        InThread(T,pre);    //线索化二叉树</span><br><span class="line">        pre-&gt;rchild=NULL;   //处理遍历的最后一个结点</span><br><span class="line">        pre-&gt;rtag=1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3-中序线索二叉树的遍历"><a href="#2-3-中序线索二叉树的遍历" class="headerlink" title="2.3 中序线索二叉树的遍历"></a>2.3 中序线索二叉树的遍历</h2><p>不含头结点的中序线索二叉树遍历相关算法如下：<br>1）求中序序列中的第一个结点：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ThreadNode *Firstnode(ThreadNode *p)&#123;</span><br><span class="line">    while(p-&gt;ltag==0) p=p-&gt;lchild;  //沿左孩子链走到最左下结点</span><br><span class="line">    return p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2）求结点p在中序序列中的后继：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ThreadNode *Nextnode(ThreadNode *p)&#123;</span><br><span class="line">    if(p-&gt;rtag==0) return Firstnode(p-&gt;rchild);   //右指数中最左下结点</span><br><span class="line">    else return p-&gt;rchild;      //若rtag==1则直接返回后继线索</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3）利用上面两个算法，可实现非递归的中序遍历：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Inorder(ThreadNode T)&#123;</span><br><span class="line">    for(ThreadNode *p=Firstnode(T);p!=NULL; p=Nextnode(p))</span><br><span class="line">        visit(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-树的存储结构"><a href="#3-树的存储结构" class="headerlink" title="3.树的存储结构"></a>3.树的存储结构</h1><h2 id="3-1-双亲表示法的实现"><a href="#3-1-双亲表示法的实现" class="headerlink" title="3.1 双亲表示法的实现"></a>3.1 双亲表示法的实现</h2><p>双亲表示法的存储结构定义如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAX_TREE_SIZE 100   //树中最多结点数</span><br><span class="line">typedef struct&#123;    //树的结点定义</span><br><span class="line">    ElemType data;     //数据元素</span><br><span class="line">    int parent;      //双亲位置域</span><br><span class="line">&#125;PTNode;</span><br><span class="line">typedef strucct&#123;    //树的类型定义</span><br><span class="line">    PTNode nodes[MAX_TREE_SIZE];   //双亲表示</span><br><span class="line">    int n;    //结点数</span><br><span class="line">&#125;PTree;</span><br></pre></td></tr></table></figure>
-<h2 id="3-2-孩子兄弟表示法的实现"><a href="#3-2-孩子兄弟表示法的实现" class="headerlink" title="3.2 孩子兄弟表示法的实现"></a>3.2 孩子兄弟表示法的实现</h2><p>孩子兄弟表示法的存储结构描述如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct CSNode&#123;</span><br><span class="line">    ElemType data;     //数据域</span><br><span class="line">    struct CSNode *fristchild,*nextsibling;   //第一个孩子和右兄弟指针</span><br><span class="line">&#125;CSNode,*CSTree;</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-并查集的基本实现"><a href="#4-并查集的基本实现" class="headerlink" title="4.并查集的基本实现"></a>4.并查集的基本实现</h1><p>并查集的结构定义如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define SIZE 100</span><br><span class="line">int   UFSetsp[SIZE];    //集合元素数组（双亲指针数组）</span><br></pre></td></tr></table></figure>
-<p>并查集的初始化操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Initial(int Sp[])&#123;   //S即并查集</span><br><span class="line">    for(int i=0;i&lt;SIZE;i++)   //每个自成一个单元素集合</span><br><span class="line">        S[i]=-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>并查集的Find操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Find(int S[], int x)&#123;</span><br><span class="line">    while(S[x]&gt;=0)    //循环寻找x的根</span><br><span class="line">        x=S[x];</span><br><span class="line">    return x;      //根的S[]小于0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>并查集的Union操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Union(int S[],int Root1,int Root2)&#123;</span><br><span class="line">    if(Root1==Root2) return;    //要求Root1与Root2是不同的集合</span><br><span class="line">    S[Root2]=Root1;     //将根Root2连接到另一根Root1下面</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-并查集实现的优化"><a href="#5-并查集实现的优化" class="headerlink" title="5.并查集实现的优化"></a>5.并查集实现的优化</h2><p>1）改进的Union操作</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Union(int S[], int Root1, int Root2)&#123;</span><br><span class="line">    if(Root1==Root2) return;</span><br><span class="line">    if(S[Root2]&gt;S[Root1])&#123;   //Root2结点数更少</span><br><span class="line">        S[Root1]+=S[Root2];    //累加集合中的元素总数</span><br><span class="line">        S[Root2]=Root1;       //小树合并到大树</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;        //Root1结点数更少</span><br><span class="line">        S[Root2]+=S[Root1];      //累加结点总数</span><br><span class="line">        S[Root1]=Root2;    //小树合并到大树</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2）改进的Find操作</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Find(int S[], int x)&#123;</span><br><span class="line">    int root=x;</span><br><span class="line">    while(S[root]&gt;=0)    //循环找到根</span><br><span class="line">        root=S[root];</span><br><span class="line">    while(x!=root)&#123;   //压缩路径</span><br><span class="line">        int t=S[x];    //t指向x的父结点</span><br><span class="line">        S[x]=root;     //x直接挂到根结点下面</span><br><span class="line">        x=t;</span><br><span class="line">    &#125;</span><br><span class="line">    return root;   //返回根结点编号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>408-数据结构</category>
-      </categories>
-      <tags>
-        <tag>408</tag>
-        <tag>数据结构</tag>
-        <tag>树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[408] [数据结构] 队列-代码基础</title>
-    <url>/2026/05/25/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E9%98%9F%E5%88%97-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>队列：先进先出，后进后出</p>
-<h1 id="1-队列的顺序存储结构"><a href="#1-队列的顺序存储结构" class="headerlink" title="1.队列的顺序存储结构"></a>1.队列的顺序存储结构</h1><p>队列的顺序存储类型可定义为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MaxSize 50    //定义队列中元素的最大个数</span><br><span class="line">typedef struct&#123;</span><br><span class="line">    ElemTpye data[MaxSize];     //用数组存放队列元素</span><br><span class="line">    int front,rear;     //队首指针和队尾指针</span><br><span class="line">&#125;SqQueue;</span><br></pre></td></tr></table></figure>
-<p><strong>初始状态</strong>：Q.front&#x3D;Q.rear-0<br><strong>入队操作</strong>：当队列未满时，先将元素存入队尾，再将队尾指针加1<br><strong>出队操作</strong>：当队列非空时，先取出队首元素，再将队首指针加1</p>
-<h2 id="1-1-循环队列"><a href="#1-1-循环队列" class="headerlink" title="1.1 循环队列"></a>1.1 循环队列</h2><p><strong>初始状态</strong>：Q.front&#x3D;Q.rear&#x3D;0<br><strong>队首指针进1</strong>：Q.front&#x3D;(Q.front+1)%MaxSize<br><strong>队尾指针进1</strong>：Q.rear&#x3D;(Q.rear+1)%MaxSize<br><strong>队列长度</strong>：(Q,rear+MaxSize-Q.front)%MaxSize<br><strong>出入队操作</strong>：指针均按顺时针方向移动<br><strong>在循环队列判空和判满时的三种类型情况</strong>：</p>
+<h2 id="2-数据链路层"><a href="#2-数据链路层" class="headerlink" title="2.数据链路层"></a>2.数据链路层</h2><p>数据链路层的传输单位是帧。<br>将物理层提供的可能出错的物理链接改造为逻辑上无差错的数据链路。<br>数据链路层将网络层交来的IP分组封装成帧，并且可靠的传输到相邻节点的网络层。其主要功能包括封装成帧、差错检测与纠正、流量控制和贡献信道上的截止访问控制MAC<br>典型协议有SDLC、HDLC、PPP等。<br>具备物理寻址，流量控制，差错检测等功能，但是不具备拥塞控制。</p>
+<h2 id="3-网络层"><a href="#3-网络层" class="headerlink" title="3.网络层"></a>3.网络层</h2><p>网络层的传输单位是数据报。<br>主要任务是将网络层的协议数据单元（分组）从源主机传输到目标主机，为分组交换网上的不同主机提供通讯服务。<br>网络层既提供有链接可靠的虚电路服务，又提供无连接不可靠的数据报服务。<br>具有路由选择、流量控制、拥塞控制、差错控制和网际互联等功能。<br>典型协议有IP、IPX、ICMP、IGMP、ARP、RARP、RIP和OSRF等。</p>
+<h2 id="4-传输层"><a href="#4-传输层" class="headerlink" title="4.传输层"></a>4.传输层</h2><p>传输层也称运输层，负责主机中两个进程之间的通信，提供端到端的流量控制、差错控制、连接建立与释放、可靠传输管理等服务，传输层仅提供有连接可靠的服务。<br>数据链路层提供的是点到点通信。传输层提供的是端到端通信。<br>端到端通信是指运行在不同主机内的两个进程之间的通信。<br>传输层具有复用和分用的功能：</p>
 <ul>
-<li><strong>牺牲一个存储单元</strong>：入队时少用一个存储单元，约定“队尾指针的下一位置为队首”作为队满标志。<br><strong>队满条件</strong>：(Q.rear+1)%MaxSize &#x3D;&#x3D; Q.front<br><strong>队空条件</strong>：Q.front &#x3D;&#x3D; Q.rear<br><strong>队列中元素个数</strong>:(Q.rear-Q.front+MaxSize)%MaxSize</li>
-<li><strong>增设size成员</strong>：记录当前元素个数。若入队成功，则size++，若出队成功，则size–<br><strong>队空条件</strong>：Q.size &#x3D;&#x3D; 0<br><strong>队满条件</strong>：Q.size &#x3D;&#x3D; Maxsize<br>两种情形均有Q.front &#x3D;&#x3D; Q.rear，由rear区分队空与队满。</li>
-<li><strong>增设tag标志位</strong><br>出队后置tag&#x3D;0，若此时Q.front &#x3D;&#x3D; Q.rear，则为队空。<br>入队后置tag&#x3D;1，若此时Q.front &#x3D;&#x3D; Q.rear，则为队满。</li>
+<li>复用是指多个应用层进程可同时使用下面传输层的服务。</li>
+<li>分用是指传输层将收到的信息分别交付给上面应用层中相应的进程</li>
 </ul>
-<h2 id="1-2-循环队列的操作（基于牺牲一个单元法）"><a href="#1-2-循环队列的操作（基于牺牲一个单元法）" class="headerlink" title="1.2 循环队列的操作（基于牺牲一个单元法）"></a>1.2 循环队列的操作（基于牺牲一个单元法）</h2><h3 id="1-2-1-初始化"><a href="#1-2-1-初始化" class="headerlink" title="1.2.1 初始化"></a>1.2.1 初始化</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">    Q.rear=Q.front=0;      //初始化队首、队尾指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-2-判队空"><a href="#1-2-2-判队空" class="headerlink" title="1.2.2 判队空"></a>1.2.2 判队空</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool QueueEmpty(SqQueue Q)&#123;</span><br><span class="line">    if(Q.rear == Q.front)          //队空条件</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-3-入队"><a href="#1-2-3-入队" class="headerlink" title="1.2.3 入队"></a>1.2.3 入队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool EnQueue(SqQueue &amp;Q, ElemType x)&#123;</span><br><span class="line">    if((Q.rear+1)%MaxSize==Q.front)      //队满则报错</span><br><span class="line">        return false;</span><br><span class="line">    Q.data[Q.rear]=x;</span><br><span class="line">    Q.rear=(Q.rear+1)%MaxSize;    //队尾指针加1取模</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-4-出队"><a href="#1-2-4-出队" class="headerlink" title="1.2.4 出队"></a>1.2.4 出队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool DeQueue(SqQueue &amp;Q, ElemType &amp;x)&#123;</span><br><span class="line">    if(Q.rear==Q.front)    //队空则报错</span><br><span class="line">        return false;</span><br><span class="line">    x=Q.data[Q.front];</span><br><span class="line">    Q.front=(Q.front+1)%MaxSize;    //队首指针加1取模</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-队列的链式存储结构"><a href="#2-队列的链式存储结构" class="headerlink" title="2.队列的链式存储结构"></a>2.队列的链式存储结构</h1><p>链式队列的类型可定义为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct LinkNode&#123;   //链式队列节点</span><br><span class="line">    ElemType data;</span><br><span class="line">    struct LinkNode *next;</span><br><span class="line">&#125;LinkNode;</span><br><span class="line">typedef struct&#123;  //链式队列</span><br><span class="line">    LinkNode *front,*rear;    //队列的队头和队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-1-链式队列的基本操作"><a href="#2-1-链式队列的基本操作" class="headerlink" title="2.1 链式队列的基本操作"></a>2.1 链式队列的基本操作</h2><h3 id="2-1-1-初始化"><a href="#2-1-1-初始化" class="headerlink" title="2.1.1 初始化"></a>2.1.1 初始化</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InitQueue(LinkQueue &amp;Q)&#123;   //初始化带头结点的链式队列</span><br><span class="line">    Q.front=Q.rear=(LinkNode*)malloc(sizeof(LinkNode));    //建立头结点</span><br><span class="line">    Q.front-&gt;next=NULL;    //初始为空</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-1-2-判队空"><a href="#2-1-2-判队空" class="headerlink" title="2.1.2 判队空"></a>2.1.2 判队空</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool QueueEmpty(LinkQueue Q)&#123;</span><br><span class="line">    if(Q.front==Q.rear)    //判空条件</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-1-3-入队"><a href="#2-1-3-入队" class="headerlink" title="2.1.3 入队"></a>2.1.3 入队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void EnQueue(LinkQueue &amp;Q, ElemType x)&#123;</span><br><span class="line">    LinkNode *s=(LinkNode *)malloc(sizeof(LinkNode));   //创建新结点</span><br><span class="line">    s-&gt;data=x;</span><br><span class="line">    s-&gt;next=NULL;</span><br><span class="line">    Q,rear-&gt;next=s;     //插入链尾</span><br><span class="line">    Q.rear=s;       //修改尾指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-1-4-出队"><a href="#2-1-4-出队" class="headerlink" title="2.1.4 出队"></a>2.1.4 出队</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool DeQueue(LinkQueue &amp;Q, ElemType &amp;x)&#123;</span><br><span class="line">    if(Q.front==Q.rear)</span><br><span class="line">        return false;     //空队</span><br><span class="line">    LinkNode *p=Q.front-&gt;next;</span><br><span class="line">    x=p-&gt;data;</span><br><span class="line">    Q.front-&gt;next=p-&gt;next;</span><br><span class="line">    if(Q.rear==p)</span><br><span class="line">        Q.rear==Q.front;    //若原队列中只有一个结点，删除后变空</span><br><span class="line">    free(p);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>408-数据结构</category>
-      </categories>
-      <tags>
-        <tag>408</tag>
-        <tag>数据结构</tag>
-        <tag>队列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[408] [数据结构] 顺序表-代码基础</title>
-    <url>/2026/05/11/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h2 id="1-顺序表的定义"><a href="#1-顺序表的定义" class="headerlink" title="1.顺序表的定义"></a>1.顺序表的定义</h2><p>静态分配的顺序表存储结构描述为：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MaxSize 50              <span class="comment">// 定义线性表的最大长度</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span>           </span><br><span class="line">    ElemType data[MaxSize];     <span class="comment">// 顺序表的元素</span></span><br><span class="line">    <span class="type">int</span> length;                 <span class="comment">// 顺序表的当前长度</span></span><br><span class="line">&#125;SqList;                        <span class="comment">// 顺序表的类型定义</span></span><br></pre></td></tr></table></figure>
-<p>动态分配的顺序表存储结构描述为：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> InitSize 100        <span class="comment">//表长度的初始定义</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span>             </span><br><span class="line">    ElemType *data;         <span class="comment">//指示动态分配数组的指针</span></span><br><span class="line">    <span class="type">int</span> MaxSize, length;    <span class="comment">//数组的最大容量和当前个数</span></span><br><span class="line">&#125; SqList;                   <span class="comment">//动态分配数组顺序表的类型定义</span></span><br></pre></td></tr></table></figure>
-<p>C的初始动态分配语句为</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">L.data=(ElemType *)<span class="built_in">malloc</span>(InitSize*<span class="keyword">sizeof</span>(ElemType));</span><br></pre></td></tr></table></figure>
-<p><em>malloc</em> 前面括号表明数据类型，后面括号是计算要分配的总字节空间.</p>
-<p>C++的初始动态分配语句：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">L.data=new ElemType[InitSize];</span><br></pre></td></tr></table></figure>
-<h2 id="2-顺序表初始化"><a href="#2-顺序表初始化" class="headerlink" title="2.顺序表初始化"></a>2.顺序表初始化</h2><p>静态分配:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//SqList L;                 // 定义一个顺序表变量L</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InitList</span><span class="params">(SqList &amp;L)</span>&#123;     <span class="comment">// 构造一个空的顺序表L</span></span><br><span class="line">    L.length=<span class="number">0</span>;             <span class="comment">// 顺序表长度为0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>动态分配：分配初始大小的数组空间，并设置长度和容量</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">InitList</span><span class="params">(SqList &amp;L)</span>&#123;     <span class="comment">// 构造一个空的顺序表L</span></span><br><span class="line">    L.data=(ElemType *)<span class="built_in">malloc</span>(InitSize*<span class="keyword">sizeof</span>(ElemType)); <span class="comment">// 动态分配内存空间</span></span><br><span class="line">    L.MaxSize=InitSize;             <span class="comment">// 设置最大容量</span></span><br><span class="line">    L.length=<span class="number">0</span>;                     <span class="comment">// 顺序表长度为0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3-插入操作"><a href="#3-插入操作" class="headerlink" title="3.插入操作"></a>3.插入操作</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">ListInsert</span><span class="params">(SqList &amp;L, <span class="type">int</span> i, ElemType e)</span>&#123; <span class="comment">// 在顺序表L的第i个位置插入元素e</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L.length+<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 插入位置不合法</span></span><br><span class="line">    <span class="keyword">if</span>(L.length&gt;=L.MaxSize) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 顺序表已满，无法插入</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=L.length; j&gt;=i; j--) <span class="comment">// 将第i个位置及之后的元素后移</span></span><br><span class="line">        L.data[j]=L.data[j<span class="number">-1</span>];</span><br><span class="line">    L.data[i<span class="number">-1</span>]=e; <span class="comment">// 插入元素e</span></span><br><span class="line">    L.length++; <span class="comment">// 顺序表长度增加1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 插入成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最好情况：插入队尾，时间复杂度为$Q(1)$。<br>最坏情况：插入队首，时间复杂度为$Q(n)$。<br>平均情况：时间复杂度为$Q(n)$。</p>
-<h2 id="4-删除操作"><a href="#4-删除操作" class="headerlink" title="4.删除操作"></a>4.删除操作</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">ListDelete</span><span class="params">(SqList &amp;L, <span class="type">int</span> i, ElemType &amp;e)</span>&#123; <span class="comment">// 删除顺序表L的第i个位置的元素，并将其值保存在e中</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L.length) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 删除位置不合法</span></span><br><span class="line">    e=L.data[i<span class="number">-1</span>]; <span class="comment">// 将要删除的元素值保存在e中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=i; j&lt;L.length; j++) <span class="comment">// 将第i个位置之后的元素前移</span></span><br><span class="line">        L.data[j<span class="number">-1</span>]=L.data[j];</span><br><span class="line">    L.length--; <span class="comment">// 顺序表长度减少1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 删除成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最好情况：删除队尾元素，时间复杂度为$Q(1)$。<br>最坏情况：删除队首元素，时间复杂度为$Q(n)$。<br>平均情况：时间复杂度为$Q(n)$。</p>
-<h2 id="5-按值查找（顺序查找）"><a href="#5-按值查找（顺序查找）" class="headerlink" title="5.按值查找（顺序查找）"></a>5.按值查找（顺序查找）</h2><p>在顺序表L中查找第一个值等于e的元素，返回其位序；若未找到，则返回0。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">LocateElem</span><span class="params">(SqList L, ElemType e)</span>&#123; <span class="comment">// 在顺序表L中查找元素e，返回其位置</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;L.length; i++) <span class="comment">// 从第一个元素开始查找</span></span><br><span class="line">        <span class="keyword">if</span>(L.data[i]==e) <span class="keyword">return</span> i+<span class="number">1</span>; <span class="comment">// 找到元素e，返回其位置（从1开始计数）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 没有找到元素e，返回0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最好情况：目标元素在队首，时间复杂度为$Q(1)$。<br>最坏情况：目标元素在队尾或不存在，时间复杂度为$Q(n)$。<br>平均情况：时间复杂度为$Q(n)$。<br>顺序表的按序列查找非常简单，直接通过数组下标访问即可，时间复杂度为$Q(1)$。</p>
+<p>典型协议有TCP、UDP。</p>
+<h2 id="5-会话层"><a href="#5-会话层" class="headerlink" title="5.会话层"></a>5.会话层</h2><p>会话层允许不同主机上的各个进程之间进行会话。这种服务主要为表示层实体或用户进程建立连接，并在连接上有序地传输数据，这就是会话，也称为建立同步（SYN）。<br>会话层负责管理主机间的会话进程，包括建立、管理和终止进程间的会话。<br>会话层包含一种称为检查点的机制来维持可靠会话，使通信会话在通信失效时从检查点继续恢复通信，即断点下载的原理。</p>
+<h2 id="6-表示层"><a href="#6-表示层" class="headerlink" title="6.表示层"></a>6.表示层</h2><p>表示层主要处理不同主机中交换信息的表示方式。<br>表示层采用抽象的标准方式定义数据结构，并采用标准的编码形式。</p>
+<h2 id="7-应用层"><a href="#7-应用层" class="headerlink" title="7.应用层"></a>7.应用层</h2><p>应用层是OSI参考模型的最高层，是用户与网络的接口。<br>典型协议有FTP、SMIP、HTTP等。</p>
+<h1 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP&#x2F;IP模型"></a>TCP&#x2F;IP模型</h1><p>从低到高依次为网络接口层、网际层、传输层和应用层。</p>
+<h2 id="1-网络接口层"><a href="#1-网络接口层" class="headerlink" title="1.网络接口层"></a>1.网络接口层</h2><p>功能类似于OSI参考模型的物理层和数据链路层，其作用是从主机或节点接收IP分组，并将它们发送到指定的物理网络上。</p>
+<h2 id="2-网际层（主机-主机）"><a href="#2-网际层（主机-主机）" class="headerlink" title="2.网际层（主机-主机）"></a>2.网际层（主机-主机）</h2><p>功能上类似于OSI参考模型的网络层。<br>网际层将分组发往任何网络，并为其独立地选择合适的路由，但不保证各个分组有序地到达，各个分组的有序和可靠交付由高层负责。<br>网际层仅提供无连接不可靠的IP，数据传输的单位是IP数据报。</p>
+<h2 id="3-传输层（应用-应用或进程-进程）"><a href="#3-传输层（应用-应用或进程-进程）" class="headerlink" title="3.传输层（应用-应用或进程-进程）"></a>3.传输层（应用-应用或进程-进程）</h2><p>类似于OSI参考模型中的传输层。即使得发送端和目的端主机上的对等实体进行会话。<br>传输层主要使用以下两种协议：</p>
+<ul>
+<li><strong>传输控制协议（TCP）</strong>：它是面向连接的，能够提供可靠的交付，数据传输的单位是报文段。</li>
+<li><strong>用户数据报协议（UDP）</strong>：无连接，不可靠交付，最大努力交付，数据传输的单位是用户数据报。</li>
+</ul>
+<h2 id="4-应用层（用户-用户）"><a href="#4-应用层（用户-用户）" class="headerlink" title="4.应用层（用户-用户）"></a>4.应用层（用户-用户）</h2><p>包括所有的高层协议，如Telent、FTP、DNS、SMTP和HTTP等。</p>
+<h1 id="网络的5层协议体系结构模型"><a href="#网络的5层协议体系结构模型" class="headerlink" title="网络的5层协议体系结构模型"></a>网络的5层协议体系结构模型</h1><p>包括物理层、数据链路层、网络层、传输层、应用层。</p>
+<h2 id="1-物理层-1"><a href="#1-物理层-1" class="headerlink" title="1.物理层"></a>1.物理层</h2><p>负责在连接各台计算机的传输介质上传输数据比特流。<br>物理层的接口特性</p>
+<ul>
+<li>机械特性</li>
+<li>电气特性：指明在接口电缆的各条线上电压范围、传输速率和距离限制。</li>
+<li>功能特性：指明某条线上出现的某一电平的电压表示何种意义以及每条线的功能。</li>
+<li>过程特征：顺序</li>
+</ul>
+<h2 id="2-数据链路层-1"><a href="#2-数据链路层-1" class="headerlink" title="2.数据链路层"></a>2.数据链路层</h2><p>主要任务是让帧在一段链路上或一个网络中传输。</p>
+<ul>
+<li>链路管理：数据链路层连接的建立、维持和释放过程。主要用于面向连接的服务。</li>
+<li>封装成帧：是指一段数据的前后分别添加首部和尾部，构成帧。</li>
+<li>透明传输：是指不论什么样的比特组合的数据，都能后按照原样无差错地在这个数据链路上传输。</li>
+<li>流量控制：实际上是限制发送方的发送速率。<br>在OSI体系结构中，数据链路层具有流量控制的功能。而在TCP&#x2F;IP体系结构中，流量控制功能被移到了传输层。他们控制的对象不同。对数据链路层来说，控制的是相邻节点之间的数据链路上的流量，而对传输层来说，控制的则是从源端到目的端之间的流量。</li>
+<li>差错检测</li>
+</ul>
+<p>数据链路层使用的信道主要有两种：</p>
+<ul>
+<li>点对点信道：使用一对一通信方式。PPP是目前使用最广泛的点对点协议。</li>
+<li>广播信道：使用一对多的广播通信方式。采用共享广播信道的有线局域网普遍使用CSMA&#x2F;CD协议，而无线局域网则使用CSMA&#x2F;CA协议。</li>
+</ul>
+<h2 id="3-网络层-1"><a href="#3-网络层-1" class="headerlink" title="3.网络层"></a>3.网络层</h2><p>网络层提供主机到主机的通信服务，主要任务是将分组从源主机经过多个网络和多端链路传输到目标主机。该任务可划分为分组转发和路由选择两种重要功能。</p>
+<ul>
+<li>分组转发：指路由器根据转发表将分组从合适的端口转发出去。</li>
+<li>路由选择：根据路由协议构造路由表，同时经常或定期地与相邻路由器交换信息，获取网络最新拓扑，动态更新维护路由表，以决定分组到达目的地节点的最优路径。<br>OSI参考模型曾主张在网络层使用面向连接的虚电路服务。<br>TCP&#x2F;IP体系的网络层提供的是无连接的数据报服务，其核心思想是应由用户主机来保证通信的可靠性。网络层向上 只提供简单灵活的、无连接的、尽最大努力交付的数据报服务。通信的可靠性可以由更高层的传输层来负责。</li>
+</ul>
+<p>网络层提供的两种服务</p>
+<ul>
+<li>面向连接的虚电路服务：当两台计算机进行通信时，应当先建立网络层的连接。通信过程分为虚电路建立、数据传输和虚电路释放。</li>
+<li>无连接的数据报服务：网络在发送分组前不需要先建立连接。源主机的高层协议将报文拆成若干较小的数据段，并加上地址等控制信息后构成分组。中间节点存储分组很短一段时间，找到最佳的路由后，尽快转发每个分组。同时，当分组正在某一链路上传送时，分组并不占用网络其他部分的资源。因为采用存储转发技术，资源是共享的。</li>
+</ul>
+<p>拥塞控制，两种方法：</p>
+<ul>
+<li>开环控制：在设计网络时事先将有关发生拥塞的因素考虑周到，力求网络在工作时不产生拥塞。静态</li>
+<li>闭环控制：采用监测网络系统去监视，即使检测哪里发生了拥塞，然后将拥塞信息传到合适的地方，以便调整网络系统的运行，并解决出现的问题。动态</li>
+</ul>
+<h2 id="4-传输层-1"><a href="#4-传输层-1" class="headerlink" title="4.传输层"></a>4.传输层</h2><p>数据链路层提供链路上相邻节点之间的逻辑通信，网络层提供主机之间的逻辑通信。传输层位于网络层之上、应用层之下，它为运行在不同主机上的进程之间提供逻辑通信。<br>传输层属于面向通信部分的最高层，同时也是用户功能中的最底层。<br>传输层的功能如下：</p>
+<ul>
+<li>应用进程之间的逻辑通信：端到端的逻辑通信。从传输层来看，通信的真正端点不是主机而是主机中的进程。</li>
+<li>复用和分用：复用是指发送方不同的应用进程都可以使用同一传输层协议传送数据。分用是指接收方的传输层在剥去报文的首部后能够把这些数据正确交付到目标的应用进程。</li>
+<li>差分检测</li>
+<li>提供面向连接和无连接的传输协议</li>
+</ul>
+<h2 id="5-应用层"><a href="#5-应用层" class="headerlink" title="5.应用层"></a>5.应用层</h2><p>网络应用模型：客户&#x2F;服务器模型，P2P模型</p>
+<ul>
+<li>客户&#x2F;服务器模型（C&#x2F;S模型）：有一个总是打开的主机称为服务器，它服务于许多来自其他称为客户机的主机请求。最主要的特征是，客户是服务请求方，服务器是服务提供方。</li>
+<li>P2P模型：整个网络中的传输内容不再被同时保存在中心服务器中，每个节点都同时具有下载、上传的功能，其权利和义务都是大体对等的。<br>各种高层协议：如域名系统DNS，文件传输协议FTP，电子邮箱E-mail等</li>
+</ul>
 ]]></content>
       <categories>
-        <category>408-数据结构</category>
+        <category>408-计算机网络</category>
       </categories>
       <tags>
         <tag>408</tag>
-        <tag>数据结构</tag>
-        <tag>顺序表</tag>
+        <tag>计算机网络</tag>
+        <tag>参考模型与各层基本概要</tag>
       </tags>
   </entry>
   <entry>
@@ -2084,6 +2051,40 @@
         <tag>408</tag>
         <tag>数据结构</tag>
         <tag>顺序表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[408] [数据结构] 栈-代码基础</title>
+    <url>/2026/05/24/%5B408%5D%20%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%20%E6%A0%88-%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>栈：先进先出，后近后出</p>
+<h1 id="1-栈的顺序存储结构"><a href="#1-栈的顺序存储结构" class="headerlink" title="1.栈的顺序存储结构"></a>1.栈的顺序存储结构</h1><h2 id="1-1-顺序栈的实现"><a href="#1-1-顺序栈的实现" class="headerlink" title="1.1 顺序栈的实现"></a>1.1 顺序栈的实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MaxSize 50    //定义栈中元素的最大个数</span><br><span class="line">typedef struct    </span><br><span class="line">&#123;</span><br><span class="line">    Elemtpye data[MaxSize];  //存放栈中元素</span><br><span class="line">    int top;      //栈顶指针</span><br><span class="line">&#125;SqStack;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>栈顶指针</strong>：S.top，初始时设为S.top&#x3D;-1。</li>
+<li><strong>栈顶元素</strong>：S.data[S.top]。</li>
+<li><strong>入栈操作</strong>：当栈未满时，先将栈顶指针加1，在将元素存入栈顶。</li>
+<li><strong>出栈操作</strong>：当栈非空时，先取出栈顶元素，再将栈顶指针减1。</li>
+<li><strong>栈空条件</strong>：S.top&#x3D;&#x3D;-1。</li>
+<li><strong>栈满条件</strong>：S.top&#x3D;&#x3D;MaxSize-1。</li>
+<li><strong>栈长</strong>：S.top+1。</li>
+</ul>
+<h2 id="1-2-顺序栈的基本操作"><a href="#1-2-顺序栈的基本操作" class="headerlink" title="1.2 顺序栈的基本操作"></a>1.2 顺序栈的基本操作</h2><h3 id="1-2-1-初始化"><a href="#1-2-1-初始化" class="headerlink" title="1.2.1 初始化"></a>1.2.1 初始化</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InitStack(SqStack &amp;S)&#123;</span><br><span class="line">    S.top=-1;    //初始化栈顶指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-2-栈判空"><a href="#1-2-2-栈判空" class="headerlink" title="1.2.2 栈判空"></a>1.2.2 栈判空</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool StackEmpty(SqStack S)&#123;</span><br><span class="line">    if(S.top==-1)      //栈空</span><br><span class="line">       return true;</span><br><span class="line">    else               //不空</span><br><span class="line">       return false;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-3-入栈"><a href="#1-2-3-入栈" class="headerlink" title="1.2.3 入栈"></a>1.2.3 入栈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool Push(SqStack &amp;S, ElemType x)&#123;</span><br><span class="line">    if(S.top==MaxSize-1)     //栈满，报错</span><br><span class="line">        return false;</span><br><span class="line">    S.data[++S.top] = x;   //指针先加1，再入栈</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-4-出栈"><a href="#1-2-4-出栈" class="headerlink" title="1.2.4 出栈"></a>1.2.4 出栈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool Pop(SqStack &amp;S, ElemType &amp;x)&#123;</span><br><span class="line">    if(S.top==-1)     //栈空，报错</span><br><span class="line">        return false;</span><br><span class="line">    x = S.data[S.top--];</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-5-读栈顶元素"><a href="#1-2-5-读栈顶元素" class="headerlink" title="1.2.5 读栈顶元素"></a>1.2.5 读栈顶元素</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool GetTop(SqStack S, Elemtype &amp;x)&#123;</span><br><span class="line">    if(S.top==-1)    //栈空，报错</span><br><span class="line">        return false;</span><br><span class="line">    x=S.data[S.top];   //x记录栈顶元素</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-栈的链式存储结构"><a href="#2-栈的链式存储结构" class="headerlink" title="2.栈的链式存储结构"></a>2.栈的链式存储结构</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct LinkNode</span><br><span class="line">&#123;</span><br><span class="line">    ElemType data;    //数据域</span><br><span class="line">    struct LinkNode *next;    //指针域</span><br><span class="line">&#125;LiStack;     //链栈类型定义</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>408-数据结构</category>
+      </categories>
+      <tags>
+        <tag>408</tag>
+        <tag>数据结构</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
 </search>
